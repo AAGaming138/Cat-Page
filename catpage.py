@@ -63,7 +63,7 @@ def main(unit_ID = 0) -> str:
         cats[i][4] = anims[i]
         cats[i][7] = f"{cats[i][7]} ~ {round(cats[i][7] - 8.8, 2) if cats[i][7] > 10.8 else 2} seconds"
         cats[i][12] = "Single Target" if cats[i][12] == 0 else "Area Attack"
-    if Options.table: return get_tables(cats, anims, names, rarity)
+    if Options.table: return get_tables(cat, anims)
     elif Options.catfruit:
         if get_catfruit(rarity[8]): return get_catfruit(rarity[8]).strip('\n')
         else: quit(f"{names[1]} has no catfruit evolution.")
@@ -72,7 +72,7 @@ def main(unit_ID = 0) -> str:
         else: quit(f"{names[1]} has no talents.")
     else: return get_start(ID, rarity, names, cats, gacha, drops) \
            + get_translation(ID, rarity, names, cat.getDesc()) + get_cost(cats, cat.catRarity) \
-           + get_tables(cats, anims, names, rarity) + get_catfruit(rarity[8])\
+           + get_tables(cat, anims) + get_catfruit(rarity[8])\
            + get_talent(get_talents(talents, cats[2])) \
            + get_end(ID, rarity[7]) + get_categories(cats, rarity, gacha, drops, names, talents)
 

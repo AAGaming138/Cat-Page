@@ -135,9 +135,13 @@ def get_cost(catList: list, rarityList: list) -> str:
     return "==Cost==\n" + costs + f"{'{{'}Upgrade Cost|{upgrade}{'}}'}\n\n"
 
 @logfunc
-def get_tables(catList: list, animList: list, names: list, rarity: list) -> str:
+def get_tables(c: Cat, animList: list) -> str:
     """Gets the standard/detailed stat tables of the cat"""
     tables = []
+    catList = c.getData()
+    rarity = c.getRarity()
+    names = c.getNames()
+
     def comparison(lis: list, key: int, anim: bool = False) -> list:
         """A super compact version of the old compare function"""
         # TODO make comparison function cover health, attack, and DPS
@@ -165,6 +169,7 @@ def get_tables(catList: list, animList: list, names: list, rarity: list) -> str:
         :return: multi hit stats
         """
         stat = []
+
         try:
             if ls[59] != 0 and ls[60] == 0:
                 stat.append(ls[3] + ls[59])
@@ -203,7 +208,7 @@ def get_tables(catList: list, animList: list, names: list, rarity: list) -> str:
     # TODO: figure out the weird stats - Crazed Fish, Crazed Bird, Flower Cat, Gacha Cat, Dom Cat
     # this is pretty much impossible to read at this point but w/e
     table_ls = []
-    for i in range(3 if cat.trueForm else 2):
+    for i in range(3 if c.trueForm else 2):
         if i == 0:
             ind = 'normal'
         elif i == 1:
@@ -268,7 +273,7 @@ def get_tables(catList: list, animList: list, names: list, rarity: list) -> str:
         f'{repeated[4][0]}{anim[0]}{repeated[5][0]}{repeated[12][0]}{repeated[7][0]}'
         f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
         f'|Special Ability Evolved = {get_abilities(catList[1], 1)}\n' + \
-        (f'{"}}"}\n{angle[0]}/tabber{angle[1]}' if not cat.trueForm else
+        (f'{"}}"}\n{angle[0]}/tabber{angle[1]}' if not c.trueForm else
         f'|True Form Name = {names[3]}\n'
         f'|HP Initial True = {catList[2][0]:,}\n'
         f'|AP Initial True = {atks[2][0]:,}\n'
