@@ -1,12 +1,1 @@
-# Logs appear hereCalled main with arguments 222222222, 0 at 2022-10-26 21:26:47.223256
-Called opencsv with arguments names.csv and keyword arguments header at 2022-10-26 21:26:47.223256
-Called main with arguments 222222222, 0 at 2022-10-26 21:26:48.094067
-Called opencsv with arguments names.csv and keyword arguments header at 2022-10-26 21:26:48.094067
-Called main with arguments 222222222, 0 at 2022-10-26 21:26:48.296257
-Called opencsv with arguments names.csv and keyword arguments header at 2022-10-26 21:26:48.297257
-Called main with arguments 222222222, 0 at 2022-10-26 21:26:48.434383
-Called opencsv with arguments names.csv and keyword arguments header at 2022-10-26 21:26:48.434383
-Called main with arguments 222222222, 0 at 2022-10-26 21:26:48.564504
-Called opencsv with arguments names.csv and keyword arguments header at 2022-10-26 21:26:48.564504
-Called main with arguments 222222222, 0 at 2022-10-26 21:26:48.690621
-Called opencsv with arguments names.csv and keyword arguments header at 2022-10-26 21:26:48.691622
+# Logs appear here
