@@ -1,10 +1,9 @@
 """Main program that takes all modules and converts into a page"""
 import sys
 from pagecontents import *
-import pyperclip
 
 @logfunc
-def ID_input(prompt: str = '') -> int:
+def ID_input(op: Options, prompt: str = '') -> int:
     """Gets ID input from either console or terminal"""
     if len(sys.argv) == 2:
         if sys.argv[1][0] == '-': quit("Enter an ID/Name.", False)
@@ -15,10 +14,11 @@ def ID_input(prompt: str = '') -> int:
         else:
             # if there exists a flag
             inp = ' '.join(sys.argv[2:])
-            if sys.argv[1] == '-s': Options.table = True
-            elif sys.argv[1] == '-c': Options.catfruit = True
-            elif sys.argv[1] == '-w': Options.wiki = True
-            elif sys.argv[1] == '-t': Options.talents = True
+            if sys.argv[1] == '-s': op.table = True
+            elif sys.argv[1] == '-c': op.catfruit = True
+            elif sys.argv[1] == '-w': op.preview = True
+            elif sys.argv[1] == '-t': op.talents = True
+            elif sys.argv[1] == '-C': op.category = True
             else: quit("Enter a valid flag.", False)
     else:
         inp = input(prompt)
@@ -31,17 +31,29 @@ def ID_input(prompt: str = '') -> int:
         if ID == -1: quit("Enter a valid unit ID or name.")
     return ID
 
+
 @logfunc
-def main(unit_ID = 0) -> str:
+def main(unit_ID = None, mode = 0) -> str:
     """FIXME: very messy, must clean"""
-    ID = unit_ID if unit_ID else ID_input("Enter unit ID/Name: ")
+    op = Options()
+    ID = unit_ID if unit_ID is not None else ID_input(op, "Enter unit ID/Name: ")
     cat = Cat(ID)
+
+    if cat.ID == -1: return "error1"
     cats = cat.getData()
+    if len(cats) < 3: return "error4"
     rarity = cat.getRarity()
     names = cat.getNames()
     gacha = cat.getGacha()
     drops = cat.isDrop()
     talents = cat.getTalents()
+
+    if mode == 1: op.table = True
+    elif mode == 2: op.catfruit = True
+    elif mode == 3: op.talents = True
+    elif mode == 4: op.preview = True
+    elif mode == 5: op.category = True
+
     for k in range(len(cats) if len(cats) != 2 else quit(f"{names[1]} has no page.")):
         try:
             for n in range(len(cats[0])):
@@ -63,23 +75,23 @@ def main(unit_ID = 0) -> str:
         cats[i][4] = anims[i]
         cats[i][7] = f"{cats[i][7]} ~ {round(cats[i][7] - 8.8, 2) if cats[i][7] > 10.8 else 2} seconds"
         cats[i][12] = "Single Target" if cats[i][12] == 0 else "Area Attack"
-    if Options.table: return get_tables(cat, anims)
-    elif Options.catfruit:
+    if op.table: return get_tables(cat, op, anims)
+    elif op.catfruit:
         if get_catfruit(rarity[8]): return get_catfruit(rarity[8]).strip('\n')
-        else: quit(f"{names[1]} has no catfruit evolution.")
-    elif Options.talents:
+        else: return "error2"
+    elif op.talents:
         if talents: return get_talent(get_talents(talents, cats[2])).strip('\n')
-        else: quit(f"{names[1]} has no talents.")
+        else: return "error3"
+    elif op.category:
+        return get_categories(cats, rarity, gacha, drops, names, talents, cat)
     else: return get_start(ID, rarity, names, cats, gacha, drops) \
-           + get_translation(ID, rarity, names, cat.getDesc()) + get_cost(cats, cat.catRarity) \
-           + get_tables(cat, anims) + get_catfruit(rarity[8])\
+           + get_translation(cat) + get_cost(cat) \
+           + get_tables(cat, op, anims) + get_catfruit(rarity[8])\
            + get_talent(get_talents(talents, cats[2])) \
-           + get_end(ID, rarity[7]) + get_categories(cats, rarity, gacha, drops, names, talents)
+           + get_end(ID, rarity[7]) + get_categories(cats, rarity, gacha, drops, names, talents, cat)
 
 
 if __name__ == "__main__":
     with open("log.txt", "w") as f:
         pass
-    pyperclip.copy(main())
-    print(pyperclip.paste())
-    # print(main())
+    print(main())

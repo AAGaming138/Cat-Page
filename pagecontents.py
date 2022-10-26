@@ -7,7 +7,6 @@ def get_start(*args) -> str:
     Gets the start of the page: intro templates, intro,
     cat appearance, performance, pros/cons, job, strategy/usage
     """
-    global cat
     ID, r, name, ls, gacha, drop = args
     cat = Cat(ID)
     # this just prevents the parameters being too long
@@ -71,7 +70,7 @@ def get_start(*args) -> str:
     return limited + start + catapp + evol
 
 @logfunc
-def get_translation(ID: int, r: tuple, name: list, desc: list) -> str:
+def get_translation(cat: Cat) -> str:
     """
     :param ID: unit ID
     :param r: rarity
@@ -79,6 +78,10 @@ def get_translation(ID: int, r: tuple, name: list, desc: list) -> str:
     :param desc: list of cat description
     :return: Translation template
     """
+    r = cat.getRarity()
+    name = cat.getNames()
+    ID = cat.ID
+    desc = cat.getDesc()
     image3 = 'placeholder.png' if r[7] == current_ver else f'Uni{ID:03} s00.png'
     return "==Description==\n{{Translation\n" + f"|Cat Unit Number = {ID}\n" \
             f"|cat category = [[:Category:{r[0]} Cats|{r[0]} Cat]]\n|Normal Form name = {name[1]}\n" \
@@ -93,12 +96,14 @@ def get_translation(ID: int, r: tuple, name: list, desc: list) -> str:
              f'|cat_jpscript3 = {desc[5]}\n|cat_jpdesc3 = ?' if cat.trueForm else '') + "\n}}\n\n"
 
 @logfunc
-def get_cost(catList: list, rarityList: list) -> str:
+def get_cost(cat: Cat) -> str:
     """
     :param catList: list of cat data
     :param rarityList: list of rarity data
     :return: cost and upgrade section
     """
+    catList = cat.getData()
+    rarityList = cat.catRarity
     # level 1 xp upgrade costs
     defaults = {
         "2000": 'EX1',
@@ -135,7 +140,7 @@ def get_cost(catList: list, rarityList: list) -> str:
     return "==Cost==\n" + costs + f"{'{{'}Upgrade Cost|{upgrade}{'}}'}\n\n"
 
 @logfunc
-def get_tables(c: Cat, animList: list) -> str:
+def get_tables(c: Cat, op: Options, animList: list) -> str:
     """Gets the standard/detailed stat tables of the cat"""
     tables = []
     catList = c.getData()
@@ -200,8 +205,8 @@ def get_tables(c: Cat, animList: list) -> str:
     anim = comparison(atks, 1, anim=True)
     # for attack animation
     lvl_mods = rarity[9:12]
-    angle = '&lt;' if Options.wiki else '<', '>'
-    pipe = '&#124;' if Options.wiki else '|'
+    angle = '&lt;' if op.preview else '<', '>'
+    pipe = '&#124;' if op.preview else '|'
     # wiki momen, also makes life easier when copying directly from wiki
     weird1 = 0
     weird2 = 0
@@ -347,7 +352,7 @@ def get_end(ID: int, ver: str) -> str:
     """
     other_cat = Cat(ID, True)
     appearance = f"\n\n==Appearance==\n*Normal Form: ?\n*Evolved Form: " \
-                 f"?{f'{br}*True Form: ?' if cat.trueForm else ''}\n\n" \
+                 f"?{f'{br}*True Form: ?' if Cat(ID).trueForm else ''}\n\n" \
                  f"{'<!--' if ver == current_ver else ''}" + "{{Gallery|Gatyachara " + f"{ID:03}" + " f}}" + \
                  f"{'-->' if ver == current_ver else ''}\n\n"
     reference = f'==Reference==\n*https://battlecats-db.com/unit/{ID + 1:03}.html\n\n'
@@ -367,7 +372,7 @@ def get_categories(*args) -> str:
     :param ID: unit ID
     :return: string of list of abilities
     """
-    newls, r, gacha, drop, names, tals = args
+    newls, r, gacha, drop, names, tals, cat = args
     l = [[i for i in newls[j]] for j in range(3)] # mutable piece of f****** s*** ***k
     for ls in l:
         if type(ls[-1]) != int: ls.pop(-1)
@@ -386,7 +391,7 @@ def get_categories(*args) -> str:
     # if there is only a single line, there is no need for another list comprehension
     data = list(set([item for sublist in lis for item in sublist]))
     data.sort()
-    addcat = lambda cat: categories.append([cat])
+    addcat = lambda c: categories.append([c])
     categories = [["Cat Units", f"{r[0]} Cats"]]
     if 'Ancient Egg' in names[1]: addcat("Ancient Eggs")
     elif cat.isCrazed: addcat("Crazed Cats")

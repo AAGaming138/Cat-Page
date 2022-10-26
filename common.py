@@ -4,24 +4,27 @@ import time, datetime
 import builtins
 from typing import Union
 from pathlib import Path
-DIR = Path(__file__).parent.absolute()
+DIR = str(Path(__file__).parent.absolute()).replace('\\', '/')
 
 current_ver = "11.9"
-data_mines = str(DIR).replace('\\', '/') + f'/Version {current_ver}.0'
+data_mines = DIR + f'/Version {current_ver}.0'
 
 br = "\n"
 
 class Options:
     """Options for terminal"""
-    wiki:           bool    # output is wiki only
+    preview:        bool    # output is wiki only
     table:          bool    # output is table only
     catfruit:       bool    # output is catfruit only
     talents:        bool    # output is talent only
+    category:       bool    # output is category only
 
-Options.wiki = False
-Options.table = False
-Options.catfruit = False
-Options.talents = False
+    def __init__(self):
+        self.preview = False
+        self.table = False
+        self.catfruit = False
+        self.talents = False
+        self.category = False
 
 
 def logfunc(func):

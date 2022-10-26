@@ -17,12 +17,9 @@ class Cat:
     def __init__(self, ID: int, nameOnly: bool = False):
         self.ID = ID
         self.trueForm = True
-
-
         try:
             self.catNames = opencsv("names.csv", header=True)
             self.names = self.getNames(ID)
-
             if not nameOnly:
                 self.catData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[0:3]
                 self.catRarity = opencsv(f"{data_mines}/DataLocal/unitbuy.csv")[ID]
@@ -32,7 +29,7 @@ class Cat:
                 self.catTalents = opencsv(f"{data_mines}/DataLocal/SkillAcquisition.csv")
                 self.NPCosts = opencsv(f"{data_mines}/DataLocal/SkillLevel.csv")
         except (FileNotFoundError, IndexError):
-            quit("File not found.")
+            self.ID = -1
 
     def getData(self):
         """Gets cat data (abilities and stats)"""
