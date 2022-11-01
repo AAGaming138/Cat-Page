@@ -50,7 +50,7 @@ def get_start(*args) -> str:
                f'{f" during the {gacha}" if r[0] == "Uber Rare" else ""}'
         # correct me if I'm wrong but all uber rare cats are gacha cats
     elif drop: cond = f'unlocked when beating [Stage]'
-    else: cond = "obained by [TODO]"
+    else: cond = "obtained by [TODO]"
     image3 = 'placeholder.png' if r[7] == current_ver else f'{ID:03} 3.png'
     limited = "{{LimitedContent}}\n{{Stub}}\n" if r[7] == current_ver else ''
     start = f"{bold(name[1])} is a{'n' if r[0] == 'Uber Rare' else ''} [[:Category:{r[0]} Cats|{r[0]} Cat]]" \
@@ -98,9 +98,8 @@ def get_translation(cat: Cat) -> str:
 @logfunc
 def get_cost(cat: Cat) -> str:
     """
-    :param catList: list of cat data
-    :param rarityList: list of rarity data
-    :return: cost and upgrade section
+    :param cat: Cat object
+    :return: cost and upgrade information
     """
     catList = cat.getData()
     rarityList = cat.catRarity
@@ -365,14 +364,17 @@ def get_end(ID: int, ver: str) -> str:
     return appearance + reference + end
 
 @logfunc
-def get_categories(*args) -> str:
+def get_categories(c: Cat, gacha: list) -> str:
     """
-    :param newls: no duplicate form list
-    :param r: rarity
-    :param ID: unit ID
+    :param c: Cat object
+    :param gacha: gacha list
     :return: string of list of abilities
     """
-    newls, r, gacha, drop, names, tals, cat = args
+    newls = c.getData()
+    r = c.getRarity()
+    drop = c.isDrop()
+    names = c.getNames()
+    tals = c.getTalents()
     l = [[i for i in newls[j]] for j in range(3)] # mutable piece of f****** s*** ***k
     for ls in l:
         if type(ls[-1]) != int: ls.pop(-1)
@@ -391,11 +393,11 @@ def get_categories(*args) -> str:
     # if there is only a single line, there is no need for another list comprehension
     data = list(set([item for sublist in lis for item in sublist]))
     data.sort()
-    addcat = lambda c: categories.append([c])
+    addcat = lambda ca: categories.append([ca])
     categories = [["Cat Units", f"{r[0]} Cats"]]
     if 'Ancient Egg' in names[1]: addcat("Ancient Eggs")
-    elif cat.isCrazed: addcat("Crazed Cats")
-    elif cat.isLegend: addcat("Legend Cats")
+    elif c.isCrazed: addcat("Crazed Cats")
+    elif c.isLegend: addcat("Legend Cats")
     if gacha: addcat("Gacha Cats")
     elif drop: addcat("Item Drop Cats")
     anti_traits = {

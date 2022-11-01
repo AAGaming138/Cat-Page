@@ -1,4 +1,4 @@
-"""Main program that takes all modules and converts into a page"""
+"""Program that takes all modules and converts into a page"""
 import sys
 from pagecontents import *
 
@@ -33,7 +33,7 @@ def ID_input(op: Options, prompt: str = '') -> int:
 
 
 @logfunc
-def main(unit_ID = None, mode = 0) -> str:
+def get_page(unit_ID = None, mode = 0) -> str:
     """FIXME: very messy, must clean"""
     op = Options()
     ID = unit_ID if unit_ID is not None else ID_input(op, "Enter unit ID/Name: ")
@@ -83,15 +83,9 @@ def main(unit_ID = None, mode = 0) -> str:
         if talents: return get_talent(get_talents(talents, cats[2])).strip('\n')
         else: return "error3"
     elif op.category:
-        return get_categories(cats, rarity, gacha, drops, names, talents, cat)
+        return get_categories(cat, gacha)
     else: return get_start(ID, rarity, names, cats, gacha, drops) \
            + get_translation(cat) + get_cost(cat) \
            + get_tables(cat, op, anims) + get_catfruit(rarity[8])\
            + get_talent(get_talents(talents, cats[2])) \
-           + get_end(ID, rarity[7]) + get_categories(cats, rarity, gacha, drops, names, talents, cat)
-
-
-if __name__ == "__main__":
-    with open("log.txt", "w") as f:
-        pass
-    print(main())
+           + get_end(ID, rarity[7]) + get_categories(cat, gacha)

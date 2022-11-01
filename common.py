@@ -6,7 +6,7 @@ from typing import Union
 from pathlib import Path
 DIR = str(Path(__file__).parent.absolute()).replace('\\', '/')
 
-current_ver = "11.9"
+current_ver = "11.10"
 data_mines = DIR + f'/Version {current_ver}.0'
 
 br = "\n"
