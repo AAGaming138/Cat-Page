@@ -2,7 +2,7 @@
 import sys
 from pagecontents import *
 
-@logfunc
+
 def ID_input(op: Options, prompt: str = '') -> int:
     """Gets ID input from either console or terminal"""
     if len(sys.argv) == 2:
@@ -32,13 +32,12 @@ def ID_input(op: Options, prompt: str = '') -> int:
     return ID
 
 
-@logfunc
 def get_page(unit_ID = None, mode = 0) -> str:
     """FIXME: very messy, must clean"""
     op = Options()
     ID = unit_ID if unit_ID is not None else ID_input(op, "Enter unit ID/Name: ")
     cat = Cat(ID)
-
+    # gets cat object from ID
     if cat.ID == -1: return "error1"
     cats = cat.getData()
     if len(cats) < 3: return "error4"
@@ -49,11 +48,13 @@ def get_page(unit_ID = None, mode = 0) -> str:
     talents = cat.getTalents()
 
     if mode == 1: op.table = True
-    elif mode == 2: op.catfruit = True
-    elif mode == 3: op.talents = True
-    elif mode == 4: op.preview = True
+    elif mode == 2: op.cost = True
+    elif mode == 3: op.catfruit = True
+    elif mode == 4: op.talents = True
     elif mode == 5: op.category = True
+    # output options
 
+    # process the cat.getData() list
     for k in range(len(cats) if len(cats) != 2 else quit(f"{names[1]} has no page.")):
         try:
             for n in range(len(cats[0])):
@@ -64,18 +65,23 @@ def get_page(unit_ID = None, mode = 0) -> str:
                     continue
         except ValueError:
             continue
+    # get attack animation for cat
     anims = [get_atkfreq(cats[0]), get_atkfreq(cats[1]),
              get_atkfreq(cats[2]) if cat.trueForm else 100,
              get_backswing(ID, 'f', cats[0]), get_backswing(ID, 'c', cats[1]),
              get_backswing(ID, 's', cats[2]) if cat.trueForm else 0]
-
     # 0-2 attack frequency, 3-5 backswing
+
+    # parse cat data list to
     for i in range(3):
         if cats[i][4] == 0: anims[i] = anims[i] + anims[i + 3] + 1
         cats[i][4] = anims[i]
         cats[i][7] = f"{cats[i][7]} ~ {round(cats[i][7] - 8.8, 2) if cats[i][7] > 10.8 else 2} seconds"
         cats[i][12] = "Single Target" if cats[i][12] == 0 else "Area Attack"
-    if op.table: return get_tables(cat, op, anims)
+
+    # returns depending on option
+    if op.table: return get_tables(cat, anims)
+    elif op.cost: return get_cost(cat)
     elif op.catfruit:
         if get_catfruit(rarity[8]): return get_catfruit(rarity[8]).strip('\n')
         else: return "error2"
@@ -86,6 +92,6 @@ def get_page(unit_ID = None, mode = 0) -> str:
         return get_categories(cat, gacha)
     else: return get_start(ID, rarity, names, cats, gacha, drops) \
            + get_translation(cat) + get_cost(cat) \
-           + get_tables(cat, op, anims) + get_catfruit(rarity[8])\
+           + get_tables(cat, anims) + get_catfruit(rarity[8])\
            + get_talent(get_talents(talents, cats[2])) \
            + get_end(ID, rarity[7]) + get_categories(cat, gacha)

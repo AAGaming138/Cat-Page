@@ -1,7 +1,6 @@
 """Program that receives input and writes the contents of a page"""
 from stats import *
 
-@logfunc
 def get_start(*args) -> str:
     """
     Gets the start of the page: intro templates, intro,
@@ -69,13 +68,10 @@ def get_start(*args) -> str:
 
     return limited + start + catapp + evol
 
-@logfunc
+
 def get_translation(cat: Cat) -> str:
     """
-    :param ID: unit ID
-    :param r: rarity
-    :param name: list of cat names
-    :param desc: list of cat description
+    :param cat: Cat object with a particular ID
     :return: Translation template
     """
     r = cat.getRarity()
@@ -95,7 +91,7 @@ def get_translation(cat: Cat) -> str:
             (f'{br}|Third Form name (JP) = {desc[2]} (?, ?)\n'
              f'|cat_jpscript3 = {desc[5]}\n|cat_jpdesc3 = ?' if cat.trueForm else '') + "\n}}\n\n"
 
-@logfunc
+
 def get_cost(cat: Cat) -> str:
     """
     :param cat: Cat object
@@ -138,8 +134,8 @@ def get_cost(cat: Cat) -> str:
     # this gives a mix of XP as given in the rarity list
     return "==Cost==\n" + costs + f"{'{{'}Upgrade Cost|{upgrade}{'}}'}\n\n"
 
-@logfunc
-def get_tables(c: Cat, op: Options, animList: list) -> str:
+
+def get_tables(c: Cat, animList: list) -> str:
     """Gets the standard/detailed stat tables of the cat"""
     tables = []
     catList = c.getData()
@@ -204,8 +200,8 @@ def get_tables(c: Cat, op: Options, animList: list) -> str:
     anim = comparison(atks, 1, anim=True)
     # for attack animation
     lvl_mods = rarity[9:12]
-    angle = '&lt;' if op.preview else '<', '>'
-    pipe = '&#124;' if op.preview else '|'
+    angle = '&lt;' if False else '<', '>'
+    pipe = '&#124;' if False else '|'
     # wiki momen, also makes life easier when copying directly from wiki
     weird1 = 0
     weird2 = 0
@@ -295,7 +291,7 @@ def get_tables(c: Cat, op: Options, animList: list) -> str:
 
     return re.sub('\.0(?![0-9])', '', '\n\n'.join(tables))
 
-@logfunc
+
 def get_catfruit(ls: list) -> str:
     """
     :param ls: list of catfruit information
@@ -363,7 +359,7 @@ def get_end(ID: int, ver: str) -> str:
 
     return appearance + reference + end
 
-@logfunc
+
 def get_categories(c: Cat, gacha: list) -> str:
     """
     :param c: Cat object
@@ -398,7 +394,8 @@ def get_categories(c: Cat, gacha: list) -> str:
     if 'Ancient Egg' in names[1]: addcat("Ancient Eggs")
     elif c.isCrazed: addcat("Crazed Cats")
     elif c.isLegend: addcat("Legend Cats")
-    if gacha: addcat("Gacha Cats")
+    if gacha or r[0] == "Uber Rare" and not (c.ID == 53 or c.ID == 155):
+        addcat("Gacha Cats")
     elif drop: addcat("Item Drop Cats")
     anti_traits = {
         10: "Anti-Red Cats",

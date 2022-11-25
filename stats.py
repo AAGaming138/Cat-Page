@@ -1,7 +1,7 @@
 """Collection of functions that returns cat stats"""
 from common import *
 from Cat import Cat
-@logfunc
+
 def get_ID(name: str) -> int:
     """
     :param name: unit name
@@ -15,7 +15,7 @@ def get_ID(name: str) -> int:
         else: continue
     return -1
 
-@logfunc
+
 def get_backswing(ID: int, form: str, ls: list) -> int:
     """
     :param ID: Unit ID
@@ -44,7 +44,7 @@ def get_backswing(ID: int, form: str, ls: list) -> int:
     # frame + 1 is the entire attack, ls[13] is the foreswing
     return frame + 1 - ls[13]
 
-@logfunc
+
 def get_atkfreq(ls: list) -> int:
     """
     :param ls: normal, evolved, or true data values
@@ -66,7 +66,7 @@ def get_atkfreq(ls: list) -> int:
     # subtract 1 since atkfreq also accounts for the attacking frame
     # which should be instantaneous
 
-@logfunc
+
 def get_abilities(ls: list, mode: int) -> str:
     """
     :param ls: form list
@@ -92,16 +92,16 @@ def get_abilities(ls: list, mode: int) -> str:
         """Checks for different LD ranges"""
         if list_has(44) and list_has(99) and not list_has(102):
             if ls[101] > 0:
-                return f" at 1st hit, {ls[100]:,}~{ls[100] + ls[101]:,} at 2nd hit"
+                return f" on 1st hit, {ls[100]:,}~{ls[100] + ls[101]:,} on 2nd hit"
             else:
-                return f" at 1st hit, {ls[100] + ls[101]:,}~{ls[100]:,} at 2nd hit"
+                return f" on 1st hit, {ls[100] + ls[101]:,}~{ls[100]:,} on 2nd hit"
             # long distance multiple range hits
         elif list_has(44) and list_has(99) and list_has(102):
             if ls[104] > 0:
-                return f" at 1st hit, {ls[100]:,}~{ls[100] + ls[101]:,} at 2nd hit, {ls[103]:,}~" \
+                return f" on 1st hit, {ls[100]:,}~{ls[100] + ls[101]:,} on 2nd hit, {ls[103]:,}~" \
                        f"{ls[103] + ls[104]:,} at 3rd hit"
             else:
-                return f" at 1st hit, {ls[100] + ls[101]:,}~{ls[100]:,} at 2nd hit, {ls[103] + ls[104]:,}~" \
+                return f" on 1st hit, {ls[100] + ls[101]:,}~{ls[100]:,} on 2nd hit, {ls[103] + ls[104]:,}~" \
                        f"{ls[103]:,} at 3rd hit"
             # omni strike multiple range hits
         else:
@@ -271,7 +271,7 @@ def get_abilities(ls: list, mode: int) -> str:
         if list_has(70): abilities.append(f"{abil('Barrier Breaker')} ({ls[70]}%)")
         if list_has(75): immunities.append(
                 f"[[Special Abilities#Warp Blocker|Warp{' Blocker' if len(immunities) == 0 else ''}]]")
-        if list_has(77): abilities.append("{abil('Eva Angel Killer', 'Eva Angel Killer')}")
+        if list_has(77): abilities.append(f"{abil('Eva Angel Killer', 'Eva Angel Killer')}")
         if list_has(79): addim("Curse")
         if list_has(80): abilities.append(f"{abil('Insanely Tough', 'Insanely tough')} against {ftrait} enemies")
         if list_has(81): abilities.append(f"Deals {abil('Insane Damage', 'insane damage')} to {ftrait} enemies")
@@ -290,7 +290,7 @@ def get_abilities(ls: list, mode: int) -> str:
         if list_has(97): abilities.append(f"{abil('Colossus Slayer')}")
         if list_has(98): abilities.append(f"{abil('Soulstrike')}")
         if list_has(105): abilities.append(
-                f"{abil('Behemoth Slayer')} (Dodges [[:Category:Behemoth Enemies|Behemoth]])"
+                f"{abil('Behemoth Slayer')} (Dodges [[:Category:Behemoth Enemies|Behemoth]]"
                 f" enemies' attacks for {ls[107]}f ({ls[106]}%))")
 
     elif mode == 2:
@@ -395,7 +395,6 @@ def get_abilities(ls: list, mode: int) -> str:
         return "-" if mode != 2 else ''
 
 
-@logfunc
 def get_talents(talent_ls: list, cat_ls: list) -> list:
     """Gets talents"""
     if not talent_ls: return []

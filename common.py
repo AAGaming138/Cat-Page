@@ -12,23 +12,23 @@ data_mines = DIR + f'/Version {current_ver}.0'
 br = "\n"
 
 class Options:
-    """Options for terminal"""
-    preview:        bool    # output is wiki only
+    """Options for output"""
+    cost:           bool    # output is cost only
     table:          bool    # output is table only
     catfruit:       bool    # output is catfruit only
     talents:        bool    # output is talent only
     category:       bool    # output is category only
 
     def __init__(self):
-        self.preview = False
+        self.cost = False
         self.table = False
         self.catfruit = False
         self.talents = False
         self.category = False
 
-
+""""
 def logfunc(func):
-    """For debugging purposes, also for learning decorators"""
+    '''For debugging purposes'''
     def innerfunc(*args, **kwargs):
         with open("log.txt", 'a', encoding="utf-8") as f:
             f.write(f"Called {func.__name__} with arguments {', '.join([str(arg) for arg in args])} "
@@ -37,7 +37,7 @@ def logfunc(func):
                     f"at {datetime.datetime.now()}\n")
         return func(*args, **kwargs)
     return innerfunc
-
+"""
 
 def load(t: int) -> str:
     """Activates time gap for debugging purposes"""
@@ -54,7 +54,7 @@ def quit(message: str, loading: bool = True) -> None:
     print(message)
     builtins.quit()
 
-@logfunc
+
 def opencsv(filename: str, header: bool = False) -> list:
     """Opens and reads csv file, return list of data"""
     try:
