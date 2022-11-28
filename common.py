@@ -13,11 +13,6 @@ br = "\n"
 
 class Options:
     """Options for output"""
-    cost:           bool    # output is cost only
-    table:          bool    # output is table only
-    catfruit:       bool    # output is catfruit only
-    talents:        bool    # output is talent only
-    category:       bool    # output is category only
 
     def __init__(self):
         self.cost = False
@@ -26,7 +21,7 @@ class Options:
         self.talents = False
         self.category = False
 
-""""
+
 def logfunc(func):
     '''For debugging purposes'''
     def innerfunc(*args, **kwargs):
@@ -37,7 +32,7 @@ def logfunc(func):
                     f"at {datetime.datetime.now()}\n")
         return func(*args, **kwargs)
     return innerfunc
-"""
+
 
 def load(t: int) -> str:
     """Activates time gap for debugging purposes"""

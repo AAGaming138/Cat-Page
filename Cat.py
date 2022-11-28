@@ -3,38 +3,30 @@ from common import *
 
 class Cat:
 
-    ID:             int
-    data:           list
-    rarity:         tuple
-    names:          list
-    gacha:          str
-    drop:           bool
-    desc:           list
     trueForm = False    # does unit have true form
     isLegend = False    # is unit a legend unit e.g. Ururun Wolf
     isCrazed = False    # is unit a crazed cat
 
-    def __init__(self, ID: int, nameOnly: bool = False):
+    def __init__(self, ID: int):
         self.ID = ID
         self.trueForm = True
         try:
             self.catNames = opencsv("names.csv", header=True)
             self.names = self.getNames(ID)
-            if not nameOnly:
-                self.catData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[0:3]
-                self.catRarity = opencsv(f"{data_mines}/DataLocal/unitbuy.csv")[ID]
-                self.catRedPts = opencsv(f"{data_mines}/DataLocal/unitlevel.csv")[ID]
-                self.catGacha = opencsv(f"{data_mines}/DataLocal/GatyaDataSetR1.csv")
-                self.catDesc = opencsv(f"{data_mines}/resLocal/Unit_Explanation{ID + 1}_ja.csv")
-                self.catTalents = opencsv(f"{data_mines}/DataLocal/SkillAcquisition.csv")
-                self.NPCosts = opencsv(f"{data_mines}/DataLocal/SkillLevel.csv")
+            self.catData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[0:3]
+            self.catRarity = opencsv(f"{data_mines}/DataLocal/unitbuy.csv")[ID]
+            self.catRedPts = opencsv(f"{data_mines}/DataLocal/unitlevel.csv")[ID]
+            self.catGacha = opencsv(f"{data_mines}/DataLocal/GatyaDataSetR1.csv")
+            self.catDesc = opencsv(f"{data_mines}/resLocal/Unit_Explanation{ID + 1}_ja.csv")
+            self.catTalents = opencsv(f"{data_mines}/DataLocal/SkillAcquisition.csv")
+            self.NPCosts = opencsv(f"{data_mines}/DataLocal/SkillLevel.csv")
         except (FileNotFoundError, IndexError):
             self.ID = -1
 
+
     def getData(self):
         """Gets cat data (abilities and stats)"""
-        self.data = self.catData
-        return self.data
+        return self.catData
 
 
     def getRarity(self):
@@ -97,10 +89,9 @@ class Cat:
                 fruits = rarFile[27:38]
             return [int(i) for i in fruits]
         if maxLevel == 40: self.isLegend = True
-        self.rarity = rarities[r], int(rarFile[50]), int(rarFile[51]), getMod(maxLevel)[0],\
+        return rarities[r], int(rarFile[50]), int(rarFile[51]), getMod(maxLevel)[0],\
                       getMod(maxLevel)[1], maxPlus, -1, getVersion(), getFruit(),\
                       getMod(10)[0], getMod(20)[0], getMod(30)[0]
-        return self.rarity
 
 
     def getNames(self, ID: int = -1):
@@ -115,7 +106,7 @@ class Cat:
 
     def getGacha(self):
         """False if unit is not Gacha, otherwise returns gacha banner"""
-        self.rarity = self.getRarity()
+        self.getRarity()
         pos = -1
         gachaFile = self.catGacha
         link = lambda event, collab = False: \

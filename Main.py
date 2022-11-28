@@ -53,12 +53,7 @@ def on_click(mode):
     if len(page) > 10:
         # i.e. if page is successfully retrieved
         warning = False
-        if mode == 0: message = "Page"
-        elif mode == 1: message = "Stats"
-        elif mode == 2: message = "Cost"
-        elif mode == 3: message = "Catfruit"
-        elif mode == 4: message = "Talents"
-        elif mode == 5: message = "Categories"
+        message = ["Page", "Stats", "Cost", "Catfruit", "Talents", "Categories"][mode]
         if not err: pyperclip.copy(page) # automatically copy if module exists
         combo.config(width=520, height=150) # change output box size
         root.geometry("550x280") # increases window size

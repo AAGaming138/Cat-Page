@@ -1,6 +1,5 @@
 """Collection of functions that returns cat stats"""
 from common import *
-from Cat import Cat
 
 def get_ID(name: str) -> int:
     """
@@ -539,3 +538,8 @@ def get_talents(talent_ls: list, cat_ls: list) -> list:
         return talents[t[0]] + info + f"({'Total ' if talent_ls[x][1][1] else ''}Cost: {talent_ls[x][1][0]} NP)"
 
     return [make_talent(i) for i in range(6 if talent_ls[5][0][0] else 5)]
+
+# TODO: - Update most of make_talent() and some of get_abilities()
+#       - Turn this and Page.py into classes
+#       - Make backswing and atk frequency into one thing
+#       - Make get_ID() a method in Cat class

@@ -1,7 +1,6 @@
 """Program that takes all modules and converts into a page"""
 import sys
-from pagecontents import *
-
+from Page import *
 
 def ID_input(op: Options, prompt: str = '') -> int:
     """Gets ID input from either console or terminal"""
@@ -36,16 +35,14 @@ def get_page(unit_ID = None, mode = 0) -> str:
     """FIXME: very messy, must clean"""
     op = Options()
     ID = unit_ID if unit_ID is not None else ID_input(op, "Enter unit ID/Name: ")
-    cat = Cat(ID)
+    page = Page(ID)
+
     # gets cat object from ID
-    if cat.ID == -1: return "error1"
-    cats = cat.getData()
+
+    if page.ID == -1: return "error1"
+    cats = page.getData()
+    tals = page.tals
     if len(cats) < 3: return "error4"
-    rarity = cat.getRarity()
-    names = cat.getNames()
-    gacha = cat.getGacha()
-    drops = cat.isDrop()
-    talents = cat.getTalents()
 
     if mode == 1: op.table = True
     elif mode == 2: op.cost = True
@@ -55,7 +52,7 @@ def get_page(unit_ID = None, mode = 0) -> str:
     # output options
 
     # process the cat.getData() list
-    for k in range(len(cats) if len(cats) != 2 else quit(f"{names[1]} has no page.")):
+    for k in range(len(cats) if len(cats) != 2 else quit(f"{page.names[1]} has no page.")):
         try:
             for n in range(len(cats[0])):
                 try:
@@ -67,9 +64,9 @@ def get_page(unit_ID = None, mode = 0) -> str:
             continue
     # get attack animation for cat
     anims = [get_atkfreq(cats[0]), get_atkfreq(cats[1]),
-             get_atkfreq(cats[2]) if cat.trueForm else 100,
+             get_atkfreq(cats[2]) if page.tf else 100,
              get_backswing(ID, 'f', cats[0]), get_backswing(ID, 'c', cats[1]),
-             get_backswing(ID, 's', cats[2]) if cat.trueForm else 0]
+             get_backswing(ID, 's', cats[2]) if page.tf else 0]
     # 0-2 attack frequency, 3-5 backswing
 
     # parse cat data list to
@@ -80,18 +77,33 @@ def get_page(unit_ID = None, mode = 0) -> str:
         cats[i][12] = "Single Target" if cats[i][12] == 0 else "Area Attack"
 
     # returns depending on option
-    if op.table: return get_tables(cat, anims)
-    elif op.cost: return get_cost(cat)
+    if op.table: return page.getTables(anims)
+
+    elif op.cost: return page.getCost()
+
     elif op.catfruit:
-        if get_catfruit(rarity[8]): return get_catfruit(rarity[8]).strip('\n')
+        if page.getCatfruit(): return page.getCatfruit().strip('\n')
         else: return "error2"
+
     elif op.talents:
-        if talents: return get_talent(get_talents(talents, cats[2])).strip('\n')
+        if tals: return page.getTalent(get_talents(tals, cats[2])).strip('\n')
+
+        # FIXME - Literally not going to understand this a few days from now
+        # This is what happens when you write 3 functions that
+        # sound exactly the same from left to right:
+        # if Cat.getTalents: return
+        # Page.getTalent(stats.get_talents(Cat.getTalents, Cat.getData)) etc.
+
         else: return "error3"
+
     elif op.category:
-        return get_categories(cat, gacha)
-    else: return get_start(ID, rarity, names, cats, gacha, drops) \
-           + get_translation(cat) + get_cost(cat) \
-           + get_tables(cat, anims) + get_catfruit(rarity[8])\
-           + get_talent(get_talents(talents, cats[2])) \
-           + get_end(ID, rarity[7]) + get_categories(cat, gacha)
+        return page.getCategories()
+
+    else: return page.getStart() + page.getTranslation() + page.getCost() + \
+                 page.getTables(anims) + page.getCatfruit() + \
+                 page.getTalent(get_talents(tals, cats[2])) + page.getEnd() +\
+                 page.getCategories()
+
+# TODO: - Simplify the spaghetti
+#       - Update ID_input()
+#       - Turn this into a class?!?!?!
