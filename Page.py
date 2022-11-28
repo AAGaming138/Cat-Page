@@ -274,7 +274,8 @@ class Page(Cat):
 
         # TODO: figure out the weird stats - Crazed Fish, Crazed Bird,
         #  Flower Cat, Gacha Cat, Dom Cat
-
+        left = '<'
+        pipe = '|'
         # this is pretty much impossible to read at this point but w/e
         table_ls = []
         for i in range(3 if self.tf else 2):
@@ -314,7 +315,7 @@ class Page(Cat):
                       '\n'.join(table_ls) + f'\n|Lv.MAX = Lv.{self.r[1]}' \
                       f'{f"+{self.r[2]}" if self.r[2] != 0 else ""}\n{"}}"}')
 
-        tables.append(f'|-|Detailed=\n{"{{"}Calcstatstable{self.r[4]}\n'
+        tables.append(f'{pipe}-|Detailed=\n{"{{"}Calcstatstable{self.r[4]}\n'
             f'|Max Natural Level = {self.r[1]}{self.r[5]}\n'
             f'|Basic Form Name = {self.names[1]}\n'
             f'|HP Initial Normal = '
@@ -359,7 +360,7 @@ class Page(Cat):
             f'{repeated[12][0]}{repeated[7][0]}'
             f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
             f'|Special Ability Evolved = {get_abilities(self.ls[1], 1)}\n' + \
-            (f'{"}}"}\n</tabber>' if not self.tf else
+            (f'{"}}"}\n{left}/tabber>' if not self.tf else
             f'|True Form Name = {self.names[3]}\n'
             f'|HP Initial True = {self.ls[2][0]:,}\n'
             f'|AP Initial True = {atks[2][0]:,}\n'
@@ -377,7 +378,7 @@ class Page(Cat):
             f'{repeated[4][1]}{anim[1]}{repeated[5][1]}'
             f'{repeated[12][1]}{repeated[7][1]}{repeated[1][1]}'
             f'{repeated[2][1]}{repeated[6][1]}\n'
-            f'|Special Ability True = {get_abilities(self.ls[2], 1)}\n{"}}"}\n</tabber>'))
+            f'|Special Ability True = {get_abilities(self.ls[2], 1)}\n{"}}"}\n{left}/tabber>'))
 
         return re.sub('\.0(?![0-9])', '', '\n\n'.join(tables))
 
