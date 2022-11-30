@@ -7,7 +7,7 @@ def get_ID(name: str) -> int:
     :return: unit ID if name exists, otherwise -1
     """
     if not name: return -1
-    names = opencsv("names.csv", header=True)
+    names = opencsv(DIR + "/names.csv", header=True)
     for i in range(len(names)):
         names[i] = [x.lower() for x in names[i]]
         if name in names[i]: return int(names[i][0])

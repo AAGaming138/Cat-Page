@@ -94,7 +94,8 @@ class Page(Cat):
                 (f'. It was added in [[Version {self.r[7]} Update|'
                 f'Version {self.r[7]}]]' if self.r[7] != '5.1' else '') + ".\n\n"
 
-        catapp = f"{'{{'}Cat Appearance\n|Cat Unit Number = {self.ID}\n" \
+        catapp = f"{'{{'}Cat Appearance\n" \
+                 f"|Cat Unit Number = {self.ID}\n" \
                  f"|cat category = [[:Category:{self.r[0]} Cats|{self.r[0]} Cat]]\n" \
                  f"|Normal Form name = {self.names[1]}\n" \
                  f'|Evolved Form name = {self.names[2]}' \
@@ -105,8 +106,11 @@ class Page(Cat):
         true_evol = f"\n\nEvolves into {bold(self.names[3])} at level 30 using " \
                     f"{item} and XP." if self.r[8] else ''
 
-        evol = f"==Evolution==\nEvolves into {bold(self.names[2])} at level 10." \
-               f"{true_evol}\n\n==Performance==\n{get_perf()}" + \
+        evol = f"==Evolution==\n" \
+               f"Evolves into {bold(self.names[2])} at level 10." \
+               f"{true_evol}\n\n" \
+               f"==Performance==\n" \
+               f"{get_perf()}" + \
                     f"===Pros===\n*?\n\n===Cons===\n*?\n" + \
                "{{Job|Classification = [TODO]}}\n\n==Strategy/Usage==\n-\n\n"
 
