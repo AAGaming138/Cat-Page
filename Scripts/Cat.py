@@ -46,7 +46,9 @@ class Cat:
         r = int(rarFile[13])
         # r is the rarity index
         maxPlus = f"\n|Max Plus Level = {int(rarFile[51])}" if int(rarFile[51]) != 0 else ""
-        if int(rarFile[3]) > 50000: self.isCrazed = True
+        if int(rarFile[3]) > 50000 and r == 3:
+            self.isCrazed = True
+
         def getMod(level: int) -> tuple:
             """:return: max modifier, growth modifier"""
             if len(rp) == 1:
@@ -94,6 +96,8 @@ class Cat:
         return rarities[r], int(rarFile[50]), int(rarFile[51]), getMod(maxLevel)[0],\
                       getMod(maxLevel)[1], maxPlus, -1, getVersion(), getFruit(),\
                       getMod(10)[0], getMod(20)[0], getMod(30)[0]
+        # rarity, max natural level, max plus level, lvl max mod, grow levels,
+        # formatted max plus, -1, version, catfruits, lvl 10 mod, lvl 20 mod, lvl 30 mod
 
 
     def getNames(self, ID: int = -1):

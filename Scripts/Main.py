@@ -53,7 +53,8 @@ def on_click(mode):
     if len(page) > 10:
         # i.e. if page is successfully retrieved
         warning = False
-        message = ["Page", "Stats", "Cost", "Catfruit", "Talents", "Categories"][mode]
+        message = ["Page", "Stats", "Cost", "Catfruit",
+                   "Talents", "Categories"][mode]
         if not err: pyperclip.copy(page) # automatically copy if module exists
         combo.config(width=520, height=150) # change output box size
         root.geometry("550x280") # increases window size
@@ -62,10 +63,14 @@ def on_click(mode):
     else:
         # i.e. if page is unsuccessfully retrieved
         warning = True
-        if page == "error1": message = "Enter a valid name or ID!"
-        elif page == "error2": message = f"\"{Cat(ID).getNames()[1]}\" has no catfruits"
-        elif page == "error3": message = f"\"{Cat(ID).getNames()[1]}\" has no talents"
-        elif page == "error4": message = f"\"{Cat(ID).getNames()[1]}\" has no page"
+        if page == "error1":
+            message = "Enter a valid name or ID!"
+        elif page == "error2":
+            message = f"\"{Cat(ID).getNames()[1]}\" has no catfruits"
+        elif page == "error3":
+            message = f"\"{Cat(ID).getNames()[1]}\" has no talents"
+        elif page == "error4":
+            message = f"\"{Cat(ID).getNames()[1]}\" has no page"
     lab = Label(root, text=message if warning else message + \
           (" copied to clipboard" if not err else " retrieved successfully")
           ,fg="red" if warning else "black")
@@ -147,7 +152,8 @@ rb("Category Only", 5, 4, 2)
 # end radiobuttons
 
 # start button
-myButton = Button(root, text="Get", command=lambda: on_click(option.get()), padx=20)
+myButton = Button(root, text="Get", command=lambda: on_click(option.get()),
+                  padx=20)
 myButton.grid(row=2, column=1, padx=10, pady=1)
 # end button
 

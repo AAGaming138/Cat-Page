@@ -3,16 +3,20 @@ from stats import *
 from Cat import Cat
 
 class Page(Cat):
+    """
+    Inherits from Cat class.
 
+    Attributes:
     ID:         int     # Unit ID
     ls:         list    # Ability and stats list
     r:          tuple   # Rarity, max level, catfruit, version tuple
     tf:         bool    # Does unit have true form
     names:      list    # Names list
-    gacha:      str     # Gacha banner (if part of one)
+    gacha:       str    # Gacha banner (if part of one)
     drop:       bool    # Is unit a drop item (from stage)
     desc:       list    # JP description + names
     tals:       list    # Talents list
+    """
 
     def __init__(self, ID: int):
         super().__init__(ID)
@@ -23,6 +27,8 @@ class Page(Cat):
         self.r = self.getRarity()
         self.names = self.getNames(ID)
         self.ls = self.getData()
+        if len(self.ls) < 3:
+            return
         self.gacha = self.getGacha()
         self.drop = self.isDrop()
         self.desc = self.getDesc()
@@ -206,6 +212,7 @@ class Page(Cat):
     def getTables(self, a: list) -> str:
         """Gets the standard/detailed stat tables of the cat"""
         tables = []
+        n = self.r[0] == "Normal" # is cat a Normal Cat
 
         def comparison(lis: list, key: int, an: bool = False) -> list:
             """A super compact version of the old compare function"""
@@ -255,10 +262,7 @@ class Page(Cat):
                     # for 3 hits
 
                 else:
-                    stat = [ls[3],
-                            f"{a_ls[form] - ls[13] - a_ls[form + 3]}f + "
-                            f"{ls[13]}f + {a_ls[form + 3]}f",
-                            a_ls[form + 3]]
+                    raise IndexError
                     # for only 1 hit
 
             except (IndexError, TypeError):
@@ -274,14 +278,23 @@ class Page(Cat):
         atks = [mult(self.ls[i], a, i) for i in range(3)]
         anim = comparison(atks, 1, an=True)
         # for attack animation
-        mods = self.r[9:12]
-
+        mods = list(self.r[9:12])
         # TODO: figure out the weird stats - Crazed Fish, Crazed Bird,
         #  Flower Cat, Gacha Cat, Dom Cat
         left = '<'
         pipe = '|'
         # this is pretty much impossible to read at this point but w/e
         table_ls = []
+
+        form_max = f'{self.r[1]}{f"+{self.r[2]}" if self.r[2] != 0 else ""}'
+
+        if n:
+            mods.append(self.r[3])
+        m = 3 if n else 2 # max mod for normal cats
+        statslevels = "" if not n else f"\n|1st stats Level = {form_max}" + \
+                                       f"\n|2nd stats Level = {form_max}" + \
+            (f"\n|3rd stats Level = {form_max}" if self.tf else "")
+
         for i in range(3 if self.tf else 2):
             if i == 0:
                 ind = 'normal'
@@ -291,13 +304,13 @@ class Page(Cat):
                 ind = 'third'
 
             DPS = round((atks[i][0] if i == 0 else
-                         atks[i][0] * mods[2]) / (a[i] / 30), 2)
-            atk = f"{atks[i][0] if i == 0 else int(atks[i][0] * mods[2] + 0.5):,}"
-            hp = f"{self.ls[i][0] if i == 0 else int(self.ls[i][0] * mods[2] + 0.5):,}"
+                         atks[i][0] * mods[m]) / (a[i] / 30), 2)
+            atk = f"{atks[i][0] if i == 0 else int(atks[i][0] * mods[m] + 0.5):,}"
+            hp = f"{self.ls[i][0] if i == 0 else int(self.ls[i][0] * mods[m] + 0.5):,}"
 
             table_ls.append(f'|{ind.capitalize()} Form name = {self.names[i + 1]}\n'
                 f'|Hp {ind} = {hp} HP\n'
-                f'|Atk Power {ind} = {atk} damage<br>({DPS} DPS)\n'
+                f'|Atk Power {ind} = {atk} damage<br>({DPS:,} DPS)\n'
                 f'|Atk Range {ind} = {self.ls[i][5]:,}\n'
                 f'|Attack Frequency {ind} = '
                             f'{a[i]}f <sub>{round(a[i] / 30, 2)} seconds</sub>\n'
@@ -308,22 +321,29 @@ class Page(Cat):
                 f'<br>({atks[i][2]}f <sup>'
                             f'{round(atks[i][2] / 30, 2)}s</sup> backswing)\n'
                 f'|Recharging Time {ind} = {self.ls[i][7]}\n' +
-                (f"|Hp normal Lv.MAX = {int(self.ls[i][0] * mods[2] + 0.5):,} HP\n"
+                (f"|Hp normal Lv.MAX = {int(self.ls[i][0] * mods[m] + 0.5):,} HP\n"
                  f"|Atk Power normal Lv.MAX = "
-                 f"{int(atks[i][0] * mods[2] + 0.5):,} damage<br>"
-                 f"({round((int(atks[i][0] * mods[2] + 0.5)) / (a[i] / 30), 2):,}"
+                 f"{int(atks[i][0] * mods[m] + 0.5):,} damage<br>"
+                 f"({round((int(atks[i][0] * mods[m] + 0.5)) / (a[i] / 30), 2):,}"
                  f" DPS){br}" if i == 0 else "") +
                 f'|Attack type {ind} = {self.ls[i][12]}\n'
                 f'|Special Ability {ind} = {get_abilities(self.ls[i], 0)}')
-        tables.append(f"==Stats==\n<tabber>\nStandard=\n{'{{'}Cat Stats\n" +
-                      '\n'.join(table_ls) + f'\n|Lv.MAX = Lv.{self.r[1]}' \
-                      f'{f"+{self.r[2]}" if self.r[2] != 0 else ""}\n{"}}"}')
+
+        tables.append(f"==Stats==\n"
+                      f"<tabber>\n"
+                      f"Standard=\n"
+                      f"{'{{'}Cat Stats\n" +
+                      '\n'.join(table_ls) +
+                      f'\n|Lv.MAX = Lv.{form_max}' +
+                      f'{statslevels}'
+                      f'\n{"}}"}')
 
         tables.append(f'{pipe}-|Detailed=\n{"{{"}Calcstatstable{self.r[4]}\n'
             f'|Max Natural Level = {self.r[1]}{self.r[5]}\n'
             f'|Basic Form Name = {self.names[1]}\n'
             f'|HP Initial Normal = '
-                      f'{self.ls[0][0]:,}\n|AP Initial Normal = {atks[0][0]:,}\n'
+                      f'{self.ls[0][0]:,}\n'
+            f'|AP Initial Normal = {atks[0][0]:,}\n'
             f'|DPS Initial Normal = {math.floor(atks[0][0] / a[0] * 30)}\n'
             f'|DPS Initial Precise Normal = '
                       f'{"{{"}#expr:{(atks[0][0])}/({a[0]}/30){"}}"}\n'
@@ -382,7 +402,8 @@ class Page(Cat):
             f'{repeated[4][1]}{anim[1]}{repeated[5][1]}'
             f'{repeated[12][1]}{repeated[7][1]}{repeated[1][1]}'
             f'{repeated[2][1]}{repeated[6][1]}\n'
-            f'|Special Ability True = {get_abilities(self.ls[2], 1)}\n{"}}"}\n{left}/tabber>'))
+            f'|Special Ability True = {get_abilities(self.ls[2], 1)}\n'
+            f'{"}}"}\n{left}/tabber>'))
 
         return re.sub('\.0(?![0-9])', '', '\n\n'.join(tables))
 
@@ -413,11 +434,18 @@ class Page(Cat):
             160: "AkuSeed",
             161: "AkuFruit",
             164: "GoldenSeed",
-            167: "PurpleCube",
-            168: "RedCube",
-            169: "BlueCube",
-            170: "GreenCube",
-            171: "YellowCube"}
+            167: "PurpleStone",
+            168: "RedStone",
+            169: "BlueStone",
+            170: "GreenStone",
+            171: "YellowStone",
+            179: "PurpleCrystal",
+            180: "RedCrystal",
+            181: "BlueCrystal",
+            182: "GreenCrystal",
+            183: "YellowCrystal",
+            184: "RainbowStone"}
+
         fruits = [catfruits[cfList[i]] for i in
                   range(len(cfList)) if cfList[i] != 0 and i % 2 == 1]
         # list of catfruits

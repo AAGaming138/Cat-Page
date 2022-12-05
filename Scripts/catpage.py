@@ -41,8 +41,8 @@ def get_page(unit_ID = None, mode = 0) -> str:
 
     if page.ID == -1: return "error1"
     cats = page.getData()
-    tals = page.tals
     if len(cats) < 3: return "error4"
+    tals = page.tals
 
     if mode == 1: op.table = True
     elif mode == 2: op.cost = True
@@ -79,7 +79,7 @@ def get_page(unit_ID = None, mode = 0) -> str:
     # returns depending on option
     if op.table: return page.getTables(anims)
 
-    elif op.cost: return page.getCost()
+    elif op.cost: return page.getCost().strip("\n")
 
     elif op.catfruit:
         if page.getCatfruit(): return page.getCatfruit().strip('\n')

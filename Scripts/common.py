@@ -7,7 +7,7 @@ from pathlib import Path
 DIR = str(Path(__file__
                ).parent.absolute()).replace('\\', '/').replace("/Scripts", "")
 
-current_ver = "11.10"
+current_ver = "12.0"
 data_mines = DIR + f'/Version {current_ver}.0'
 
 br = "\n"
@@ -27,8 +27,10 @@ def logfunc(func):
     '''For debugging purposes'''
     def innerfunc(*args, **kwargs):
         with open("log.txt", 'a', encoding="utf-8") as f:
-            f.write(f"Called {func.__name__} with arguments {', '.join([str(arg) for arg in args])} "
-                    f'''{f"and keyword arguments {', '.join([str(kwarg) for kwarg in kwargs])} "
+            f.write(f"Called {func.__name__} with arguments"
+                    f" {', '.join([str(arg) for arg in args])} "
+                    f'''{f"and keyword arguments "
+                         f"{', '.join([str(kwarg) for kwarg in kwargs])} "
                     if len(kwargs) > 0 else ""}'''
                     f"at {datetime.datetime.now()}\n")
         return func(*args, **kwargs)

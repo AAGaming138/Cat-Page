@@ -23,7 +23,8 @@ def get_backswing(ID: int, form: str, ls: list) -> int:
     :return: total attack frames, which is pre + post attack
     """
     try:
-        anim_file = opencsv(f"{data_mines}/ImageDataLocal/{ID:03}_{form}02.maanim", header=True)
+        anim_file = opencsv(f"{data_mines}/ImageDataLocal/"
+                            f"{ID:03}_{form}02.maanim", header=True)
     except FileNotFoundError:
         return 44
         # Note: 44 is the default backswing for eggs
@@ -195,6 +196,7 @@ def get_abilities(ls: list, mode: int) -> str:
             f"{abil('Zombie Killer')} (stops [[:Category:Zombie Enemies|Zombies]] from reviving)")
         if list_has(53): abilities.append(f"{abil('Witch Killer')} (Deals 5x damage to "
                                          f"[[:Category:Witch Enemies|Witches]], only takes 1/10 damage)")
+        if list_has(56): abilities.append(f"Immune to Boss Shockwave")
         if list_has(70): abilities.append(
             f"{ls[70]}% chance to {abil('Barrier Breaker', 'break')} {abil('Barrier', 'barriers')}{multab()}")
         if list_has(75): immunities.append(
@@ -267,6 +269,7 @@ def get_abilities(ls: list, mode: int) -> str:
         if list_has(51): addim("Weaken")
         if list_has(52): abilities.append(abil('Zombie Killer'))
         if list_has(53): abilities.append(abil('Witch Killer'))
+        if list_has(56): abilities.append(f"Immune to Boss Shockwave")
         if list_has(70): abilities.append(f"{abil('Barrier Breaker')} ({ls[70]}%)")
         if list_has(75): immunities.append(
                 f"[[Special Abilities#Warp Blocker|Warp{' Blocker' if len(immunities) == 0 else ''}]]")
@@ -376,6 +379,7 @@ def get_abilities(ls: list, mode: int) -> str:
         if list_has(97): abilities.append(f"{pro}{abil('Colossus Slayer')}")
         if list_has(98): abilities.append(f"{abil('Soulstrike')}")
         if list_has(105): abilities.append(f"{pro}{abil('Behemoth Slayer')}")
+        if list_has(56): abilities.append(f"{pro}Immune to Boss Shockwave")
 
     if len(immunities) == 1:
         abilities.append(f"{immunities[0]}")
@@ -540,6 +544,6 @@ def get_talents(talent_ls: list, cat_ls: list) -> list:
     return [make_talent(i) for i in range(6 if talent_ls[5][0][0] else 5)]
 
 # TODO: - Update most of make_talent() and some of get_abilities()
-#       - Turn this and Page.py into classes
+#       - Turn this into a class
 #       - Make backswing and atk frequency into one thing
 #       - Make get_ID() a method in Cat class
