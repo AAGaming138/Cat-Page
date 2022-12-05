@@ -74,9 +74,9 @@ def get_abilities(ls: list, mode: int) -> str:
     :return: string of list of abilities
     """
     try:
-        ls[107] = int(re.sub('[^0-9]', '', str(ls[107])))
+        ls[-1] = int(re.sub('[^0-9]', '', str(ls[-1])))
         # why ponos why
-    except IndexError:
+    except (ValueError, UnicodeDecodeError):
         pass
 
     def list_has(index: int) -> bool:
