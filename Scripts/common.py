@@ -2,7 +2,7 @@
 import csv, os, math, re
 import time, datetime
 import builtins
-from typing import Union
+from typing import Union, List
 from pathlib import Path
 DIR = str(Path(__file__
                ).parent.absolute()).replace('\\', '/').replace("/Scripts", "")
@@ -14,10 +14,10 @@ br = "\n"
 
 class Options:
     """Options for output"""
-
     def __init__(self):
-        self.cost = False
+        self.page = False
         self.table = False
+        self.cost = False
         self.catfruit = False
         self.talents = False
         self.category = False

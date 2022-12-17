@@ -1,8 +1,9 @@
 """Program that receives input and writes the contents of a page"""
-from stats import *
+from common import *
+from StatsCommon import StatsCommon
 from Cat import Cat
 
-class Page(Cat):
+class CatPage(Cat):
     """
     Inherits from Cat class.
 
@@ -22,7 +23,7 @@ class Page(Cat):
         super().__init__(ID)
         if self.ID == -1:
             return
-
+        self.stats = StatsCommon()
         self.tf = self.trueForm
         self.r = self.getRarity()
         self.names = self.getNames(ID)
@@ -45,7 +46,7 @@ class Page(Cat):
         def get_perf():
             """Gets performance section"""
 
-            abils = [get_abilities(self.ls[k], 2) for k in
+            abils = [self.stats.get_abilities(self.ls[k], 2) for k in
                      range(3 if self.tf else 2)]
             perf = list(dict.fromkeys([ability for form in
                                        abils for ability in form]))
@@ -313,7 +314,7 @@ class Page(Cat):
                 f'|Atk Power {ind} = {atk} damage<br>({DPS:,} DPS)\n'
                 f'|Atk Range {ind} = {self.ls[i][5]:,}\n'
                 f'|Attack Frequency {ind} = '
-                            f'{a[i]}f <sub>{round(a[i] / 30, 2)} seconds</sub>\n'
+                            f'{a[i]:,}f <sub>{round(a[i] / 30, 2)} seconds</sub>\n'
                 f'|Movement Speed {ind} = {self.ls[i][2]}\n'
                 f'|Knockback {ind} = {self.ls[i][1]} time{"s" if self.ls[i][1] > 1 else ""}\n'
                 f'|Attack Animation {ind} = '
@@ -327,7 +328,7 @@ class Page(Cat):
                  f"({round((int(atks[i][0] * mods[m] + 0.5)) / (a[i] / 30), 2):,}"
                  f" DPS){br}" if i == 0 else "") +
                 f'|Attack type {ind} = {self.ls[i][12]}\n'
-                f'|Special Ability {ind} = {get_abilities(self.ls[i], 0)}')
+                f'|Special Ability {ind} = {self.stats.get_abilities(self.ls[i], 0)}')
 
         tables.append(f"==Stats==\n"
                       f"<tabber>\n"
@@ -365,7 +366,7 @@ class Page(Cat):
             f'|Ch1 Normal = {self.ls[0][6]:,}\n'
             f'|Ch2 Normal = {int(self.ls[0][6] * 1.5):,}\n'
             f'|Ch3 Normal = {self.ls[0][6] * 2:,}\n'
-            f'|Special Ability Normal = {get_abilities(self.ls[0], 1)}\n'
+            f'|Special Ability Normal = {self.stats.get_abilities(self.ls[0], 1)}\n'
             f'|Evolved Form Name = {self.names[2]}\n'
             f'|HP Initial Evolved = {self.ls[1][0]:,}\n'
             f'|AP Initial Evolved = {atks[1][0]:,}\n'
@@ -383,7 +384,7 @@ class Page(Cat):
             f'{repeated[4][0]}{anim[0]}{repeated[5][0]}'
             f'{repeated[12][0]}{repeated[7][0]}'
             f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
-            f'|Special Ability Evolved = {get_abilities(self.ls[1], 1)}\n' + \
+            f'|Special Ability Evolved = {self.stats.get_abilities(self.ls[1], 1)}\n' + \
             (f'{"}}"}\n{left}/tabber>' if not self.tf else
             f'|True Form Name = {self.names[3]}\n'
             f'|HP Initial True = {self.ls[2][0]:,}\n'
@@ -402,7 +403,7 @@ class Page(Cat):
             f'{repeated[4][1]}{anim[1]}{repeated[5][1]}'
             f'{repeated[12][1]}{repeated[7][1]}{repeated[1][1]}'
             f'{repeated[2][1]}{repeated[6][1]}\n'
-            f'|Special Ability True = {get_abilities(self.ls[2], 1)}\n'
+            f'|Special Ability True = {self.stats.get_abilities(self.ls[2], 1)}\n'
             f'{"}}"}\n{left}/tabber>'))
 
         return re.sub('\.0(?![0-9])', '', '\n\n'.join(tables))
@@ -475,7 +476,7 @@ class Page(Cat):
         and previous/next page links
         """
         ver = self.r[7]
-        names = opencsv(DIR + "/names.csv", header=True)
+        names = opencsv(DIR + "/catNames.csv", header=True)
         appearance = f"\n\n==Appearance==\n*Normal Form: ?\n*Evolved Form: " \
                      f"?{f'{br}*True Form: ?' if self.tf else ''}\n\n" \
                      f"{'<!--' if ver == current_ver else ''}" +\
@@ -653,7 +654,8 @@ class Page(Cat):
             56: "Surge Attack Cats",
             57: "Anti-Aku Cats",
             58: "Shield Piercing Cats",
-            59: "Soulstrike Cats"
+            59: "Soulstrike Cats",
+            60: "Cats with Curse ability"
         }
         def categories_has(element: str) -> bool:
             """

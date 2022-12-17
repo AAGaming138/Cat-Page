@@ -2,9 +2,7 @@
 from common import *
 
 class Cat:
-    """
-    Cat class parses data from data mines
-    """
+    """Cat class parses data from data mines"""
     trueForm = False    # does unit have true form
     isLegend = False    # is unit a legend unit e.g. Ururun Wolf
     isCrazed = False    # is unit a crazed cat
@@ -13,7 +11,7 @@ class Cat:
         self.ID = ID
         self.trueForm = True
         try:
-            self.catNames = opencsv(DIR + "/names.csv", header=True)
+            self.catNames = opencsv(DIR + "/catNames.csv", header=True)
             self.names = self.getNames(ID)
             self.catData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[0:3]
             self.catRarity = opencsv(f"{data_mines}/DataLocal/unitbuy.csv")[ID]
@@ -118,7 +116,13 @@ class Cat:
         link = lambda event, collab = False: \
             f"[[{event} {'(Gacha Event)' if not collab else 'Collaboration Event'}" \
             f"|{event}]] {'gacha' if not collab else 'collaboration'} event"
-        # TODO: Expand on this, need selections, N/BotB, SUPERFEST etc.
+        # TODO: Expand on this, need selections, Madoka, Metal Slug, Crash Fever
+        #       Power Pro Baseball, Neon Genesis Evangelion 2nd, Bikkuriman,
+        #       Street Fighter V/Blue Team, Street Fighter V/Red Team, Hatsune
+        #       Ranma 1/2, Valetine Gals, White Day, June Bride, N/BotB,
+        #       SUPERFEST, Red Busters, Air Busters, Metal Busters, Wave Busters,
+        #       Colossus Busters, Dynasty Fest, Royal Fest, Princess Punt,
+        #       Yurudrasil, Gudetama.
         gachas = {
             34: link("Tales of the Nekoluga"),
             42: link("The Dynamites"),
