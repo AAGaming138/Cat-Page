@@ -274,6 +274,9 @@ class CatPage(Cat):
                 # for only 1 hit, try except because some files
                 # have long lists while others do not
             return stat
+            # format: stat = [total attack damage,
+            #                 formatted animation,
+            #                 actual backswing]
 
         repeated = [comparison(self.ls, i) for i in range(13)]
         atks = [mult(self.ls[i], a, i) for i in range(3)]
@@ -573,6 +576,7 @@ class CatPage(Cat):
             47: "Wave Shield Cats",
             52: "Zombie Killer Cats",
             53: "Witch Killer Cats",
+            58: "Kamikaze Cats",
             70: "Barrier Breaker Cats",
             77: "Eva Angel Killer Cats",
             80: "Cats with Insanely Tough ability",

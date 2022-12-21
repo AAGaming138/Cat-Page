@@ -2,7 +2,7 @@
 
 from EnemyPage import EnemyPage
 from tkinter import *
-from MakeCatPage import *
+from MakePage import *
 import tkinter.ttk as ttk
 
 try:
@@ -22,7 +22,7 @@ class Buttons(ttk.Frame):
     def add_button(self, label, value, row, col, state = 1):
         """Adds button to buttons list and frame"""
         rb = Radiobutton(self, text=label, justify="left",
-                         borderwidth=2, anchor="w", variable=option,
+                         anchor="w", variable=option,
                          value=value, state=(NORMAL if state else DISABLED))
         rb.grid(sticky=W, row=row, column=col, padx=5)
         self.buttons.append(rb)
@@ -44,15 +44,20 @@ class Buttons(ttk.Frame):
 
     def get_enemy_buttons_LEFT(self):
         """Adds left enemy buttons"""
-        self.add_button("Whole Page", 6, 2, 0, 0)
+        self.add_button("Whole Page", 6, 2, 0)
         self.add_button("Stats Only", 7, 3, 0)
-        self.add_button("Desc Only", 8, 4, 0, 0)
+        self.add_button("Desc Only", 8, 4, 0)
 
 
     def get_enemy_buttons_RIGHT(self):
         """Adds left enemy buttons"""
         self.add_button("Encounters", 9, 2, 2, 0)
-        self.add_button("Category Only", 10, 3, 2, 0)
+        self.add_button("Category Only", 10, 3, 2)
+        checkbox = Checkbutton(self, text="Increment", justify="left",
+                               anchor="w", variable=check,
+                               onvalue=2, offvalue=0)
+        checkbox.grid(sticky=W, row=4, column=2, padx=4)
+        self.buttons.append(checkbox)
 
 
     def remove_buttons(self):
@@ -91,65 +96,64 @@ class TextScrollCombo(ttk.Frame):
         self.txt.delete('1.0', END)
 
 
+def show_page(p):
+    """Displays page to output box"""
+    if not err: pyperclip.copy(p)
+    # automatically copy if module exists
+    combo.config(width=520, height=150)
+    # change output box size
+    root.geometry("550x280")
+    # increases window size
+    combo.delete()
+    # resets output box
+    combo.insert(p)
+    # inserts provided output
+
+
 def on_click(mode, che):
     """Function that is called once button is clicked"""
     Label(root, text="\t" * 5).grid(row=4,column=1)
 
-    try:
-        ID = int(e.get())
-    except ValueError:
-        ID = StatsCommon(enemy_mode.get()).get_ID(e.get().lower())
-    # gets the ID
-
     if enemy_mode.get():
-        enem = EnemyPage(ID)
-        page = enem.getTables()
-        if not err: pyperclip.copy(page)
-        # automatically copy if module exists
-        combo.config(width=520, height=150)
-        # change output box size
-        root.geometry("550x280")
-        # increases window size
-        combo.delete()
-        # resets output box
-        combo.insert(page)
-        # inserts provided output
-    else:
-        if che == 0:
+        try:
             try:
-                page = MakeCatPage(ID, mode).get_page()
-                # i.e. if page is successfully retrieved
-                warning = False
-                message = ["Page", "Stats", "Cost", "Catfruit",
-                           "Talents", "Categories"][mode]
-                if not err: pyperclip.copy(page)
-                # automatically copy if module exists
-                combo.config(width=520, height=150)
-                # change output box size
-                root.geometry("550x280")
-                # increases window size
-                combo.delete()
-                # resets output box
-                combo.insert(page)
-                # inserts provided output
-            except NoDataError as error:
-                # i.e. if page is unsuccessfully retrieved
-                warning = True
-                message = error
-            lab = Label(root, text=message if warning else message + \
-                   (" copied to clipboard" if not err else " retrieved successfully"),
-                        fg="red" if warning else "black")
-            # get label
-            lab.grid(row=4, column=1)
-            # remove label after 3 seconds
-            root.after(3000, lab.destroy)
+                ID = int(e.get())
+            except ValueError:
+                if check.get():
+                    raise NoDataError("Increment", '')
+                else:
+                    ID = StatsCommon(True).get_ID(e.get().lower())
+            warning = False
+            page = MakeEnemyPage(ID - check.get(), mode).get_page()
+            message = ["Page", "Stats", "Description", "Encounters",
+                       "Categories"][mode - 6]
+            show_page(page)
+        except NoDataError as error:
+            warning = True
+            message = error
+    else:
+        try:
+            ID = int(e.get())
+        except ValueError:
+            ID = StatsCommon().get_ID(e.get().lower())
+        try:
+            page = MakeCatPage(ID, mode).get_page()
+            warning = False
+            message = ["Page", "Stats", "Cost", "Catfruit",
+                       "Talents", "Categories"][mode]
+            show_page(page)
 
-        else:
-            for i in range(len(Cat(0).catNames)):
-                try:
-                    MakeCatPage(i, mode).get_page()
-                except NoDataError:
-                    combo.insert(f"Error occurred for unit {i:03}")
+        except NoDataError as error:
+            # i.e. if page is unsuccessfully retrieved
+            warning = True
+            message = error
+    lab = Label(root, text=message if warning else message + \
+           (" copied to clipboard" if not err else " retrieved successfully"),
+                fg="red" if warning else "black")
+    # get label
+    lab.grid(row=4, column=1)
+    # remove label after 3 seconds
+    root.after(3000, lab.destroy)
 
 
 def change_focus(event):
@@ -180,6 +184,8 @@ def center(win):
 
 def cat_options():
     """Changes program to cat mode"""
+    with open("mode.txt", "w") as f1:
+        f1.write("CAT")
     enemy_mode.set(False)
     root.title('Cat Page')
     root.iconbitmap(DIR + "/catIcon.ico")
@@ -206,8 +212,11 @@ def cat_options():
 
 def enemy_options():
     """Changes program to enemy mode"""
+    with open("mode.txt", "w") as f2:
+        f2.write("ENEMY")
     enemy_mode.set(True)
     root.title('Enemy Page')
+    num.set(num.get() + 1)
 
     option.set(7) # default selection
     root.iconbitmap(DIR + "/dogeIcon.ico") # change icon
@@ -239,6 +248,8 @@ def xpnative_theme():
 
 # start window
 root = Tk()
+with open("mode.txt", "r") as f:
+    m = f.read()
 root.iconbitmap(DIR + "/catIcon.ico")
 root.attributes('-alpha', 0.0)
 center(root)
@@ -280,8 +291,12 @@ combo.config(width=315, height=45)
 
 combo.txt.config(undo=True)
 combo.txt.config(borderwidth=3, relief="sunken")
-
 # end output box
+
+# start checkboxes
+check = IntVar()
+check.set(0)
+# end checkboxes
 
 # start cat page
 option = IntVar()
@@ -298,17 +313,9 @@ style.theme_use('winnative')
 num = IntVar()
 num.set(0)
 
-cat_options()
+if m == "CAT": cat_options()
+else: enemy_options()
 # end cat page
-
-# start checkboxes
-check = IntVar()
-check.set(0)
-'''
-debugger = Checkbutton(root, text="Debug mode", variable=check, offvalue=0, onvalue=1)
-debugger.grid(sticky=W, row=5, column=2, padx=5)
-'''
-# end checkboxes
 
 # start button
 myButton = Button(root, text="Get",

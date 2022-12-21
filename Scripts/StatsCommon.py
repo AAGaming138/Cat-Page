@@ -23,23 +23,17 @@ class StatsCommon:
         :param name: unit name
         :return: unit ID if name exists, otherwise -1
         """
-        if self.is_enemy:
-            if not name:
-                return -1
-            names = opencsv(DIR + "/enemyNames.csv", header=True)
-            for i in range(len(names)):
-                names[i] = [x.lower() for x in names[i]]
-                if name in names[i]: return int(names[i][0])
-                else: continue
-        else:
-            if not name:
-                return -1
-            names = opencsv(DIR + "/catNames.csv", header=True)
-            for i in range(len(names)):
-                names[i] = [x.lower() for x in names[i]]
-                if name in names[i]: return int(names[i][0])
-                else: continue
+        if not name:
             return -1
+        names = opencsv(DIR +
+                        f"/{'enemy' if self.is_enemy else 'cat'}Names.csv",
+                        header=True)
+        for i in range(len(names)):
+            names[i] = [x.lower() for x in names[i]]
+            if name in names[i]:
+                return int(names[i][0])
+            else: continue
+        return -1
 
 
     def get_backswing(self, ID: int, form: str, ls: list) -> int:
@@ -50,7 +44,7 @@ class StatsCommon:
         :return: total attack frames, which is pre + post attack
         """
         if self.is_enemy or form == "":
-            fi = f"{ID - 2:03}_e02.maanim"
+            fi = f"{ID:03}_e02.maanim"
         else:
             fi = f"{ID:03}_{form}02.maanim"
 
@@ -76,7 +70,7 @@ class StatsCommon:
         return frame + 1 - ls[12 if self.is_enemy else 13]
 
 
-    def get_traits(self, ls):
+    def get_traits(self, ls: list, link: bool = False):
         """Enemy units only; determines the trait(s) of an Enemy"""
         if not self.is_enemy:
             raise UnitTypeError(self.is_enemy)
@@ -91,9 +85,10 @@ class StatsCommon:
                 return int(ls[index]) != 0
 
         traits = []
-        addt = lambda t: traits.append(t)
+        addt = lambda t, alt = "": traits.append(
+            f"[[:Category:{alt if alt else t} Enemies|"
+            f"{alt if alt else t}]]" if link else t)
         if list_has(10): addt("Red")
-        if list_has(13): addt("Floating")
         if list_has(14): addt("Black")
         if list_has(15): addt("Metal")
         if list_has(16): addt("Traitless")
@@ -102,10 +97,11 @@ class StatsCommon:
         if list_has(19): addt("Zombie")
         if list_has(48): addt("Witch")
         if list_has(49): addt("Typeless")
-        if list_has(69) and list_has(18): addt("StarredAlien")
+        if list_has(69) and list_has(18): addt("StarredAlien", "Starred Alien")
         if list_has(71): addt("Eva Angel")
         if list_has(72): addt("Relic")
         if list_has(93): addt("Aku")
+        if list_has(13): addt("Floating")
         if list_has(94): addt("Colossal")
         if list_has(101): addt("Behemoth")
         return "/".join(traits)
@@ -218,6 +214,8 @@ class StatsCommon:
         pl = lambda ind, threshold = 30: 's' if ls[ind] != threshold else ''
 
         if self.is_enemy:
+            if list_has(52):
+                abilities.append("Attacks once, then disappears from the battlefield")
             if list_has(55): abilities.append(f"{abil('Multi-Hit')} ({ls[3]:,} at {ls[12]}f <sup>{sec(12)}s</sup>,"
                                               f" {ls[55]:,} at {ls[57]}f <sup>{sec(57)}s</sup>"
                                               f"{f', {ls[56]:,} at {ls[58]}f <sup>{sec(58)}s</sup>' if ls[56] != 0 else ''})")
@@ -230,8 +228,8 @@ class StatsCommon:
             if list_has(20): abilities.append(
                 f"{ls[20]}% chance to {abil('Knockback', 'knockback')} Cat Units{multab()}")
             if list_has(21): abilities.append(f"{ls[21]}% chance to {abil('Freeze', 'freeze')} Cat Units for "
-                                              f"{ls[22]}f <sub>{sec(22)} second{pl(22)}</sub>{multab()}")
-            if list_has(23): abilities.append(f"{ls[23]}% chance to {abil('Slow', 'slow')} Cat Units for {ls[24]}f "
+                                              f"{ls[22]:,}f <sub>{sec(22)} second{pl(22)}</sub>{multab()}")
+            if list_has(23): abilities.append(f"{ls[23]}% chance to {abil('Slow', 'slow')} Cat Units for {ls[24]:,}f "
                                               f"<sub>{sec(24)} second{pl(24)}</sub>{multab()}")
             if list_has(25): abilities.append(
                 f"{ls[25]}% chance to perform a {abil('Critical', 'critical hit')}{multab()}")
@@ -240,7 +238,7 @@ class StatsCommon:
                 f"{ls[27]}% chance to create a level {ls[28]} [["
                 f"{'Wave Attack' if len(ls) < 87 or ls[86] != 1 else 'Wave Attack#Mini-Wave|Mini-Wave'}]]{multab()}")
             if list_has(29): abilities.append(
-                f"{ls[29]}% chance to {abil('Weaken', 'weaken')} Cat Units to {ls[31]}% for {ls[30]}f"
+                f"{ls[29]}% chance to {abil('Weaken', 'weaken')} Cat Units to {ls[31]}% for {ls[30]:,}f"
                 f" <sub>{sec(30)} second{pl(30)}</sub>{multab()}")
             if list_has(32): abilities.append(f"{abil('Strengthen', 'Strengthens')} by {ls[33]}% at {ls[32]}% health")
             if list_has(34): abilities.append(f"{ls[34]}% chance to {abil('Survive', 'survive')} a lethal strike")
@@ -258,18 +256,16 @@ class StatsCommon:
                                  f" ({f'{ls[43]} time{pl(43, 1)}' if ls[43] != -1 else 'unlimited'})")
             if list_has(45):
                 abilities.append(f"[[Special Abilities#Revive|Revives]] with {ls[47]}% HP after being dead"
-                                 f" for {ls[46]}f <sup>{sec(46)}s</sup> "
+                                 f" for {ls[46]:,}f <sup>{sec(46)}s</sup> "
                                  f"({f'{ls[45]} time{pl(45, 1)}' if ls[45] != -1 else 'unlimited'})")
-            if list_has(52):
-                abilities.append("Attacks once, then disappears from the battlefield")
             if list_has(64):
                 abilities.append(f"[[Barrier]] (Limit: {ls[64]:,})")
             if list_has(65):
                 abilities.append(f"{ls[65]}% chance to [[Special Abilities#Warp|warp]] Cat Units back by"
-                                 f" {int(ls[67] / 4):,} range for {ls[66]}f <sub>{sec(66)} second{pl(66)}</sub>{multab()}")
+                                 f" {int(ls[67] / 4):,} range for {ls[66]:,}f <sub>{sec(66)} second{pl(66)}</sub>{multab()}")
             if list_has(73):
                 abilities.append(
-                f"{ls[73]}% chance to {abil('Curse', 'curse')} Cat Units for {ls[74]}f <sub>"
+                f"{ls[73]}% chance to {abil('Curse', 'curse')} Cat Units for {ls[74]:,}f <sub>"
                 f"{sec(74)} second{pl(74)}</sub>{multab()}")
             if list_has(75):
                 abilities.append(
@@ -324,6 +320,7 @@ class StatsCommon:
             # self-explanatory
 
         if mode == 0:
+            if list_has(58): abilities.append(f"Attacks once, then disappears from the battlefield")
             if list_has(59): abilities.append(f"{abil('Multi-Hit')} ({ls[3] * 17:,} at {ls[13]}f <sup>{sec(13)}s</sup>,"
                 f" {ls[59] * 17:,} at {ls[61]}f <sup>{sec(61)}s</sup>"
                 f"{f', {ls[60] * 17:,} at {ls[62]}f <sup>{sec(62)}s</sup>' if ls[60] != 0 else ''})")
@@ -402,6 +399,7 @@ class StatsCommon:
                 f"{sec(107)} second{pl(107)}</sub>)")
 
         elif mode == 1:
+            if list_has(58): abilities.append(f"Attacks once, then disappears from the battlefield")
             if list_has(59): abilities.append(
                     f"{abil('Multi-Hit', 'Multi-Hit')} ({ls[3]:,} at {ls[13]}f, {ls[59]:,} at {ls[61]}f"
                     f"{f', {ls[60]:,} at {ls[62]}f' if ls[60] else ''})")
@@ -518,6 +516,7 @@ class StatsCommon:
             if list_has(51): paddim("Weaken")
             if list_has(52): abilities.append(f"{pro}{abil('Zombie Killer')}")
             if list_has(53): abilities.append(f"{pro}{abil('Witch Killer')}")
+            if list_has(58): abilities.append(f"{con}Dies after attacking once")
             if list_has(70): abilities.append(
                 f"{pro}{ls[70]}% chance to {abil('Barrier Breaker', 'break')} "
                 f"{abil('Barrier', 'barriers')}{multab()}")

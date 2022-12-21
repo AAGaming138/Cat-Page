@@ -21,6 +21,8 @@ class Options:
         self.catfruit = False
         self.talents = False
         self.category = False
+        self.desc = False
+        self.encounters = False
 
 
 def logfunc(func):

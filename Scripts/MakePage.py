@@ -1,17 +1,20 @@
 """Program that takes all modules and converts into a page"""
 from CatPage import *
+from EnemyPage import *
 from StatsCommon import StatsCommon
 from common import *
 
 class NoDataError(Exception):
     """Error from no/insufficient information"""
     def __init__(self, data: str, name: str):
-        if data in ["Catfruits", "Talents"]:
+        if data in ["Catfruits", "Talents", "Description"]:
             error = f"'{name}' has no {data}."
         elif data == "ID":
             error = "Enter a valid name or ID!"
+        elif data == "Increment":
+            error = "Incompatible with increment!"
         else:
-            error = f"{name} have no page."
+            error = f"{name} has no page."
         super().__init__(error)
 
 
@@ -133,4 +136,51 @@ class MakeCatPage:
                    self.cat_page.getCategories()
 
 
-# TODO: - Simplify the spaghetti
+class MakeEnemyPage:
+    """Relays page content to Unit Page Maker"""
+    def __init__(self, ID: int = -1, mode: int = 6):
+
+        self.stats = StatsCommon(is_enemy=True)
+        self.mode = [0, 1, 6, 7, 5][mode - 6]
+        self.en_page = EnemyPage(ID)
+        self.ID = self.en_page.ID
+        # turns ID to -1 if unit not found
+        self.op = vars(Options())
+        self.get_errors()
+
+
+    def get_mode(self):
+        """Turns the appropriate option to True depending on mode"""
+        self.op[list(self.op)[self.mode]] = True
+
+
+    def get_errors(self):
+        if self.ID == -1:
+            raise NoDataError("ID", "")
+        # unit not found error
+        if self.ID == -2:
+            raise NoDataError("", f"This enemy")
+        name = self.en_page.name
+        if self.mode == 6 and self.en_page.jpName is None:
+            raise NoDataError("Description", name)
+        # no description error
+
+
+    def get_page(self) -> str:
+        self.get_mode()
+        if self.op['table']:
+            return self.en_page.getStats().strip("\n")
+
+        elif self.op['desc']:
+            return self.en_page.getDict().strip("\n")
+
+        elif self.op['encounters']:
+            return self.en_page.getEncounters().strip('\n')
+
+        elif self.op['category']:
+            return self.en_page.getCategories().strip('\n')
+
+        else:
+            return self.en_page.getStart() + self.en_page.getDict() + \
+                   self.en_page.getEncounters() + self.en_page.getStats() + \
+                   self.en_page.getEnd() + self.en_page.getCategories()
