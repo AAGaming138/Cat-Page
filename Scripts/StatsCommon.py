@@ -177,12 +177,12 @@ class StatsCommon:
                     return f" on 1st hit, {ls[num[6]]:,}~" \
                            f"{ls[num[6]] + ls[num[7]]:,} on 2nd hit" \
                            f", {ls[num[9]]:,}~" \
-                           f"{ls[num[9]] + ls[num[10]]:,} at 3rd hit"
+                           f"{ls[num[9]] + ls[num[10]]:,} on 3rd hit"
                 else:
                     return f" on 1st hit, {ls[num[6]] + ls[num[7]]:,}~" \
                            f"{ls[num[6]]:,} on 2nd hit," \
                            f" {ls[num[9]] + ls[num[10]]:,}~" \
-                           f"{ls[num[9]]:,} at 3rd hit"
+                           f"{ls[num[9]]:,} on 3rd hit"
                 # omni strike multiple range hits
             else:
                 return ''
@@ -256,7 +256,7 @@ class StatsCommon:
                                  f" ({f'{ls[43]} time{pl(43, 1)}' if ls[43] != -1 else 'unlimited'})")
             if list_has(45):
                 abilities.append(f"[[Special Abilities#Revive|Revives]] with {ls[47]}% HP after being dead"
-                                 f" for {ls[46]:,}f <sup>{sec(46)}s</sup> "
+                                 f" for {ls[46]:,}f <sub>{sec(46)} second{pl(46)}</sub> "
                                  f"({f'{ls[45]} time{pl(45, 1)}' if ls[45] != -1 else 'unlimited'})")
             if list_has(64):
                 abilities.append(f"[[Barrier]] (Limit: {ls[64]:,})")
@@ -351,7 +351,8 @@ class StatsCommon:
                 f" <sub>{sec(38)} second{pl(38)}</sub>{multab()}")
             if list_has(40): abilities.append(f"{abil('Strengthen', 'Strengthens')} by {ls[41]}% at {ls[40]}% health")
             if list_has(42): abilities.append(f"{ls[42]}% chance to {abil('Survive', 'survive')} a lethal strike")
-            if list_has(43): abilities.append(abil('Metal'))
+            if list_has(43): abilities.append(f"{abil('Metal')} (Only takes 1 damage from"
+                                              f" non-[[Critical Hit|Critical]] or [[Toxic]] attacks)")
             if list_has(47): abilities.append(abil('Wave Shield'))
             # 'regular' abilities
             if list_has(46): addim("Waves")
@@ -429,7 +430,8 @@ class StatsCommon:
                 f"{abil('Weaken', 'Weakens')} {ftrait} enemies to {ls[39]}% for {ls[38]}f{multab()} ({ls[37]}%)")
             if list_has(40): abilities.append(f"{abil('Strengthen', 'Strengthens')} by {ls[41]}% at {ls[40]}% health")
             if list_has(42): abilities.append(f"{abil('Survive', 'Survives')} a lethal strike ({ls[42]}%)")
-            if list_has(43): abilities.append(abil('Metal'))
+            if list_has(43): abilities.append(f"{abil('Metal')} (Only takes 1 damage from"
+                                              f" non-[[Critical Hit|Critical]] or [[Toxic]] attacks)")
             if list_has(47): abilities.append(abil('Wave Shield'))
             if list_has(46): addim("Waves")
             if list_has(48): addim("Knockback")
@@ -440,8 +442,6 @@ class StatsCommon:
             if list_has(53): abilities.append(abil('Witch Killer'))
             if list_has(56): abilities.append(f"Immune to Boss Shockwave")
             if list_has(70): abilities.append(f"{abil('Barrier Breaker')} ({ls[70]}%)")
-            if list_has(75): immunities.append(
-                    f"[[Special Abilities#Warp Blocker|Warp{' Blocker' if len(immunities) == 0 else ''}]]")
             if list_has(77): abilities.append(f"{abil('Eva Angel Killer', 'Eva Angel Killer')}")
             if list_has(79): addim("Curse")
             if list_has(80): abilities.append(f"{abil('Insanely Tough', 'Insanely tough')} against {ftrait} enemies")
@@ -455,6 +455,8 @@ class StatsCommon:
             if list_has(90): addim("Toxic")
             if list_has(91): immunities.append(
                     f"[[Special Abilities#Evade Surge|{'Evade ' if len(immunities) == 0 else ''}Surge]]")
+            if list_has(75): immunities.append(
+                    f"[[Special Abilities#Warp Blocker|Warp{' Blocker' if len(immunities) == 0 else ''}]]")
             if list_has(92): abilities.append(
                     f"{abil('Curse', 'Curses')} {ftrait} enemies for {ls[93]}f{multab()} ({ls[92]}%)")
             if list_has(95): abilities.append(f"{abil('Shield Piercing', 'Shield Piercer')}{multab()} ({ls[95]}%)")
@@ -723,7 +725,5 @@ class StatsCommon:
 
         return [make_talent(i) for i in range(6 if talent_ls[5][0][0] else 5)]
 
-# TODO: - Update most of make_talent() and some of get_abilities()
-#       - Turn this into a class
+# TODO: - Update some of make_talent() and some of get_abilities()
 #       - Make backswing and atk frequency into one thing
-#       - Make get_ID() a method in Cat class

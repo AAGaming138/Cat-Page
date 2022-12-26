@@ -6,6 +6,7 @@ class Cat:
     trueForm = False    # does unit have true form
     isLegend = False    # is unit a legend unit e.g. Ururun Wolf
     isCrazed = False    # is unit a crazed cat
+    isCollab = False    # is unit a collab unit
 
     def __init__(self, ID: int):
         self.ID = ID
@@ -36,14 +37,17 @@ class Cat:
         rarFile = self.catRarity
         # unitbuy.csv data
         maxLevel = int(rarFile[50]) + int(rarFile[51])  # max level + max plus level
-        rp = [len([i for i in reduction if i == '20']) * 10, len([j for j in reduction if j == '10']) * 10]
+        rp = [len([i for i in reduction if i == '20']) * 10,
+              len([j for j in reduction if j == '10']) * 10]
         # list of reduction points
         rp[1] += rp[0]
         if rp[1] > maxLevel: rp.pop(1)
-        rarities = "Normal", "Special", "Rare", "Super Rare", "Uber Rare", "Legend Rare"
+        rarities = "Normal", "Special", "Rare", "Super Rare",\
+                   "Uber Rare", "Legend Rare"
         r = int(rarFile[13])
         # r is the rarity index
-        maxPlus = f"\n|Max Plus Level = {int(rarFile[51])}" if int(rarFile[51]) != 0 else ""
+        maxPlus = f"\n|Max Plus Level = " \
+                  f"{int(rarFile[51])}" if int(rarFile[51]) != 0 else ""
         if int(rarFile[3]) > 50000 and r == 3:
             self.isCrazed = True
 
@@ -90,7 +94,11 @@ class Cat:
             else:
                 fruits = rarFile[27:38]
             return [int(i) for i in fruits]
-        if maxLevel == 40: self.isLegend = True
+
+        if rarFile[14][0:2] == '19' and rarFile[17] == '3':
+            self.isLegend = True
+        # Note: Work on this in case of outliers
+
         return rarities[r], int(rarFile[50]), int(rarFile[51]), getMod(maxLevel)[0],\
                       getMod(maxLevel)[1], maxPlus, -1, getVersion(), getFruit(),\
                       getMod(10)[0], getMod(20)[0], getMod(30)[0]
@@ -113,19 +121,22 @@ class Cat:
         self.getRarity()
         pos = -1
         gachaFile = self.catGacha
-        link = lambda event, collab = False: \
-            f"[[{event} {'(Gacha Event)' if not collab else 'Collaboration Event'}" \
+
+        def link(event, collab = False):
+            return f"[[{event} " \
+                   f"{'(Gacha Event)' if not collab else 'Collaboration Event'}" \
             f"|{event}]] {'gacha' if not collab else 'collaboration'} event"
-        # TODO: Expand on this, need selections, Madoka, Metal Slug, Crash Fever
-        #       Power Pro Baseball, Neon Genesis Evangelion 2nd, Bikkuriman,
-        #       Street Fighter V/Blue Team, Street Fighter V/Red Team, Hatsune
-        #       Ranma 1/2, Valetine Gals, White Day, June Bride, N/BotB,
+
+        # TODO: Expand on this, need selections, Neon Genesis Evangelion 2nd,
+        #       Street Fighter V/Blue Team, Street Fighter V/Red Team,
+        #       June Bride, N/BotB,
         #       SUPERFEST, Red Busters, Air Busters, Metal Busters, Wave Busters,
-        #       Colossus Busters, Dynasty Fest, Royal Fest, Princess Punt,
+        #       Colossus Busters, Dynasty Fest, Royal Fest,
         #       Yurudrasil, Gudetama.
         gachas = {
             34: link("Tales of the Nekoluga"),
             42: link("The Dynamites"),
+            66: link("Princess Punt Sweets", collab=True),
             71: link("Sengoku Wargods Vajiras"),
             75: link("Cyber Academy Galaxy Gals"),
             83: link("Lords of Destruction Dragon Emperors"),
@@ -134,17 +145,26 @@ class Cat:
             174: link("Survive! Mola Mola!", collab=True),
             180: link("Shoumetsu Toshi", collab=True),
             194: link("Dark Heroes"),
+            225: link("Metal Slug Defense", collab=True),
             229: link("Halloween Capsules"),
             241: link("Xmas Gals"),
             257: link("The Almighties"),
+            288: link("Puella Magi Madoka Magica", collab=True),
             304: link("Frontline Assault Iron Legion"),
+            326: link("Crash Fever", collab=True),
             330: link("Easter Carnival"),
             334: link("Girls & Monsters: Angels of Terror"),
             354: link("Gals of Summer"),
             359: link("Nature's Guardians Elemental Pixies"),
             362: link("Fate/Stay Night: Heaven's Feel", collab=True),
+            393: link("Power Pro Baseball", collab=True),
             412: link("Neon Genesis Evangelion", collab=True),
+            467: link("Bikkuriman", collab=True),
             511: link("Street Fighter V", collab=True),
+            535: link("Hatsune Miku", collab=True),
+            587: link("Valentine Gals"),
+            596: link("Ranma 1/2", collab=True),
+            648: link("White Day"),
         }
         fests = {
             269: link("UBERFEST"),
@@ -163,6 +183,7 @@ class Cat:
         # Note: Temporary, change later
         for key in pool:
             if str(key) in gachaFile[pos]:
+                self.isCollab = "Collaboration" in pool[key]
                 self.gacha = pool[key]
                 return self.gacha
 

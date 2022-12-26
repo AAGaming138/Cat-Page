@@ -145,10 +145,12 @@ class EnemyPage(Enemy):
 
     def getEnd(self):
         """Gets the end of the enemy page"""
-        def get_neighbour(p: int):
+        def get_nbr(p: int):
             """PONOS cringe"""
             try:
                 en = self.enemyNames[self.ID + p]
+                if self.ID + p < 0:
+                    raise IndexError
             except IndexError:
                 return "N/A"
             if en[1] == "N/A":
@@ -159,21 +161,29 @@ class EnemyPage(Enemy):
             en[2] = en[1] if not en[2] else en[2]
             return en
 
-        prev_en = get_neighbour(-1)
-        next_en = get_neighbour(1)
-        return "==Gallery==\n" \
-               '<gallery hideaddbutton="true" bordercolor="transparent">\n' \
-               f"{self.ID} e.png|{self.name}'s spritesheet\n" \
-               "</gallery>\n\n" \
-               "==Reference==\n" \
-               f"*https://battlecats-db.com/enemy/{self.ID + 2:03}.html\n\n" \
-               "----\n" \
+        prev_en = f"[[{get_nbr(-1)[2]}|&lt;&lt; {get_nbr(-1)[1]}" \
+                  f"]]" if get_nbr(-1) != "N/A" else "&lt;&lt; N/A"
+
+        next_en = f"[[{get_nbr(1)[2]}|{get_nbr(1)[1]} &gt;&gt;" \
+                  f"]]" if get_nbr(1) != "N/A" else "N/A &gt;&gt;"
+
+        gallery = "==Gallery==\n" \
+                  '<gallery hideaddbutton="true" bordercolor="transparent">\n' \
+                  f"{self.ID} e.png|{self.name}'s spritesheet\n" \
+                  "</gallery>\n\n"
+
+        reference = "==Reference==\n" \
+                    f"*https://battlecats-db.com/enemy/" \
+                    f"{self.ID + 2:03}.html\n\n"
+
+        end =  "----\n" \
                '<p style="text-align:center;">' \
                '[[Enemy Release Order]]:</p>\n\n' \
                f'<p style="text-align:center;">' \
-               f"'''[[{prev_en[2]}|&lt;&lt; {prev_en[1]}]]" \
-               f" | [[{next_en[2]}|{next_en[1]}" \
-               " &gt;&gt;]]'''</p>\n----\n\n{{Enemies}}\n"
+               f"'''{prev_en} | {next_en}'''</p>" \
+               "\n----\n\n{{Enemies}}\n"
+
+        return gallery + reference + end
 
 
     def getCategories(self):

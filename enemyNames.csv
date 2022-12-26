@@ -199,11 +199,11 @@ Number,Name,PageName,Health,Atk
 197,Doge O'Lantern,Doge O'Lantern (Event Enemy),540,24
 198,Drac-owl-la,Drac-owl-la (Event Enemy),166000,6600
 199,Sa-Bat,Sa-Bat (Event Enemy),6300,800
-200,Valkyrie,Junior God of Light - Valkyrie (Enemy),2400,120
-201,Brynhildr,Junior God Brynhildr (Enemy),30000,800
-202,Suruzu,Junior God Suruzu (Enemy),45000,1888
-203,Freya,Goddess of Abundance - Freya (Enemy),165000,100
-204,Odin,God of War - Odin (Enemy),550000,15500
+200,Junior God of Light - Valkyrie,Junior God of Light - Valkyrie (Enemy),2400,120
+201,Junior God Brynhildr,Junior God Brynhildr (Enemy),30000,800
+202,Junior God Suruzu,Junior God Suruzu (Enemy),45000,1888
+203,Goddess of Abundance - Freya,Goddess of Abundance - Freya (Enemy),165000,100
+204,God of War - Odin,God of War - Odin (Enemy),550000,15500
 205,Capy,Capy (Red),530000,52000
 206,Berserkory,Berserkory (Red),920000,7444
 207,Brollow,Brollow (Floating),19000,15000

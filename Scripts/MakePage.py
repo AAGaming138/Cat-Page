@@ -7,7 +7,7 @@ from common import *
 class NoDataError(Exception):
     """Error from no/insufficient information"""
     def __init__(self, data: str, name: str):
-        if data in ["Catfruits", "Talents", "Description"]:
+        if data in ["catfruits", "talents", "description"]:
             error = f"'{name}' has no {data}."
         elif data == "ID":
             error = "Enter a valid name or ID!"
@@ -42,10 +42,10 @@ class MakeCatPage:
             raise NoDataError("", name)
         # insufficient data error
         elif self.mode == 3 and not self.cat_page.getCatfruit():
-            raise NoDataError("Catfruits", name)
+            raise NoDataError("catfruits", name)
         # no catfruit error
         elif self.mode == 4 and not self.cat_page.tals:
-            raise NoDataError("Talents", name)
+            raise NoDataError("talents", name)
         # no talents error
 
 
@@ -162,7 +162,7 @@ class MakeEnemyPage:
             raise NoDataError("", f"This enemy")
         name = self.en_page.name
         if self.mode == 6 and self.en_page.jpName is None:
-            raise NoDataError("Description", name)
+            raise NoDataError("description", name)
         # no description error
 
 

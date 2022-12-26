@@ -57,6 +57,18 @@ class Buttons(ttk.Frame):
                                anchor="w", variable=check,
                                onvalue=2, offvalue=0)
         checkbox.grid(sticky=W, row=4, column=2, padx=4)
+        toolTip = ToolTip(checkbox)
+
+        def enter(event):
+            toolTip.showtip('Adds 2 to the enemy ID, as\n'
+                            'shown on the Enemy Release Order.\n'
+                            'Incompatible with name search.')
+        def leave(event):
+            toolTip.hidetip()
+
+        checkbox.bind('<Enter>', enter)
+        checkbox.bind('<Leave>', leave)
+
         self.buttons.append(checkbox)
 
 
@@ -94,6 +106,40 @@ class TextScrollCombo(ttk.Frame):
     def delete(self):
         """delete() method from Text class"""
         self.txt.delete('1.0', END)
+
+
+class ToolTip(object):
+    '''
+    https://stackoverflow.com/questions/20399243
+    '''
+    def __init__(self, widget):
+        self.text = None
+        self.widget = widget
+        self.tipwindow = None
+        self.id = None
+        self.x = self.y = 0
+
+    def showtip(self, text):
+        "Display text in tooltip window"
+        self.text = text
+        if self.tipwindow or not self.text:
+            return
+        x, y, cx, cy = self.widget.bbox("insert")
+        x += self.widget.winfo_rootx() + 57
+        y += cy + self.widget.winfo_rooty() + 27
+        self.tipwindow = tw = Toplevel(self.widget)
+        tw.wm_overrideredirect(True)
+        tw.wm_geometry("+%d+%d" % (x, y))
+        label = Label(tw, text=self.text, justify=LEFT,
+                      background="#ffffe0", relief=SOLID, borderwidth=1,
+                      font=("tahoma", "8", "normal"))
+        label.pack(ipadx=1)
+
+    def hidetip(self):
+        tw = self.tipwindow
+        self.tipwindow = None
+        if tw:
+            tw.destroy()
 
 
 def show_page(p):
@@ -218,7 +264,7 @@ def enemy_options():
     root.title('Enemy Page')
     num.set(num.get() + 1)
 
-    option.set(7) # default selection
+    option.set(6) # default selection
     root.iconbitmap(DIR + "/dogeIcon.ico") # change icon
 
     e.delete(0, 'end')

@@ -103,7 +103,8 @@ class CatPage(Cat):
 
         catapp = f"{'{{'}Cat Appearance\n" \
                  f"|Cat Unit Number = {self.ID}\n" \
-                 f"|cat category = [[:Category:{self.r[0]} Cats|{self.r[0]} Cat]]\n" \
+                 f"|cat category = [[:Category:{self.r[0]} Cats|{self.r[0]} Cat]]" \
+                 f"{' ([[:Category:Legend Cats|Legend]])' if self.isLegend else ''}\n" \
                  f"|Normal Form name = {self.names[1]}\n" \
                  f'|Evolved Form name = {self.names[2]}' \
                  f'{f"{br}|True Form name = {self.names[3]}" if self.tf else ""}\n' \
@@ -128,20 +129,18 @@ class CatPage(Cat):
         """
         Method that writes the translation template
         """
-        image = lambda id: 'placeholder.png'\
-            if self.r[7] == current_ver else f'Uni{self.ID:03} {id}00.png'
         # TODO add english description
         return "==Description==\n{{Translation\n" + \
                 f"|Cat Unit Number = {self.ID}\n" \
                 f"|cat category = [[:Category:{self.r[0]} Cats|{self.r[0]} Cat]]\n" \
                 f"|Normal Form name = {self.names[1]}\n" \
-                f"|image1 = {image('f')}\n" \
+                f"|image1 = Uni{self.ID:03} f00.png\n" \
                 f"|cat_endesc1 = -\n" \
                 f"|Evolved Form name = {self.names[2]}\n" \
-                f"|image2 = {image('c')}\n" \
+                f"|image2 = Uni{self.ID:03} c00.png\n" \
                 f"|cat_endesc2 = -\n" + \
                 (f'|Third Form name = {self.names[3]}\n'
-                 f'|'f'image3 = {image("s")}\n'
+                 f'|'f'image3 = Uni{self.ID:03} s00.png\n'
                  f'|cat_endesc3 = -\n' if self.tf else '') + \
                 f"|Normal Form name (JP) = {self.desc[0]} (?, ?)\n" \
                 f"|cat_jpscriptc1 = {self.desc[3]}\n" \
@@ -294,7 +293,7 @@ class CatPage(Cat):
 
         if n:
             mods.append(self.r[3])
-        m = 3 if n else 2 # max mod for normal cats
+        m = 3 if n else (2 if self.r[3] > mods[2] else 1) # max mod for normal cats
         statslevels = "" if not n else f"\n|1st stats Level = {form_max}" + \
                                        f"\n|2nd stats Level = {form_max}" + \
             (f"\n|3rd stats Level = {form_max}" if self.tf else "")
@@ -448,7 +447,8 @@ class CatPage(Cat):
             181: "BlueCrystal",
             182: "GreenCrystal",
             183: "YellowCrystal",
-            184: "RainbowStone"}
+            184: "RainbowStone"
+            }
 
         fruits = [catfruits[cfList[i]] for i in
                   range(len(cfList)) if cfList[i] != 0 and i % 2 == 1]
@@ -480,21 +480,34 @@ class CatPage(Cat):
         """
         ver = self.r[7]
         names = opencsv(DIR + "/catNames.csv", header=True)
+
+        prev_cat = f"[[{names[self.ID - 1][4]}|&lt;&lt; {names[self.ID - 1][1]}" \
+                   f"]]" if names[self.ID - 1][1] != "N/A" else "&lt;&lt; N/A"
+
+        next_cat = f"[[{names[self.ID + 1][4]}|{names[self.ID + 1][1]} &gt;&gt;" \
+                   f"]]" if names[self.ID + 1][1] != "N/A" else "N/A &gt;&gt;"
+
         appearance = f"\n\n==Appearance==\n*Normal Form: ?\n*Evolved Form: " \
                      f"?{f'{br}*True Form: ?' if self.tf else ''}\n\n" \
-                     f"{'<!--' if ver == current_ver else ''}" +\
+                     f"{'<!--' if ver == current_ver else ''}" + \
                      "{{Gallery|Gatyachara " + f"{self.ID:03}" + " f}}" + \
                      f"{'-->' if ver == current_ver else ''}\n\n"
+
         reference = f'==Reference==\n' \
                     f'*https://battlecats-db.com/unit/{self.ID + 1:03}.html\n\n'
+
+        finder = re.compile('(?<=\[\[)(.*)(?= Collab)')
+        try:
+            collab = "{{" + finder.findall(self.gacha)[0] + "}}\n"
+        except (IndexError, TypeError):
+            collab = ""
+
         end = f'----\n<p style="text-align:center;">' \
-              f'[[Cat Release Order|Units Release Order]]:</p>\n\n' +\
-              f'<p style="text-align:center;">\'\'' \
-              f'\'[[{names[self.ID - 1][4]}|' \
-              f'&lt;&lt; {names[self.ID - 1][1]}]] ' + \
-              f'| [[{names[self.ID + 1][4]}|' \
-              f'{names[self.ID + 1][1]} &gt;&gt;]]' \
-              f'\'\'\'</p>\n----\n\n{"{{Cats}}"}\n'
+              f'[[Cat Release Order|Units Release Order]]:</p>\n\n' + \
+              f"<p style=\"text-align:center;\">'''" \
+              f"{prev_cat} | {next_cat}" \
+              f"'''</p>\n----\n\n{collab}" \
+              "{{Cats}}\n"
 
         return appearance + reference + end
 
@@ -517,8 +530,8 @@ class CatPage(Cat):
                 # flag for mini-wave
             except IndexError:
                 continue
-        lis = [[i for i in range(len(l[j])) if not
-                (l[j][i] == 0 or l[j][i] == -1)] for j in range(3)]
+        lis = [[i for i in range(len(l[j])) if
+                l[j][i] not in [-1, 0]] for j in range(3)]
         # lis is a list of lists of indices where data is not 0
         # if there is only a single line,
         # there is no need for another list comprehension
@@ -528,9 +541,14 @@ class CatPage(Cat):
         addcat = lambda ca: categories.append([ca])
         categories = [["Cat Units", f"{self.r[0]} Cats"]]
 
-        if 'Ancient Egg' in self.names[1]: addcat("Ancient Eggs")
-        elif self.isCrazed: addcat("Crazed Cats")
-        elif self.isLegend: addcat("Legend Cats")
+        if 'Ancient Egg' in self.names[1]:
+            addcat("Ancient Eggs")
+        if self.isCrazed:
+            addcat("Crazed Cats")
+        if self.isLegend:
+            addcat("Legend Cats")
+        if self.isCollab:
+            addcat("Collaboration Event Cats")
         if self.gacha or self.r[0] == "Uber Rare" and not (self.ID == 53 or self.ID == 155):
             addcat("Gacha Cats")
         elif self.drop: addcat("Item Drop Cats")
