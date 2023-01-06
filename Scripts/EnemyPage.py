@@ -95,10 +95,21 @@ class EnemyPage(Enemy):
                "}}\n\n" if self.jpName is not None else ""
 
 
-    @staticmethod
-    def getEncounters():
-        """Gets the enemy encounters, most likely from WWR's code idk"""
-        return ""
+    def getEncounters(self):
+        """Gets the enemy encounters !!!INCOMPLETE!!!"""
+        def stg():
+            cache = []
+
+            for datafile in os.listdir(f"{data_mines}/DataLocal"):
+                if datafile[:5] == "stage":
+                    x = opencsv(f"{data_mines}/DataLocal/{datafile}")
+                    for i, ls in enumerate(x):
+                        if len(ls) > 9 and ls[0] == self.ID and \
+                                i > 0 and datafile not in cache:
+                            cache.append(datafile)
+                            yield datafile
+
+        return list(stg())
 
 
     def getStats(self) -> str:

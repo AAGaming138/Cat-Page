@@ -157,7 +157,6 @@ class CatPage(Cat):
         """
         Method that writes the in-game cost and XP costs
         """
-        rarity = self.catRarity
         # level 1 xp upgrade costs
         defaults = {
             "2000": 'EX1',
@@ -193,18 +192,19 @@ class CatPage(Cat):
                     f"*Chapter 3: {cost[2] * 2:,}¢\n"
 
         # for XP upgrade template
-        if rarity[3] in defaults:
-            if rarity[3] == "9800":
+        if self.catRarity[3] in defaults:
+            if self.catRarity[3] == "9800":
                 if not self.isLegend:
-                    upgrade = "UR" if rarity[13] == '4' else "LR"
+                    upgrade = "UR" if self.catRarity[13] == '4' else "LR"
                 else: upgrade = "EXL"
             else:
-                upgrade = defaults[rarity[3]]
+                upgrade = defaults[self.catRarity[3]]
         else:
+            last = int(self.catRarity[2]) * 2 if self.isCrazed \
+                else int(int(self.catRarity[3]) * 1.5)
             upgrade = "MIX\n" + \
-                      '\n'.join([f"|{i + 1:02} = {rarity[i + 3]}"
-                                 for i in range(9)]) + f'\n|10 = ' \
-                      f'{int(rarity[2])*2 if self.isCrazed else int(int(rarity[3])*1.5)}\n'
+                      '\n'.join([f"|{i + 1:02} = {self.catRarity[i + 3]}"
+                                 for i in range(9)]) + f'\n|10 = {last}\n'
         # this gives a mix of XP as given in the rarity list
         return "==Cost==\n" + costs + f"{'{{'}Upgrade Cost|{upgrade}{'}}'}\n\n"
 
@@ -496,9 +496,11 @@ class CatPage(Cat):
         reference = f'==Reference==\n' \
                     f'*https://battlecats-db.com/unit/{self.ID + 1:03}.html\n\n'
 
-        finder = re.compile('(?<=\[\[)(.*)(?= Collab)')
         try:
-            collab = "{{" + finder.findall(self.gacha)[0] + "}}\n"
+            collab = "{{" + \
+                     re.compile('(?<=\[\[)(.*)(?= Collab)'
+                                ).findall(self.gacha)[0] + \
+                     "}}\n"
         except (IndexError, TypeError):
             collab = ""
 

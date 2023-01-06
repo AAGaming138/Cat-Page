@@ -1,6 +1,5 @@
 """Main application to generate a GUI"""
 
-from EnemyPage import EnemyPage
 from tkinter import *
 from MakePage import *
 import tkinter.ttk as ttk
@@ -312,7 +311,7 @@ menubar = Menu(root)
 filemenu = Menu(menubar, tearoff=0)
 thememenu = Menu(menubar, tearoff=0)
 
-menubar.add_cascade(label="File", menu=filemenu)
+menubar.add_cascade(label="Mode", menu=filemenu)
 filemenu.add_command(label="Enemy Page", command=enemy_options)
 
 menubar.add_cascade(label="Themes", menu=thememenu)
