@@ -181,7 +181,7 @@ class MakeEnemyPage:
 
         else:
             return self.en_page.getStart() + self.en_page.getDict() + \
-                   self.en_page.getEncounters() + self.en_page.getStats() + \
+                   self.en_page.getStats() + \
                    self.en_page.getEnd() + self.en_page.getCategories()
 
 # NOTE: Maybe 2 classes for practically the same thing isn't the most efficient
