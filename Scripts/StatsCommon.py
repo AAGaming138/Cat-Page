@@ -51,7 +51,7 @@ class StatsCommon:
         try:
             anim_file = opencsv(f"{data_mines}/ImageDataLocal/{fi}", header=True)
         except FileNotFoundError:
-            return 0 if self.is_enemy else 44
+            return 0 if self.is_enemy else 4
 
         frame = 0
         for i in range(len(anim_file)):
@@ -786,7 +786,8 @@ class StatsCommon:
 
     def get_talents(self, talent_ls: list, cat_ls: list) -> list:
         """Cat units only; Gets talents for cat units"""
-        if self.is_enemy: raise UnitTypeError(self.is_enemy)
+        if self.is_enemy:
+            raise UnitTypeError(self.is_enemy)
 
         if not talent_ls: return []
         def link(ability: str, type: str = 'default'):

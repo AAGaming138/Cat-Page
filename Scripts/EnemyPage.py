@@ -104,12 +104,11 @@ class EnemyPage(Enemy):
                 if datafile[:5] == "stage":
                     x = opencsv(f"{data_mines}/DataLocal/{datafile}")
                     for i, ls in enumerate(x):
-                        if len(ls) > 9 and ls[0] == self.ID and \
-                                i > 0 and datafile not in cache:
+                        if len(ls) > 9 and ls[0] == self.ID and i > 0 and datafile not in cache:
                             cache.append(datafile)
                             yield datafile
-
-        return list(stg())
+        print(list(stg()))
+        return "\n".join(list(stg()))
 
 
     def getStats(self) -> str:

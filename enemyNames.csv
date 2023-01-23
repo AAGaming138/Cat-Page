@@ -626,9 +626,11 @@ Number,Name,PageName,Health,Atk
 624,Cumulus Gallus,Cumulus Gallus (Behemoth),1770000,20000
 625,10th Anniversary Birthday Cake,10th Anniversary Birthday Cake (Event Enemy),100,1
 626,10th Anniversary Scarecrow,10th Anniversary Scarecrow (Enemy Base),100,999999
-627,627,627 (Relic) (Behemoth),2200000,35000
-628,628,628 (Relic) (Behemoth),2500000,90000
-629,629,629 (Relic) (Colossal),4000000,160000
-630,630,630 (Floating),3000000,3000000
+627,Ancient Magamojoe,Ancient Magamojoe (Relic) (Behemoth),2200000,35000
+628,Great Ape Luza,Great Ape Luza (Relic) (Behemoth),2500000,90000
+629,Zero Luza,Zero Luza (Relic) (Colossus),4000000,160000
+630,Metafilibuster,Metafilibuster (Floating),3000000,3000000
 631,Rabbit Doge,Rabbit Doge (Event Enemy),3000,600
-632,632,632 (Enemy Base),0,0
+632,Origin Base,Origin Base (Enemy Base),0,0
+633,Killer Tank Cat,Killer Tank Cat (Black),9000,240
+634,634,634 (Aku) (Behemoth),950000,28000

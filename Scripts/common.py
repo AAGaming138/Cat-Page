@@ -7,7 +7,7 @@ from pathlib import Path
 DIR = str(Path(__file__
                ).parent.absolute()).replace('\\', '/').replace("/Scripts", "")
 
-current_ver = "12.0"
+current_ver = "12.1"
 data_mines = DIR + f'/Version {current_ver}.0'
 
 br = "\n"
@@ -61,7 +61,7 @@ def opencsv(filename: str, header: bool = False) -> list:
         with open(filename, 'r', encoding='utf8', newline='') as f:
             rf = csv.reader(f)
             if header: next(rf)
-            return [row for row in rf]
+            return [row for row in rf if row != []]
     except (UnicodeDecodeError, StopIteration):
         quit("Unit is unobtainable.")
 

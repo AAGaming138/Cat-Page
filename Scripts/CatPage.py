@@ -442,11 +442,11 @@ class CatPage(Cat):
             169: "BlueStone",
             170: "GreenStone",
             171: "YellowStone",
-            179: "PurpleCrystal",
-            180: "RedCrystal",
-            181: "BlueCrystal",
-            182: "GreenCrystal",
-            183: "YellowCrystal",
+            179: "PurpleGem",
+            180: "RedGem",
+            181: "BlueGem",
+            182: "GreenGem",
+            183: "YellowGem",
             184: "RainbowStone"
             }
 
