@@ -71,15 +71,13 @@ class MakeCatPage:
 
     def get_anim(self):
         """Gets all the animation data"""
-        self.anims = [self.stats.get_atkfreq(self.ID, 'f', self.cats[0]),
-                      self.stats.get_atkfreq(self.ID, 'c', self.cats[1]),
-                      self.stats.get_atkfreq(self.ID, 's', self.cats[2])
-                      if self.cat_page.tf else 100,
-                      self.stats.get_backswing(self.ID, 'f', self.cats[0]),
-                      self.stats.get_backswing(self.ID, 'c', self.cats[1]),
-                      self.stats.get_backswing(self.ID, 's', self.cats[2])
-                      if self.cat_page.tf else 0]
+        anim = lambda k, num, ind: \
+            self.stats.get_atkanim(self.ID, k, self.cats[num])[ind]
+        self.anims = [anim('f', 0, 0), anim('c', 1, 0), anim('s', 2, 0),
+                      anim('f', 0, 1), anim('c', 1, 1), anim('s', 2, 1)]
+
         # 0-2 attack frequency, 3-5 backswing
+
 
 
     def parse_cat(self):

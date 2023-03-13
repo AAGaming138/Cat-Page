@@ -203,7 +203,12 @@ class Cat:
 
     def getNPCost(self, LvID: int) -> tuple:
         if LvID != 0:
-            costs = [int(i) for i in self.NPCosts[LvID] if i if i != '\x03\x03\x03']
+            for n in self.NPCosts[LvID]:
+                try:
+                    int(n)
+                except ValueError:
+                    self.NPCosts[LvID].remove(n)
+            costs = [int(i) for i in self.NPCosts[LvID] if i if type(i) != int]
             return sum(costs[1:]), True if len(costs) > 2 else False
         else: return 0,
 
@@ -213,8 +218,8 @@ class Cat:
         for i in self.catTalents:
             if i[0] == str(self.ID):
                 i = [int(x) for x in i if x != '\x03\x03\x03']
-                return [(i[13 * k + 2:13 * k + 14],
-                         self.getNPCost(i[13 * k + 13])) for k in range(6)]
+                return [(i[14 * k + 2:14 * k + 16],
+                         self.getNPCost(i[14 * k + 13])) for k in range(8)]
         return []
 
 

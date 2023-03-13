@@ -50,7 +50,7 @@ class Buttons(ttk.Frame):
 
     def get_enemy_buttons_RIGHT(self):
         """Adds left enemy buttons"""
-        self.add_button("Encounters", 9, 2, 2, 0)
+        self.add_button("Encounters", 9, 2, 2)
         self.add_button("Category Only", 10, 3, 2)
         checkbox = Checkbutton(self, text="Increment", justify="left",
                                anchor="w", variable=check,

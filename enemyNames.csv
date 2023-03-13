@@ -632,5 +632,10 @@ Number,Name,PageName,Health,Atk
 630,Metafilibuster,Metafilibuster (Floating),3000000,3000000
 631,Rabbit Doge,Rabbit Doge (Event Enemy),3000,600
 632,Origin Base,Origin Base (Enemy Base),0,0
-633,Killer Tank Cat,Killer Tank Cat (Black),9000,240
-634,634,634 (Aku) (Behemoth),950000,28000
+633,Killer Tank Cat,Killer Tank Cat (Enemy),9000,240
+634,Vermilingua Rangmaster,Vermilingua Rangmaster (Aku) (Behemoth),950000,28000
+635,635,635 (Enemy),1100000,11000
+636,636,636 (Aku),9500,8000
+637,637,637 (Aku) (Colossal),800000,15000
+638,638,638 (Floating),444444,20000
+639,639,639 (Red) (Behemoth),1600000,8000

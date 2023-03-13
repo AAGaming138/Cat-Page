@@ -48,7 +48,7 @@ class EnemyPage(Enemy):
             return
         self.stats = StatsCommon(is_enemy=True)
         self.ls = self.getData()
-        if self.stats.get_atkfreq(ID, "", self.ls) < 1 or self.name == "N/A":
+        if self.stats.get_atkanim(ID, "", self.ls)[1] < 1 or self.name == "N/A":
             self.ID = -2
             return
         self.desc = self.getDesc()
@@ -114,8 +114,7 @@ class EnemyPage(Enemy):
     def getStats(self) -> str:
         """Gets the stat table of the enemy"""
         atk = self.ls[3] + self.ls[55] + self.ls[56]
-        atkfreq = self.stats.get_atkfreq(self.ID, "", self.ls)
-        bkswing = self.stats.get_backswing(self.ID, "", self.ls)
+        bkswing, atkfreq = self.stats.get_atkanim(self.ID, "", self.ls)
         traits = self.stats.get_traits(self.ls)
         targ = 'Area Attack' if self.ls[11] == 1 else 'Single Target'
         # general stats

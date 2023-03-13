@@ -109,13 +109,43 @@ class StatsCommon:
         return "/".join(traits)
 
 
-    def get_atkfreq(self, ID: int, form: str, ls: list) -> int:
+    def get_atkanim(self, ID: int, form: str, ls: list) -> tuple:
         """
         :param ID: unit ID
         :param form: normal, evolved, or true form
         :param ls: normal, evolved, or true data values
-        :return: the value given
+        :return: backswing, attack frequency tuple
         """
+        nums = 12 if self.is_enemy else 13
+
+        # START BACKSWING
+        fi = f"{ID:03}_{'e' if self.is_enemy or form == '' else form}02.maanim"
+
+        try:
+            anim_file = opencsv(f"{data_mines}/ImageDataLocal/{fi}", header=True)
+        except FileNotFoundError:
+            return 100, 0 if self.is_enemy else 44, 471
+
+        frame = 0
+        for i in range(len(anim_file)):
+            if len(anim_file[i]) != 4:
+                anim_file[i] = [0, 0, 0, 0]
+                # any list of 4 numbers are actual animation data, so this
+                # bit basically discards everything that is not 4 numbers
+                # then turns it into a dummy list of 4 numbers to be interpreted
+            else:
+                for j in range(4):
+                    anim_file[i][j] = int(anim_file[i][j])
+            if anim_file[i][0] > frame:
+                frame = anim_file[i][0]
+            # frame is simply the largest number of the 4 numbered list,
+            # which is the last frame before restarting the attack animation
+
+        # frame + 1 is the entire attack, ls[12/13] is the foreswing
+        backswing = frame + 1 - ls[nums]
+        # END BACKSWING
+
+        # START ATTACK FREQUENCY
         mult = range(55, 59) if self.is_enemy else range(59, 63)
 
         # Note: ls[4] is the tba/2
@@ -129,13 +159,12 @@ class StatsCommon:
                 else:
                     raise IndexError
             except IndexError:
-                atkfreq = tba + ls[12 if self.is_enemy else 13]
+                atkfreq = tba + ls[nums]
             # if not multi-hit, it's just tba + foreswing
         else:
-            atkfreq = ls[12 if self.is_enemy else 13] + \
-                      self.get_backswing(ID, form, ls) + 1
+            atkfreq = ls[nums] + backswing + 1
             # if tba is 0, it's foreswing + backswing
-        return atkfreq - 1
+        return backswing, atkfreq - 1
         # subtract 1 since atkfreq also accounts for the attacking frame
         # which should be instantaneous
 
@@ -784,12 +813,13 @@ class StatsCommon:
             return "-" if mode != 2 else ''
 
 
-    def get_talents(self, talent_ls: list, cat_ls: list) -> list:
+    def get_talents(self, talent_ls: list, cat_ls: list) -> tuple:
         """Cat units only; Gets talents for cat units"""
+
         if self.is_enemy:
             raise UnitTypeError(self.is_enemy)
+        if not talent_ls: return ()
 
-        if not talent_ls: return []
         def link(ability: str, type: str = 'default'):
             if type == 'default': l = ability
             elif type == 'res': l = "Resist"
@@ -799,10 +829,20 @@ class StatsCommon:
             else: l = type
             return f"'''[[Special Abilities#{l}|{ability}]]'''"
 
+        nor = 0 # number of normal talents
+        ult = 0 # number of ultra talents
+        for i in range(len(talent_ls)):
+            if talent_ls[i][0][0] != 0:
+                if talent_ls[i][0][-1] != 1:
+                    nor += 1
+                else:
+                    ult += 1
+
         talents = {
             1:  link("Weaken"),
             2:  link("Freeze"),
             3:  link("Slow"),
+            5:  link("Strong Against"),
             6:  link("Tough Vs", "Resistant"),
             7:  link("Massive Damage"),
             8:  link("Knockback"),
@@ -826,6 +866,7 @@ class StatsCommon:
             31: link("Attack Buff", "stat"),
             32: link("Defense Buff", "stat"),
             35: link("Black", "tar"),
+            36: link("Metal", "tar"),
             37: link("Angel", "tar"),
             38: link("Alien", "tar"),
             39: link("Zombie", "tar"),
@@ -846,26 +887,34 @@ class StatsCommon:
             57: link("Aku", "tar"),
             58: link("Shield Piercing"),
             59: link("Soulstrike"),
-            60: link("Curse")
+            60: link("Curse"),
+            61: link("Attack Frequency Up", "stat"),
+            62: link("Mini-Wave"),
         }
         def make_talent():
             """Generator that gives formatted talents"""
-            for x in range(6 if talent_ls[5][0][0] else 5):
+
+            for x in range(nor + ult):
                 t = talent_ls[x][0]
                 info = ' '
                 frame = lambda value:\
                     f"{value}f <sup>{round(value/30, 2)}s</sup>"
+                # format: xxf <sup>xx.xxs</sup>
                 to_int = lambda num: \
                     int(num) if int(num) == num else round(num, 2)
+                # turns into int if int otherwise round to 2 decimal places
                 gap = lambda m: to_int((t[m+1] - t[m])/(t[1] - 1))
+                # (max lvl stats - first lvl stats) / (max lvl - first lvl)
                 start_perc = lambda s: f" {t[s]}%, improves by " \
                     if gap(s) != t[s] else " "
+                # start improvement, increases by gap
                 start_time = lambda s: \
                     f" {frame(t[s])}, improves by {frame(gap(s))}" \
                         if gap(s) != t[s] else " "
+                # same thing but for time instead of %
                 maximum = lambda h, mode = '%':\
                     f" per level up to {t[h]}{'%' if mode == '%' else mode} "
-
+                #
                 def is_dupe(index: int):
                     try:
                         cat_ls[index]
@@ -894,6 +943,8 @@ class StatsCommon:
                 elif t[0] == 3 and not is_dupe(27):
                     info = f": Adds a {t[2]}% chance to slow for{start_time(4)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
+                elif t[0] == 5:
+                    info = f": Becomes strong against targeted trait."
                 elif t[0] == 8 and is_dupe(24):
                     info = f": Increases knockback chance by" \
                            f"{start_perc(2)}{gap(2)}%{maximum(3)}"
@@ -1003,12 +1054,22 @@ class StatsCommon:
                 elif t[0] == 60 and not is_dupe(92):
                     info = f": Adds a {t[2]}% chance to curse for{start_time(4)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5] / 30, 2)}s</sup> "
+                elif t[0] == 61:
+                    info = f": Decreases time between attacks by" \
+                           f"{start_perc(2)}{gap(2)}%{maximum(3)}"
+                elif t[0] == 62 and is_dupe(94):
+                    info = f": Upgrades chance to perform mini-waves by" \
+                           f"{start_perc(2)}{gap(2)}%{maximum(3)}"
+                elif t[0] == 62 and not is_dupe(94):
+                    info = f": Adds a {t[2]}% chance to perform a level {t[4]}" \
+                           f" mini-wave, improves by {gap(2)}%{maximum(3)}"
 
                 yield talents[t[0]] + info + \
                       f"({'Total ' if talent_ls[x][1][1] else ''}" \
                       f"Cost: {talent_ls[x][1][0]} NP)"
 
-        return [i for i in make_talent()]
+        return [i for i in make_talent()], nor, ult
+        # talents in list form, number of normal tals, number of ultra tals
 
 # TODO: - Check some of make_talent() and some of get_abilities()
 #       - Make backswing and atk frequency into one thing

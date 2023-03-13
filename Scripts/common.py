@@ -7,7 +7,7 @@ from pathlib import Path
 DIR = str(Path(__file__
                ).parent.absolute()).replace('\\', '/').replace("/Scripts", "")
 
-current_ver = "12.1"
+current_ver = "12.2"
 data_mines = DIR + f'/Version {current_ver}.0'
 
 br = "\n"

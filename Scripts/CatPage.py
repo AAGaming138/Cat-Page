@@ -466,11 +466,18 @@ class CatPage(Cat):
 
 
     @staticmethod
-    def getTalent(talents: list) -> str:
+    def getTalent(talents: tuple) -> str:
         """Writes the talents section"""
-        if not talents: return ''
-        else: return re.sub('\.0(?![0-9])', '',
-                            f"\n\n==Talents==\n*{f'{br}*'.join(talents)}")
+        if not talents:
+            return ''
+        else:
+            t_ls, nor, ult = talents
+            txt = f"\n\n===Ultra Talents===\n" \
+                  f"*{f'{br}*'.join(t_ls[nor:len(t_ls)])}" if ult != 0 else ""
+
+            return re.sub('\.0(?![0-9])', '',
+                            f"\n\n==Talents==\n"
+                            f"*{f'{br}*'.join(t_ls[0:nor])}{txt}")
 
 
     def getEnd(self) -> str:
@@ -488,10 +495,8 @@ class CatPage(Cat):
                    f"]]" if names[self.ID + 1][1] != "N/A" else "N/A &gt;&gt;"
 
         appearance = f"\n\n==Appearance==\n*Normal Form: ?\n*Evolved Form: " \
-                     f"?{f'{br}*True Form: ?' if self.tf else ''}\n\n" \
-                     f"{'<!--' if ver == current_ver else ''}" + \
-                     "{{Gallery|Gatyachara " + f"{self.ID:03}" + " f}}" + \
-                     f"{'-->' if ver == current_ver else ''}\n\n"
+                     f"?{f'{br}*True Form: ?' if self.tf else ''}\n\n" + \
+                     "{{Gallery|Gatyachara " + f"{self.ID:03}" + " f}}" + "\n\n"
 
         reference = f'==Reference==\n' \
                     f'*https://battlecats-db.com/unit/{self.ID + 1:03}.html\n\n'
@@ -636,6 +641,7 @@ class CatPage(Cat):
             1: "Cats with Weaken ability",
             2: "Cats with Freeze ability",
             3: "Cats with Slow ability",
+            5: "Cats with Strong ability",
             6: "Cats with Resistant ability",
             7: "Cats with Massive Damage ability",
             8: "Cats with Knockback ability",
@@ -659,6 +665,7 @@ class CatPage(Cat):
             31: "Cats with Attack Buff Talent",
             32: "Cats with Defense Buff Talent",
             35: "Anti-Black Cats",
+            36: "Anti-Metal Cats",
             37: "Anti-Angel Cats",
             38: "Anti-Alien Cats",
             39: "Anti-Zombie Cats",
@@ -679,7 +686,9 @@ class CatPage(Cat):
             57: "Anti-Aku Cats",
             58: "Shield Piercing Cats",
             59: "Soulstrike Cats",
-            60: "Cats with Curse ability"
+            60: "Cats with Curse ability",
+            61: "Cats with Attack Frequency Up Talent",
+            62: "Mini-Wave Cats"
         }
         def categories_has(element: str) -> bool:
             """
@@ -692,8 +701,9 @@ class CatPage(Cat):
             return False
         if self.tals:
             addcat("Cats with Talents")
+            tal_num = len([i for i in range(len(self.tals)) if self.tals[i][0][0] != 0])
             categories.append([talents[self.tals[i][0][0]] for i in
-                               range(5 if self.tals[5][0][0] == 0 else 6) if not
+                               range(tal_num) if not
                            categories_has(talents[self.tals[i][0][0]])])
         # adds talent categories at the end of the list
         # if there are talents
