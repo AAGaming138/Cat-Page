@@ -73,11 +73,10 @@ class MakeCatPage:
         """Gets all the animation data"""
         anim = lambda k, num, ind: \
             self.stats.get_atkanim(self.ID, k, self.cats[num])[ind]
-        self.anims = [anim('f', 0, 0), anim('c', 1, 0), anim('s', 2, 0),
-                      anim('f', 0, 1), anim('c', 1, 1), anim('s', 2, 1)]
+        self.anims = [anim('f', 0, 1), anim('c', 1, 1), anim('s', 2, 1),
+                      anim('f', 0, 0), anim('c', 1, 0), anim('s', 2, 0)]
 
         # 0-2 attack frequency, 3-5 backswing
-
 
 
     def parse_cat(self):

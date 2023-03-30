@@ -91,8 +91,17 @@ class CatPage(Cat):
         elif self.drop: cond = f'unlocked when beating [Stage]'
         else: cond = "obtained by [TODO]"
 
-        image = lambda num: f"|image{num} = " + ('placeholder.png'
-            if self.r[7] == current_ver else f'{self.ID:03} {num}.png') + "\n"
+        def image(num: int) -> str:
+            """Takes image ID and converts into wikitext"""
+            if self.isEgg and num == 1:
+                im = f"M 000.png"
+            elif self.r[7] == current_ver:
+                im = f"placeholder.png"
+            else:
+                im = f'{self.ID:03} {num}.png'
+
+            return f"|image{num} = " + im + "\n"
+
 
         limited = "{{LimitedContent}}\n{{Stub}}\n" if self.r[7] == current_ver else ''
 
@@ -119,8 +128,10 @@ class CatPage(Cat):
                f"{true_evol}\n\n" \
                f"==Performance==\n" \
                f"{get_perf()}" + \
-                    f"===Pros===\n*?\n\n===Cons===\n*?\n" + \
-               "{{Job|Classification = [TODO]}}\n\n==Strategy/Usage==\n-\n\n"
+                    f"===Pros===\n*?\n\n" \
+                    f"===Cons===\n*?\n" + \
+               "{{Job|Classification = Crowd-Controller}}\n\n" \
+               "==Strategy/Usage==\n-\n\n"
 
         return limited + start + catapp + evol
 
@@ -130,17 +141,23 @@ class CatPage(Cat):
         Method that writes the translation template
         """
         # TODO add english description
+        # if egg, use default egg image otherwise use its respective image
+        image = lambda id, num: \
+            f'|image{num} = Uni{self.ID:03} {id}00.png\n'\
+                if not self.isEgg or num != 1 else f'|image{num} =' \
+                                                   f' Uni000 m00.png\n'
+
         return "==Description==\n{{Translation\n" + \
                 f"|Cat Unit Number = {self.ID}\n" \
                 f"|cat category = [[:Category:{self.r[0]} Cats|{self.r[0]} Cat]]\n" \
                 f"|Normal Form name = {self.names[1]}\n" \
-                f"|image1 = Uni{self.ID:03} f00.png\n" \
+                f"{image('f', 1)}" \
                 f"|cat_endesc1 = -\n" \
                 f"|Evolved Form name = {self.names[2]}\n" \
-                f"|image2 = Uni{self.ID:03} c00.png\n" \
+                f"{image('c', 2)}" \
                 f"|cat_endesc2 = -\n" + \
                 (f'|Third Form name = {self.names[3]}\n'
-                 f'|'f'image3 = Uni{self.ID:03} s00.png\n'
+                 f"{image('s', 3)}"
                  f'|cat_endesc3 = -\n' if self.tf else '') + \
                 f"|Normal Form name (JP) = {self.desc[0]} (?, ?)\n" \
                 f"|cat_jpscriptc1 = {self.desc[3]}\n" \
@@ -203,8 +220,8 @@ class CatPage(Cat):
             last = int(self.catRarity[2]) * 2 if self.isCrazed \
                 else int(int(self.catRarity[3]) * 1.5)
             upgrade = "MIX\n" + \
-                      '\n'.join([f"|{i + 1:02} = {self.catRarity[i + 3]}"
-                                 for i in range(9)]) + f'\n|10 = {last}\n'
+                      '\n'.join([f"|{self.catRarity[i + 3]}"
+                                 for i in range(9)]) + f'\n|{last}\n'
         # this gives a mix of XP as given in the rarity list
         return "==Cost==\n" + costs + f"{'{{'}Upgrade Cost|{upgrade}{'}}'}\n\n"
 
@@ -214,20 +231,27 @@ class CatPage(Cat):
         tables = []
         n = self.r[0] == "Normal" # is cat a Normal Cat
 
-        def comparison(lis: list, key: int, an: bool = False) -> list:
+        def comparison(lis: list, key: int, other: str = '') -> list:
             """A super compact version of the old compare function"""
-            # TODO make comparison function cover health, attack, and DPS
             stats = {
+                0: ("HP Initial",),
                 1: ("Knockback",),
                 2: ("Movement Speed",),
+                3: ("AP Initial",),
                 4: ("Attack Frequency",),
                 5: ("Attack Range",),
                 6: ("Ch1", "Ch2", "Ch3"),
                 7: ("Recharge Time",),
+                8: ("DPS Initial",),
                 12: ("Target",)
             }
             if key not in stats: return [''] * 2
-            if an: stats[1] = "Attack Animation",
+            if other == 'an':
+                stats[1] = "Attack Animation",
+            elif other == 'd':
+                stats[0] = "DPS Initial",
+            elif other == 'pre_d':
+                stats[0] = "DPS Initial Precise",
             s = lambda x, y: commarise((x / 2 + 1) * lis[y + 1][key]
                                        if key == 6 else lis[y + 1][key])
 
@@ -278,14 +302,26 @@ class CatPage(Cat):
             #                 actual backswing]
 
         repeated = [comparison(self.ls, i) for i in range(13)]
+
         atks = [mult(self.ls[i], a, i) for i in range(3)]
-        anim = comparison(atks, 1, an=True)
+        anim = comparison(atks, 1, other="an")
         # for attack animation
+
+        dps_list = [[math.floor(atks[i][0]/(a[i]/30))] for i in range(3)]
+        # list of initial DPS
+        preDPS_list = [[f'{"{{"}#expr:{atks[j][0]}/'
+                        f'({a[j]}/30){"}}"}'] for j in range(3)]
+        # list of formatted precise DPS
+
+        repeatedDPS = comparison(dps_list, 0, other="d")
+        repeatedpreDPS = comparison(preDPS_list, 0, other="pre_d")
+        # for DPS
+
         mods = list(self.r[9:12])
         # TODO: figure out the weird stats - Crazed Fish, Crazed Bird,
         #  Flower Cat, Gacha Cat, Dom Cat
-        left = '<'
-        pipe = '|'
+        left = '<' # '&lt;'
+        pipe = '|' # '&#124;'
         # this is pretty much impossible to read at this point but w/e
         table_ls = []
 
@@ -299,12 +335,7 @@ class CatPage(Cat):
             (f"\n|3rd stats Level = {form_max}" if self.tf else "")
 
         for i in range(3 if self.tf else 2):
-            if i == 0:
-                ind = 'normal'
-            elif i == 1:
-                ind = 'evolved'
-            else:
-                ind = 'third'
+            ind = ['normal', 'evolved', 'third'][i]
 
             DPS = round((atks[i][0] if i == 0 else
                          atks[i][0] * mods[m]) / (a[i] / 30), 2)
@@ -369,12 +400,8 @@ class CatPage(Cat):
             f'|Ch2 Normal = {int(self.ls[0][6] * 1.5):,}\n'
             f'|Ch3 Normal = {self.ls[0][6] * 2:,}\n'
             f'|Special Ability Normal = {self.stats.get_abilities(self.ls[0], 1)}\n'
-            f'|Evolved Form Name = {self.names[2]}\n'
-            f'|HP Initial Evolved = {self.ls[1][0]:,}\n'
-            f'|AP Initial Evolved = {atks[1][0]:,}\n'
-            f'|DPS Initial Evolved = {math.floor(atks[1][0] / a[1] * 30)}\n'
-            f'|DPS Initial Precise Evolved ='
-                      f' {"{{"}#expr:{atks[1][0]}/({a[1]}/30){"}}"}\n'
+            f'|Evolved Form Name = {self.names[2]}{repeated[0][0]}'
+            f'{repeated[3][0]}{repeatedDPS[0]}{repeatedpreDPS[0]}\n'
             f'|HP Evolved lvl 20 = {self.ls[1][0] * mods[1]:,}\n'
             f'|AP Evolved lvl 20 = {int(atks[1][0] * mods[1] + 0.5):,}\n'
             f'|DPS Evolved lvl 20 = '
@@ -388,12 +415,8 @@ class CatPage(Cat):
             f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
             f'|Special Ability Evolved = {self.stats.get_abilities(self.ls[1], 1)}\n' + \
             (f'{"}}"}\n{left}/tabber>' if not self.tf else
-            f'|True Form Name = {self.names[3]}\n'
-            f'|HP Initial True = {self.ls[2][0]:,}\n'
-            f'|AP Initial True = {atks[2][0]:,}\n'
-            f'|DPS Initial True = {math.floor(atks[2][0] / a[2] * 30)}\n'
-            f'|DPS Initial Precise True = '
-            f'{"{{"}#expr:{atks[2][0]}/({a[2]}/30){"}}"}\n'
+            f'|True Form Name = {self.names[3]}{repeated[0][1]}'
+            f'{repeated[3][1]}{repeatedDPS[1]}{repeatedpreDPS[1]}\n'
             f'|HP True lvl 30 = {self.ls[2][0] * mods[2]:,}\n'
             f'|AP True lvl 30 = {int(atks[2][0] * mods[2] + 0.5):,}\n'
             f'|DPS True lvl 30 = '
@@ -472,6 +495,7 @@ class CatPage(Cat):
             return ''
         else:
             t_ls, nor, ult = talents
+            # talent list, no. normal talents, no. ultra talents
             txt = f"\n\n===Ultra Talents===\n" \
                   f"*{f'{br}*'.join(t_ls[nor:len(t_ls)])}" if ult != 0 else ""
 
@@ -494,9 +518,10 @@ class CatPage(Cat):
         next_cat = f"[[{names[self.ID + 1][4]}|{names[self.ID + 1][1]} &gt;&gt;" \
                    f"]]" if names[self.ID + 1][1] != "N/A" else "N/A &gt;&gt;"
 
+        image = lambda: f"000 m" if self.isEgg else f"{self.ID:03} f"
         appearance = f"\n\n==Appearance==\n*Normal Form: ?\n*Evolved Form: " \
                      f"?{f'{br}*True Form: ?' if self.tf else ''}\n\n" + \
-                     "{{Gallery|Gatyachara " + f"{self.ID:03}" + " f}}" + "\n\n"
+                     "{{Gallery|Gatyachara " + f"{image()}" + "}}" + "\n\n"
 
         reference = f'==Reference==\n' \
                     f'*https://battlecats-db.com/unit/{self.ID + 1:03}.html\n\n'
@@ -548,7 +573,7 @@ class CatPage(Cat):
         addcat = lambda ca: categories.append([ca])
         categories = [["Cat Units", f"{self.r[0]} Cats"]]
 
-        if 'Ancient Egg' in self.names[1]:
+        if self.isEgg:
             addcat("Ancient Eggs")
         if self.isCrazed:
             addcat("Crazed Cats")

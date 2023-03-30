@@ -23,6 +23,7 @@ class Cat:
             self.NPCosts = opencsv(f"{data_mines}/DataLocal/SkillLevel.csv")
         except (FileNotFoundError, IndexError):
             self.ID = -1
+        self.isEgg = 'Ancient Egg' in self.names[1]
 
 
     def getData(self):
