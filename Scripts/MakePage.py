@@ -30,6 +30,7 @@ class MakeCatPage:
         self.op = vars(Options())
         self.anims = []
         self.cats = self.cat_page.getData()
+        self.name = self.cat_page.names[1]
 
 
     def get_errors(self):
@@ -37,15 +38,14 @@ class MakeCatPage:
         if self.ID == -1:
             raise NoDataError("ID", "")
         # unit not found error
-        name = self.cat_page.names[1]
         if len(self.cat_page.ls) < 3:
-            raise NoDataError("", name)
+            raise NoDataError("", self.name)
         # insufficient data error
         elif self.mode == 3 and not self.cat_page.getCatfruit():
-            raise NoDataError("catfruits", name)
+            raise NoDataError("catfruits", self.name)
         # no catfruit error
         elif self.mode == 4 and not self.cat_page.tals:
-            raise NoDataError("talents", name)
+            raise NoDataError("talents", self.name)
         # no talents error
 
 
@@ -71,8 +71,13 @@ class MakeCatPage:
 
     def get_anim(self):
         """Gets all the animation data"""
-        anim = lambda k, num, ind: \
-            self.stats.get_atkanim(self.ID, k, self.cats[num])[ind]
+        def anim(k: str, num: int, ind: int):
+            "Formatting"
+            if "Ancient Egg" in self.name and num < 2:
+                return 44 if ind == 0 else 471
+            else:
+                return self.stats.get_atkanim(self.ID, k, self.cats[num])[ind]
+
         self.anims = [anim('f', 0, 1), anim('c', 1, 1), anim('s', 2, 1),
                       anim('f', 0, 0), anim('c', 1, 0), anim('s', 2, 0)]
 
