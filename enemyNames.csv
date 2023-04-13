@@ -634,8 +634,15 @@ Number,Name,PageName,Health,Atk
 632,Origin Base,Origin Base (Enemy Base),0,0
 633,Killer Tank Cat,Killer Tank Cat (Enemy),9000,240
 634,Vermilingua Rangmaster,Vermilingua Rangmaster (Aku) (Behemoth),950000,28000
-635,635,635 (Enemy),1100000,11000
-636,636,636 (Aku),9500,8000
-637,637,637 (Aku) (Colossal),800000,15000
-638,638,638 (Floating),444444,20000
-639,639,639 (Red) (Behemoth),1600000,8000
+635,Easter Egg Cat,Easter Egg Cat (Enemy),1100000,11000
+636,Devil Wife,Devil Wife (Aku),9500,8000
+637,Omens,Omens (Aku) (Colossus),800000,15000
+638,Mini White Cyclone,Mini White Cyclone (Floating),444444,20000
+639,Infernal Pegasus Deonil,Infernal Pegasus Deonil (Red) (Behemoth),1600000,8000
+640,640,640 (Alien) (Behemoth),980000,4500
+641,641,641 (Behemoth),2000000,13000
+642,642,642 (Aku),4666666,679998
+643,643,,3000000,45000
+644,644,644 (Enemy Base),100,999999
+645,645,645 (Event Enemy),100,1
+646,646,646 (Enemy),600000,4500

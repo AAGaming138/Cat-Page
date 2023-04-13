@@ -36,42 +36,6 @@ class StatsCommon:
         return -1
 
 
-    def get_backswing(self, ID: int, form: str, ls: list) -> int:
-        """
-        :param ID: Unit ID
-        :param form: Normal, Evolved, or True form
-        :param ls: list of normal/evolved/true form
-        :return: total attack frames, which is pre + post attack
-        """
-        if self.is_enemy or form == "":
-            fi = f"{ID:03}_e02.maanim"
-        else:
-            fi = f"{ID:03}_{form}02.maanim"
-
-        try:
-            anim_file = opencsv(f"{data_mines}/ImageDataLocal/{fi}", header=True)
-        except FileNotFoundError:
-            return 0 if self.is_enemy else 4
-
-        frame = 0
-        for i in range(len(anim_file)):
-            if len(anim_file[i]) != 4:
-                anim_file[i] = [0, 0, 0, 0]
-                # any list of 4 numbers are actual animation data, so this
-                # bit basically discards everything that is not 4 numbers
-                # then turns it into a dummy list of 4 numbers to be interpreted
-            else:
-                for j in range(4):
-                    anim_file[i][j] = int(anim_file[i][j])
-            if anim_file[i][0] > frame:
-                frame = anim_file[i][0]
-            # frame is simply the largest number of the 4 numbered list,
-            # which is the last frame before restarting the attack animation
-
-        # frame + 1 is the entire attack, ls[12/13] is the foreswing
-        return frame + 1 - ls[12 if self.is_enemy else 13]
-
-
     def get_traits(self, ls: list, link: bool = False):
         """Enemy units only; determines the trait(s) of an Enemy"""
         if not self.is_enemy:
@@ -504,8 +468,11 @@ class StatsCommon:
                                  f" {ftrait} enemies for {ls[85]}f <sub>"
                                  f"{sec(85)} second{pl(85)}</sub>")
             if list_has(86):
+                temp = "" if len(ls) < 109 or ls[108] != 1\
+                    else "#Mini-Surge|Mini-Surge"
                 abilities.append(f"{ls[86]}% chance to create a level {ls[89]}"
-                                 f" [[Surge Attack]] between {int(ls[87] / 4):,}"
+                                 f" [[Surge Attack{temp}]] between "
+                                 f"{int(ls[87] / 4):,}"
                                  f" and {int(ls[87] / 4) + int(ls[88] / 4):,}"
                                  f" range{multab()}")
             if list_has(90): addim("Toxic")
@@ -627,9 +594,11 @@ class StatsCommon:
                 abilities.append(f"{abil('Dodge Attack', 'Dodges')} {ftrait}"
                                  f" enemies' attacks for {ls[85]}f ({ls[84]}%)")
             if list_has(86):
-                abilities.append(f"Creates a level {ls[89]} "
-                                 f"{abil('Surge Attacks', 'Surge Attack')}"
-                                 f" between {int(ls[87] / 4):,} and "
+                temp = abil('Surge Attacks',
+                            'Surge Attack') if len(ls) < 109 or ls[108] != 1 else \
+                       '[[Surge Attack#Mini-Surge|Mini-Surge]]'
+                abilities.append(f"Creates a level {ls[89]} {temp} between "
+                                 f"{int(ls[87] / 4):,} and "
                                  f"{int(ls[87] / 4) + int(ls[88] / 4):,} "
                                  f"range{multab()} ({ls[86]}%)")
             if list_has(90): addim("Toxic")
@@ -765,8 +734,10 @@ class StatsCommon:
                                  f"{abil('Dodge Attack', 'dodge attacks')} from"
                                  f" {ftrait} enemies for {sec(85)} second{pl(85)}")
             if list_has(86):
+                temp = "" if len(ls) < 109 or ls[108] != 1 \
+                    else "#Mini-Surge|Mini-Surge"
                 abilities.append(f"{pro}{ls[86]}% chance to create a level "
-                                 f"{ls[89]} [[Surge Attack]] between "
+                                 f"{ls[89]} [[Surge Attack{temp}]] between "
                                  f"{int(ls[87] / 4):,} and "
                                  f"{int(ls[87] / 4) + int(ls[88] / 4):,} range"
                                  f"{multab()}")
@@ -890,6 +861,8 @@ class StatsCommon:
             60: link("Curse"),
             61: link("Attack Frequency Up", "stat"),
             62: link("Mini-Wave"),
+            63: link("Colossus Slayer"),
+            64: link("Behemoth Slayer")
         }
         def make_talent():
             """Generator that gives formatted talents"""

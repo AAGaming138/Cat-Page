@@ -560,6 +560,8 @@ class CatPage(Cat):
                 if obj[45] < 0: obj[45] = 0 # flag for omni strike
                 if obj[35] != 0 and (len(obj) < 95 or obj[94] != 1): obj[36] = 0
                 # flag for mini-wave
+                if obj[86] != 0 and (len(obj) < 109 or obj[108] != 1): obj[87] = 0
+                # flag for mini-wave
             except IndexError:
                 continue
         lis = [[i for i in range(len(l[j])) if
@@ -633,7 +635,7 @@ class CatPage(Cat):
             81: "Cats with Insane Damage ability",
             82: "Savage Blow Cats",
             84: "Cats with Dodge Attack ability",
-            86: "Surge Attack Cats",
+            86: "Mini-Surge Cats",
             92: "Cats with Curse ability",
             95: "Shield Piercing Cats",
             97: "Colossus Slayer Cats",
@@ -641,6 +643,7 @@ class CatPage(Cat):
             105:"Behemoth Slayer Cats"
         }
         if 35 in data and 36 not in data: abilities[35] = "Wave Attack Cats"
+        if 86 in data and 87 not in data: abilities[86] = "Surge Attack Cats"
         categories.append([abilities[i] for i in abilities if i in data])
         immunities = {
             46: "Cats with Wave Immunity",
@@ -713,7 +716,9 @@ class CatPage(Cat):
             59: "Soulstrike Cats",
             60: "Cats with Curse ability",
             61: "Cats with Attack Frequency Up Talent",
-            62: "Mini-Wave Cats"
+            62: "Mini-Wave Cats",
+            63: "Colossus Slayer Cats",
+            64: "Behemoth Slayer Cats"
         }
         def categories_has(element: str) -> bool:
             """
