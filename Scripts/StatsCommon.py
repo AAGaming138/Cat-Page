@@ -1045,4 +1045,3 @@ class StatsCommon:
         # talents in list form, number of normal tals, number of ultra tals
 
 # TODO: - Check some of make_talent() and some of get_abilities()
-#       - Make backswing and atk frequency into one thing
