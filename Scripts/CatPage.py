@@ -718,7 +718,8 @@ class CatPage(Cat):
             61: "Cats with Attack Frequency Up Talent",
             62: "Mini-Wave Cats",
             63: "Colossus Slayer Cats",
-            64: "Behemoth Slayer Cats"
+            64: "Behemoth Slayer Cats",
+            65: "Mini-Surge Cats"
         }
         def categories_has(element: str) -> bool:
             """

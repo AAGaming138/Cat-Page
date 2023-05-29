@@ -82,7 +82,7 @@ class EnemyPage(Enemy):
 
     def getDict(self):
         """Gets the enemy dictionary description, if exists"""
-        return "==Dictionary==\n" \
+        return "==Description==\n" \
                "{{EnemyDescription\n" \
                f"|Enemy Unit Number = {self.ID:03}\n" \
                f"|enemy category = {self.stats.get_traits(self.ls, True)}\n" \

@@ -1,4 +1,4 @@
-Number,Name,PageName,Health,Atk
+Image,Name,Link,HP,Attack
 000,Doge,,90,8
 001,Snache,,100,15
 002,Those Guys,,200,20
@@ -18,8 +18,6 @@ Number,Name,PageName,Health,Atk
 016,Assassin Bear,Assassin Bear (Black),550,3000
 017,Shy Boy,Shy Boy (Red/Floating),35000,500
 018,The Face,The Face (Floating),99999,2000
-019,N/A,,80,30
-020,N/A,,80,30
 021,Ms. Sign,,10000,1
 022,Mooth,Mooth (Floating),5000,350
 023,Dark Emperor Nyandam,Dark Emperor Nyandam (Red),99999,1800
@@ -199,11 +197,11 @@ Number,Name,PageName,Health,Atk
 197,Doge O'Lantern,Doge O'Lantern (Event Enemy),540,24
 198,Drac-owl-la,Drac-owl-la (Event Enemy),166000,6600
 199,Sa-Bat,Sa-Bat (Event Enemy),6300,800
-200,Junior God of Light - Valkyrie,Junior God of Light - Valkyrie (Enemy),2400,120
-201,Junior God Brynhildr,Junior God Brynhildr (Enemy),30000,800
-202,Junior God Suruzu,Junior God Suruzu (Enemy),45000,1888
-203,Goddess of Abundance - Freya,Goddess of Abundance - Freya (Enemy),165000,100
-204,God of War - Odin,God of War - Odin (Enemy),550000,15500
+200,Valkyrie,Junior God of Light - Valkyrie (Enemy),2400,120
+201,Brynhildr,Junior God Brynhildr (Enemy),30000,800
+202,Suruzu,Junior God Suruzu (Enemy),45000,1888
+203,Freya,Goddess of Abundance - Freya (Enemy),165000,100
+204,Odin,God of War - Odin (Enemy),550000,15500
 205,Capy,Capy (Red),530000,52000
 206,Berserkory,Berserkory (Red),920000,7444
 207,Brollow,Brollow (Floating),19000,15000
@@ -277,7 +275,7 @@ Number,Name,PageName,Health,Atk
 275,Charlotte (Doll),Charlotte (Doll) (Witch),30000,6000
 276,Kirsten,Kirsten (Witch),750000,20000
 277,Walpurgisnacht,Walpurgisnacht (Witch),2400000,40000
-278,Kyubey (form 1),Kyubey (Enemy),3000,600
+278,Kyubey (form 1),Kyubey (form 1) (Enemy),3000,600
 279,Ritual Cat,Ritual Cat (Enemy),724300,11111
 280,Razorback,Razorback (Black),1150000,20000
 281,Festival Ms. Sign,Festival Ms. Sign (Event Enemy),3600,80
@@ -608,7 +606,7 @@ Number,Name,PageName,Health,Atk
 606,Crustaceous Scissorex,Crustaceous Scissorex (Alien / Behemoth),1400000,37000
 607,J.J. Jackrabbit,J.J. Jackrabbit (Red / Colossus),65000,9000
 608,Li'l Doge,,2000,100
-609,Golem Sunfish,"Golem Sunfish (Relic, Floating)",1800000,31850
+609,Golem Sunfish,Golem Sunfish (Relic, Floating),1800000,31850
 610,THE FOLIVOREAN,THE FOLIVOREAN (Aku) (Behemoth),1000000,51000
 611,Casaurian Darkjo,Casaurian Darkjo (Black) (Behemoth),2000000,27900
 612,Haniwanwan,Haniwanwan (Relic),300000,20000
@@ -631,7 +629,7 @@ Number,Name,PageName,Health,Atk
 629,Zero Luza,Zero Luza (Relic) (Colossus),4000000,160000
 630,Metafilibuster,Metafilibuster (Floating),3000000,3000000
 631,Rabbit Doge,Rabbit Doge (Event Enemy),3000,600
-632,Origin Base,Origin Base (Enemy Base),0,0
+632,Origin Base,Origin Base (Enemy Base),3000000,0
 633,Killer Tank Cat,Killer Tank Cat (Enemy),9000,240
 634,Vermilingua Rangmaster,Vermilingua Rangmaster (Aku) (Behemoth),950000,28000
 635,Easter Egg Cat,Easter Egg Cat (Enemy),1100000,11000
@@ -639,10 +637,15 @@ Number,Name,PageName,Health,Atk
 637,Omens,Omens (Aku) (Colossus),800000,15000
 638,Mini White Cyclone,Mini White Cyclone (Floating),444444,20000
 639,Infernal Pegasus Deonil,Infernal Pegasus Deonil (Red) (Behemoth),1600000,8000
-640,640,640 (Alien) (Behemoth),980000,4500
-641,641,641 (Behemoth),2000000,13000
-642,642,642 (Aku),4666666,679998
-643,643,,3000000,45000
+640,Suidae Piggicus,Suidae Piggicus (Alien / Behemoth),980000,4500
+641,Elephantidae Papaou,Elephantidae Papaou (Behemoth),2000000,13000
+642,Infernal Tyrant Nyandam,Infernal Tyrant Nyandam (Aku),4666666,679998
+643,Grand Mage Mimon,,3000000,45000
 644,644,644 (Enemy Base),100,999999
-645,645,645 (Event Enemy),100,1
-646,646,646 (Enemy),600000,4500
+645,10th and 1/2 Anniversary Birthday Cake,10th and 1/2 Anniversary Birthday Cake (Event Enemy),100,1
+646,Macho Redhead Yuki Cat,Macho Redhead Yuki Cat (Enemy),600000,4500
+647,647,647 (Eva Angel),3000000,90000
+648,648,648 (Enemy Base),10,1
+649,649,649 (Angel),400000,4497
+650,650,650 (Relic) (Behemoth),4200000,30000
+651,651,651 (Enemy),50,1

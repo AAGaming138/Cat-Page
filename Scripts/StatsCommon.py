@@ -860,9 +860,10 @@ class StatsCommon:
             59: link("Soulstrike"),
             60: link("Curse"),
             61: link("Attack Frequency Up", "stat"),
-            62: link("Mini-Wave"),
+            62: link("Mini-Wave", "Wave Attack"),
             63: link("Colossus Slayer"),
-            64: link("Behemoth Slayer")
+            64: link("Behemoth Slayer"),
+            65: link("Mini-Surge", "Surge Attacks")
         }
         def make_talent():
             """Generator that gives formatted talents"""
@@ -1036,6 +1037,14 @@ class StatsCommon:
                 elif t[0] == 62 and not is_dupe(94):
                     info = f": Adds a {t[2]}% chance to perform a level {t[4]}" \
                            f" mini-wave, improves by {gap(2)}%{maximum(3)}"
+                elif t[0] == 65 and is_dupe(108):
+                    info = f": Upgrades chance of mini-surge by" \
+                           f"{start_perc(2)}{gap(2)}%{maximum(3)}"
+                elif t[0] == 65 and not is_dupe(108):
+                    info = f": Adds a {t[2]}% chance to create a" \
+                           f" level {t[4]} mini-surge between " \
+                           f"{int(t[6]/4):,}~{int((t[6] + t[8])/4):,} range," \
+                           f" improves by {gap(2)}%{maximum(3)}"
 
                 yield talents[t[0]] + info + \
                       f"({'Total ' if talent_ls[x][1][1] else ''}" \
