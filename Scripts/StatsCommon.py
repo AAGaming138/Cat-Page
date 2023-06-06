@@ -880,12 +880,12 @@ class StatsCommon:
                 gap = lambda m: to_int((t[m+1] - t[m])/(t[1] - 1))
                 # (max lvl stats - first lvl stats) / (max lvl - first lvl)
 
-                def start_perc(s: int, flag: bool = False):
+                def start_perc(s: int, flag: bool = True):
                     # start improvement, increases by gap
                     if gap(s) != t[s]:
                         return f" {t[s]}%, improves by {gap(s)}%"
                     else:
-                        return f" {t[s]}" if flag else " "
+                        return f" {gap(s)}%" if flag else " "
 
                 def start_time(s: int, flag: bool = False):
                     if gap(s) != t[s]:
