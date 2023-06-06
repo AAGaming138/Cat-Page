@@ -124,7 +124,8 @@ class MakeCatPage:
             # Page.getTalent(stats.get_talents(Cat.getTalents, Cat.getData)) etc.
 
         elif self.op['category']:
-            return self.cat_page.getCategories()
+            return self.cat_page.getCategories(self.stats.get_talents(
+                self.cat_page.tals, self.cats[2]))
 
         else:
             return self.cat_page.getStart() + self.cat_page.getTranslation() + \
@@ -134,7 +135,8 @@ class MakeCatPage:
                    self.cat_page.getTalent(self.stats.get_talents(
                        self.cat_page.tals, self.cats[2])) + \
                    self.cat_page.getEnd() + \
-                   self.cat_page.getCategories()
+                   self.cat_page.getCategories(self.stats.get_talents(
+                self.cat_page.tals, self.cats[2]))
 
 
 class MakeEnemyPage:

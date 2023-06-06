@@ -544,7 +544,7 @@ class CatPage(Cat):
         return appearance + reference + end
 
 
-    def getCategories(self) -> str:
+    def getCategories(self, ts) -> str:
         """
         Method that writes the categories
         """
@@ -736,7 +736,7 @@ class CatPage(Cat):
             categories.append([talents[self.tals[i][0][0]] for i in
                                range(tal_num) if not
                            categories_has(talents[self.tals[i][0][0]])])
-            if talents[2] != 0:
+            if ts[2] != 0:
                 addcat("Cats with Ultra Talents")
         # adds talent categories at the end of the list
         # if there are talents
