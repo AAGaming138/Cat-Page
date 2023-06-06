@@ -167,7 +167,7 @@ def on_click(mode, che):
                 if check.get():
                     raise NoDataError("Increment", '')
                 else:
-                    ID = StatsCommon(True).get_ID(e.get().lower())
+                    ID = StatsCommon(True).get_ID(e.get())
             warning = False
             page = MakeEnemyPage(ID - check.get(), mode).get_page()
             message = ["Page", "Stats", "Description", "Encounters",
@@ -180,7 +180,7 @@ def on_click(mode, che):
         try:
             ID = int(e.get())
         except ValueError:
-            ID = StatsCommon().get_ID(e.get().lower())
+            ID = StatsCommon().get_ID(e.get())
         try:
             page = MakeCatPage(ID, mode).get_page()
             warning = False
