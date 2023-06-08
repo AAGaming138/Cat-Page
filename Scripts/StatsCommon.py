@@ -904,66 +904,95 @@ class StatsCommon:
                     else:
                         return bool(cat_ls[index])
 
-                if t[0] == 1 and is_dupe(37):
+                if t[0] == 1 and is_dupe(37) and t[4]:
                     info = f": Increases weaken duration by" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 1 and not is_dupe(37):
+                elif t[0] == 1 and not is_dupe(37) and t[4]:
                     info = f": Adds a {t[2]}% chance to weaken enemies to" \
                            f" {100 - t[7]}% for{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 2 and is_dupe(25):
-                    info = f": Increases freeze duration by {frame(t[4])}" \
+                elif t[0] == 1 and is_dupe(37) and not t[4]:
+                    info = f": Upgrades chance to weaken enemies by" \
+                           f"{start_perc(2)}{maximum(3)}"
+                elif t[0] == 1 and not is_dupe(37) and not t[4]:
+                    info = f": Adds a {t[2]}% chance to weaken enemies to" \
+                           f" {100 - t[7]}% for {frame(t[4])}" \
+                           f", improves by {gap(2)}%{maximum(3)}"
+
+                elif t[0] == 2 and is_dupe(25) and t[4]:
+                    info = f": Increases freeze duration by" \
                            f"{start_time(4, True)}{maximum(5, 'f')}<sup>" \
                            f"{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 2 and not is_dupe(25):
+                elif t[0] == 2 and not is_dupe(25) and t[4]:
                     info = f": Adds a {t[2]}% chance to freeze for" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 3 and is_dupe(27):
+                elif t[0] == 2 and is_dupe(25) and not t[4]:
+                    info = f": Upgrades chance to freeze enemies by" \
+                           f"{start_perc(2)}{maximum(3)}"
+                elif t[0] == 2 and not is_dupe(25) and not t[4]:
+                    info = f": Adds a {t[2]}% chance to freeze enemies for" \
+                           f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
+
+                elif t[0] == 3 and is_dupe(27) and t[4]:
                     info = f": Increases slow duration by{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 3 and not is_dupe(27):
+                elif t[0] == 3 and not is_dupe(27) and t[4]:
                     info = f": Adds a {t[2]}% chance to slow for" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
+                elif t[0] == 3 and is_dupe(27) and not t[4]:
+                    info = f": Upgrades chance to slow enemies by" \
+                           f"{start_perc(2)}{maximum(3)}"
+                elif t[0] == 3 and not is_dupe(27) and not t[4]:
+                    info = f": Adds a {t[2]}% chance to slow enemies for" \
+                           f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
+
                 elif t[0] == 5:
                     info = f": Becomes strong against targeted trait."
+
                 elif t[0] == 8 and is_dupe(24):
                     info = f": Increases knockback chance by" \
                            f"{start_perc(2)}{maximum(3)}"
                 elif t[0] == 8 and not is_dupe(24):
                     info = f": Adds a {t[2]}% chance to knockback," \
                            f" improves by {gap(2)}%{maximum(3)}"
+
                 elif t[0] == 10 and is_dupe(40):
                     info = f": Upgrades strengthen attack" \
                            f" power by{start_perc(4)}{maximum(5)}"
                 elif t[0] == 10 and not is_dupe(40):
                     info = f": Adds {t[4]}% attack power at {100 - t[2]}%" \
                            f" health, increases by {gap(4)}%{maximum(5)}"
+
                 elif t[0] == 11 and is_dupe(42):
                     info = f": Upgrades chance to survive lethal strikes by" \
                            f"{start_perc(2)}{maximum(3)}"
                 elif t[0] == 11 and not is_dupe(42):
                     info = f": Adds a {t[2]}% chance to survive a lethal" \
                            f" strike, improves by {gap(2)}%{maximum(3)}"
+
                 elif t[0] == 13 and is_dupe(31):
                     info = f": Upgrades critical hit chance by" \
                            f"{start_perc(2)}{maximum(3)}"
                 elif t[0] == 13 and not is_dupe(31):
                     info = f": Adds a {t[2]}% chance to perform a critical hit "
+
                 elif t[0] == 15 and is_dupe(70):
                     info = f": Upgrades chance to break barriers by" \
                            f"{start_perc(2)}{maximum(3)}"
                 elif t[0] == 15 and not is_dupe(70):
                     info = f": Adds a {t[2]}% chance to break barriers," \
                            f" improves by {gap(2)}%{maximum(3)}"
+
                 elif t[0] == 17 and is_dupe(35):
                     info = f": Upgrades chance to perform wave attacks by" \
                            f"{start_perc(2)}{maximum(3)}"
                 elif t[0] == 17 and not is_dupe(35):
                     info = f": Adds a {t[2]}% chance to perform a level {t[4]}" \
                            f" wave attack, improves by {gap(2)}%{maximum(3)}"
+
                 elif t[0] == 18:
                     info = f": Reduces weaken duration by" \
                            f"{start_perc(2)}{maximum(3)}"
@@ -979,6 +1008,7 @@ class StatsCommon:
                 elif t[0] == 22:
                     info = f": Reduces wave damage by" \
                            f"{start_perc(2)}{maximum(3)}"
+
                 elif t[0] == 25:
                     info = f": Reduces cost by {t[2]}/{int(t[2] * 1.5)}/" \
                            f"{t[2] * 2}¢ per level " \
@@ -999,6 +1029,7 @@ class StatsCommon:
                 elif t[0] == 32:
                     info = f": Upgrades health by" \
                            f"{start_perc(2)}{maximum(3)}"
+
                 elif t[0] == 50 and is_dupe(82):
                     info = f": Upgrades chance of savage blows by" \
                            f"{start_perc(2)}{maximum(3)}"
@@ -1006,20 +1037,29 @@ class StatsCommon:
                     info = f": Adds a {t[2]}% chance to perform a savage blow" \
                            f" ({(100 + t[4])/100}x damage)," \
                            f" improves by {gap(2)}%{maximum(3)}"
-                elif t[0] == 51 and is_dupe(84):
+
+                elif t[0] == 51 and is_dupe(84) and t[4]:
                     info = f": Increases dodge duration by" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 51 and not is_dupe(84):
+                elif t[0] == 51 and not is_dupe(84) and t[4]:
                     info = f": Adds a {t[2]}% chance to dodge attacks for" \
                            f"{start_time(4, True)}{maximum(5, 'f')}<sup>" \
                            f"{round(t[5]/30, 2)}s</sup> "
+                elif t[0] == 51 and is_dupe(84) and not t[4]:
+                    info = f": Upgrades chance to dodge attacks by" \
+                           f"{start_perc(2)}{maximum(3)}"
+                elif t[0] == 51 and not is_dupe(84) and not t[4]:
+                    info = f": Adds a {t[2]}% chance to dodge attacks for" \
+                           f"{frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
+
                 elif t[0] == 52:
                     info = f": Reduces toxic damage by" \
                            f"{start_perc(2)}{maximum(3)}"
                 elif t[0] == 54:
                     info = f": Reduces surge damage by" \
                            f"{start_perc(2)}{maximum(3)}"
+
                 elif t[0] == 56 and is_dupe(86):
                     info = f": Upgrades chance of surge attacks by" \
                            f"{start_perc(2)}{maximum(3)}"
@@ -1034,14 +1074,22 @@ class StatsCommon:
                 elif t[0] == 58 and not is_dupe(95):
                     info = f": Adds a {t[2]}% chance to pierce shields," \
                            f" improves by {gap(2)}%{maximum(3)}"
-                elif t[0] == 60 and is_dupe(92):
+
+                elif t[0] == 60 and is_dupe(92) and t[4]:
                     info = f": Increases curse duration by" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5] / 30, 2)}s</sup> "
-                elif t[0] == 60 and not is_dupe(92):
+                elif t[0] == 60 and not is_dupe(92) and t[4]:
                     info = f": Adds a {t[2]}% chance to curse for" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5] / 30, 2)}s</sup> "
+                elif t[0] == 60 and is_dupe(92) and not t[4]:
+                    info = f": Upgrades chance to curse enemies by" \
+                           f"{start_perc(2)}{maximum(3)}"
+                elif t[0] == 60 and not is_dupe(92) and not t[4]:
+                    info = f": Adds a {t[2]}% chance to curse enemies for" \
+                           f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
+
                 elif t[0] == 61:
                     info = f": Decreases time between attacks by" \
                            f"{start_perc(2)}{maximum(3)}"
