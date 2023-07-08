@@ -2,6 +2,7 @@
 
 from tkinter import *
 from MakePage import *
+from names_converter import get_names
 import tkinter.ttk as ttk
 
 try:
@@ -291,6 +292,13 @@ def xpnative_theme():
     style.theme_use('xpnative')
 
 
+def update_names():
+    get_names("Cats/names.csv")
+    lab = Label(root, text=get_names("Enemies.csv"))
+    lab.grid(row=4, column=1)
+    root.after(3000, lab.destroy)
+
+
 # start window
 root = Tk()
 with open("mode.txt", "r") as f:
@@ -310,6 +318,7 @@ enemy_mode.set(False)
 menubar = Menu(root)
 filemenu = Menu(menubar, tearoff=0)
 thememenu = Menu(menubar, tearoff=0)
+updatemenu = Menu(menubar, tearoff=0)
 
 menubar.add_cascade(label="Mode", menu=filemenu)
 filemenu.add_command(label="Enemy Page", command=enemy_options)
@@ -318,6 +327,10 @@ menubar.add_cascade(label="Themes", menu=thememenu)
 thememenu.add_command(label="Vista", command=vista_theme)
 thememenu.add_command(label="Winnative", command=winnative_theme)
 thememenu.add_command(label="Xpnative", command=xpnative_theme)
+
+menubar.add_cascade(label="Update", menu=updatemenu)
+updatemenu.add_command(label="Update Names", command=update_names)
+
 root.config(menu=menubar)
 # end menu
 

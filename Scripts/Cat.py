@@ -12,7 +12,7 @@ class Cat:
         self.ID = ID
         self.trueForm = True
         try:
-            self.catNames = opencsv(DIR + "/catNames.csv", header=True)
+            self.catNames = opencsv(DIR + "/catNames.csv", header=True, delim="\t")
             self.names = self.getNames(ID)
             self.catData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[0:3]
             self.catRarity = opencsv(f"{data_mines}/DataLocal/unitbuy.csv")[ID]
@@ -101,9 +101,10 @@ class Cat:
             self.isLegend = True
         # Note: Work on this in case of outliers
 
-        return rarities[r], int(self.catRarity[50]), int(self.catRarity[51]), getMod(maxLevel)[0],\
-                      getMod(maxLevel)[1], maxPlus, -1, getVersion(), getFruit(),\
-                      getMod(10)[0], getMod(20)[0], getMod(30)[0]
+        return rarities[r], int(self.catRarity[50]), int(self.catRarity[51]),\
+               getMod(maxLevel)[0], getMod(maxLevel)[1], maxPlus, -1,\
+               getVersion(), getFruit(), getMod(10)[0], getMod(20)[0],\
+               getMod(30)[0]
         # rarity, max natural level, max plus level, lvl max mod, grow levels,
         # formatted max plus, -1, version, catfruits, lvl 10 mod, lvl 20 mod, lvl 30 mod
 

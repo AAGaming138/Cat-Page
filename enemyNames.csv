@@ -1,653 +1,656 @@
-Image,Name,Link,HP,Attack
-000,Doge,,90,8
-001,Snache,,100,15
-002,Those Guys,,200,20
-003,Hippoe,,1000,100
-004,Pigge,Pigge (Red),1500,120
-005,Jackie Peng,,1300,80
-006,Gory,,1000,80
-007,Baa Baa,,500,50
-008,Sir Seal,Sir Seal (Red),2500,150
-009,Le'boin,,4000,654
-010,Kang Roo,,4000,250
-011,One Horn,One Horn (Red),15000,500
-012,Teacher Bear,,3000,1000
-013,Croco,,70,30
-014,B.B.Bunny,B.B.Bunny (Red),500,50
-015,Squire Rel,,80,30
-016,Assassin Bear,Assassin Bear (Black),550,3000
-017,Shy Boy,Shy Boy (Red/Floating),35000,500
-018,The Face,The Face (Floating),99999,2000
-019,N/A,,,
-020,N/A,,,
-021,Ms. Sign,,10000,1
-022,Mooth,Mooth (Floating),5000,350
-023,Dark Emperor Nyandam,Dark Emperor Nyandam (Red),99999,1800
-024,Teacher Bun Bun,Teacher Bun Bun (Floating),99999,2250
-025,Swordsman (form 1),Swordsman (form 1) (Enemy),100,10
-026,Chibigau (form 1),Chibigau (form 1) (Enemy),1000,300
-027,Princess Punt (form 1),Princess Punt (form 1) (Enemy),8000,200
-028,Swordsman (form 2),Swordsman (form 2) (Enemy),100,1000
-029,Chibigau (form 2),Chibigau (form 2) (Enemy),80000,3000
-030,Princess Punt (form 2),Princess Punt (form 2) (Enemy),6000,4200
-031,Master A.,,40000,557
-032,R.Ost,,340000,7200
-033,Otta-smack-u,,30000,1497
-034,Kory,,120000,1400
-035,Camelle,,100000,2637
-036,Duche,,40000,1000
-037,Owlbrow,Owlbrow (Floating),10000,3000
-038,Bore,Bore (Red),400000,4837
-039,THE SLOTH,,300000,8000
-040,Rain D.,,90000,4547
-041,Dagshund,,60000,3000
-042,Celeboodle,,9000,5000
-043,H. Nah,,200000,6101
-044,Dober P.D,,800000,5500
-045,Ururun Wolf,Ururun Wolf (Enemy Unit),700000,8812
-046,Doge Dark,Doge Dark (Black),5000,2000
-047,Metal Hippoe,Metal Hippoe (Metal),80,200
-048,St. Pigge the 2nd,St. Pigge the 2nd (Red),40000,400
-049,J.K Bun Bun,J.K Bun Bun (Red/Floating),400000,9287
-050,Bun Bun Black,Bun Bun Black (Black/Floating),777777,5997
-051,Gory Black,Gory Black (Black),40000,3123
-052,Shadow Boxer K,Shadow Boxer K (Black),80000,4997
-053,Director Kurosawah,Director Kurosawah (Black),200000,18763
-054,Super Metal Hippoe,Super Metal Hippoe (Metal),8000,3000
-055,Type 10,Type 10 (Event Enemy),100,8
-056,Metal One Horn,Metal One Horn (Metal),800,3200
-057,Teacher Cybear,Teacher Cybear (Metal),50,999999
-058,CyberFace,CyberFace (Metal),299,99999
-059,Sir Metal Seal,Sir Metal Seal (Metal),22000,6699
-060,Yuurinchii,Yuurinchii (Enemy),2000,180
-061,Princess Head,Princess Head (Enemy),50000,2400
-062,Chief Peng,Chief Peng (Event Enemy),10000,1200
-063,Dark Emperor Santa,Dark Emperor Santa (Event Enemy),45000,3600
-064,Red Cyclone,Red Cyclone (Red/Floating),999999,92000
-065,Lione Hippoe,Lione Hippoe (Event Enemy),14000,999
-066,Lucky Sloth,Lucky Sloth (Event Enemy),300000,8000
-067,Audience Bears,Audience Bears (Event Enemy),50000,2800
-068,Monkey King,Monkey King (Enemy),6640,550
-069,White Cyclone,White Cyclone (Floating),999999,89000
-070,Black Cyclone,Black Cyclone (Black/Floating),1200000,4000
-071,Metal Cyclone,Metal Cyclone (Metal),77777,77000
-072,Nimue,Nimue (Enemy),5000,399
-073,Neutralization Type Nimue,Neutralization Type Nimue (Enemy),98767,3843
-074,SSS Monkey King,SSS Monkey King (Enemy),188600,5280
-075,Crazed Cat,Crazed Cat (Enemy Unit),2400000,7880
-076,Crazed Tank Cat,Crazed Tank Cat (Enemy Unit),3200000,30240
-077,Crazed Axe Cat,Crazed Axe Cat (Enemy Unit),2200000,4200
-078,Crazed Gross Cat,Crazed Gross Cat (Enemy Unit),120000,3990
-079,Crazed Cow Cat,Crazed Cow Cat (Enemy Unit),130000,2600
-080,Crazed Bird Cat,Crazed Bird Cat (Enemy Unit),1180000,12000
-081,Crazed Fish Cat,Crazed Fish Cat (Enemy Unit),87000,4200
-082,Crazed Lizard Cat,Crazed Lizard Cat (Enemy Unit),600000,1300
-083,Crazed Titan Cat,Crazed Titan Cat (Enemy Unit),2560000,17000
-084,Teacher A.,Teacher A. (Event Enemy),40000,657
-085,Samurai Doggy,Samurai Doggy (Event Enemy),135400,2555
-086,Mega Cat,Mega Cat (Enemy),99,99999
-087,Gory Groom,Gory Groom (Event Enemy),170000,2525
-088,Celesse,Celesse (Enemy),250,50
-089,Nono,Nono (Enemy),650,150
-090,Olga,Olga (Enemy),2400,240
-091,Norn,Norn (Enemy),3200,430
-092,Yoichi,Yoichi (Enemy),3800,780
-093,Serum,Serum (Enemy),9200,600
-094,Fuu,Fuu (Enemy),30000,1942
-095,Aura,Aura (Enemy),77000,3555
-096,Rei,Rei (Enemy),40000,2123
-097,Wyvern,Wyvern (Enemy),380000,6555
-098,Healer,Healer (Enemy),299999,3250
-099,Sunny Celeboodle,Sunny Celeboodle (Event Enemy),80000,3000
-100,Bearkini,Bearkini (Event Enemy),35000,600
-101,Lord Enma,Lord Enma (Event Enemy),112590,6000
-102,Leggsy,Leggsy (Event Enemy),50000,600
-103,Ecto Doge,Ecto Doge (Event Enemy),180,16
-104,Ecto Snache,Ecto Snache (Event Enemy),200,30
-105,Ecto Baa Baa,Ecto Baa Baa (Event Enemy),1000,100
-106,Firework Guys 1,Firework Guys 1 (Event Enemy),1,1
-107,Firework Guys 2,Firework Guys 2 (Event Enemy),1,1
-108,Mighty Gui Zuli,Mighty Gui Zuli (Event Enemy),83000,8300
-109,Hermit Peng,Hermit Peng (Event Enemy),25000,650
-110,Master Da Xun,Master Da Xun (Event Enemy),100000,2700
-111,Pigge Back,Pigge Back (Event Enemy),10000,200
-112,Divine Cyclone,Divine Cyclone (Angel),1399999,76000
-113,Heavenly Hippoe,Heavenly Hippoe (Angel),55000,1800
-114,Gabriel,Gabriel (Angel),13000,1550
-115,Angelic Gory,Angelic Gory (Angel),98000,5567
-116,Angel Fanboy,,5,1
-117,Wall Doge,,30000,460
-118,Ginger Snache,Ginger Snache (Red),12000,1800
-119,Sunfish Jones,Sunfish Jones (Angel),1200000,9260
-120,Birthday Cake,Birthday Cake (Event Enemy),50,1
-121,Drury Witch,Drury Witch (Enemy),500,2200
-122,Drury Swordsman,Drury Swordsman (Enemy),150,75
-123,Pigeon de Sable,Pigeon de Sable (Floating),8300,1200
-124,Dark Otter,Dark Otter (Black),175000,6497
-125,Angelic Sleipnir,Angelic Sleipnir (Angel),363000,2247
-126,Angry Sun,Angry Sun (Event Enemy),215,1
-127,Beefcake Cat,Beefcake Cat (Enemy),1200000,5500
-128,Dancer Cat,Dancer Cat (Enemy),1500000,21400
-129,Hyper Mr.,Hyper Mr. (Enemy),478000,4837
-130,Ultimate Bondage Cat,Ultimate Bondage Cat (Enemy),500000,9643
-131,Dark Lazer,Dark Lazer (Enemy),1248000,7880
-132,Heavy Assault C.A.T.,Heavy Assault C.A.T. (Enemy),1500000,16000
-133,Lollycat,Lollycat (Enemy),300000,777
-134,Unicycle Cat,Unicycle Cat (Enemy),288000,5800
-135,Flying Ninja Cat,Flying Ninja Cat (Enemy),1000000,7220
-136,Skelecat,Skelecat (Enemy),25000,18000
-137,Pastry Cat,Pastry Cat (Enemy),1400000,7200
-138,Riceball Cat,Riceball Cat (Enemy),133300,4440
-139,Gato Amigo,Gato Amigo (Enemy),17500,5700
-140,Loincloth Cat,Loincloth Cat (Enemy),180000,1600
-141,Ayanokōji Shō,Ayanokōji Shō (Enemy),504649,14649
-142,Saotome Hikaru,Saotome Hikaru (Enemy),99999,2000
-143,Saionji Hitomi,Saionji Hitomi (Enemy),45000,400
-144,Hoshi Guranmanie,Hoshi Guranmanie (Enemy),4000,350
-145,Shiratori Shōchikubai,Shiratori Shōchikubai (Enemy),1500,150
-146,Trolly Blogger,,500,200
-147,Metal Doge,Metal Doge (Metal),30,2000
-148,Li'l Nyandam,Li'l Nyandam (Red),669000,17200
-149,Le'noir,Le'noir (Black),460000,16000
-150,Baby Mola,Baby Mola (Enemy),1,360
-151,Mola King,Mola King (Enemy),3000,3000
-152,Ayumi Manbosaki,Ayumi Manbosaki (Enemy),240000,5555
-153,Crab,Crab (Enemy),2500,250
-154,Sardine,Sardine (Enemy),120,30
-155,Squid,Squid (Enemy),90,18
-156,Martin,Martin (Event Enemy),210000,4800
-157,Sakura Android,Sakura Android (Enemy),400000,11111
-158,Takuya,Takuya (Enemy),20000,1200
-159,Yuki,Yuki (Enemy),75000,3300
-160,Chickful A,Chickful A (Angel),160000,13000
-161,Mob Cat,Mob Cat (Enemy),7500,250
-162,Yakuza Vampire,Yakuza Vampire (Enemy),40000,1200
-163,Hearscht,Hearscht (Enemy),450000,15000
-164,Cornelia,Cornelia (Enemy),99999,900
-165,Alois,Alois (Enemy),5000,450
-166,Healer Cat CC,Healer Cat CC (Enemy),1255500,8850
-167,Shibalien,Shibalien (Alien),900,150
-168,Kroxo,Kroxo (Alien),3000,900
-169,Hyppoh,Hyppoh (Alien),7000,200
-170,Imperator Sael,Imperator Sael (Alien),15000,500
-171,Maawth,Maawth (Alien/Floating),17777,777
-172,LeMurr,LeMurr (Alien),20000,800
-173,Helmut Krabbe,Helmut Krabbe (Alien),9000,300
-174,I.M. Phace,I.M. Phace (Alien/Floating),44444,1333
-175,Ursamajor,Ursamajor (Alien),30000,1000
-176,Cli-One,Cli-One (Alien/Floating),120000,1400
-177,Nimoy Bore,Nimoy Bore (Alien),160000,1799
-178,Elizabeth the LVIth,Elizabeth the LVIth (Alien),60000,250
-179,Cosmic Cyclone,Cosmic Cyclone (Alien/Floating),1499999,9999
-180,Galactic Overseer Nyandam,Galactic Overseer Nyandam (Alien),144444,4444
-181,Corrupted Valkyrie,Corrupted Valkyrie (Alien/Floating),555555,7000
-182,Scissoroo,Scissoroo (Alien),24000,2800
-183,Cyberhorn,Cyberhorn (Alien),120000,2200
-184,Mistress Celeboodle,Mistress Celeboodle (Alien),4500,3750
-185,Professor A.,Professor A. (Red),320000,6800
-186,DL Anniversary Birthday Cake,DL Anniversary Birthday Cake (Event Enemy),100,1
-187,Rathalos,Rathalos (Enemy),300000,7040
-188,Rathian,Rathian (Enemy),480000,9900
-189,MARS PEOPLE,MARS PEOPLE (Enemy),125,50
-190,DONALD MORDEN,DONALD MORDEN (Enemy),450000,11500
-191,ALLEN O'NEIL,ALLEN O'NEIL (Enemy),6000,600
-192,MARCO,MARCO (Enemy),1500,125
-193,SV-001,SV-001 (Enemy),7500,400
-194,HUGE HERMIT,HUGE HERMIT (Enemy),60000,1111
-195,JUPITER KING,JUPITER KING (Enemy),250000,7500
-196,HI-DO,HI-DO (Enemy),750000,21000
-197,Doge O'Lantern,Doge O'Lantern (Event Enemy),540,24
-198,Drac-owl-la,Drac-owl-la (Event Enemy),166000,6600
-199,Sa-Bat,Sa-Bat (Event Enemy),6300,800
-200,Valkyrie,Junior God of Light - Valkyrie (Enemy),2400,120
-201,Brynhildr,Junior God Brynhildr (Enemy),30000,800
-202,Suruzu,Junior God Suruzu (Enemy),45000,1888
-203,Freya,Goddess of Abundance - Freya (Enemy),165000,100
-204,Odin,God of War - Odin (Enemy),550000,15500
-205,Capy,Capy (Red),530000,52000
-206,Berserkory,Berserkory (Red),920000,7444
-207,Brollow,Brollow (Floating),19000,15000
-208,Calamary,Calamary (Alien/Floating),45000,1200
-209,Alpacky,Alpacky (Alien),175000,1750
-210,Elder Sloth,Elder Sloth (Alien),360000,12500
-211,Bun Bun Symbiote,Bun Bun Symbiote (Alien/Floating),750000,8888
-212,Raging Bahamut Cat,Raging Bahamut Cat (Alien/Floating),1222222,44444
-213,Blitzen,Blitzen (Event Enemy),122500,5963
-214,Swordsman,Swordsman (Castle and Dragon Enemy),1800,90
-215,Cavalry Soldier,Cavalry Soldier (Enemy),5000,225
-216,Ashura,Ashura (Enemy),22500,999
-217,Battle Balloon,Battle Balloon (Enemy),35000,1000
-218,Dragon Rider,Dragon Rider (Enemy),40000,2250
-219,Pretty Cat,Pretty Cat (Enemy),50000,2666
-220,Cyclops,Cyclops (Enemy),160000,4500
-221,Golem,Golem (Enemy),225000,10000
-222,Swordsman of Myoo,Swordsman of Myoo (Enemy),2400,120
-223,Thunderclap Black Cavalry Soldier,Thunderclap Black Cavalry Soldier (Enemy),6500,255
-224,Kabukimono Ashura,Kabukimono Ashura (Enemy),27500,1111
-225,Battle Balloon UFO,Battle Balloon UFO (Enemy),40000,1200
-226,Flaming Dragon Rider,Flaming Dragon Rider (Enemy),45000,2500
-227,Cyber Pretty Cat,Cyber Pretty Cat (Enemy),55000,3333
-228,Space-time Cyclops,Space-time Cyclops (Enemy),200000,4750
-229,Volcano Golem,Volcano Golem (Enemy),250000,11111
-230,Prisoner Cat,Prisoner Cat (Enemy),1500000,12000
-231,Gentleman Bros.,Gentleman Bros. (Enemy),750000,4000
-232,Cruel Angel Clionel,Cruel Angel Clionel (Angel),2400000,32000
-233,Nyalladin,Nyalladin (Enemy),900000,6450
-234,Wrestling Cat,Wrestling Cat (Enemy),2400000,17500
-235,Mr. Mole,,420000,4500
-236,The Perfect Cyclone,The Perfect Cyclone (Floating),750000,3666
-237,Nyamusu,Nyamusu (Enemy),140000,8000
-238,Pochi,Pochi (Enemy),35000,8000
-239,Kuromi,Kuromi (Enemy),12000,3000
-240,Setsuko,Setsuko (Enemy),70000,6000
-241,Nebaaru-kun,Nebaaru-kun (Enemy),120000,5000
-242,Manic Mohawk Cat,Manic Mohawk Cat (Enemy Unit),4800000,13880
-243,Manic Eraser Cat,Manic Eraser Cat (Enemy Unit),4800000,45360
-244,Manic Dark Cat,Manic Dark Cat (Enemy Unit),2100000,6800
-245,Manic Macho Legs Cat,Manic Macho Legs Cat (Enemy Unit),300000,9990
-246,Manic Lion Cat,Manic Lion Cat (Enemy Unit),300000,6600
-247,Manic Flying Cat,Manic Flying Cat (Enemy Unit),2680000,32000
-248,Manic Island Cat,Manic Island Cat (Enemy Unit),227000,10200
-249,Manic King Dragon Cat,Manic King Dragon Cat (Enemy Unit),700000,2900
-250,Manic Jamiera Cat,Manic Jamiera Cat (Enemy Unit),3560000,22000
-251,Kiss and Koi,Kiss and Koi (Enemy),650000,8500
-252,Madam the Savannah,Madam the Savannah (Enemy),1222200,14400
-253,Call Center Cat,Call Center Cat (Enemy),400000,12500
-254,Mr. Angel,Mr. Angel (Angel),13500,1600
-255,Two Can,Two Can (Red/Black),250000,12000
-256,Tackey,Tackey (Black),128000,9000
-257,King Wahwah,,1000000,24000
-258,"Codename ""Red Riding""",,1200000,22222
-259,Takuya and Lovely Yuki,Takuya and Lovely Yuki (Enemy),750000,8800
-260,Kite Cat,Kite Cat (Enemy),500000,7500
-261,Boraphim,Boraphim (Angel),1440000,17700
-262,Drummer Doge,Drummer Doge (Event Enemy),300000,100
-263,Carny Otta,Carny Otta (Event Enemy),120000,2497
-264,Funghi,Funghi (Enemy),360,70
-265,Iron Claw X,Iron Claw X (Enemy),1200000,40000
-266,Henry,,1000000,2500
-267,Hannya,Hannya (Red),1000000,36000
-268,Package Doge,Package Doge (Event Enemy),100,1
-269,Futenyan,Futenyan (Enemy),700,130
-270,Rampage Cats,Rampage Cats (Enemy),250000,1250
-271,Queen B,Queen B (Alien/Floating),1555555,12222
-272,Li'l Bun Bun,Li'l Bun Bun (Floating),29997,1125
-273,Gertrud,Gertrud (Witch),150000,7500
-274,Charlotte (Snake),Charlotte (Snake) (Witch),300000,12000
-275,Charlotte (Doll),Charlotte (Doll) (Witch),30000,6000
-276,Kirsten,Kirsten (Witch),750000,20000
-277,Walpurgisnacht,Walpurgisnacht (Witch),2400000,40000
-278,Kyubey (form 1),Kyubey (form 1) (Enemy),3000,600
-279,Ritual Cat,Ritual Cat (Enemy),724300,11111
-280,Razorback,Razorback (Black),1150000,20000
-281,Festival Ms. Sign,Festival Ms. Sign (Event Enemy),3600,80
-282,Chicka Fry,Chicka Fry (Event Enemy),96000,3600
-283,Scarecrow,Scarecrow (Enemy Base),100,999999
-284,Zoge,Zoge (Zombie),15000,1800
-285,Znache,Znache (Zombie),16000,2000
-286,Zomboe,Zomboe (Zombie),40000,4000
-287,Zigge,Zigge (Zombie),48000,3600
-288,Zackie Peng,Zackie Peng (Zombie),42000,8000
-289,Zory,Zory (Zombie),50000,3789
-290,Zir Zeal,Zir Zeal (Zombie),75000,4500
-291,Zang Roo,Zang Roo (Zombie),100000,7997
-292,Zroco,Zroco (Zombie),15000,5000
-293,Lord Gravey,Lord Gravey (Zombie),750000,15000
-294,Zyclone,Zyclone (Zombie),1222222,44444
-295,Xmas Pudding Cat,Xmas Pudding Cat (Enemy),1500000,8888
-296,Mega Cat EX,Mega Cat EX (Enemy),297,99999
-297,4th Anniversary Birthday Cake,4th Anniversary Birthday Cake (Event Enemy),50,1
-298,Niconico TV,Niconico TV (Enemy Base),100,999999
-299,W (form 1),W (form 1) (Enemy),50,80
-300,W (form 2),W (form 2) (Enemy),50,80
-301,W (form 3),W (form 3) (Enemy),50,80
-302,Neko Hakase,Neko Hakase (Enemy),30000,900
-303,Miss Haka,Miss Haka (Zombie),720000,25000
-304,Big Sal,Big Sal (Zombie),300000,60000
-305,Pikotaro,Pikotaro (Enemy),100,99999
-306,Mammothe,Mammothe (Event Enemy),120000,3200
-307,Icy Doge,Icy Doge (Event Enemy),36000,600
-308,Snowball,Snowball (Event Enemy),1,400
-309,Coffin Zoge,Coffin Zoge (Zombie),40000,650
-310,Zamelle,Zamelle (Zombie),120000,5937
-311,Killer Cat,Killer Cat (Enemy),3600,240
-312,Corrupted Cat Base,Corrupted Cat Base (Enemy Base),3000,100
-313,Hiroshi Mihara,Hiroshi Mihara (Enemy),50,99999
-314,Nazousagi,Nazousagi (Enemy),40000,1600
-315,Doge Base,Doge Base (Enemy Base),1500,50
-316,Inumusha,Inumusha (Zombie),800000,40000
-317,Daboo of the Dead,Daboo of the Dead (Zombie),3000000,30000
-318,Dolphina,,450000,7500
-319,Mobius,Mobius (Enemy),400000,13333
-320,Belial,Belial (Enemy),100000,4000
-321,Happy 100,Happy 100 (Enemy),20000,1200
-322,Li'l Mohawk Cat,Li'l Mohawk Cat (Enemy),3200000,10880
-323,Li'l Eraser Cat,Li'l Eraser Cat (Enemy),2400000,30240
-324,Li'l Dark Cat,Li'l Dark Cat (Enemy),2100000,5500
-325,Li'l Macho Legs Cat,Li'l Macho Legs Cat (Enemy),200000,5990
-326,Li'l Lion Cat,Li'l Lion Cat (Enemy),300000,5900
-327,Li'l Flying Cat,Li'l Flying Cat (Enemy),1780000,22000
-328,Li'l Island Cat,Li'l Island Cat (Enemy),247000,8400
-329,Li'l King Dragon Cat,Li'l King Dragon Cat (Enemy),300000,3500
-330,Li'l Jamiera Cat,Li'l Jamiera Cat (Enemy),2560000,12000
-331,Easter Duche,Easter Duche (Event Enemy),150000,3600
-332,Easter Bunny,Easter Bunny (Event Enemy),25000,1500
-333,Moai Statue,Moai Statue (Enemy Base),1200,15
-334,Wedding Kerihime,Wedding Kerihime (Enemy),35000,5200
-335,Eternal Sleeping Beauty,Eternal Sleeping Beauty (Enemy),800000,8500
-336,Goldoge,Goldoge (Event Enemy),1500,300
-337,Sir Hippoe,Sir Hippoe (Event Enemy),40000,1000
-338,Golden R.Ost,Golden R.Ost (Event Enemy),20,2400
-339,Lost World Yuki,Lost World Yuki (Enemy),100000,3800
-340,Cala Maria,Cala Maria (Angel),360000,108000
-341,Sluggy (Red),,10000,750
-342,Sluggy (Black),,30000,1250
-343,Sluggy (Angel),,75000,3300
-344,Cat Kart P,Cat Kart P (Enemy),750000,52500
-345,Nekondo SP,Nekondo SP (Enemy),150000,500
-346,Merc & Cat CC,Merc & Cat CC (Enemy),99000,15000
-347,Titi Cat CC,Titi Cat CC (Enemy),1000000,27000
-348,Orthos,Orthos (Enemy),4800,400
-349,Michelia,Michelia (Enemy),40000,2000
-350,Todomeki,Todomeki (Enemy),320000,8000
-351,Gudetama Plate,Gudetama Plate (Enemy),5000,799
-352,Gudegude à la mode,Gudegude à la mode (Enemy),25000,1250
-353,Nisetama Army,Nisetama Army (Enemy),120000,4999
-354,Hermit Cat,Hermit Cat (Enemy Unit),4000000,66666
-355,Croakley,,360000,3789
-356,Gory Junior,Gory Junior (Event Enemy),36000,1500
-357,Value Meal Cat,Value Meal Cat (Enemy),100000,3000
-358,Steel Snake,Steel Snake (Event Enemy),55,300
-359,Mercury Sloth,Mercury Sloth (Event Enemy),2400,2400
-360,Shibalien Elite,Shibalien Elite (Alien),7000,500
-361,Star Peng,Star Peng (Alien),14000,750
-362,General GreGory,General GreGory (Alien),15000,567
-363,Le'Solar,Le'Solar (Alien),10000,1147
-364,Project A,Project A (Alien),12800,149
-365,Corporal Weyland,Corporal Weyland (Alien),16000,222
-366,Spacefish Jones,Spacefish Jones (Alien/Floating),30000,1234
-367,The Cat God,The Cat God (Floating),1399999,53997
-368,Saber,Saber (Enemy),400000,8000
-369,Lancer,Lancer (Enemy),240000,5000
-370,Archer,Archer (Enemy),300000,5555
-371,Rider,Rider (Enemy),200000,6000
-372,Gilgamesh,Gilgamesh (Enemy),1500000,15000
-373,Rin Tohsaka,Rin Tohsaka (Enemy),20000,3500
-374,Illyasviel,Illyasviel (Enemy),100000,5600
-375,Youcan,Youcan (Angel/Alien),50000,3333
-376,5th Anniversary Birthday Cake,5th Anniversary Birthday Cake (Event Enemy),100,1
-377,Super Cosmic Cyclone,Super Cosmic Cyclone (Alien),666666,555
-378,5th Anniversary Scarecrow,5th Anniversary Scarecrow (Enemy Base),100,999999
-379,Winged Pigge,Winged Pigge (Angel),800000,6000
-380,Mystic Mask Yulala,Mystic Mask Yulala (Enemy Unit),2250000,25000
-381,Karin Nekozuka,Karin Nekozuka (Enemy),320000,6000
-382,Misaki Konno,Misaki Konno (Enemy),720000,20000
-383,Sairi Nijitani,Sairi Nijitani (Enemy),360000,8000
-384,Ren Katagiri,Ren Katagiri (Enemy),450000,4500
-385,Hater,Hater (Enemy),50000,5000
-386,Prof. Wild Base,Prof. Wild Base (Enemy Base),10000,100
-387,Hackey,Hackey (Red),248000,54000
-388,UltraBaaBaa,UltraBaaBaa (Alien),500,1000
-389,Pigge Victorious,Pigge Victorious (Event Enemy),30000,1000
-390,Bang-Bang,Bang-Bang (Event Enemy),180000,7500
-391,Mentori,Mentori (Enemy),900,40
-392,Sachiel,Sachiel (Eva Angel),120000,3000
-393,Ramiel,Ramiel (Eva Angel),100000,15000
-394,Bardiel,Bardiel (Eva Angel),500000,15000
-395,Zeruel,Zeruel (Eva Angel),2500000,150000
-396,Crazed Moneko,Crazed Moneko (Enemy),2400000,60000
-397,Corrupted Moneko,Corrupted Moneko (Enemy),2400000,60000
-398,Penlight Guys,Penlight Guys (Event Enemy),1,1
-399,Pokota,Pokota (Enemy),32000,5000
-400,Ovis,Ovis (Enemy),200000,3000
-401,Coco,Coco (Enemy),120000,10000
-402,Moe Uzumasa & Doge,Moe Uzumasa & Doge (Enemy),16000,1650
-403,Saki Matsuga & Doge,Saki Matsuga & Doge (Enemy),150000,6000
-404,Misa Ono & Doge,Misa Ono & Doge (Enemy),100000,4000
-405,Mecha-Bun,Mecha-Bun (Floating),3000000,22222
-406,Relic Bun-Bun,Relic Bun-Bun (Relic),3000000,11111
-407,Relic Doge,Relic Doge (Relic),75000,12000
-408,Crazed Yuki,Crazed Yuki (Enemy),240000,9900
-409,Gude-Doge Machine,Gude-Doge Machine (Enemy),250000,36000
-410,Gudebene Cat,Gudebene Cat (Enemy),130000,8000
-411,Gorilliam,Gorilliam (Event Enemy),200000,2025
-412,Sir Rel,Sir Rel (Relic),50000,12500
-413,Oldhorn,Oldhorn (Relic),2400000,12000
-414,Othom,Othom (Relic/Floating),800000,11111
-415,Betakkuma,Betakkuma (Enemy),4800,270
-416,Selena,Selena (Event Enemy),400000,9000
-417,Kid Tappa,Kid Tappa (Alien),40000,50
-418,Ribbo,Ribbo (Alien),700,100
-419,Cat God (Cool Dude),,1499999,67997
-420,Loris,Loris (Relic),360000,6000
-421,Le'saint,Le'saint (Event Enemy),600000,12000
-422,The Red Malice,The Red Malice (Event Enemy),400000,4400
-423,Lowkey,Lowkey (Relic/Floating),1111111,6000
-424,M. Ost,M. Ost (Relic),1360000,9000
-425,Dead Donny Dash,Dead Donny Dash (Event Enemy),200000,6000
-426,CTO Seal,CTO Seal (Event Enemy),160000,2300
-427,Cadaver Bear,Cadaver Bear (Zombie),120000,5000
-428,Dread Bore,Dread Bore (Zombie),400000,4500
-429,Homulilly,Homulilly (Witch),9000000,12000
-430,Satan Claus,Satan Claus (Event Enemy),99999,2650
-431,Bakoo,Bakoo (Black),500000,10000
-432,Hikakin,Hikakin (Enemy),640,320
-433,Mukyakin,Mukyakin (Enemy),10000,250
-434,Sister Lione,Sister Lione (Event Enemy),140000,8000
-435,6th Anniversary Birthday Cake,6th Anniversary Birthday Cake (Event Enemy),100,1
-436,6th Anniversary Scarecrow,6th Anniversary Scarecrow (Enemy Base),100,999999
-437,Lucky Dags,Lucky Dags (Event Enemy),100000,24000
-438,Primeval Cyclone,Primeval Cyclone (Relic),2333333,7777
-439,Li'l Bore,Li'l Bore (Event Enemy),120,8
-440,Variety Bears,Variety Bears (Event Enemy),50000,1200
-441,Saber Alter,Saber Alter (Enemy),1200000,8000
-442,Ms. Madonna,Ms. Madonna (Event Enemy),240000,2400
-443,Mesocosmocyclone,Mesocosmocyclone (Alien),44444,666
-444,Gardeneel Bros.,Gardeneel Bros. (Alien),4000,200
-445,Axoloty,Axoloty (Alien),50000,40000
-446,Final Boss Giga-God,Final Boss Giga-God (Cool Dude),999999,73997
-447,Filibuster Obstructa,Filibuster Obstructa (Alien/Floating),2000000,1000000
-448,Idol Mihara & Cat,Idol Mihara & Cat (Enemy),20000,2000
-449,HaterBaa 2.0,HaterBaa 2.0 (Event Enemy),15,13500
-450,Dogumaru,Dogumaru (Relic),1000000,9000
-451,Maji Cat & Cat Tour Group,Maji Cat & Cat Tour Group (Enemy),7500,800
-452,Super Devil,Super Devil (Enemy),50000,1500
-453,Satanmaria,Satanmaria (Enemy),60000,5000
-454,Wondermaria,Wondermaria (Enemy),1000000,33333
-455,Beastly Nero,Beastly Nero (Enemy),111111,13332
-456,Head Rococo,Head Rococo (Enemy),1500000,50000
-457,Gummy Cat,Gummy Cat (Enemy),100000,1
-458,Kitarou,Kitarou (Enemy),17000,2500
-459,Medama-Oyaji,Medama-Oyaji (Enemy),35000,800
-460,Neko-Musume,Neko-Musume (Enemy),15000,1500
-461,Kano & Souma,Kano & Souma (Enemy),80000,800
-462,Gekirinchii,Gekirinchii (Enemy),220000,17000
-463,Judgement,Judgement (Enemy),180000,13000
-464,Awakened Eva Unit-13,Awakened Eva Unit-13 (Eva Angel),4000000,100000
-465,HAPPI,HAPPI (Enemy),120000,4500
-466,HAPPI & Maji Cat & Cat,HAPPI & Maji Cat & Cat (Enemy),150000,6000
-467,Chocolate Cat,Chocolate Cat (Enemy),20000,550
-468,Zuche,Zuche (Zombie),17500,17000
-469,The Thrillerz,The Thrillerz (Zombie),10000,6500
-470,Shakurel Doge,Shakurel Doge (Enemy),180,16
-471,Shakurel Gory,Shakurel Gory (Enemy),2000,160
-472,Shakurel Face,Shakurel Face (Enemy),399996,8000
-473,Shakurel Lion,Shakurel Lion (Enemy),36000,1500
-474,Shakurel Tiger,Shakurel Tiger (Enemy),10000,1000
-475,Shakurel Panda,Shakurel Panda (Enemy),150000,3000
-476,Dot Hero,Dot Hero (Enemy),90000,2500
-477,Mr. Puffington,Mr. Puffington (Relic),400000,30000
-478,Cat Day Cake,Cat Day Cake (Event Enemy),22,1
-479,Puffsley's Comet,Puffsley's Comet (Alien),900000,40000
-480,Ryu,Ryu (Enemy),200000,4000
-481,Chun-Li,Chun-Li (Enemy),360000,5100
-482,Guile,Guile (Enemy),400000,10500
-483,Zangief,Zangief (Enemy),750000,8000
-484,Blanka,Blanka (Enemy),160000,13000
-485,Dhalsim,Dhalsim (Enemy),240000,13500
-486,Ken,Ken (Enemy),600000,36000
-487,Car,Car (Enemy Base),1000,1
-488,Akuma,Akuma (Enemy),1200000,54000
-489,7th Anniversary Birthday Cake,7th Anniversary Birthday Cake (Event Enemy),100,1
-490,7th Anniversary Scarecrow,7th Anniversary Scarecrow (Enemy Base),100,999999
-491,Black Okame,Black Okame (Red/Black),2600000,24000
-492,Heavenly Herald Papuu,Heavenly Herald Papuu (Angel),2500000,4000
-493,Queen Mother V,Queen Mother V (Relic/Floating),1555555,18888
-494,Rat Doge,Rat Doge (Event Enemy),100,40
-495,Kappy Jr.,,2000000,38000
-496,Urs & Fenrir,Urs & Fenrir (Relic),750000,35000
-497,Croconator,Croconator (Metal),5,800
-498,Gobble,Gobble (Floating),329000,5000
-499,Baron Seal,Baron Seal (Red) (Colossal),15000,300
-500,Hatsune Miku,Hatsune Miku (Enemy),100000,6500
-501,Sakura Miku,Sakura Miku (Enemy),150000,20000
-502,Kagamine Rin & Len,Kagamine Rin & Len (Enemy),180000,8000
-503,MikuDoge,MikuDoge (Enemy),3000,1500
-504,MikuGory,MikuGory (Enemy),72000,3200
-505,MikuBear,MikuBear (Enemy),100000,15000
-506,Everlord Wanwan,Everlord Wanwan (Alien),1200000,31500
-507,Messier,Messier (Enemy),378000,8000
-508,Yakisoba U.F.O. Cat,Yakisoba U.F.O. Cat (Enemy),2000,200
-509,Yakisoba Face,Yakisoba Face (Enemy),4444,500
-510,Le'Grim,Le'Grim (Black) (Colossal),20000,2000
-511,Death Angel Z-Onel,Death Angel Z-Onel (Zombie),1000000,30000
-512,Li'l Zyclone,Li'l Zyclone (Zombie),333333,333
-513,St. Dober,St. Dober (Angel),1800000,23000
-514,Doremi,,1800000,28000
-515,Mega-Mooth,Mega-Mooth (Floating) (Colossal),12000,800
-516,Master Uril,Master Uril (Enemy Unit),3800000,25500
-517,Koronium,Koronium (Metal),150,15000
-518,Super Zeus,Super Zeus (Enemy),225000,5000
-519,Shaman Khan,Shaman Khan (Enemy),160000,2500
-520,Heracrist,Heracrist (Enemy),600000,40000
-521,Johnnyleon,Johnnyleon (Red/Alien/Zombie),3000000,3500
-522,Relic Doge Base,Relic Doge Base (Enemy Base),3000,1
-523,Happy Birthday Cake,Happy Birthday Cake (Event Enemy),100,1
-524,Surge Base,Surge Base (Enemy Base),1500,120
-525,Super Hyppoh,Super Hyppoh (Alien) (Colossal),1800,50
-526,Idi:Re,Idi:Re (Relic),3333333,99999
-527,Zollow,Zollow (Zombie/Floating),4500,10000
-528,E. Honda,E. Honda (Enemy),500000,5555
-529,Balrog,Balrog (Enemy),560000,28000
-530,Vega,Vega (Enemy),360000,5000
-531,Sagat,Sagat (Enemy),480000,2200
-532,M. Bison,M. Bison (Enemy),320000,6000
-533,8th Anniversary Birthday Cake,8th Anniversary Birthday Cake (Event Enemy),100,1
-534,8th Anniversary Scarecrow,8th Anniversary Scarecrow (Enemy Base),100,999999
-535,Evil Emperor Cat,Evil Emperor Cat (Relic),1200000,6666
-536,Megurine Luka,Megurine Luka (Enemy),150000,2000
-537,Cow Doge,Cow Doge (Event Enemy),3000,600
-538,Bore Jr.,,55500,23500
-539,Chocolate Wall Doge,Chocolate Wall Doge (Event Enemy),214000,1420
-540,Snow Miku 2021,Snow Miku 2021 (Enemy),200000,14000
-541,Raynard,Raynard (Red),98000,9800
-542,Ranma Saotome (M),Ranma Saotome (M) (Enemy),120000,9000
-543,Akane Tendo,Akane Tendo (Enemy),165000,4000
-544,Hibiki Ryoga,Hibiki Ryoga (Enemy),180000,4500
-545,Shampoo,Shampoo (Enemy),160000,3150
-546,Mousse,Mousse (Enemy),135000,3000
-547,Mr. Mer,,1250000,16000
-548,Wafer Cat BIG,Wafer Cat BIG (Enemy),999999,1
-549,Ragin' Gory,Ragin' Gory (Black / Behemoth),321234,11234
-550,Shin Godzilla,Shin Godzilla (Enemy),500,600
-551,Elder Flame Doron,Elder Flame Doron (Relic),2222222,22222
-552,Aku Doge,Aku Doge (Aku),4500,2200
-553,Sinner Snache,Sinner Snache (Aku),8200,2800
-554,Cerberus Kids,Cerberus Kids (Aku),2500,2500
-555,Condemned Peng,Condemned Peng (Aku),32250,4200
-556,Aku Gory,Aku Gory (Aku),85000,6868
-557,Le'Behemoth,Le'Behemoth (Aku),380000,13600
-558,Fallen Bear,Fallen Bear (Aku),75000,15000
-559,Wicked Face,Wicked Face (Aku),452000,10200
-560,Aku Cyclone,Aku Cyclone (Aku),1666666,6666
-561,Wicked Cat,Wicked Cat (Event Enemy),120000,1800
-562,Wicked Tank Cat,Wicked Tank Cat (Event Enemy),420000,4000
-563,Wicked Axe Cat,Wicked Axe Cat (Event Enemy),300000,3500
-564,564,564 (Aku),90,8
-565,565,565 (Aku),90,8
-566,566,566 (Aku),90,8
-567,567,567 (Aku),90,8
-568,568,568 (Aku),90,8
-569,569,569 (Aku),90,8
-570,Dark Priest Mamon,Dark Priest Mamon (Aku),680000,20999
-571,High Priest Mamon,High Priest Mamon (Aku),1620000,32200
-572,Lord of Ruin Jagando,Lord of Ruin Jagando (Aku),2000000,36000
-573,Possessed Empress,Possessed Empress (Aku),980000,31500
-574,Aku Altar,Aku Altar (Enemy Base),100000,0
-575,Inactive Aku Altar,Inactive Aku Altar (Enemy Base),100000,0
-576,White Ball,White Ball (Event Enemy),500,50
-577,Red Ball,Red Ball (Event Enemy),4000,250
-578,Metal Ball,Metal Ball (Event Enemy),20,2500
-579,Kyubey (form 2),Kyubey (form 2) (Enemy),3000,200
-580,Wind,Wind (Enemy),5000,100
-581,Red Wind,Red Wind (Enemy),5000,100
-582,Black Wind,Black Wind (Enemy),5000,150
-583,Medu-san,Medu-san (Aku),788000,8800
-584,Miz Devil,Miz Devil (Aku),300,1250
-585,Sathankhamun VIII,Sathankhamun VIII (Aku),1200000,34000
-586,Midnite D.,Midnite D. (Aku),300000,23000
-587,Ackey,Ackey (Aku),53000,30000
-588,Deathkory,Deathkory (Aku),1270000,23500
-589,Masked Grandmaster Cat,Masked Grandmaster Cat (Enemy Unit),4000000,86664
-590,9th Anniversary Birthday Cake,9th Anniversary Birthday Cake (Event Enemy),100,1
-591,9th Anniversary Scarecrow,9th Anniversary Scarecrow (Enemy Base),100,999999
-592,Red EnerG,Red EnerG (Red),340000,6790
-593,Archangel Exiel,Archangel Exiel (Angel) (Colossal),945000,4800
-594,Big Peng Z,Big Peng Z (Zombie) (Colossal),840000,1000
-595,Tiger Doge,Tiger Doge (Event Enemy),3000,600
-596,Nana & Doge,Nana & Doge (Enemy),120000,5000
-597,Emilia & Doge,Emilia & Doge (Enemy),135000,7500
-598,Yonshakudama Firework,Yonshakudama Firework (Event Enemy),500,50
-599,Ultima Beast Naala,Ultima Beast Naala (Relic / Behemoth),3000000,60000
-600,Zapy,Zapy (Zombie),390000,38000
-601,Secret Crush Base,Secret Crush Base (Enemy Base),10,1
-602,Confessional Tree,Confessional Tree (Enemy Base),10,1
-603,Wild Doge,Wild Doge (Behemoth),55000,16500
-604,Casaurian Ahirujo,Casaurian Ahirujo (Red / Behemoth),1200000,19500
-605,Pterowl Hazuku,Pterowl Hazuku (Floating / Behemoth),1850000,36600
-606,Crustaceous Scissorex,Crustaceous Scissorex (Alien / Behemoth),1400000,37000
-607,J.J. Jackrabbit,J.J. Jackrabbit (Red / Colossus),65000,9000
-608,Li'l Doge,,2000,100
-609,Golem Sunfish,Golem Sunfish (Relic, Floating),1800000,31850
-610,THE FOLIVOREAN,THE FOLIVOREAN (Aku) (Behemoth),1000000,51000
-611,Casaurian Darkjo,Casaurian Darkjo (Black) (Behemoth),2000000,27900
-612,Haniwanwan,Haniwanwan (Relic),300000,20000
-613,Angelic Beast Rajakong,Angelic Beast Rajakong (Angel) (Behemoth),1855200,12500
-614,Formicidaean Ariant,Formicidaean Ariant (Zombie) (Behemoth),75000,135000
-615,Great Angel Chibinel,Great Angel Chibinel (Angel) (Colossus),160000,4500
-616,Spiritual Yulala,Spiritual Yulala (Enemy Unit),3250000,30000
-617,Osamu Mikumo & Doge,Osamu Mikumo & Doge (Enemy),150000,1000
-618,Yuma Kuga & Doge,Yuma Kuga & Doge (Enemy),120000,2000
-619,Marmod,Marmod (Enemy),60000,2000
-620,Red Marmod,Red Marmod (Enemy),90000,3000
-621,Black Marmod,Black Marmod (Enemy),120000,4000
-622,Sakura,Sakura (Enemy),400000,18000
-623,Luke,Luke (Enemy),360000,5000
-624,Cumulus Gallus,Cumulus Gallus (Behemoth),1770000,20000
-625,10th Anniversary Birthday Cake,10th Anniversary Birthday Cake (Event Enemy),100,1
-626,10th Anniversary Scarecrow,10th Anniversary Scarecrow (Enemy Base),100,999999
-627,Ancient Magamojoe,Ancient Magamojoe (Relic) (Behemoth),2200000,35000
-628,Great Ape Luza,Great Ape Luza (Relic) (Behemoth),2500000,90000
-629,Zero Luza,Zero Luza (Relic) (Colossus),4000000,160000
-630,Metafilibuster,Metafilibuster (Floating),3000000,3000000
-631,Rabbit Doge,Rabbit Doge (Event Enemy),3000,600
-632,Origin Base,Origin Base (Enemy Base),3000000,0
-633,Killer Tank Cat,Killer Tank Cat (Enemy),9000,240
-634,Vermilingua Rangmaster,Vermilingua Rangmaster (Aku) (Behemoth),950000,28000
-635,Easter Egg Cat,Easter Egg Cat (Enemy),1100000,11000
-636,Devil Wife,Devil Wife (Aku),9500,8000
-637,Omens,Omens (Aku) (Colossus),800000,15000
-638,Mini White Cyclone,Mini White Cyclone (Floating),444444,20000
-639,Infernal Pegasus Deonil,Infernal Pegasus Deonil (Red) (Behemoth),1600000,8000
-640,Suidae Piggicus,Suidae Piggicus (Alien / Behemoth),980000,4500
-641,Elephantidae Papaou,Elephantidae Papaou (Behemoth),2000000,13000
-642,Infernal Tyrant Nyandam,Infernal Tyrant Nyandam (Aku),4666666,679998
-643,Grand Mage Mimon,,3000000,45000
-644,644,644 (Enemy Base),100,999999
-645,10th and 1/2 Anniversary Birthday Cake,10th and 1/2 Anniversary Birthday Cake (Event Enemy),100,1
-646,Macho Redhead Yuki Cat,Macho Redhead Yuki Cat (Enemy),600000,4500
-647,647,647 (Eva Angel),3000000,90000
-648,648,648 (Enemy Base),10,1
-649,649,649 (Angel),400000,4497
-650,650,650 (Relic) (Behemoth),4200000,30000
-651,651,651 (Enemy),50,1
+Image	Name	Link	HP	Attack
+000	Doge		90	8
+001	Snache		100	15
+002	Those Guys		200	20
+003	Hippoe		1000	100
+004	Pigge	Pigge (Red)	1500	120
+005	Jackie Peng		1300	80
+006	Gory		1000	80
+007	Baa Baa		500	50
+008	Sir Seal	Sir Seal (Red)	2500	150
+009	Le'boin		4000	654
+010	Kang Roo		4000	250
+011	One Horn	One Horn (Red)	15000	500
+012	Teacher Bear		3000	1000
+013	Croco		70	30
+014	B.B.Bunny	B.B.Bunny (Red)	500	50
+015	Squire Rel		80	30
+016	Assassin Bear	Assassin Bear (Black)	550	3000
+017	Shy Boy	Shy Boy (Red/Floating)	35000	500
+018	The Face	The Face (Floating)	99999	2000
+019	N/A			
+020	N/A			
+021	Ms. Sign		10000	1
+022	Mooth	Mooth (Floating)	5000	350
+023	Dark Emperor Nyandam	Dark Emperor Nyandam (Red)	99999	1800
+024	Teacher Bun Bun	Teacher Bun Bun (Floating)	99999	2250
+025	Swordsman (form 1)	Swordsman (form 1) (Enemy)	100	10
+026	Chibigau (form 1)	Chibigau (form 1) (Enemy)	1000	300
+027	Princess Punt (form 1)	Princess Punt (form 1) (Enemy)	8000	200
+028	Swordsman (form 2)	Swordsman (form 2) (Enemy)	100	1000
+029	Chibigau (form 2)	Chibigau (form 2) (Enemy)	80000	3000
+030	Princess Punt (form 2)	Princess Punt (form 2) (Enemy)	6000	4200
+031	Master A.		40000	557
+032	R.Ost		340000	7200
+033	Otta-smack-u		30000	1497
+034	Kory		120000	1400
+035	Camelle		100000	2637
+036	Duche		40000	1000
+037	Owlbrow	Owlbrow (Floating)	10000	3000
+038	Bore	Bore (Red)	400000	4837
+039	THE SLOTH		300000	8000
+040	Rain D.		90000	4547
+041	Dagshund		60000	3000
+042	Celeboodle		9000	5000
+043	H. Nah		200000	6101
+044	Dober P.D		800000	5500
+045	Ururun Wolf	Ururun Wolf (Enemy Unit)	700000	8812
+046	Doge Dark	Doge Dark (Black)	5000	2000
+047	Metal Hippoe	Metal Hippoe (Metal)	80	200
+048	St. Pigge the 2nd	St. Pigge the 2nd (Red)	40000	400
+049	J.K Bun Bun	J.K Bun Bun (Red/Floating)	400000	9287
+050	Bun Bun Black	Bun Bun Black (Floating/Black)	777777	5997
+051	Gory Black	Gory Black (Black)	40000	3123
+052	Shadow Boxer K	Shadow Boxer K (Black)	80000	4997
+053	Director Kurosawah	Director Kurosawah (Black)	200000	18763
+054	Super Metal Hippoe	Super Metal Hippoe (Metal)	8000	3000
+055	Type 10	Type 10 (Event Enemy)	100	8
+056	Metal One Horn	Metal One Horn (Metal)	800	3200
+057	Teacher Cybear	Teacher Cybear (Metal)	50	999999
+058	CyberFace	CyberFace (Metal)	299	99999
+059	Sir Metal Seal	Sir Metal Seal (Metal)	22000	6699
+060	Yuurinchii	Yuurinchii (Enemy)	2000	180
+061	Princess Head	Princess Head (Enemy)	50000	2400
+062	Chief Peng	Chief Peng (Event Enemy)	10000	1200
+063	Dark Emperor Santa	Dark Emperor Santa (Event Enemy)	45000	3600
+064	Red Cyclone	Red Cyclone (Red/Floating)	999999	92000
+065	Lione Hippoe	Lione Hippoe (Event Enemy)	14000	999
+066	Lucky Sloth	Lucky Sloth (Event Enemy)	300000	8000
+067	Audience Bears	Audience Bears (Event Enemy)	50000	2800
+068	Monkey King	Monkey King (Enemy)	6640	550
+069	White Cyclone	White Cyclone (Floating)	999999	89000
+070	Black Cyclone	Black Cyclone (Black/Floating)	1200000	4000
+071	Metal Cyclone	Metal Cyclone (Metal)	77777	77000
+072	Nimue	Nimue (Enemy)	5000	399
+073	Neutralization Type Nimue	Neutralization Type Nimue (Enemy)	98767	3843
+074	SSS Monkey King	SSS Monkey King (Enemy)	188600	5280
+075	Crazed Cat	Crazed Cat (Enemy Unit)	2400000	7880
+076	Crazed Tank Cat	Crazed Tank Cat (Enemy Unit)	3200000	30240
+077	Crazed Axe Cat	Crazed Axe Cat (Enemy Unit)	2200000	4200
+078	Crazed Gross Cat	Crazed Gross Cat (Enemy Unit)	120000	3990
+079	Crazed Cow Cat	Crazed Cow Cat (Enemy Unit)	130000	2600
+080	Crazed Bird Cat	Crazed Bird Cat (Enemy Unit)	1180000	12000
+081	Crazed Fish Cat	Crazed Fish Cat (Enemy Unit)	87000	4200
+082	Crazed Lizard Cat	Crazed Lizard Cat (Enemy Unit)	600000	1300
+083	Crazed Titan Cat	Crazed Titan Cat (Enemy Unit)	2560000	17000
+084	Teacher A.	Teacher A. (Event Enemy)	40000	657
+085	Samurai Doggy	Samurai Doggy (Event Enemy)	135400	2555
+086	Mega Cat	Mega Cat (Enemy)	99	99999
+087	Gory Groom	Gory Groom (Event Enemy)	170000	2525
+088	Celesse	Celesse (Enemy)	250	50
+089	Nono	Nono (Enemy)	650	150
+090	Olga	Olga (Enemy)	2400	240
+091	Norn	Norn (Enemy)	3200	430
+092	Yoichi	Yoichi (Enemy)	3800	780
+093	Serum	Serum (Enemy)	9200	600
+094	Fuu	Fuu (Enemy)	30000	1942
+095	Aura	Aura (Enemy)	77000	3555
+096	Rei	Rei (Enemy)	40000	2123
+097	Wyvern	Wyvern (Enemy)	380000	6555
+098	Healer	Healer (Enemy)	299999	3250
+099	Sunny Celeboodle	Sunny Celeboodle (Event Enemy)	80000	3000
+100	Bearkini	Bearkini (Event Enemy)	35000	600
+101	Lord Enma	Lord Enma (Event Enemy)	112590	6000
+102	Leggsy	Leggsy (Event Enemy)	50000	600
+103	Ecto Doge	Ecto Doge (Event Enemy)	180	16
+104	Ecto Snache	Ecto Snache (Event Enemy)	200	30
+105	Ecto Baa Baa	Ecto Baa Baa (Event Enemy)	1000	100
+106	Firework Guys 1	Firework Guys 1 (Event Enemy)	1	1
+107	Firework Guys 2	Firework Guys 2 (Event Enemy)	1	1
+108	Mighty Gui Zuli	Mighty Gui Zuli (Event Enemy)	83000	8300
+109	Hermit Peng	Hermit Peng (Event Enemy)	25000	650
+110	Master Da Xun	Master Da Xun (Event Enemy)	100000	2700
+111	Pigge Back	Pigge Back (Event Enemy)	10000	200
+112	Divine Cyclone	Divine Cyclone (Angel)	1399999	76000
+113	Heavenly Hippoe	Heavenly Hippoe (Angel)	55000	1800
+114	Gabriel	Gabriel (Angel)	13000	1550
+115	Angelic Gory	Angelic Gory (Angel)	98000	5567
+116	Angel Fanboy		5	1
+117	Wall Doge		30000	460
+118	Ginger Snache	Ginger Snache (Red)	12000	1800
+119	Sunfish Jones	Sunfish Jones (Angel)	1200000	9260
+120	Birthday Cake	Birthday Cake (Event Enemy)	50	1
+121	Drury Witch	Drury Witch (Enemy)	500	2200
+122	Drury Swordsman	Drury Swordsman (Enemy)	150	75
+123	Pigeon de Sable	Pigeon de Sable (Floating)	8300	1200
+124	Dark Otter	Dark Otter (Black)	175000	6497
+125	Angelic Sleipnir	Angelic Sleipnir (Angel)	363000	2247
+126	Angry Sun	Angry Sun (Event Enemy)	215	1
+127	Beefcake Cat	Beefcake Cat (Enemy)	1200000	5500
+128	Dancer Cat	Dancer Cat (Enemy)	1500000	21400
+129	Hyper Mr.	Hyper Mr. (Enemy)	478000	4837
+130	Ultimate Bondage Cat	Ultimate Bondage Cat (Enemy)	500000	9643
+131	Dark Lazer	Dark Lazer (Enemy)	1248000	7880
+132	Heavy Assault C.A.T.	Heavy Assault C.A.T. (Enemy)	1500000	16000
+133	Lollycat	Lollycat (Enemy)	300000	777
+134	Unicycle Cat	Unicycle Cat (Enemy)	288000	5800
+135	Flying Ninja Cat	Flying Ninja Cat (Enemy)	1000000	7220
+136	Skelecat	Skelecat (Enemy)	25000	18000
+137	Pastry Cat	Pastry Cat (Enemy)	1400000	7200
+138	Riceball Cat	Riceball Cat (Enemy)	133300	4440
+139	Gato Amigo	Gato Amigo (Enemy)	17500	5700
+140	Loincloth Cat	Loincloth Cat (Enemy)	180000	1600
+141	Ayanokōji Shō	Ayanokōji Shō (Enemy)	504649	14649
+142	Saotome Hikaru	Saotome Hikaru (Enemy)	99999	2000
+143	Saionji Hitomi	Saionji Hitomi (Enemy)	45000	400
+144	Hoshi Guranmanie	Hoshi Guranmanie (Enemy)	4000	350
+145	Shiratori Shōchikubai	Shiratori Shōchikubai (Enemy)	1500	150
+146	Trolly Blogger		500	200
+147	Metal Doge	Metal Doge (Metal)	30	2000
+148	Li'l Nyandam	Li'l Nyandam (Red)	669000	17200
+149	Le'noir	Le'noir (Black)	460000	16000
+150	Baby Mola	Baby Mola (Enemy)	1	360
+151	Mola King	Mola King (Enemy)	3000	3000
+152	Ayumi Manbosaki	Ayumi Manbosaki (Enemy)	240000	5555
+153	Crab	Crab (Enemy)	2500	250
+154	Sardine	Sardine (Enemy)	120	30
+155	Squid	Squid (Enemy)	90	18
+156	Martin	Martin (Event Enemy)	210000	4800
+157	Sakura Android	Sakura Android (Enemy)	400000	11111
+158	Takuya	Takuya (Enemy)	20000	1200
+159	Yuki	Yuki (Enemy)	75000	3300
+160	Chickful A	Chickful A (Angel)	160000	13000
+161	Mob Cat	Mob Cat (Enemy)	7500	250
+162	Yakuza Vampire	Yakuza Vampire (Enemy)	40000	1200
+163	Hearscht	Hearscht (Enemy)	450000	15000
+164	Cornelia	Cornelia (Enemy)	99999	900
+165	Alois	Alois (Enemy)	5000	450
+166	Healer Cat CC	Healer Cat CC (Enemy)	1255500	8850
+167	Shibalien	Shibalien (Alien)	900	150
+168	Kroxo	Kroxo (Alien)	3000	900
+169	Hyppoh	Hyppoh (Alien)	7000	200
+170	Imperator Sael	Imperator Sael (Alien)	15000	500
+171	Maawth	Maawth (Alien/Floating)	17777	777
+172	LeMurr	LeMurr (Alien)	20000	800
+173	Helmut Krabbe	Helmut Krabbe (Alien)	9000	300
+174	I.M. Phace	I.M. Phace (Alien/Floating)	44444	1333
+175	Ursamajor	Ursamajor (Alien)	30000	1000
+176	Cli-One	Cli-One (Alien/Floating)	120000	1400
+177	Nimoy Bore	Nimoy Bore (Alien)	160000	1799
+178	Elizabeth the LVIth	Elizabeth the LVIth (Alien)	60000	250
+179	Cosmic Cyclone	Cosmic Cyclone (Alien/Floating)	1499999	9999
+180	Galactic Overseer Nyandam	Galactic Overseer Nyandam (Alien)	144444	4444
+181	Corrupted Valkyrie	Corrupted Valkyrie (Alien/Floating)	555555	7000
+182	Scissoroo	Scissoroo (Alien)	24000	2800
+183	Cyberhorn	Cyberhorn (Alien)	120000	2200
+184	Mistress Celeboodle	Mistress Celeboodle (Alien)	4500	3750
+185	Professor A.	Professor A. (Red)	320000	6800
+186	DL Anniversary Birthday Cake	DL Anniversary Birthday Cake (Event Enemy)	100	1
+187	Rathalos	Rathalos (Enemy)	300000	7040
+188	Rathian	Rathian (Enemy)	480000	9900
+189	MARS PEOPLE	MARS PEOPLE (Enemy)	125	50
+190	DONALD MORDEN	DONALD MORDEN (Enemy)	450000	11500
+191	ALLEN O'NEIL	ALLEN O'NEIL (Enemy)	6000	600
+192	MARCO	MARCO (Enemy)	1500	125
+193	SV-001	SV-001 (Enemy)	7500	400
+194	HUGE HERMIT	HUGE HERMIT (Enemy)	60000	1111
+195	JUPITER KING	JUPITER KING (Enemy)	250000	7500
+196	HI-DO	HI-DO (Enemy)	750000	21000
+197	Doge O'Lantern	Doge O'Lantern (Event Enemy)	540	24
+198	Drac-owl-la	Drac-owl-la (Event Enemy)	166000	6600
+199	Sa-Bat	Sa-Bat (Event Enemy)	6300	800
+200	Valkyrie	Junior God of Light - Valkyrie (Enemy)	2400	120
+201	Brynhildr	Junior God Brynhildr (Enemy)	30000	800
+202	Suruzu	Junior God Suruzu (Enemy)	45000	1888
+203	Freya	Goddess of Abundance - Freya (Enemy)	165000	100
+204	Odin	God of War - Odin (Enemy)	550000	15500
+205	Capy	Capy (Red)	530000	52000
+206	Berserkory	Berserkory (Red)	920000	7444
+207	Brollow	Brollow (Floating)	19000	15000
+208	Calamary	Calamary (Alien/Floating)	45000	1200
+209	Alpacky	Alpacky (Alien)	175000	1750
+210	Elder Sloth	Elder Sloth (Alien)	360000	12500
+211	Bun Bun Symbiote	Bun Bun Symbiote (Alien/Floating)	750000	8888
+212	Raging Bahamut Cat	Raging Bahamut Cat (Alien/Floating)	1222222	44444
+213	Blitzen	Blitzen (Event Enemy)	122500	5963
+214	Swordsman	Swordsman (Castle and Dragon Enemy)	1800	90
+215	Cavalry Soldier	Cavalry Soldier (Enemy)	5000	225
+216	Ashura	Ashura (Enemy)	22500	999
+217	Battle Balloon	Battle Balloon (Enemy)	35000	1000
+218	Dragon Rider	Dragon Rider (Enemy)	40000	2250
+219	Pretty Cat	Pretty Cat (Enemy)	50000	2666
+220	Cyclops	Cyclops (Enemy)	160000	4500
+221	Golem	Golem (Enemy)	225000	10000
+222	Swordsman of Myoo	Swordsman of Myoo (Enemy)	2400	120
+223	Thunderclap Black Cavalry Soldier	Thunderclap Black Cavalry Soldier (Enemy)	6500	255
+224	Kabukimono Ashura	Kabukimono Ashura (Enemy)	27500	1111
+225	Battle Balloon UFO	Battle Balloon UFO (Enemy)	40000	1200
+226	Flaming Dragon Rider	Flaming Dragon Rider (Enemy)	45000	2500
+227	Cyber Pretty Cat	Cyber Pretty Cat (Enemy)	55000	3333
+228	Space-time Cyclops	Space-time Cyclops (Enemy)	200000	4750
+229	Volcano Golem	Volcano Golem (Enemy)	250000	11111
+230	Prisoner Cat	Prisoner Cat (Enemy)	1500000	12000
+231	Gentleman Bros.	Gentleman Bros. (Enemy)	750000	4000
+232	Cruel Angel Clionel	Cruel Angel Clionel (Angel)	2400000	32000
+233	Nyalladin	Nyalladin (Enemy)	900000	6450
+234	Wrestling Cat	Wrestling Cat (Enemy)	2400000	17500
+235	Mr. Mole		420000	4500
+236	The Perfect Cyclone	The Perfect Cyclone (Floating)	750000	3666
+237	Nyamusu	Nyamusu (Enemy)	140000	8000
+238	Pochi	Pochi (Enemy)	35000	8000
+239	Kuromi	Kuromi (Enemy)	12000	3000
+240	Setsuko	Setsuko (Enemy)	70000	6000
+241	Nebaaru-kun	Nebaaru-kun (Enemy)	120000	5000
+242	Manic Mohawk Cat	Manic Mohawk Cat (Enemy Unit)	4800000	13880
+243	Manic Eraser Cat	Manic Eraser Cat (Enemy Unit)	4800000	45360
+244	Manic Dark Cat	Manic Dark Cat (Enemy Unit)	2100000	6800
+245	Manic Macho Legs Cat	Manic Macho Legs Cat (Enemy Unit)	300000	9990
+246	Manic Lion Cat	Manic Lion Cat (Enemy Unit)	300000	6600
+247	Manic Flying Cat	Manic Flying Cat (Enemy Unit)	2680000	32000
+248	Manic Island Cat	Manic Island Cat (Enemy Unit)	227000	10200
+249	Manic King Dragon Cat	Manic King Dragon Cat (Enemy Unit)	700000	2900
+250	Manic Jamiera Cat	Manic Jamiera Cat (Enemy Unit)	3560000	22000
+251	Kiss and Koi	Kiss and Koi (Enemy)	650000	8500
+252	Madam the Savannah	Madam the Savannah (Enemy)	1222200	14400
+253	Call Center Cat	Call Center Cat (Enemy)	400000	12500
+254	Mr. Angel	Mr. Angel (Angel)	13500	1600
+255	Two Can	Two Can (Red/Black)	250000	12000
+256	Tackey	Tackey (Black)	128000	9000
+257	King Wahwah		1000000	24000
+258	&quot;Codename &quot;&quot;Red Riding&quot;&quot;&quot;		1200000	22222
+259	Takuya and Lovely Yuki	Takuya and Lovely Yuki (Enemy)	750000	8800
+260	Kite Cat	Kite Cat (Enemy)	500000	7500
+261	Boraphim	Boraphim (Angel)	1440000	17700
+262	Drummer Doge	Drummer Doge (Event Enemy)	300000	100
+263	Carny Otta	Carny Otta (Event Enemy)	120000	2497
+264	Funghi	Funghi (Enemy)	360	70
+265	Iron Claw X	Iron Claw X (Enemy)	1200000	40000
+266	Henry		1000000	2500
+267	Hannya	Hannya (Red)	1000000	36000
+268	Package Doge	Package Doge (Event Enemy)	100	1
+269	Futenyan	Futenyan (Enemy)	700	130
+270	Rampage Cats	Rampage Cats (Enemy)	250000	1250
+271	Queen B	Queen B (Alien/Floating)	1555555	12222
+272	Li'l Bun Bun	Li'l Bun Bun (Floating)	29997	1125
+273	Gertrud	Gertrud (Witch)	150000	7500
+274	Charlotte (Snake)	Charlotte (Snake) (Witch)	300000	12000
+275	Charlotte (Doll)	Charlotte (Doll) (Witch)	30000	6000
+276	Kirsten	Kirsten (Witch)	750000	20000
+277	Walpurgisnacht	Walpurgisnacht (Witch)	2400000	40000
+278	Kyubey (form 1)	Kyubey (form 1) (Enemy)	3000	600
+279	Ritual Cat	Ritual Cat (Enemy)	724300	11111
+280	Razorback	Razorback (Black)	1150000	20000
+281	Festival Ms. Sign	Festival Ms. Sign (Event Enemy)	3600	80
+282	Chicka Fry	Chicka Fry (Event Enemy)	96000	3600
+283	Scarecrow	Scarecrow (Enemy Base)	100	999999
+284	Zoge	Zoge (Zombie)	15000	1800
+285	Znache	Znache (Zombie)	16000	2000
+286	Zomboe	Zomboe (Zombie)	40000	4000
+287	Zigge	Zigge (Zombie)	48000	3600
+288	Zackie Peng	Zackie Peng (Zombie)	42000	8000
+289	Zory	Zory (Zombie)	50000	3789
+290	Zir Zeal	Zir Zeal (Zombie)	75000	4500
+291	Zang Roo	Zang Roo (Zombie)	100000	7997
+292	Zroco	Zroco (Zombie)	15000	5000
+293	Lord Gravey	Lord Gravey (Zombie)	750000	15000
+294	Zyclone	Zyclone (Zombie)	1222222	44444
+295	Xmas Pudding Cat	Xmas Pudding Cat (Enemy)	1500000	8888
+296	Mega Cat EX	Mega Cat EX (Enemy)	297	99999
+297	4th Anniversary Birthday Cake	4th Anniversary Birthday Cake (Event Enemy)	50	1
+298	Niconico TV	Niconico TV (Enemy Base)	100	999999
+299	W (form 1)	W (form 1) (Enemy)	50	80
+300	W (form 2)	W (form 2) (Enemy)	50	80
+301	W (form 3)	W (form 3) (Enemy)	50	80
+302	Neko Hakase	Neko Hakase (Enemy)	30000	900
+303	Miss Haka	Miss Haka (Zombie)	720000	25000
+304	Big Sal	Big Sal (Zombie)	300000	60000
+305	Pikotaro	Pikotaro (Enemy)	100	99999
+306	Mammothe	Mammothe (Event Enemy)	120000	3200
+307	Icy Doge	Icy Doge (Event Enemy)	36000	600
+308	Snowball	Snowball (Event Enemy)	1	400
+309	Coffin Zoge	Coffin Zoge (Zombie)	40000	650
+310	Zamelle	Zamelle (Zombie)	120000	5937
+311	Killer Cat	Killer Cat (Enemy)	3600	240
+312	Corrupted Cat Base	Corrupted Cat Base (Enemy Base)	3000	100
+313	Hiroshi Mihara	Hiroshi Mihara (Enemy)	50	99999
+314	Nazousagi	Nazousagi (Enemy)	40000	1600
+315	Doge Base	Doge Base (Enemy Base)	1500	50
+316	Inumusha	Inumusha (Zombie)	800000	40000
+317	Daboo of the Dead	Daboo of the Dead (Zombie)	3000000	30000
+318	Dolphina		450000	7500
+319	Mobius	Mobius (Enemy)	400000	13333
+320	Belial	Belial (Enemy)	100000	4000
+321	Happy 100	Happy 100 (Enemy)	20000	1200
+322	Li'l Mohawk Cat	Li'l Mohawk Cat (Enemy)	3200000	10880
+323	Li'l Eraser Cat	Li'l Eraser Cat (Enemy)	2400000	30240
+324	Li'l Dark Cat	Li'l Dark Cat (Enemy)	2100000	5500
+325	Li'l Macho Legs Cat	Li'l Macho Legs Cat (Enemy)	200000	5990
+326	Li'l Lion Cat	Li'l Lion Cat (Enemy)	300000	5900
+327	Li'l Flying Cat	Li'l Flying Cat (Enemy)	1780000	22000
+328	Li'l Island Cat	Li'l Island Cat (Enemy)	247000	8400
+329	Li'l King Dragon Cat	Li'l King Dragon Cat (Enemy)	300000	3500
+330	Li'l Jamiera Cat	Li'l Jamiera Cat (Enemy)	2560000	12000
+331	Easter Duche	Easter Duche (Event Enemy)	150000	3600
+332	Easter Bunny	Easter Bunny (Event Enemy)	25000	1500
+333	Moai Statue	Moai Statue (Enemy Base)	1200	15
+334	Wedding Kerihime	Wedding Kerihime (Enemy)	35000	5200
+335	Eternal Sleeping Beauty	Eternal Sleeping Beauty (Enemy)	800000	8500
+336	Goldoge	Goldoge (Event Enemy)	1500	300
+337	Sir Hippoe	Sir Hippoe (Event Enemy)	40000	1000
+338	Golden R.Ost	Golden R.Ost (Event Enemy)	20	2400
+339	Lost World Yuki	Lost World Yuki (Enemy)	100000	3800
+340	Cala Maria	Cala Maria (Angel)	360000	108000
+341	Sluggy (Red)		10000	750
+342	Sluggy (Black)		30000	1250
+343	Sluggy (Angel)		75000	3300
+344	Cat Kart P	Cat Kart P (Enemy)	750000	52500
+345	Nekondo SP	Nekondo SP (Enemy)	150000	500
+346	Merc &amp; Cat CC	Merc &amp; Cat CC (Enemy)	99000	15000
+347	Titi Cat CC	Titi Cat CC (Enemy)	1000000	27000
+348	Orthos	Orthos (Enemy)	4800	400
+349	Michelia	Michelia (Enemy)	40000	2000
+350	Todomeki	Todomeki (Enemy)	320000	8000
+351	Gudetama Plate	Gudetama Plate (Enemy)	5000	799
+352	Gudegude à la mode	Gudegude à la mode (Enemy)	25000	1250
+353	Nisetama Army	Nisetama Army (Enemy)	120000	4999
+354	Hermit Cat	Hermit Cat (Enemy Unit)	4000000	66666
+355	Croakley		360000	3789
+356	Gory Junior	Gory Junior (Event Enemy)	36000	1500
+357	Value Meal Cat	Value Meal Cat (Enemy)	100000	3000
+358	Steel Snake	Steel Snake (Event Enemy)	55	300
+359	Mercury Sloth	Mercury Sloth (Event Enemy)	2400	2400
+360	Shibalien Elite	Shibalien Elite (Alien)	7000	500
+361	Star Peng	Star Peng (Alien)	14000	750
+362	General GreGory	General GreGory (Alien)	15000	567
+363	Le'Solar	Le'Solar (Alien)	10000	1147
+364	Project A	Project A (Alien)	12800	149
+365	Corporal Weyland	Corporal Weyland (Alien)	16000	222
+366	Spacefish Jones	Spacefish Jones (Alien/Floating)	30000	1234
+367	The Cat God	The Cat God (Floating)	1399999	53997
+368	Saber	Saber (Enemy)	400000	8000
+369	Lancer	Lancer (Enemy)	240000	5000
+370	Archer	Archer (Enemy)	300000	5555
+371	Rider	Rider (Enemy)	200000	6000
+372	Gilgamesh	Gilgamesh (Enemy)	1500000	15000
+373	Rin Tohsaka	Rin Tohsaka (Enemy)	20000	3500
+374	Illyasviel	Illyasviel (Enemy)	100000	5600
+375	Youcan	Youcan (Angel/Alien)	50000	3333
+376	5th Anniversary Birthday Cake	5th Anniversary Birthday Cake (Event Enemy)	100	1
+377	Super Cosmic Cyclone	Super Cosmic Cyclone (Alien)	666666	555
+378	5th Anniversary Scarecrow	5th Anniversary Scarecrow (Enemy Base)	100	999999
+379	Winged Pigge	Winged Pigge (Angel)	800000	6000
+380	Mystic Mask Yulala	Mystic Mask Yulala (Enemy Unit)	2250000	25000
+381	Karin Nekozuka	Karin Nekozuka (Enemy)	320000	6000
+382	Misaki Konno	Misaki Konno (Enemy)	720000	20000
+383	Sairi Nijitani	Sairi Nijitani (Enemy)	360000	8000
+384	Ren Katagiri	Ren Katagiri (Enemy)	450000	4500
+385	Hater	Hater (Enemy)	50000	5000
+386	Prof. Wild Base	Prof. Wild Base (Enemy Base)	10000	100
+387	Hackey	Hackey (Red)	248000	54000
+388	UltraBaaBaa	UltraBaaBaa (Alien)	500	1000
+389	Pigge Victorious	Pigge Victorious (Event Enemy)	30000	1000
+390	Bang-Bang	Bang-Bang (Event Enemy)	180000	7500
+391	Mentori	Mentori (Enemy)	900	40
+392	Sachiel	Sachiel (Eva Angel)	120000	3000
+393	Ramiel	Ramiel (Eva Angel)	100000	15000
+394	Bardiel	Bardiel (Eva Angel)	500000	15000
+395	Zeruel	Zeruel (Eva Angel)	2500000	150000
+396	Crazed Moneko	Crazed Moneko (Enemy)	2400000	60000
+397	Corrupted Moneko	Corrupted Moneko (Enemy)	2400000	60000
+398	Penlight Guys	Penlight Guys (Event Enemy)	1	1
+399	Pokota	Pokota (Enemy)	32000	5000
+400	Ovis	Ovis (Enemy)	200000	3000
+401	Coco	Coco (Enemy)	120000	10000
+402	Moe Uzumasa &amp; Doge	Moe Uzumasa &amp; Doge (Enemy)	16000	1650
+403	Saki Matsuga &amp; Doge	Saki Matsuga &amp; Doge (Enemy)	150000	6000
+404	Misa Ono &amp; Doge	Misa Ono &amp; Doge (Enemy)	100000	4000
+405	Mecha-Bun	Mecha-Bun (Floating)	3000000	22222
+406	Relic Bun-Bun	Relic Bun-Bun (Relic)	3000000	11111
+407	Relic Doge	Relic Doge (Relic)	75000	12000
+408	Crazed Yuki	Crazed Yuki (Enemy)	240000	9900
+409	Gude-Doge Machine	Gude-Doge Machine (Enemy)	250000	36000
+410	Gudebene Cat	Gudebene Cat (Enemy)	130000	8000
+411	Gorilliam	Gorilliam (Event Enemy)	200000	2025
+412	Sir Rel	Sir Rel (Relic)	50000	12500
+413	Oldhorn	Oldhorn (Relic)	2400000	12000
+414	Othom	Othom (Relic/Floating)	800000	11111
+415	Betakkuma	Betakkuma (Enemy)	4800	270
+416	Selena	Selena (Event Enemy)	400000	9000
+417	Kid Tappa	Kid Tappa (Alien)	40000	50
+418	Ribbo	Ribbo (Alien)	700	100
+419	Cat God (Cool Dude)		1499999	67997
+420	Loris	Loris (Relic)	360000	6000
+421	Le'saint	Le'saint (Event Enemy)	600000	12000
+422	The Red Malice	The Red Malice (Event Enemy)	400000	4400
+423	Lowkey	Lowkey (Relic/Floating)	1111111	6000
+424	M. Ost	M. Ost (Relic)	1360000	9000
+425	Dead Donny Dash	Dead Donny Dash (Event Enemy)	200000	6000
+426	CTO Seal	CTO Seal (Event Enemy)	160000	2300
+427	Cadaver Bear	Cadaver Bear (Zombie)	120000	5000
+428	Dread Bore	Dread Bore (Zombie)	400000	4500
+429	Homulilly	Homulilly (Witch)	9000000	12000
+430	Satan Claus	Satan Claus (Event Enemy)	99999	2650
+431	Bakoo	Bakoo (Black)	500000	10000
+432	Hikakin	Hikakin (Enemy)	640	320
+433	Mukyakin	Mukyakin (Enemy)	10000	250
+434	Sister Lione	Sister Lione (Event Enemy)	140000	8000
+435	6th Anniversary Birthday Cake	6th Anniversary Birthday Cake (Event Enemy)	100	1
+436	6th Anniversary Scarecrow	6th Anniversary Scarecrow (Enemy Base)	100	999999
+437	Lucky Dags	Lucky Dags (Event Enemy)	100000	24000
+438	Primeval Cyclone	Primeval Cyclone (Relic)	2333333	7777
+439	Li'l Bore	Li'l Bore (Event Enemy)	120	8
+440	Variety Bears	Variety Bears (Event Enemy)	50000	1200
+441	Saber Alter	Saber Alter (Enemy)	1200000	8000
+442	Ms. Madonna	Ms. Madonna (Event Enemy)	240000	2400
+443	Mesocosmocyclone	Mesocosmocyclone (Alien)	44444	666
+444	Gardeneel Bros.	Gardeneel Bros. (Alien)	4000	200
+445	Axoloty	Axoloty (Alien)	50000	40000
+446	Final Boss Giga-God	Final Boss Giga-God (Cool Dude)	999999	73997
+447	Filibuster Obstructa	Filibuster Obstructa (Alien/Floating)	2000000	1000000
+448	Idol Mihara &amp; Cat	Idol Mihara &amp; Cat (Enemy)	20000	2000
+449	HaterBaa 2.0	HaterBaa 2.0 (Event Enemy)	15	13500
+450	Dogumaru	Dogumaru (Relic)	1000000	9000
+451	Maji Cat &amp; Cat Tour Group	Maji Cat &amp; Cat Tour Group (Enemy)	7500	800
+452	Super Devil	Super Devil (Enemy)	50000	1500
+453	Satanmaria	Satanmaria (Enemy)	60000	5000
+454	Wondermaria	Wondermaria (Enemy)	1000000	33333
+455	Beastly Nero	Beastly Nero (Enemy)	111111	13332
+456	Head Rococo	Head Rococo (Enemy)	1500000	50000
+457	Gummy Cat	Gummy Cat (Enemy)	100000	1
+458	Kitarou	Kitarou (Enemy)	17000	2500
+459	Medama-Oyaji	Medama-Oyaji (Enemy)	35000	800
+460	Neko-Musume	Neko-Musume (Enemy)	15000	1500
+461	Kano &amp; Souma	Kano &amp; Souma (Enemy)	80000	800
+462	Gekirinchii	Gekirinchii (Enemy)	220000	17000
+463	Judgement	Judgement (Enemy)	180000	13000
+464	Awakened Eva Unit-13	Awakened Eva Unit-13 (Eva Angel)	4000000	100000
+465	HAPPI	HAPPI (Enemy)	120000	4500
+466	HAPPI &amp; Maji Cat &amp; Cat	HAPPI &amp; Maji Cat &amp; Cat (Enemy)	150000	6000
+467	Chocolate Cat	Chocolate Cat (Enemy)	20000	550
+468	Zuche	Zuche (Zombie)	17500	17000
+469	The Thrillerz	The Thrillerz (Zombie)	10000	6500
+470	Shakurel Doge	Shakurel Doge (Enemy)	180	16
+471	Shakurel Gory	Shakurel Gory (Enemy)	2000	160
+472	Shakurel Face	Shakurel Face (Enemy)	399996	8000
+473	Shakurel Lion	Shakurel Lion (Enemy)	36000	1500
+474	Shakurel Tiger	Shakurel Tiger (Enemy)	10000	1000
+475	Shakurel Panda	Shakurel Panda (Enemy)	150000	3000
+476	Dot Hero	Dot Hero (Enemy)	90000	2500
+477	Mr. Puffington	Mr. Puffington (Relic)	400000	30000
+478	Cat Day Cake	Cat Day Cake (Event Enemy)	22	1
+479	Puffsley's Comet	Puffsley's Comet (Alien)	900000	40000
+480	Ryu	Ryu (Enemy)	200000	4000
+481	Chun-Li	Chun-Li (Enemy)	360000	5100
+482	Guile	Guile (Enemy)	400000	10500
+483	Zangief	Zangief (Enemy)	750000	8000
+484	Blanka	Blanka (Enemy)	160000	13000
+485	Dhalsim	Dhalsim (Enemy)	240000	13500
+486	Ken	Ken (Enemy)	600000	36000
+487	Car	Car (Enemy Base)	1000	1
+488	Akuma	Akuma (Enemy)	1200000	54000
+489	7th Anniversary Birthday Cake	7th Anniversary Birthday Cake (Event Enemy)	100	1
+490	7th Anniversary Scarecrow	7th Anniversary Scarecrow (Enemy Base)	100	999999
+491	Black Okame	Black Okame (Red/Black)	2600000	24000
+492	Heavenly Herald Papuu	Heavenly Herald Papuu (Angel)	2500000	4000
+493	Queen Mother V	Queen Mother V (Relic/Floating)	1555555	18888
+494	Rat Doge	Rat Doge (Event Enemy)	100	40
+495	Kappy Jr.		2000000	38000
+496	Urs &amp; Fenrir	Urs &amp; Fenrir (Relic)	750000	35000
+497	Croconator	Croconator (Metal)	5	800
+498	Gobble	Gobble (Floating)	329000	5000
+499	Baron Seal	Baron Seal (Red) (Colossal)	15000	300
+500	Hatsune Miku	Hatsune Miku (Enemy)	100000	6500
+501	Sakura Miku	Sakura Miku (Enemy)	150000	20000
+502	Kagamine Rin &amp; Len	Kagamine Rin &amp; Len (Enemy)	180000	8000
+503	MikuDoge	MikuDoge (Enemy)	3000	1500
+504	MikuGory	MikuGory (Enemy)	72000	3200
+505	MikuBear	MikuBear (Enemy)	100000	15000
+506	Everlord Wanwan	Everlord Wanwan (Alien)	1200000	31500
+507	Messier	Messier (Enemy)	378000	8000
+508	Yakisoba U.F.O. Cat	Yakisoba U.F.O. Cat (Enemy)	2000	200
+509	Yakisoba Face	Yakisoba Face (Enemy)	4444	500
+510	Le'Grim	Le'Grim (Black) (Colossal)	20000	2000
+511	Death Angel Z-Onel	Death Angel Z-Onel (Zombie)	1000000	30000
+512	Li'l Zyclone	Li'l Zyclone (Zombie)	333333	333
+513	St. Dober	St. Dober (Angel)	1800000	23000
+514	Doremi		1800000	28000
+515	Mega-Mooth	Mega-Mooth (Floating) (Colossal)	12000	800
+516	Master Uril	Master Uril (Enemy Unit)	3800000	25500
+517	Koronium	Koronium (Metal)	150	15000
+518	Super Zeus	Super Zeus (Enemy)	225000	5000
+519	Shaman Khan	Shaman Khan (Enemy)	160000	2500
+520	Heracrist	Heracrist (Enemy)	600000	40000
+521	Johnnyleon	Johnnyleon (Red/Alien/Zombie)	3000000	3500
+522	Relic Doge Base	Relic Doge Base (Enemy Base)	3000	1
+523	Happy Birthday Cake	Happy Birthday Cake (Event Enemy)	100	1
+524	Surge Base	Surge Base (Enemy Base)	1500	120
+525	Super Hyppoh	Super Hyppoh (Alien) (Colossal)	1800	50
+526	Idi:Re	Idi:Re (Relic)	3333333	99999
+527	Zollow	Zollow (Zombie/Floating)	4500	10000
+528	E. Honda	E. Honda (Enemy)	500000	5555
+529	Balrog	Balrog (Enemy)	560000	28000
+530	Vega	Vega (Enemy)	360000	5000
+531	Sagat	Sagat (Enemy)	480000	2200
+532	M. Bison	M. Bison (Enemy)	320000	6000
+533	8th Anniversary Birthday Cake	8th Anniversary Birthday Cake (Event Enemy)	100	1
+534	8th Anniversary Scarecrow	8th Anniversary Scarecrow (Enemy Base)	100	999999
+535	Evil Emperor Cat	Evil Emperor Cat (Relic)	1200000	6666
+536	Megurine Luka	Megurine Luka (Enemy)	150000	2000
+537	Cow Doge	Cow Doge (Event Enemy)	3000	600
+538	Bore Jr.		55500	23500
+539	Chocolate Wall Doge	Chocolate Wall Doge (Event Enemy)	214000	1420
+540	Snow Miku 2021	Snow Miku 2021 (Enemy)	200000	14000
+541	Raynard	Raynard (Red)	98000	9800
+542	Ranma Saotome (M)	Ranma Saotome (M) (Enemy)	120000	9000
+543	Akane Tendo	Akane Tendo (Enemy)	165000	4000
+544	Hibiki Ryoga	Hibiki Ryoga (Enemy)	180000	4500
+545	Shampoo	Shampoo (Enemy)	160000	3150
+546	Mousse	Mousse (Enemy)	135000	3000
+547	Mr. Mer		1250000	16000
+548	Wafer Cat BIG	Wafer Cat BIG (Enemy)	999999	1
+549	Ragin' Gory	Ragin' Gory (Black / Behemoth)	321234	11234
+550	Shin Godzilla	Shin Godzilla (Enemy)	500	600
+551	Elder Flame Doron	Elder Flame Doron (Relic)	2222222	22222
+552	Aku Doge	Aku Doge (Aku)	4500	2200
+553	Sinner Snache	Sinner Snache (Aku)	8200	2800
+554	Cerberus Kids	Cerberus Kids (Aku)	2500	2500
+555	Condemned Peng	Condemned Peng (Aku)	32250	4200
+556	Aku Gory	Aku Gory (Aku)	85000	6868
+557	Le'Behemoth	Le'Behemoth (Aku)	380000	13600
+558	Fallen Bear	Fallen Bear (Aku)	75000	15000
+559	Wicked Face	Wicked Face (Aku)	452000	10200
+560	Aku Cyclone	Aku Cyclone (Aku)	1666666	6666
+561	Wicked Cat	Wicked Cat (Event Enemy)	120000	1800
+562	Wicked Tank Cat	Wicked Tank Cat (Event Enemy)	420000	4000
+563	Wicked Axe Cat	Wicked Axe Cat (Event Enemy)	300000	3500
+564	564	564 (Aku)	90	8
+565	565	565 (Aku)	90	8
+566	566	566 (Aku)	90	8
+567	567	567 (Aku)	90	8
+568	568	568 (Aku)	90	8
+569	569	569 (Aku)	90	8
+570	Dark Priest Mamon	Dark Priest Mamon (Aku)	680000	20999
+571	High Priest Mamon	High Priest Mamon (Aku)	1620000	32200
+572	Lord of Ruin Jagando	Lord of Ruin Jagando (Aku)	2000000	36000
+573	Possessed Empress	Possessed Empress (Aku)	980000	31500
+574	Aku Altar	Aku Altar (Enemy Base)	100000	0
+575	Inactive Aku Altar	Inactive Aku Altar (Enemy Base)	100000	0
+576	White Ball	White Ball (Event Enemy)	500	50
+577	Red Ball	Red Ball (Event Enemy)	4000	250
+578	Metal Ball	Metal Ball (Event Enemy)	20	2500
+579	Kyubey (form 2)	Kyubey (form 2) (Enemy)	3000	200
+580	Wind	Wind (Enemy)	5000	100
+581	Red Wind	Red Wind (Enemy)	5000	100
+582	Black Wind	Black Wind (Enemy)	5000	150
+583	Medu-san	Medu-san (Aku)	788000	8800
+584	Miz Devil	Miz Devil (Aku)	300	1250
+585	Sathankhamun VIII	Sathankhamun VIII (Aku)	1200000	34000
+586	Midnite D.	Midnite D. (Aku)	300000	23000
+587	Ackey	Ackey (Aku)	53000	30000
+588	Deathkory	Deathkory (Aku)	1270000	23500
+589	Masked Grandmaster Cat	Masked Grandmaster Cat (Enemy Unit)	4000000	86664
+590	9th Anniversary Birthday Cake	9th Anniversary Birthday Cake (Event Enemy)	100	1
+591	9th Anniversary Scarecrow	9th Anniversary Scarecrow (Enemy Base)	100	999999
+592	Red EnerG	Red EnerG (Red)	340000	6790
+593	Archangel Exiel	Archangel Exiel (Angel) (Colossal)	945000	4800
+594	Big Peng Z	Big Peng Z (Zombie) (Colossal)	840000	1000
+595	Tiger Doge	Tiger Doge (Event Enemy)	3000	600
+596	Nana &amp; Doge	Nana &amp; Doge (Enemy)	120000	5000
+597	Emilia &amp; Doge	Emilia &amp; Doge (Enemy)	135000	7500
+598	Yonshakudama Firework	Yonshakudama Firework (Event Enemy)	500	50
+599	Ultima Beast Naala	Ultima Beast Naala (Relic / Behemoth)	3000000	60000
+600	Zapy	Zapy (Zombie)	390000	38000
+601	Secret Crush Base	Secret Crush Base (Enemy Base)	10	1
+602	Confessional Tree	Confessional Tree (Enemy Base)	10	1
+603	Wild Doge	Wild Doge (Behemoth)	55000	16500
+604	Casaurian Ahirujo	Casaurian Ahirujo (Red / Behemoth)	1200000	19500
+605	Pterowl Hazuku	Pterowl Hazuku (Floating / Behemoth)	1850000	36600
+606	Crustaceous Scissorex	Crustaceous Scissorex (Alien / Behemoth)	1400000	37000
+607	J.J. Jackrabbit	J.J. Jackrabbit (Red / Colossus)	65000	9000
+608	Li'l Doge		2000	100
+609	Golem Sunfish	Golem Sunfish (Relic, Floating)	1800000	31850
+610	THE FOLIVOREAN	THE FOLIVOREAN (Aku) (Behemoth)	1000000	51000
+611	Casaurian Darkjo	Casaurian Darkjo (Black) (Behemoth)	2000000	27900
+612	Haniwanwan	Haniwanwan (Relic)	300000	20000
+613	Angelic Beast Rajakong	Angelic Beast Rajakong (Angel) (Behemoth)	1855200	12500
+614	Formicidaean Ariant	Formicidaean Ariant (Zombie) (Behemoth)	75000	135000
+615	Great Angel Chibinel	Great Angel Chibinel (Angel) (Colossus)	160000	4500
+616	Spiritual Yulala	Spiritual Yulala (Enemy Unit)	3250000	30000
+617	Osamu Mikumo &amp; Doge	Osamu Mikumo &amp; Doge (Enemy)	150000	1000
+618	Yuma Kuga &amp; Doge	Yuma Kuga &amp; Doge (Enemy)	120000	2000
+619	Marmod	Marmod (Enemy)	60000	2000
+620	Red Marmod	Red Marmod (Enemy)	90000	3000
+621	Black Marmod	Black Marmod (Enemy)	120000	4000
+622	Sakura	Sakura (Enemy)	400000	18000
+623	Luke	Luke (Enemy)	360000	5000
+624	Cumulus Gallus	Cumulus Gallus (Behemoth)	1770000	20000
+625	10th Anniversary Birthday Cake	10th Anniversary Birthday Cake (Event Enemy)	100	1
+626	10th Anniversary Scarecrow	10th Anniversary Scarecrow (Enemy Base)	100	999999
+627	Ancient Magamojoe	Ancient Magamojoe (Relic) (Behemoth)	2200000	35000
+628	Great Ape Luza	Great Ape Luza (Relic) (Behemoth)	2500000	90000
+629	Zero Luza	Zero Luza (Relic) (Colossus)	4000000	160000
+630	Metafilibuster	Metafilibuster (Floating)	3000000	3000000
+631	Rabbit Doge	Rabbit Doge (Event Enemy)	3000	600
+632	Origin Base	Origin Base (Enemy Base)	3000000	0
+633	Killer Tank Cat	Killer Tank Cat (Enemy)	9000	240
+634	Vermilingua Rangmaster	Vermilingua Rangmaster (Aku) (Behemoth)	950000	28000
+635	Easter Egg Cat	Easter Egg Cat (Enemy)	1100000	11000
+636	Devil Wife	Devil Wife (Aku)	9500	8000
+637	Omens	Omens (Aku) (Colossus)	800000	15000
+638	Mini White Cyclone	Mini White Cyclone (Floating)	444444	20000
+639	Infernal Pegasus Deonil	Infernal Pegasus Deonil (Red) (Behemoth)	1600000	8000
+640	Suidae Piggicus	Suidae Piggicus (Alien / Behemoth)	980000	4500
+641	Elephantidae Papaou	Elephantidae Papaou (Behemoth)	2000000	13000
+642	Infernal Tyrant Nyandam	Infernal Tyrant Nyandam (Aku)	4666666	679998
+643	Grand Mage Mimon		3000000	45000
+644	644	644 (Enemy Base)	100	999999
+645	10th and 1/2 Anniversary Birthday Cake	10th and 1/2 Anniversary Birthday Cake (Event Enemy)	100	1
+646	Macho Redhead Yuki Cat	Macho Redhead Yuki Cat (Enemy)	600000	4500
+647	Eva Unit-13	Eva Unit-13 (Enemy)	3000000	90000
+648	Clown Base	Clown Base (Enemy Base)	10	1
+649	Lutrinae Gokurakko	Lutrinae Gokurakko (Angel)	400000	4497
+650	Iguanidae Ibilujon	Iguanidae Ibilujon (Relic / Behemoth)	4200000	30000
+651	Finale Base	Finale Base (Enemy)	50	1
+652	652	652 (Zombie/Floating) (Behemoth)	420000	13000
+653	653		2600000	114000
+N/A	N/A			

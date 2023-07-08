@@ -59,6 +59,8 @@ class CatPage(Cat):
 
             for p in range(len(perf)):
                 has = lambda index: perf[p] in abils[index]
+                if has(0) and not (has(1) or has(2)):
+                    perf[p] += f' {bold("[Normal]")}'
                 if self.tf and has(2):
                     if not (has(0) or has(1)):
                         perf[p] += f' {bold("[True]")}'
@@ -130,7 +132,7 @@ class CatPage(Cat):
                f"{get_perf()}" + \
                     f"===Pros===\n*?\n\n" \
                     f"===Cons===\n*?\n" + \
-               "{{Job|Classification = Crowd-Controller}}\n\n" \
+               "{{Job|Classification = N/A}}\n\n" \
                "==Strategy/Usage==\n-\n\n"
 
         return limited + start + catapp + evol
@@ -510,7 +512,7 @@ class CatPage(Cat):
         and previous/next page links
         """
         ver = self.r[7]
-        names = opencsv(DIR + "/catNames.csv", header=True)
+        names = opencsv(DIR + "/catNames.csv", header=True, delim="\t")
 
         prev_cat = f"[[{names[self.ID - 1][4]}|&lt;&lt; {names[self.ID - 1][1]}" \
                    f"]]" if names[self.ID - 1][1] != "N/A" else "&lt;&lt; N/A"

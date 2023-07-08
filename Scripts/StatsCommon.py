@@ -27,7 +27,7 @@ class StatsCommon:
             return -1
         names = opencsv(DIR +
                         f"/{'enemy' if self.is_enemy else 'cat'}Names.csv",
-                        header=True)
+                        header=True, delim="\t")
         for i in range(len(names)):
             names[i] = [x.lower() for x in names[i]]
             if name.lower() in names[i]:
@@ -324,6 +324,10 @@ class StatsCommon:
                                  f" [[Surge Attack]] between {int(ls[90] / 4):,}"
                                  f" and {int(ls[90] / 4) + int(ls[91] / 4):,}"
                                  f" range upon death")
+            if list_has(103):
+                abilities.append(f"When hit by a [[Surge Attack]], creates"
+                                 f" its own Surge of equal level and"
+                                 f" spawn range")
         else:
             ftrait = ''
             traits = []
@@ -544,7 +548,7 @@ class StatsCommon:
                 abilities.append(f"{abil('Extra Money', 'Extra money')}"
                                  f" when defeating enemies{multab()}")
             if list_has(34):
-                abilities.append(f"{abil('Base Destroyer', 'Base destroyer')}")
+                abilities.append(f"{abil('Base Destroyer', 'Base Destroyer')}")
             if list_has(35):
                 temp = 'Wave Attack|Wave' if len(ls) < 95 or ls[94] != 1 else \
                        'Mini-Wave|Mini-Wave'
@@ -661,7 +665,7 @@ class StatsCommon:
                 abilities.append(f"{pro}{abil('Extra Money', 'Double money')}"
                                  f" gained when defeating enemies{multab()}")
             if list_has(34):
-                abilities.append(f"{pro}{abil('Base Destroyer', 'Base destroyer')}")
+                abilities.append(f"{pro}{abil('Base Destroyer', 'Base Destroyer')}")
             if list_has(35):
                 temp = 'Wave Attack' if len(ls) < 95 or ls[94] != 1 else \
                        'Wave Attack#Mini-Wave|Mini-Wave'
@@ -867,9 +871,9 @@ class StatsCommon:
         }
         def make_talent():
             """Generator that gives formatted talents"""
-
             for x in range(nor + ult):
                 t = talent_ls[x][0]
+                print(t)
                 info = ' '
                 frame = lambda value:\
                     f"{value}f <sup>{round(value/30, 2)}s</sup>"
@@ -904,48 +908,48 @@ class StatsCommon:
                     else:
                         return bool(cat_ls[index])
 
-                if t[0] == 1 and is_dupe(37) and t[4]:
+                if t[0] == 1 and is_dupe(37) and t[4] and t[4] != t[5]:
                     info = f": Increases weaken duration by" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 1 and not is_dupe(37) and t[4]:
+                elif t[0] == 1 and not is_dupe(37) and t[4] and t[4] != t[5]:
                     info = f": Adds a {t[2]}% chance to weaken enemies to" \
                            f" {100 - t[7]}% for{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 1 and is_dupe(37) and not t[4]:
+                elif t[0] == 1 and is_dupe(37):
                     info = f": Upgrades chance to weaken enemies by" \
                            f"{start_perc(2)}{maximum(3)}"
-                elif t[0] == 1 and not is_dupe(37) and not t[4]:
+                elif t[0] == 1 and not is_dupe(37):
                     info = f": Adds a {t[2]}% chance to weaken enemies to" \
                            f" {100 - t[7]}% for {frame(t[4])}" \
                            f", improves by {gap(2)}%{maximum(3)}"
 
-                elif t[0] == 2 and is_dupe(25) and t[4]:
+                elif t[0] == 2 and is_dupe(25) and t[4] and t[4] != t[5]:
                     info = f": Increases freeze duration by" \
                            f"{start_time(4, True)}{maximum(5, 'f')}<sup>" \
                            f"{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 2 and not is_dupe(25) and t[4]:
+                elif t[0] == 2 and not is_dupe(25) and t[4] and t[4] != t[5]:
                     info = f": Adds a {t[2]}% chance to freeze for" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 2 and is_dupe(25) and not t[4]:
+                elif t[0] == 2 and is_dupe(25):
                     info = f": Upgrades chance to freeze enemies by" \
                            f"{start_perc(2)}{maximum(3)}"
-                elif t[0] == 2 and not is_dupe(25) and not t[4]:
+                elif t[0] == 2 and not is_dupe(25):
                     info = f": Adds a {t[2]}% chance to freeze enemies for" \
                            f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
 
-                elif t[0] == 3 and is_dupe(27) and t[4]:
+                elif t[0] == 3 and is_dupe(27) and t[4] and t[4] != t[5]:
                     info = f": Increases slow duration by{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 3 and not is_dupe(27) and t[4]:
+                elif t[0] == 3 and not is_dupe(27) and t[4] and t[4] != t[5]:
                     info = f": Adds a {t[2]}% chance to slow for" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 3 and is_dupe(27) and not t[4]:
+                elif t[0] == 3 and is_dupe(27):
                     info = f": Upgrades chance to slow enemies by" \
                            f"{start_perc(2)}{maximum(3)}"
-                elif t[0] == 3 and not is_dupe(27) and not t[4]:
+                elif t[0] == 3 and not is_dupe(27):
                     info = f": Adds a {t[2]}% chance to slow enemies for" \
                            f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
 
@@ -1038,20 +1042,20 @@ class StatsCommon:
                            f" ({(100 + t[4])/100}x damage)," \
                            f" improves by {gap(2)}%{maximum(3)}"
 
-                elif t[0] == 51 and is_dupe(84) and t[4]:
+                elif t[0] == 51 and is_dupe(84) and t[4] and t[4] != t[5]:
                     info = f": Increases dodge duration by" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 51 and not is_dupe(84) and t[4]:
+                elif t[0] == 51 and not is_dupe(84) and t[4] and t[4] != t[5]:
                     info = f": Adds a {t[2]}% chance to dodge attacks for" \
                            f"{start_time(4, True)}{maximum(5, 'f')}<sup>" \
                            f"{round(t[5]/30, 2)}s</sup> "
-                elif t[0] == 51 and is_dupe(84) and not t[4]:
+                elif t[0] == 51 and is_dupe(84):
                     info = f": Upgrades chance to dodge attacks by" \
                            f"{start_perc(2)}{maximum(3)}"
-                elif t[0] == 51 and not is_dupe(84) and not t[4]:
+                elif t[0] == 51 and not is_dupe(84):
                     info = f": Adds a {t[2]}% chance to dodge attacks for" \
-                           f"{frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
+                           f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
 
                 elif t[0] == 52:
                     info = f": Reduces toxic damage by" \
@@ -1075,18 +1079,18 @@ class StatsCommon:
                     info = f": Adds a {t[2]}% chance to pierce shields," \
                            f" improves by {gap(2)}%{maximum(3)}"
 
-                elif t[0] == 60 and is_dupe(92) and t[4]:
+                elif t[0] == 60 and is_dupe(92) and t[4] and t[4] != t[5]:
                     info = f": Increases curse duration by" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5] / 30, 2)}s</sup> "
-                elif t[0] == 60 and not is_dupe(92) and t[4]:
+                elif t[0] == 60 and not is_dupe(92) and t[4] and t[4] != t[5]:
                     info = f": Adds a {t[2]}% chance to curse for" \
                            f"{start_time(4, True)}" \
                            f"{maximum(5, 'f')}<sup>{round(t[5] / 30, 2)}s</sup> "
-                elif t[0] == 60 and is_dupe(92) and not t[4]:
+                elif t[0] == 60 and is_dupe(92):
                     info = f": Upgrades chance to curse enemies by" \
                            f"{start_perc(2)}{maximum(3)}"
-                elif t[0] == 60 and not is_dupe(92) and not t[4]:
+                elif t[0] == 60 and not is_dupe(92):
                     info = f": Adds a {t[2]}% chance to curse enemies for" \
                            f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
 

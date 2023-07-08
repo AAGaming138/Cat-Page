@@ -4,10 +4,13 @@ import time, datetime
 import builtins
 from typing import Union, List
 from pathlib import Path
+from urllib import request
+import urllib
+
 DIR = str(Path(__file__
                ).parent.absolute()).replace('\\', '/').replace("/Scripts", "")
 
-current_ver = "12.4"
+current_ver = "12.5"
 data_mines = DIR + f'/Game Files'
 
 br = "\n"
@@ -55,15 +58,13 @@ def quit(message: str, loading: bool = True) -> None:
     builtins.quit()
 
 
-def opencsv(filename: str, header: bool = False) -> list:
+def opencsv(filename: str, header: bool = False, delim = ",") -> list:
     """Opens and reads csv file, return list of data"""
-    try:
-        with open(filename, 'r', encoding='utf8', newline='') as f:
-            rf = csv.reader(f)
-            if header: next(rf)
-            return [row for row in rf if row != []]
-    except (UnicodeDecodeError, StopIteration):
-        quit("Unit is unobtainable.")
+    with open(filename, 'r', encoding='utf8', newline='') as f:
+        rf = csv.reader(f, delimiter=delim)
+        if header: next(rf)
+        return [row for row in rf if row != []]
+
 
 
 def commarise(num: Union[int, float, str]) -> Union[int, float, str]:
