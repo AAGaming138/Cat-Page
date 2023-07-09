@@ -12,7 +12,7 @@ class Cat:
         self.ID = ID
         self.trueForm = True
         try:
-            self.catNames = opencsv(DIR + "/catNames.csv", header=True, delim="\t")
+            self.catNames = opencsv(DIR + "/catNames.tsv", header=True, delim="\t")
             self.names = self.getNames(ID)
             self.catData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[0:3]
             self.catRarity = opencsv(f"{data_mines}/DataLocal/unitbuy.csv")[ID]

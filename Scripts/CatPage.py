@@ -512,7 +512,7 @@ class CatPage(Cat):
         and previous/next page links
         """
         ver = self.r[7]
-        names = opencsv(DIR + "/catNames.csv", header=True, delim="\t")
+        names = opencsv(DIR + "/catNames.tsv", header=True, delim="\t")
 
         prev_cat = f"[[{names[self.ID - 1][4]}|&lt;&lt; {names[self.ID - 1][1]}" \
                    f"]]" if names[self.ID - 1][1] != "N/A" else "&lt;&lt; N/A"
@@ -520,10 +520,10 @@ class CatPage(Cat):
         next_cat = f"[[{names[self.ID + 1][4]}|{names[self.ID + 1][1]} &gt;&gt;" \
                    f"]]" if names[self.ID + 1][1] != "N/A" else "N/A &gt;&gt;"
 
-        image = lambda: f"000 m" if self.isEgg else f"{self.ID:03} f"
+        image = lambda: f"000 m00" if self.isEgg else f"{self.ID:03} f00"
         appearance = f"\n\n==Appearance==\n*Normal Form: ?\n*Evolved Form: " \
                      f"?{f'{br}*True Form: ?' if self.tf else ''}\n\n" + \
-                     "{{Gallery|Gatyachara " + f"{image()}" + "}}" + "\n\n"
+                     "{{Gallery|Uni " + f"{image()}" + "}}" + "\n\n"
 
         reference = f'==Reference==\n' \
                     f'*https://battlecats-db.com/unit/{self.ID + 1:03}.html\n\n'

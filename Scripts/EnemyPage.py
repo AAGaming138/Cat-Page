@@ -7,7 +7,7 @@ class Enemy:
     def __init__(self, ID: int):
         self.ID = ID
 
-        self.enemyNames = opencsv(DIR + "/enemyNames.csv",
+        self.enemyNames = opencsv(DIR + "/enemyNames.tsv",
                                   header=True, delim="\t")
         try:
             self.name = self.getName(ID)

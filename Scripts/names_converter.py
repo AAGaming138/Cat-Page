@@ -26,8 +26,8 @@ def get_names(unit):
     content = "\n".join(lines)
 
     if "Cat (Normal Cat)" in content:
-        # write content into catNames.csv
-        with open(DIR + "/catNames.csv", 'w', encoding='utf8') as f:
+        # write content into catNames.tsv
+        with open(DIR + "/catNames.tsv", 'w', encoding='utf8') as f:
             f.write(content + "\nN/A\tN/A\t\t\tN/A\tN/A")
 
     else:
@@ -37,7 +37,7 @@ def get_names(unit):
                              "The Face (Floating)\t99999\t2000\n"
                              "019\tN/A\t\t\t\n020\tN/A\t\t\t\n")
         # write content into enemiesNames.csv
-        with open(DIR + "/enemyNames.csv", 'w', encoding='utf8') as f:
+        with open(DIR + "/enemyNames.tsv", 'w', encoding='utf8') as f:
             f.write(content + "\nN/A\tN/A\t\t\t")
 
     return "Names retrieved successfully!"
