@@ -257,7 +257,8 @@ class EnemyPage(Enemy):
             79: "Enemies with Toxic ability",
             81: "Surge Attack Enemies",
             87: "Enemies with Shields",
-            89: "Enemies with Aftermath ability"
+            89: "Enemies with Aftermath ability",
+            103: "Counter-Surge Enemies"
         }
         if 27 in data and 28 not in data:
             abilities[27] = "Wave Attack Enemies"

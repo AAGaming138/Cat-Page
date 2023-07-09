@@ -273,12 +273,12 @@ class StatsCommon:
             # immunities
 
             if list_has(43):
-                temp = f'{ls[43]} time{pl(43, 1)} 'if ls[43]!=-1 else 'unlimited'
+                temp = f'{ls[43]} time{pl(43, 1)}' if ls[43]!=-1 else 'unlimited'
                 abilities.append(f"[[Special Abilities#Burrow|Burrows]] under"
                                  f"ground {int(ls[44] / 4):,} when a Cat enters"
                                  f" its range ({temp})")
             if list_has(45):
-                temp = f'{ls[45]} time{pl(45, 1)} 'if ls[45]!=-1 else 'unlimited'
+                temp = f'{ls[45]} time{pl(45, 1)}' if ls[45]!=-1 else 'unlimited'
                 abilities.append(f"[[Special Abilities#Revive|Revives]] with "
                                  f"{ls[47]}% HP after being dead for {ls[46]:,}f"
                                  f" <sub>{sec(46)} second{pl(46)}</sub> ({temp})")

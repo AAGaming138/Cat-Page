@@ -67,7 +67,8 @@ class Cat:
                     growMod = ""
                     # growMod is formatted for reduction points
                 elif rp[0] < level <= rp[1]:
-                    mod = math.floor(2.5 * round(((rp[0] + 4) / 5 + (level - rp[0]) / 10) * 5500)) / 5500
+                    mod = math.floor(2.5 * round(
+                        ((rp[0] + 4) / 5 + (level - rp[0]) / 10) * 5500)) / 5500
                     growMod = f"\n|Grow Level 1 = {rp[0]}" if r == 2 else ""
                 else:
                     mod = math.floor(
