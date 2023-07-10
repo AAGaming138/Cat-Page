@@ -523,7 +523,7 @@ class CatPage(Cat):
         image = lambda: f"000 m00" if self.isEgg else f"{self.ID:03} f00"
         appearance = f"\n\n==Appearance==\n*Normal Form: ?\n*Evolved Form: " \
                      f"?{f'{br}*True Form: ?' if self.tf else ''}\n\n" + \
-                     "{{Gallery|Uni " + f"{image()}" + "}}" + "\n\n"
+                     "{{Gallery|Uni" + f"{image()}" + "}}" + "\n\n"
 
         reference = f'==Reference==\n' \
                     f'*https://battlecats-db.com/unit/{self.ID + 1:03}.html\n\n'
