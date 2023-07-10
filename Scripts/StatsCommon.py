@@ -788,7 +788,7 @@ class StatsCommon:
             return "-" if mode != 2 else ''
 
 
-    def get_talents(self, talent_ls: list, cat_ls: list) -> tuple:
+    def get_talents(self, talent_ls: list, cat_ls: list, raw_data: list) -> tuple:
         """Cat units only; Gets talents for cat units"""
 
         if self.is_enemy:
@@ -896,8 +896,9 @@ class StatsCommon:
                     else:
                         return f" {frame(gap(s))}" if flag else " "
 
-                maximum = lambda h, mode = '%':\
-                    f" per level up to {t[h]}{'%' if mode == '%' else mode} "
+                maximum = lambda h, mode = '%', flag = True:\
+                    f" per level up to {t[h] if flag else h}" \
+                    f"{'%' if mode == '%' else mode} "
                 #
                 def is_dupe(index: int):
                     try:
@@ -1094,8 +1095,12 @@ class StatsCommon:
                            f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
 
                 elif t[0] == 61:
-                    info = f": Decreases time between attacks by" \
-                           f"{start_perc(2)}{maximum(3)}"
+                    tba = int(raw_data[4]) * 2
+                    info = f": Decreases time between attacks by " \
+                           f"{frame(tba * t[2]/100)}" \
+                           f"{maximum(tba * t[3]/100, 'f', False)}<sup>" \
+                           f"{round((tba * t[3]/100) / 30, 2)}s</sup> "
+
                 elif t[0] == 62 and is_dupe(94):
                     info = f": Upgrades chance to perform mini-waves by" \
                            f"{start_perc(2)}{maximum(3)}"

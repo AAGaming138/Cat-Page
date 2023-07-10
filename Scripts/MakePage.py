@@ -31,6 +31,7 @@ class MakeCatPage:
         self.op = vars(Options())
         self.anims = []
         self.cats = self.cat_page.getData()
+        self.rawData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[2]
 
 
     def get_errors(self):
@@ -116,7 +117,7 @@ class MakeCatPage:
 
         elif self.op['talents']:
             return self.cat_page.getTalent(self.stats.get_talents(
-                self.cat_page.tals, self.cats[2])).strip('\n')
+                self.cat_page.tals, self.cats[2], self.rawData)).strip('\n')
             # FIXME - Literally not going to understand this a few days from now
             # This is what happens when you write 3 functions that
             # sound exactly the same from left to right:
@@ -125,7 +126,7 @@ class MakeCatPage:
 
         elif self.op['category']:
             return self.cat_page.getCategories(self.stats.get_talents(
-                self.cat_page.tals, self.cats[2]))
+                self.cat_page.tals, self.cats[2], self.rawData))
 
         else:
             return self.cat_page.getStart() + self.cat_page.getTranslation() + \
@@ -133,10 +134,10 @@ class MakeCatPage:
                    self.cat_page.getTables(self.anims) + \
                    self.cat_page.getCatfruit() + \
                    self.cat_page.getTalent(self.stats.get_talents(
-                       self.cat_page.tals, self.cats[2])) + \
+                       self.cat_page.tals, self.cats[2], self.rawData)) + \
                    self.cat_page.getEnd() + \
                    self.cat_page.getCategories(self.stats.get_talents(
-                self.cat_page.tals, self.cats[2]))
+                self.cat_page.tals, self.cats[2], self.rawData))
 
 
 class MakeEnemyPage:
