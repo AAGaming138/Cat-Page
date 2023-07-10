@@ -26,11 +26,11 @@ class MakeCatPage:
         self.cat_page = CatPage(ID)
         self.ID = self.cat_page.ID
         # turns ID to -1 if unit not found
+        self.name = self.cat_page.names[1]
         self.get_errors()
         self.op = vars(Options())
         self.anims = []
         self.cats = self.cat_page.getData()
-        self.name = self.cat_page.names[1]
 
 
     def get_errors(self):

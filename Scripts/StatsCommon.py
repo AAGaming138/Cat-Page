@@ -26,7 +26,7 @@ class StatsCommon:
         if not name:
             return -1
         names = opencsv(DIR +
-                        f"/{'enemy' if self.is_enemy else 'cat'}Names.csv",
+                        f"/{'enemy' if self.is_enemy else 'cat'}Names.tsv",
                         header=True, delim="\t")
         for i in range(len(names)):
             names[i] = [x.lower() for x in names[i]]
@@ -873,7 +873,6 @@ class StatsCommon:
             """Generator that gives formatted talents"""
             for x in range(nor + ult):
                 t = talent_ls[x][0]
-                print(t)
                 info = ' '
                 frame = lambda value:\
                     f"{value}f <sup>{round(value/30, 2)}s</sup>"
