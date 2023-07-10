@@ -205,14 +205,16 @@ class Cat:
 
 
     def getNPCost(self, LvID: int, maxLv: int) -> tuple:
+        """Returns the total NP cost depending on level"""
+        maxLv = maxLv if maxLv > 0 else 1
         if LvID != 0:
             for n in self.NPCosts[LvID]:
                 try:
                     int(n)
                 except ValueError:
                     self.NPCosts[LvID].remove(n)
-            costs = [int(self.NPCosts[LvID][i]) for i in range(maxLv + 1)]
-            return sum(costs[1:]), True if len(costs) > 2 else False
+            costs = [int(self.NPCosts[LvID][i]) for i in range(1, maxLv + 1)]
+            return sum(costs), True if len(costs) > 2 else False
         else: return 0,
 
 
