@@ -146,9 +146,12 @@ class StatsCommon:
                 en_description = d
                 break
         # if doesn't exist, replace with "-"
-        if not en_description[1]:
-            for i in range(op[1] - 1):
-                en_description[i + 1] = "-"
+        try:
+            for i, d in enumerate(en_description):
+                if not d:
+                    en_description[i] = "-"
+        except IndexError:
+            return ['-' for i in range(op[1])]
 
         return en_description
 
