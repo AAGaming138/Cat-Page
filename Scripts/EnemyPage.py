@@ -13,13 +13,13 @@ class Enemy:
             self.name = self.getName(ID)
             self.enemyData = opencsv(
                 f"{data_mines}/DataLocal/t_unit.csv")[ID + 2]
+            self.stageNames = opencsv(DIR + "/stageNames.csv")
 
             with open(f"{data_mines}/resLocal/Enemyname.tsv",
                       "r", encoding="utf-8") as f:
                 self.jpName = f.read().split("\n")[ID]
                 if self.jpName == "ダミー":
                     self.jpName = None
-            # bruh why can't ponos just make this a csv file ffs
 
             self.enemyDesc = opencsv(f"{data_mines}/resLocal/"
                                 f"EnemyPictureBook_ja.csv")[ID][1:-1]
@@ -53,6 +53,7 @@ class EnemyPage(Enemy):
             self.ID = -2
             return
         self.desc = self.getDesc()
+        self.en_desc = self.stats.get_en_desc(self.ID)
 
 
     def getStart(self):
@@ -78,17 +79,19 @@ class EnemyPage(Enemy):
 
         info = "==Enemy==\n?\n\n==Strategy==\n?\n\n"
 
-        return start + "{{Enemy Info\n" + enemy_info + "}}\n\n" + info
+        return "{{LimitedContent}}\n{{Stub}}\n" + start +\
+               "{{Enemy Info\n" + enemy_info + "}}\n\n" + info
 
 
     def getDict(self):
         """Gets the enemy dictionary description, if exists"""
+
         return "==Description==\n" \
                "{{EnemyDescription\n" \
                f"|Enemy Unit Number = {self.ID:03}\n" \
                f"|enemy category = {self.stats.get_traits(self.ls, True)}\n" \
                f"|Enemy name = {self.name}\n" \
-               f"|enemy_endesc1 = -\n" \
+               f"|enemy_endesc1 = {self.en_desc[1]}\n" \
                f"|image1 = Enemy icon {self.ID:03}.png\n" \
                f"|enemy_jpscriptc1 = {self.desc}\n" \
                f"|enemy_jpdesc1 = ?\n" \
@@ -98,17 +101,36 @@ class EnemyPage(Enemy):
 
     def getEncounters(self):
         """Gets the enemy encounters !!!INCOMPLETE!!!"""
+
         def stg():
             cache = []
 
             for datafile in os.listdir(f"{data_mines}/DataLocal"):
                 if datafile[:5] == "stage":
                     x = opencsv(f"{data_mines}/DataLocal/{datafile}")
-                    for i, ls in enumerate(x):
-                        if len(ls) > 9 and ls[0] == self.ID and i > 0 and datafile not in cache:
+
+                    for i, l in enumerate(x):
+                        if len(l) > 9 and l[0] == str(self.ID + 2) and \
+                                i > 0 and datafile not in cache:
                             cache.append(datafile)
-                            yield datafile
-        print(list(stg()))
+
+                            try:
+                                identifier = re.findall("(?<=stage)(.*?)(?=\d)",
+                                                        datafile)[0]
+                                map = re.findall("\d\d\d(?=_)", datafile)[0]
+                                level = re.findall("(?<=_)(.*?)(?=\.)",
+                                                   datafile)[0]
+
+                                k = [identifier, map,
+                                     ("0" if len(level) < 3 else "") + level]
+
+                                for s in self.stageNames:
+                                    if k == s[0:3]:
+                                        yield s[-1]
+
+                            except IndexError:
+                                pass
+
         return "\n".join(list(stg()))
 
 
@@ -204,77 +226,77 @@ class EnemyPage(Enemy):
                 if x not in [-1, 0] and index > 8]
         categories = [["Enemy Units"]]
         traits = {
-            10: "Red Enemies",
-            13: "Floating Enemies",
-            14: "Black Enemies",
-            15: "Metal Enemies",
-            16: "Traitless Enemies",
-            17: "Angel Enemies",
-            18: "Alien Enemies",
-            19: "Zombie Enemies",
-            48: "Witch Enemies",
-            49: "Typeless Enemies",
-            63: "Unstarred Alien Enemies",
-            69: "Starred Alien Enemies",
-            71: "Eva Angel Enemies",
-            72: "Relic Enemies",
-            93: "Aku Enemies",
-            94: "Colossal Enemies",
-            101: "Behemoth Enemies"
+            10:     "Red Enemies",
+            13:     "Floating Enemies",
+            14:     "Black Enemies",
+            15:     "Metal Enemies",
+            16:     "Traitless Enemies",
+            17:     "Angel Enemies",
+            18:     "Alien Enemies",
+            19:     "Zombie Enemies",
+            48:     "Witch Enemies",
+            49:     "Typeless Enemies",
+            63:     "Unstarred Alien Enemies",
+            69:     "Starred Alien Enemies",
+            71:     "Eva Angel Enemies",
+            72:     "Relic Enemies",
+            93:     "Aku Enemies",
+            94:     "Colossal Enemies",
+            101:    "Behemoth Enemies"
         }
         if 18 in data and 69 not in data:
             data.append(63)
         categories.append([traits[i] for i in traits if i in data])
         attack_types = {
-             8: "Single Target Enemies",
-            11: "Area Attack Enemies",
-            35: "Long Distance Enemies",
-            55: "Multi-Hit Enemies",
-            95: "Enemies with different effective ranges"
+             8:     "Single Target Enemies",
+            11:     "Area Attack Enemies",
+            35:     "Long Distance Enemies",
+            55:     "Multi-Hit Enemies",
+            95:     "Enemies with different effective ranges"
         }
         if 11 not in data:
             data.insert(0, 8)
         categories.append([attack_types[i] for i in attack_types if i in data])
 
         abilities = {
-            20: "Enemies with Knockback ability",
-            21: "Enemies with Freeze ability",
-            23: "Enemies with Slow ability",
-            25: "Critical Hit Enemies",
-            26: "Base Destroyer Enemies",
-            27: "Mini-Wave Enemies",
-            29: "Enemies with Weaken ability",
-            32: "Enemies with Strengthen ability",
-            34: "Lethal Strike Resistant Enemies",
-            43: "Enemies with Burrow ability",
-            45: "Enemies with Revive ability",
-            52: "Kamikaze Enemies",
-            64: "Enemies with Barriers",
-            65: "Enemies with Warp ability",
-            73: "Enemies with Curse ability",
-            75: "Savage Blow Enemies",
-            77: "Enemies with Dodge Attack ability",
-            79: "Enemies with Toxic ability",
-            81: "Surge Attack Enemies",
-            87: "Enemies with Shields",
-            89: "Enemies with Aftermath ability",
-            103: "Counter-Surge Enemies"
+            20:     "Enemies with Knockback ability",
+            21:     "Enemies with Freeze ability",
+            23:     "Enemies with Slow ability",
+            25:     "Critical Hit Enemies",
+            26:     "Base Destroyer Enemies",
+            27:     "Mini-Wave Enemies",
+            29:     "Enemies with Weaken ability",
+            32:     "Enemies with Strengthen ability",
+            34:     "Lethal Strike Resistant Enemies",
+            43:     "Enemies with Burrow ability",
+            45:     "Enemies with Revive ability",
+            52:     "Kamikaze Enemies",
+            64:     "Enemies with Barriers",
+            65:     "Enemies with Warp ability",
+            73:     "Enemies with Curse ability",
+            75:     "Savage Blow Enemies",
+            77:     "Enemies with Dodge Attack ability",
+            79:     "Enemies with Toxic ability",
+            81:     "Surge Attack Enemies",
+            87:     "Enemies with Shields",
+            89:     "Enemies with Aftermath ability",
+            103:    "Counter-Surge Enemies"
         }
         if 27 in data and 28 not in data:
             abilities[27] = "Wave Attack Enemies"
         categories.append([abilities[i] for i in abilities if i in data])
 
         immunities = {
-            37: "Enemies with Wave Immunity",
-            39: "Enemies with Knockback Immunity",
-            40: "Enemies with Freeze Immunity",
-            41: "Enemies with Slow Immunity",
-            42: "Enemies with Weaken Immunity",
-            85: "Enemies with Surge Immunity"
+            37:     "Enemies with Wave Immunity",
+            39:     "Enemies with Knockback Immunity",
+            40:     "Enemies with Freeze Immunity",
+            41:     "Enemies with Slow Immunity",
+            42:     "Enemies with Weaken Immunity",
+            85:     "Enemies with Surge Immunity"
         }
         # I'm geniunely surprised on how short this is
         categories.append([immunities[i] for i in immunities if i in data])
-
+        categories.append(["Translation requests"])
         cates = [f"[[Category:{category}]]" for types in
                  categories for category in types]
         return '\n'.join(cates)

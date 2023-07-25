@@ -133,6 +133,25 @@ class StatsCommon:
         # which should be instantaneous
 
 
+    def get_en_desc(self, ID):
+        """"Simplified desc; en desc only + using opencsv"""
+        op = ["Enemy", 2] if self.is_enemy else ["Unit", 4]
+        # op = [filename, num of desc]
+
+        descs = opencsv(f'{langfolder}/{op[0]}Explanation.txt', delim="\t")
+        en_description = ["" * op[1]]
+        # match desc to ID
+        for d in descs:
+            if int(d[0]) == ID:
+                en_description = d
+                break
+        # if doesn't exist, replace with "-"
+        if not en_description[1]:
+            for i in range(op[1] - 1):
+                en_description[i + 1] = "-"
+
+        return en_description
+
     def get_abilities(self, ls: list, mode: int) -> str:
         """
         :param ls: form list
@@ -954,7 +973,7 @@ class StatsCommon:
                            f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
 
                 elif t[0] == 5:
-                    info = f": Becomes strong against targeted trait."
+                    info = f": Becomes strong against targeted trait "
 
                 elif t[0] == 8 and is_dupe(24):
                     info = f": Increases knockback chance by" \

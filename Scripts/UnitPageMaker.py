@@ -2,7 +2,7 @@
 
 from tkinter import *
 from MakePage import *
-from names_converter import get_names
+from WikiReader import *
 import tkinter.ttk as ttk
 
 try:
@@ -156,6 +156,14 @@ def show_page(p):
     # inserts provided output
 
 
+def conf_text(t, fg = "black"):
+    lab = Label(root, text=t, fg=fg)
+    # get label
+    lab.grid(row=4, column=1)
+    # remove label after 3 seconds
+    root.after(3000, lab.destroy)
+
+
 def on_click(mode, che):
     """Function that is called once button is clicked"""
     Label(root, text="\t" * 5).grid(row=4,column=1)
@@ -193,13 +201,10 @@ def on_click(mode, che):
             # i.e. if page is unsuccessfully retrieved
             warning = True
             message = error
-    lab = Label(root, text=message if warning else message + \
+
+    conf_text(message if warning else message + \
            (" copied to clipboard" if not err else " retrieved successfully"),
-                fg="red" if warning else "black")
-    # get label
-    lab.grid(row=4, column=1)
-    # remove label after 3 seconds
-    root.after(3000, lab.destroy)
+              fg="red" if warning else "black")
 
 
 def change_focus(event):
@@ -228,20 +233,25 @@ def center(win):
     win.deiconify()
 
 
+def ent(default):
+    e.delete(0, 'end') # remove prompt
+    e.select_clear()
+    e.insert(0, default) # add prompt
+    e.bind("<FocusIn>", temp_text) # delete text upon click
+
+
 def cat_options():
     """Changes program to cat mode"""
     with open("mode.txt", "w") as f1:
         f1.write("CAT")
     enemy_mode.set(False)
     root.title('Cat Page')
-    root.iconbitmap(DIR + "/catIcon.ico")
     num.set(num.get() + 1)
 
     option.set(0) # default selection
-    e.delete(0, 'end') # remove prompt
-    e.select_clear()
-    e.insert(0, "Enter cat name or ID") # add prompt
-    e.bind("<FocusIn>", temp_text) # delete text upon click
+    root.iconbitmap(DIR + "/catIcon.ico")
+
+    ent("Enter cat name or ID")
 
     if num.get() > 1:
         filemenu.add_command(label="Enemy Page", command=enemy_options)
@@ -267,11 +277,7 @@ def enemy_options():
     option.set(6) # default selection
     root.iconbitmap(DIR + "/dogeIcon.ico") # change icon
 
-    e.delete(0, 'end')
-    e.select_clear()
-    e.insert(0, "Enter enemy name or ID") # change input prompt
-
-    e.bind("<FocusIn>", temp_text)
+    ent("Enter enemy name or ID")
 
     filemenu.add_command(label="Cat Page", command=cat_options)
     filemenu.delete("Enemy Page")
@@ -293,10 +299,15 @@ def xpnative_theme():
 
 
 def update_names():
-    get_names("Cats/names.csv")
-    lab = Label(root, text=get_names("Enemies.csv"))
-    lab.grid(row=4, column=1)
-    root.after(3000, lab.destroy)
+    cat_name = WikiReader("Module:Cats/names.csv")
+    enemy_name = WikiReader("Module:Enemies.csv")
+    cat_name.readNames()
+    conf_text(enemy_name.readNames())
+
+
+def update_stage_names():
+    stage_names = WikiReader("User:TheWWRNerdGuy/data/StageNames.csv")
+    conf_text(stage_names.readStageNames())
 
 
 # start window
@@ -330,9 +341,23 @@ thememenu.add_command(label="Xpnative", command=xpnative_theme)
 
 menubar.add_cascade(label="Update", menu=updatemenu)
 updatemenu.add_command(label="Update Names", command=update_names)
+updatemenu.add_command(label="Update Stage Names", command=update_stage_names)
 
 root.config(menu=menubar)
 # end menu
+
+cats = []
+cat_names = opencsv(DIR + "/catNames.tsv", header=True, delim="\t")
+for i in cat_names:
+    for x in range(3):
+        cats.append(i[x + 1])
+
+enemies = []
+enemy_names = opencsv(DIR + "/enemyNames.tsv", header=True, delim="\t")
+for i in enemy_names:
+    for x in range(3):
+        enemies.append(i[1])
+
 
 # start input field
 e = Entry(root, width=50, border=3)
