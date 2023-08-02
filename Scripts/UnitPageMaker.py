@@ -346,6 +346,19 @@ updatemenu.add_command(label="Update Stage Names", command=update_stage_names)
 root.config(menu=menubar)
 # end menu
 
+cats = []
+cat_names = opencsv(DIR + "/catNames.tsv", header=True, delim="\t")
+for i in cat_names:
+    for x in range(3):
+        cats.append(i[x + 1])
+
+enemies = []
+enemy_names = opencsv(DIR + "/enemyNames.tsv", header=True, delim="\t")
+for i in enemy_names:
+    for x in range(3):
+        enemies.append(i[1])
+
+
 # start input field
 e = Entry(root, width=50, border=3)
 e.grid(row=0, column=1, padx=10, pady=10)
