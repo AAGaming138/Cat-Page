@@ -81,7 +81,7 @@ class CatPage(Cat):
             perf = '<br>\n'.join(perf) + ('\n\n' if perf else '')
             # WTF this is such a disaster :skull:
             # oh well at least this works for some units
-            return re.sub('\.0(?![0-9])', '', perf)
+            return round2(perf)
 
         if self.r[8]:
             for i in range(5):
@@ -308,9 +308,10 @@ class CatPage(Cat):
             #                 formatted animation,
             #                 actual backswing]
 
-        repeated = [comparison(self.ls, i) for i in range(13)]
+        c = self.ls.copy()
+        repeated = [comparison(c, i) for i in range(13)]
 
-        atks = [mult(self.ls[i], a, i) for i in range(3)]
+        atks = [mult(c[i], a, i) for i in range(3)]
         anim = comparison(atks, 1, other="an")
         # for attack animation
 
@@ -341,34 +342,41 @@ class CatPage(Cat):
                                        f"\n|2nd stats Level = {form_max}" + \
             (f"\n|3rd stats Level = {form_max}" if self.tf else "")
 
+
         for i in range(3 if self.tf else 2):
             ind = ['normal', 'evolved', 'third'][i]
+
+            c[i][4] = a[i]
+            c[i][7] = f"{c[i][7]} ~ " \
+                         f"{round(c[i][7] - 8.8, 2) if c[i][7] > 10.8 else 2}" \
+                         f" seconds"
+            c[i][12] = "Single Target" if c[i][12] == 0 else "Area Attack"
 
             DPS = round((atks[i][0] if i == 0 else
                          atks[i][0] * mods[m]) / (a[i] / 30), 2)
             atk = f"{atks[i][0] if i == 0 else int(atks[i][0] * mods[m] + 0.5):,}"
-            hp = f"{self.ls[i][0] if i == 0 else int(self.ls[i][0] * mods[m] + 0.5):,}"
+            hp = f"{c[i][0] if i == 0 else int(c[i][0] * mods[m] + 0.5):,}"
 
             table_ls.append(f'|{ind.capitalize()} Form name = {self.names[i + 1]}\n'
                 f'|Hp {ind} = {hp} HP\n'
                 f'|Atk Power {ind} = {atk} damage<br>({DPS:,} DPS)\n'
-                f'|Atk Range {ind} = {self.ls[i][5]:,}\n'
+                f'|Atk Range {ind} = {c[i][5]:,}\n'
                 f'|Attack Frequency {ind} = '
                             f'{a[i]:,}f <sub>{round(a[i] / 30, 2)} seconds</sub>\n'
-                f'|Movement Speed {ind} = {self.ls[i][2]}\n'
-                f'|Knockback {ind} = {self.ls[i][1]} time{"s" if self.ls[i][1] > 1 else ""}\n'
+                f'|Movement Speed {ind} = {c[i][2]}\n'
+                f'|Knockback {ind} = {c[i][1]} time{"s" if c[i][1] > 1 else ""}\n'
                 f'|Attack Animation {ind} = '
-                            f'{self.ls[i][13]}f <sup>{round(self.ls[i][13] / 30, 2)}s</sup>'
+                            f'{c[i][13]}f <sup>{round(c[i][13] / 30, 2)}s</sup>'
                 f'<br>({atks[i][2]}f <sup>'
                             f'{round(atks[i][2] / 30, 2)}s</sup> backswing)\n'
-                f'|Recharging Time {ind} = {self.ls[i][7]}\n' +
-                (f"|Hp normal Lv.MAX = {int(self.ls[i][0] * mods[m] + 0.5):,} HP\n"
+                f'|Recharging Time {ind} = {c[i][7]}\n' +
+                (f"|Hp normal Lv.MAX = {int(c[i][0] * mods[m] + 0.5):,} HP\n"
                  f"|Atk Power normal Lv.MAX = "
                  f"{int(atks[i][0] * mods[m] + 0.5):,} damage<br>"
                  f"({round((int(atks[i][0] * mods[m] + 0.5)) / (a[i] / 30), 2):,}"
                  f" DPS){br}" if i == 0 else "") +
-                f'|Attack type {ind} = {self.ls[i][12]}\n'
-                f'|Special Ability {ind} = {self.stats.get_abilities(self.ls[i], 0)}')
+                f'|Attack type {ind} = {c[i][12]}\n'
+                f'|Special Ability {ind} = {self.stats.get_abilities(c[i], 0)}')
 
         tables.append(f"==Stats==\n"
                       f"<tabber>\n"
@@ -383,62 +391,62 @@ class CatPage(Cat):
             f'|Max Natural Level = {self.r[1]}{self.r[5]}\n'
             f'|Basic Form Name = {self.names[1]}\n'
             f'|HP Initial Normal = '
-                      f'{self.ls[0][0]:,}\n'
+                      f'{c[0][0]:,}\n'
             f'|AP Initial Normal = {atks[0][0]:,}\n'
             f'|DPS Initial Normal = {math.floor(atks[0][0] / a[0] * 30)}\n'
             f'|DPS Initial Precise Normal = '
                       f'{"{{"}#expr:{(atks[0][0])}/({a[0]}/30){"}}"}\n'
-            f'|HP Normal lvl 10 = {self.ls[0][0] * mods[0]:,}\n'
+            f'|HP Normal lvl 10 = {c[0][0] * mods[0]:,}\n'
             f'|AP Normal lvl 10 = {int(atks[0][0] * mods[0] + 0.5):,}\n'
             f'|DPS Normal lvl 10 = '
                       f'{math.floor((atks[0][0] * mods[0]) / a[0] * 30):,}\n'
-            f'|HP Normal lvl.MAX = {int(self.ls[0][0] * self.r[3]):,}\n'
+            f'|HP Normal lvl.MAX = {int(c[0][0] * self.r[3]):,}\n'
             f'|AP Normal lvl.MAX = {int(atks[0][0] * self.r[3]):,}\n'
             f'|DPS Normal lvl.MAX = '
                       f'{math.floor(int(atks[0][0] * self.r[3]) / a[0] * 30):,}\n'
             f'|Attack Frequency Normal = {a[0]}\n'
             f'|Attack Animation Normal = {atks[0][1]}\n'
-            f'|Attack Range Normal = {self.ls[0][5]:,}\n'
-            f'|Target Normal = {self.ls[0][12]}\n'
-            f'|Recharge Time Normal = {self.ls[0][7]}\n'
-            f'|Knockback Normal = {self.ls[0][1]}\n'
-            f'|Movement Speed Normal = {self.ls[0][2]}\n'
-            f'|Ch1 Normal = {self.ls[0][6]:,}\n'
-            f'|Ch2 Normal = {int(self.ls[0][6] * 1.5):,}\n'
-            f'|Ch3 Normal = {self.ls[0][6] * 2:,}\n'
-            f'|Special Ability Normal = {self.stats.get_abilities(self.ls[0], 1)}\n'
+            f'|Attack Range Normal = {c[0][5]:,}\n'
+            f'|Target Normal = {c[0][12]}\n'
+            f'|Recharge Time Normal = {c[0][7]}\n'
+            f'|Knockback Normal = {c[0][1]}\n'
+            f'|Movement Speed Normal = {c[0][2]}\n'
+            f'|Ch1 Normal = {c[0][6]:,}\n'
+            f'|Ch2 Normal = {int(c[0][6] * 1.5):,}\n'
+            f'|Ch3 Normal = {c[0][6] * 2:,}\n'
+            f'|Special Ability Normal = {self.stats.get_abilities(c[0], 1)}\n'
             f'|Evolved Form Name = {self.names[2]}{repeated[0][0]}'
             f'{repeated[3][0]}{repeatedDPS[0]}{repeatedpreDPS[0]}\n'
-            f'|HP Evolved lvl 20 = {self.ls[1][0] * mods[1]:,}\n'
+            f'|HP Evolved lvl 20 = {c[1][0] * mods[1]:,}\n'
             f'|AP Evolved lvl 20 = {int(atks[1][0] * mods[1] + 0.5):,}\n'
             f'|DPS Evolved lvl 20 = '
                       f'{math.floor((atks[1][0] * mods[1]) / a[1] * 30):,}\n'
-            f'|HP Evolved lvl.MAX = {int(self.ls[1][0] * self.r[3]):,}\n'
+            f'|HP Evolved lvl.MAX = {int(c[1][0] * self.r[3]):,}\n'
             f'|AP Evolved lvl.MAX = {int(atks[1][0] * self.r[3]):,}\n'
             f'|DPS Evolved lvl.MAX = '
                       f'{math.floor(int((atks[1][0] * self.r[3])) / a[1] * 30):,}'
             f'{repeated[4][0]}{anim[0]}{repeated[5][0]}'
             f'{repeated[12][0]}{repeated[7][0]}'
             f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
-            f'|Special Ability Evolved = {self.stats.get_abilities(self.ls[1], 1)}\n' + \
+            f'|Special Ability Evolved = {self.stats.get_abilities(c[1], 1)}\n' + \
             (f'{"}}"}\n{left}/tabber>' if not self.tf else
             f'|True Form Name = {self.names[3]}{repeated[0][1]}'
             f'{repeated[3][1]}{repeatedDPS[1]}{repeatedpreDPS[1]}\n'
-            f'|HP True lvl 30 = {self.ls[2][0] * mods[2]:,}\n'
+            f'|HP True lvl 30 = {c[2][0] * mods[2]:,}\n'
             f'|AP True lvl 30 = {int(atks[2][0] * mods[2] + 0.5):,}\n'
             f'|DPS True lvl 30 = '
             f'{math.floor((atks[2][0] * mods[2]) / a[2] * 30):,}\n'
-            f'|HP True lvl.MAX = {int(self.ls[2][0] * self.r[3]):,}\n'
+            f'|HP True lvl.MAX = {int(c[2][0] * self.r[3]):,}\n'
             f'|AP True lvl.MAX = {int(atks[2][0] * self.r[3]):,}\n'
             f'|DPS True lvl.MAX = '
             f'{math.floor(int((atks[2][0] * self.r[3])) / a[2] * 30):,}'
             f'{repeated[4][1]}{anim[1]}{repeated[5][1]}'
             f'{repeated[12][1]}{repeated[7][1]}{repeated[1][1]}'
             f'{repeated[2][1]}{repeated[6][1]}\n'
-            f'|Special Ability True = {self.stats.get_abilities(self.ls[2], 1)}\n'
+            f'|Special Ability True = {self.stats.get_abilities(c[2], 1)}\n'
             f'{"}}"}\n{left}/tabber>'))
 
-        return re.sub('\.0(?![0-9])', '', '\n\n'.join(tables))
+        return round2('\n\n'.join(tables))
 
 
     def getCatfruit(self) -> str:
@@ -506,8 +514,7 @@ class CatPage(Cat):
             txt = f"\n\n===Ultra Talents===\n" \
                   f"*{f'{br}*'.join(t_ls[nor:len(t_ls)])}" if ult != 0 else ""
 
-            return re.sub('\.0(?![0-9])', '',
-                            f"\n\n==Talents==\n"
+            return round2(f"\n\n==Talents==\n"
                             f"*{f'{br}*'.join(t_ls[0:nor])}{txt}")
 
 

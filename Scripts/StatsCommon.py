@@ -810,14 +810,13 @@ class StatsCommon:
         # example: Immune to knockback, Weaken, Warp, and Curse
 
         if len(abilities) != 0:
-            return re.sub('\.0(?![0-9])', '',
-                          '<br>\n'.join(abilities)) if mode != 2 else abilities
+            return round2('<br>\n'.join(abilities)) if mode != 2 else abilities
             # turn the list into text
         else:
             return "-" if mode != 2 else ''
 
 
-    def get_talents(self, talent_ls: list, cat_ls: list, raw_data: list) -> tuple:
+    def get_talents(self, talent_ls: list, cat_ls: list) -> tuple:
         """Cat units only; Gets talents for cat units"""
 
         if self.is_enemy:
@@ -1124,7 +1123,7 @@ class StatsCommon:
                            f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
 
                 elif t[0] == 61:
-                    tba = int(raw_data[4]) * 2
+                    tba = int(cat_ls[4]) * 2
                     info = f": Decreases time between attacks by " \
                            f"{frame(tba * t[2]/100)}" \
                            f"{maximum(tba * t[3]/100, 'f', False)}<sup>" \

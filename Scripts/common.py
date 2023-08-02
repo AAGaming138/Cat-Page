@@ -68,6 +68,10 @@ def opencsv(filename: str, header: bool = False, delim = ",") -> list:
         return [row for row in rf if row != []]
 
 
+def round2(num: Union[int, float, str]) -> Union[int, float, str]:
+    """Rounds to 2 decimal places or removes decimals"""
+    return re.sub('\.0(?![0-9])', '', num)
+
 
 def commarise(num: Union[int, float, str]) -> Union[int, float, str]:
     """Wow! I wonder what this does"""

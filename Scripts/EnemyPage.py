@@ -153,11 +153,11 @@ class EnemyPage(Enemy):
               f" [[Anti-{'S' if self.ls[69] else 'uns'}tarred" \
               f" Alien Treasures]].''" if self.ls[18] else ""
         # for treasures regarding aliens
-
-        stats = "==Stats==\n" \
+        start = "==Stats==\n" \
                 "{{EnemyCharacter Stats\n" \
-                f"|Enemy = {self.name}\n" \
-                f"|Health = {self.ls[0]:,}{aste} HP\n" \
+                f"|Enemy = {self.name}\n"
+
+        stats = f"|Health = {self.ls[0]:,}{aste} HP\n" \
                 f"|Attack Power = {atk:,}{aste} damage<br>" \
                 f"({round(atk / (atkfreq / 30), 2):,}{aste} DPS)\n" \
                 f"|Attack Range = {self.ls[5]:,}<br>" \
@@ -173,7 +173,8 @@ class EnemyPage(Enemy):
                 f"|Ability = {self.stats.get_abilities(self.ls, -1)}{msg}\n" \
                 f"|Element = {traits if traits else 'Typeless'}\n" \
                 "}}\n\n"
-        return re.sub('\.0(?![0-9])', '', stats)
+
+        return start + round2(stats)
 
 
     def getEnd(self):

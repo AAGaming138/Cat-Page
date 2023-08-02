@@ -19,7 +19,7 @@ class NoDataError(Exception):
 
 
 class MakePage:
-    """Relays page content to Unit Page Maker"""
+    """Placeholder Parent Class"""
     def __init__(self, mode: int = 0, isEnemy: bool = False):
         self.stats = StatsCommon(is_enemy=isEnemy)
         self.mode = mode if not isEnemy else [0, 1, 6, 7, 5][mode - 6]
@@ -41,8 +41,7 @@ class MakeCatPage(MakePage):
         self.name = self.cat_page.names[1]
         self.get_errors()
         self.anims = []
-        self.cats = self.cat_page.getData()
-        self.rawData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[2]
+        self.cats = self.cat_page.ls
 
 
     def get_errors(self):
@@ -91,28 +90,14 @@ class MakeCatPage(MakePage):
         # 0-2 attack frequency, 3-5 backswing
 
 
-    def parse_cat(self):
-        """Makes cat data and animation data ready for CatPage"""
-        for i in range(3):
-            self.cats[i][4] = self.anims[i]
-            self.cats[i][7] = f"{self.cats[i][7]} ~ " \
-                         f"{round(self.cats[i][7] - 8.8, 2) if self.cats[i][7] > 10.8 else 2}" \
-                         f" seconds"
-            self.cats[i][12] = "Single Target" if self.cats[i][12] == 0 else "Area Attack"
-
-            if self.anims[i] - (self.cats[i][13] + self.anims[i + 3]) < 0:
-                self.anims[i] = self.cats[i][13] + self.anims[i + 3]
-
-
     def get_page(self) -> str:
         self.get_errors()
         self.get_mode()
         self.process()
         self.get_anim()
-        self.parse_cat()
 
         c = self.cat_page
-        t = self.stats.get_talents(c.tals, self.cats[2], self.rawData)
+        t = self.stats.get_talents(c.tals, self.cats[2])
 
         # returns depending on option
         if self.op['table']:
