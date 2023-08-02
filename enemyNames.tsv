@@ -257,7 +257,7 @@ Image	Name	Link	HP	Attack
 255	Two Can	Two Can (Red/Black)	250000	12000
 256	Tackey	Tackey (Black)	128000	9000
 257	King Wahwah		1000000	24000
-258	&quot;Codename &quot;&quot;Red Riding&quot;&quot;&quot;		1200000	22222
+258	"Codename ""Red Riding"""		1200000	22222
 259	Takuya and Lovely Yuki	Takuya and Lovely Yuki (Enemy)	750000	8800
 260	Kite Cat	Kite Cat (Enemy)	500000	7500
 261	Boraphim	Boraphim (Angel)	1440000	17700
@@ -345,7 +345,7 @@ Image	Name	Link	HP	Attack
 343	Sluggy (Angel)		75000	3300
 344	Cat Kart P	Cat Kart P (Enemy)	750000	52500
 345	Nekondo SP	Nekondo SP (Enemy)	150000	500
-346	Merc &amp; Cat CC	Merc &amp; Cat CC (Enemy)	99000	15000
+346	Merc & Cat CC	Merc & Cat CC (Enemy)	99000	15000
 347	Titi Cat CC	Titi Cat CC (Enemy)	1000000	27000
 348	Orthos	Orthos (Enemy)	4800	400
 349	Michelia	Michelia (Enemy)	40000	2000
@@ -401,9 +401,9 @@ Image	Name	Link	HP	Attack
 399	Pokota	Pokota (Enemy)	32000	5000
 400	Ovis	Ovis (Enemy)	200000	3000
 401	Coco	Coco (Enemy)	120000	10000
-402	Moe Uzumasa &amp; Doge	Moe Uzumasa &amp; Doge (Enemy)	16000	1650
-403	Saki Matsuga &amp; Doge	Saki Matsuga &amp; Doge (Enemy)	150000	6000
-404	Misa Ono &amp; Doge	Misa Ono &amp; Doge (Enemy)	100000	4000
+402	Moe Uzumasa & Doge	Moe Uzumasa & Doge (Enemy)	16000	1650
+403	Saki Matsuga & Doge	Saki Matsuga & Doge (Enemy)	150000	6000
+404	Misa Ono & Doge	Misa Ono & Doge (Enemy)	100000	4000
 405	Mecha-Bun	Mecha-Bun (Floating)	3000000	22222
 406	Relic Bun-Bun	Relic Bun-Bun (Relic)	3000000	11111
 407	Relic Doge	Relic Doge (Relic)	75000	12000
@@ -447,10 +447,10 @@ Image	Name	Link	HP	Attack
 445	Axoloty	Axoloty (Alien)	50000	40000
 446	Final Boss Giga-God	Final Boss Giga-God (Cool Dude)	999999	73997
 447	Filibuster Obstructa	Filibuster Obstructa (Alien/Floating)	2000000	1000000
-448	Idol Mihara &amp; Cat	Idol Mihara &amp; Cat (Enemy)	20000	2000
+448	Idol Mihara & Cat	Idol Mihara & Cat (Enemy)	20000	2000
 449	HaterBaa 2.0	HaterBaa 2.0 (Event Enemy)	15	13500
 450	Dogumaru	Dogumaru (Relic)	1000000	9000
-451	Maji Cat &amp; Cat Tour Group	Maji Cat &amp; Cat Tour Group (Enemy)	7500	800
+451	Maji Cat & Cat Tour Group	Maji Cat & Cat Tour Group (Enemy)	7500	800
 452	Super Devil	Super Devil (Enemy)	50000	1500
 453	Satanmaria	Satanmaria (Enemy)	60000	5000
 454	Wondermaria	Wondermaria (Enemy)	1000000	33333
@@ -460,12 +460,12 @@ Image	Name	Link	HP	Attack
 458	Kitarou	Kitarou (Enemy)	17000	2500
 459	Medama-Oyaji	Medama-Oyaji (Enemy)	35000	800
 460	Neko-Musume	Neko-Musume (Enemy)	15000	1500
-461	Kano &amp; Souma	Kano &amp; Souma (Enemy)	80000	800
+461	Kano & Souma	Kano & Souma (Enemy)	80000	800
 462	Gekirinchii	Gekirinchii (Enemy)	220000	17000
 463	Judgement	Judgement (Enemy)	180000	13000
 464	Awakened Eva Unit-13	Awakened Eva Unit-13 (Eva Angel)	4000000	100000
 465	HAPPI	HAPPI (Enemy)	120000	4500
-466	HAPPI &amp; Maji Cat &amp; Cat	HAPPI &amp; Maji Cat &amp; Cat (Enemy)	150000	6000
+466	HAPPI & Maji Cat & Cat	HAPPI & Maji Cat & Cat (Enemy)	150000	6000
 467	Chocolate Cat	Chocolate Cat (Enemy)	20000	550
 468	Zuche	Zuche (Zombie)	17500	17000
 469	The Thrillerz	The Thrillerz (Zombie)	10000	6500
@@ -495,13 +495,13 @@ Image	Name	Link	HP	Attack
 493	Queen Mother V	Queen Mother V (Relic/Floating)	1555555	18888
 494	Rat Doge	Rat Doge (Event Enemy)	100	40
 495	Kappy Jr.		2000000	38000
-496	Urs &amp; Fenrir	Urs &amp; Fenrir (Relic)	750000	35000
+496	Urs & Fenrir	Urs & Fenrir (Relic)	750000	35000
 497	Croconator	Croconator (Metal)	5	800
 498	Gobble	Gobble (Floating)	329000	5000
 499	Baron Seal	Baron Seal (Red) (Colossal)	15000	300
 500	Hatsune Miku	Hatsune Miku (Enemy)	100000	6500
 501	Sakura Miku	Sakura Miku (Enemy)	150000	20000
-502	Kagamine Rin &amp; Len	Kagamine Rin &amp; Len (Enemy)	180000	8000
+502	Kagamine Rin & Len	Kagamine Rin & Len (Enemy)	180000	8000
 503	MikuDoge	MikuDoge (Enemy)	3000	1500
 504	MikuGory	MikuGory (Enemy)	72000	3200
 505	MikuBear	MikuBear (Enemy)	100000	15000
@@ -595,8 +595,8 @@ Image	Name	Link	HP	Attack
 593	Archangel Exiel	Archangel Exiel (Angel) (Colossal)	945000	4800
 594	Big Peng Z	Big Peng Z (Zombie) (Colossal)	840000	1000
 595	Tiger Doge	Tiger Doge (Event Enemy)	3000	600
-596	Nana &amp; Doge	Nana &amp; Doge (Enemy)	120000	5000
-597	Emilia &amp; Doge	Emilia &amp; Doge (Enemy)	135000	7500
+596	Nana & Doge	Nana & Doge (Enemy)	120000	5000
+597	Emilia & Doge	Emilia & Doge (Enemy)	135000	7500
 598	Yonshakudama Firework	Yonshakudama Firework (Event Enemy)	500	50
 599	Ultima Beast Naala	Ultima Beast Naala (Relic / Behemoth)	3000000	60000
 600	Zapy	Zapy (Zombie)	390000	38000
@@ -616,8 +616,8 @@ Image	Name	Link	HP	Attack
 614	Formicidaean Ariant	Formicidaean Ariant (Zombie) (Behemoth)	75000	135000
 615	Great Angel Chibinel	Great Angel Chibinel (Angel) (Colossus)	160000	4500
 616	Spiritual Yulala	Spiritual Yulala (Enemy Unit)	3250000	30000
-617	Osamu Mikumo &amp; Doge	Osamu Mikumo &amp; Doge (Enemy)	150000	1000
-618	Yuma Kuga &amp; Doge	Yuma Kuga &amp; Doge (Enemy)	120000	2000
+617	Osamu Mikumo & Doge	Osamu Mikumo & Doge (Enemy)	150000	1000
+618	Yuma Kuga & Doge	Yuma Kuga & Doge (Enemy)	120000	2000
 619	Marmod	Marmod (Enemy)	60000	2000
 620	Red Marmod	Red Marmod (Enemy)	90000	3000
 621	Black Marmod	Black Marmod (Enemy)	120000	4000
@@ -651,6 +651,6 @@ Image	Name	Link	HP	Attack
 649	Lutrinae Gokurakko	Lutrinae Gokurakko (Angel)	400000	4497
 650	Iguanidae Ibilujon	Iguanidae Ibilujon (Relic / Behemoth)	4200000	30000
 651	Finale Base	Finale Base (Enemy)	50	1
-652	652	652 (Zombie/Floating) (Behemoth)	420000	13000
-653	653		2600000	114000
+652	Lophiiformes Angaburu	Lophiiformes Angaburu (Zombie/Floating/Behemoth)	420000	13000
+653	Kappy Kawano		2600000	114000
 N/A	N/A			

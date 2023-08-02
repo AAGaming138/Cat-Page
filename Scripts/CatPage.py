@@ -33,6 +33,7 @@ class CatPage(Cat):
         self.gacha = self.getGacha()
         self.drop = self.isDrop()
         self.desc = self.getDesc()
+        self.en_desc = self.stats.get_en_desc(self.ID)
         self.tals = self.getTalents()
 
 
@@ -59,17 +60,21 @@ class CatPage(Cat):
 
             for p in range(len(perf)):
                 has = lambda index: perf[p] in abils[index]
-                if has(0) and not (has(1) or has(2)):
-                    perf[p] += f' {bold("[Normal]")}'
-                if self.tf and has(2):
-                    if not (has(0) or has(1)):
-                        perf[p] += f' {bold("[True]")}'
-                    elif not has(0) and has(1):
-                        perf[p] += f' {bold("[Evolved/True]")}'
-                elif has(1) and not has(0):
-                    perf[p] += f' {bold("[Evolved]")}'
-                else:
-                    continue
+                try:
+                    if has(0) and not (has(1) or has(2)):
+                        perf[p] += f' {bold("[Normal]")}'
+                    if self.tf and has(2):
+                        if not (has(0) or has(1)):
+                            perf[p] += f' {bold("[True]")}'
+                        elif not has(0) and has(1):
+                            perf[p] += f' {bold("[Evolved/True]")}'
+                    elif has(1) and not has(0):
+                        perf[p] += f' {bold("[Evolved]")}'
+                    else:
+                        continue
+                except IndexError:
+                    pass
+
             move('[True]')
             move('Immune to')
             move(f'{bold("-")} ')
@@ -142,25 +147,25 @@ class CatPage(Cat):
         """
         Method that writes the translation template
         """
-        # TODO add english description
         # if egg, use default egg image otherwise use its respective image
         image = lambda id, num: \
             f'|image{num} = Uni{self.ID:03} {id}00.png\n'\
                 if not self.isEgg or num != 1 else f'|image{num} =' \
                                                    f' Uni000 m00.png\n'
 
+
         return "==Description==\n{{Translation\n" + \
                 f"|Cat Unit Number = {self.ID}\n" \
                 f"|cat category = [[:Category:{self.r[0]} Cats|{self.r[0]} Cat]]\n" \
                 f"|Normal Form name = {self.names[1]}\n" \
                 f"{image('f', 1)}" \
-                f"|cat_endesc1 = -\n" \
+                f"|cat_endesc1 = {self.en_desc[1]}\n" \
                 f"|Evolved Form name = {self.names[2]}\n" \
                 f"{image('c', 2)}" \
-                f"|cat_endesc2 = -\n" + \
+                f"|cat_endesc2 = {self.en_desc[2]}\n" + \
                 (f'|Third Form name = {self.names[3]}\n'
                  f"{image('s', 3)}"
-                 f'|cat_endesc3 = -\n' if self.tf else '') + \
+                 f'|cat_endesc3 = {self.en_desc[3]}\n' if self.tf else '') + \
                 f"|Normal Form name (JP) = {self.desc[0]} (?, ?)\n" \
                 f"|cat_jpscriptc1 = {self.desc[3]}\n" \
                 f"|cat_jpdesc1 = ?\n" \
@@ -219,11 +224,11 @@ class CatPage(Cat):
             else:
                 upgrade = defaults[self.catRarity[3]]
         else:
-            last = int(self.catRarity[2]) * 2 if self.isCrazed \
-                else int(int(self.catRarity[3]) * 1.5)
-            upgrade = "MIX\n" + \
-                      '\n'.join([f"|{self.catRarity[i + 3]}"
-                                 for i in range(9)]) + f'\n|{last}\n'
+            last = commarise(int(self.catRarity[2]) * 2)
+            upgrade = f"MIX\n|{commarise(int(self.catRarity[1]))}\n" + \
+                      '\n'.join([f"|{commarise(int(self.catRarity[i + 3]))}"
+                                 for i in range(9)]) + f'\n|{last}\n' \
+                                                       f'|max = {self.r[1]}\n'
         # this gives a mix of XP as given in the rarity list
         return "==Cost==\n" + costs + f"{'{{'}Upgrade Cost|{upgrade}{'}}'}\n\n"
 
@@ -444,35 +449,35 @@ class CatPage(Cat):
         if not cfList: return ''
         else:
             catfruits = {
-            30: "PurpleSeed",
-            31: "RedSeed",
-            32: "BlueSeed",
-            33: "GreenSeed",
-            34: "YellowSeed",
-            35: "PurpleFruit",
-            36: "RedFruit",
-            37: "BlueFruit",
-            38: "GreenFruit",
-            39: "YellowFruit",
-            40: "RainbowFruit",
-            41: "AncientSeed",
-            42: "AncientFruit",
-            43: "RainbowSeed",
-            44: "GoldenFruit",
-            160: "AkuSeed",
-            161: "AkuFruit",
-            164: "GoldenSeed",
-            167: "PurpleStone",
-            168: "RedStone",
-            169: "BlueStone",
-            170: "GreenStone",
-            171: "YellowStone",
-            179: "PurpleGem",
-            180: "RedGem",
-            181: "BlueGem",
-            182: "GreenGem",
-            183: "YellowGem",
-            184: "RainbowStone"
+            30:     "PurpleSeed",
+            31:     "RedSeed",
+            32:     "BlueSeed",
+            33:     "GreenSeed",
+            34:     "YellowSeed",
+            35:     "PurpleFruit",
+            36:     "RedFruit",
+            37:     "BlueFruit",
+            38:     "GreenFruit",
+            39:     "YellowFruit",
+            40:     "RainbowFruit",
+            41:     "AncientSeed",
+            42:     "AncientFruit",
+            43:     "RainbowSeed",
+            44:     "GoldenFruit",
+            160:    "AkuSeed",
+            161:    "AkuFruit",
+            164:    "GoldenSeed",
+            167:    "PurpleStone",
+            168:    "RedStone",
+            169:    "BlueStone",
+            170:    "GreenStone",
+            171:    "YellowStone",
+            179:    "PurpleGem",
+            180:    "RedGem",
+            181:    "BlueGem",
+            182:    "GreenGem",
+            183:    "YellowGem",
+            184:    "RainbowStone"
             }
 
         fruits = [catfruits[cfList[i]] for i in
@@ -590,73 +595,73 @@ class CatPage(Cat):
         elif self.drop: addcat("Item Drop Cats")
 
         anti_traits = {
-            10: "Anti-Red Cats",
-            16: "Anti-Floating Cats",
-            17: "Anti-Black Cats",
-            18: "Anti-Metal Cats",
-            19: "Anti-Traitless Cats",
-            20: "Anti-Angel Cats",
-            21: "Anti-Alien Cats",
-            22: "Anti-Zombie Cats",
-            78: "Anti-Relic Cats",
-            96: "Anti-Aku Cats"
+            10:     "Anti-Red Cats",
+            16:     "Anti-Floating Cats",
+            17:     "Anti-Black Cats",
+            18:     "Anti-Metal Cats",
+            19:     "Anti-Traitless Cats",
+            20:     "Anti-Angel Cats",
+            21:     "Anti-Alien Cats",
+            22:     "Anti-Zombie Cats",
+            78:     "Anti-Relic Cats",
+            96:     "Anti-Aku Cats"
         }
         categories.append([anti_traits[i] for i in anti_traits if i in data])
         attack_types = {
-             8: "Single Target Cats",
-            12: "Area Attack Cats",
-            44: "Long Distance Cats",
-            59: "Multi-Hit Cats",
-            99: "Cats with different effective ranges"
+             8:     "Single Target Cats",
+            12:     "Area Attack Cats",
+            44:     "Long Distance Cats",
+            59:     "Multi-Hit Cats",
+            99:     "Cats with different effective ranges"
         }
         if 44 in data and 45 not in data: attack_types[44] = "Omni Strike Cats"
         categories.append([attack_types[i] for i in attack_types if i in data])
         abilities = {
-            23: "Cats with Strong ability",
-            24: "Cats with Knockback ability",
-            25: "Cats with Freeze ability",
-            27: "Cats with Slow ability",
-            29: "Cats with Resistant ability",
-            30: "Cats with Massive Damage ability",
-            31: "Critical Hit Cats",
-            32: "Focused Target Cats",
-            33: "Cats with Extra Money ability",
-            34: "Base Destroyer Cats",
-            35: "Mini-Wave Cats",
-            37: "Cats with Weaken ability",
-            40: "Cats with Strengthen ability",
-            42: "Lethal Strike Resistant Cats",
-            43: "Cats with Metal ability",
-            47: "Wave Shield Cats",
-            52: "Zombie Killer Cats",
-            53: "Witch Killer Cats",
-            58: "Kamikaze Cats",
-            70: "Barrier Breaker Cats",
-            77: "Eva Angel Killer Cats",
-            80: "Cats with Insanely Tough ability",
-            81: "Cats with Insane Damage ability",
-            82: "Savage Blow Cats",
-            84: "Cats with Dodge Attack ability",
-            86: "Mini-Surge Cats",
-            92: "Cats with Curse ability",
-            95: "Shield Piercing Cats",
-            97: "Colossus Slayer Cats",
-            98: "Soulstrike Cats",
-            105:"Behemoth Slayer Cats"
+            23:     "Cats with Strong ability",
+            24:     "Cats with Knockback ability",
+            25:     "Cats with Freeze ability",
+            27:     "Cats with Slow ability",
+            29:     "Cats with Resistant ability",
+            30:     "Cats with Massive Damage ability",
+            31:     "Critical Hit Cats",
+            32:     "Focused Target Cats",
+            33:     "Cats with Extra Money ability",
+            34:     "Base Destroyer Cats",
+            35:     "Mini-Wave Cats",
+            37:     "Cats with Weaken ability",
+            40:     "Cats with Strengthen ability",
+            42:     "Lethal Strike Resistant Cats",
+            43:     "Cats with Metal ability",
+            47:     "Wave Shield Cats",
+            52:     "Zombie Killer Cats",
+            53:     "Witch Killer Cats",
+            58:     "Kamikaze Cats",
+            70:     "Barrier Breaker Cats",
+            77:     "Eva Angel Killer Cats",
+            80:     "Cats with Insanely Tough ability",
+            81:     "Cats with Insane Damage ability",
+            82:     "Savage Blow Cats",
+            84:     "Cats with Dodge Attack ability",
+            86:     "Mini-Surge Cats",
+            92:     "Cats with Curse ability",
+            95:     "Shield Piercing Cats",
+            97:     "Colossus Slayer Cats",
+            98:     "Soulstrike Cats",
+            105:    "Behemoth Slayer Cats"
         }
         if 35 in data and 36 not in data: abilities[35] = "Wave Attack Cats"
         if 86 in data and 87 not in data: abilities[86] = "Surge Attack Cats"
         categories.append([abilities[i] for i in abilities if i in data])
         immunities = {
-            46: "Cats with Wave Immunity",
-            48: "Cats with Knockback Immunity",
-            49: "Cats with Freeze Immunity",
-            50: "Cats with Slow Immunity",
-            51: "Cats with Weaken Immunity",
-            75: "Warp Blocker Cats",
-            79: "Cats with Curse Immunity",
-            90: "Cats with Toxic Immunity",
-            91: "Cats with Surge Immunity"
+            46:     "Cats with Wave Immunity",
+            48:     "Cats with Knockback Immunity",
+            49:     "Cats with Freeze Immunity",
+            50:     "Cats with Slow Immunity",
+            51:     "Cats with Weaken Immunity",
+            75:     "Warp Blocker Cats",
+            79:     "Cats with Curse Immunity",
+            90:     "Cats with Toxic Immunity",
+            91:     "Cats with Surge Immunity"
         }
         categories.append([immunities[i] for i in immunities if i in data])
 
@@ -668,60 +673,60 @@ class CatPage(Cat):
                 if i == 4: addcat("Cats require Catfruits for True Form")
 
         talents = {
-            1: "Cats with Weaken ability",
-            2: "Cats with Freeze ability",
-            3: "Cats with Slow ability",
-            5: "Cats with Strong ability",
-            6: "Cats with Resistant ability",
-            7: "Cats with Massive Damage ability",
-            8: "Cats with Knockback ability",
-            10: "Cats with Strengthen ability",
-            11: "Lethal Strike Resistant Cats",
-            13: "Critical Hit Cats",
-            14: "Zombie Killer Cats",
-            15: "Barrier Breaker Cats",
-            16: "Cats with Extra Money ability",
-            17: "Wave Attack Cats",
-            18: "Resist Weaken Cats",
-            19: "Resist Freeze Cats",
-            20: "Resist Slow Cats",
-            21: "Resist Knockback Cats",
-            22: "Resist Wave Cats",
-            25: "Cats with Cost Down Talent",
-            26: "Cats with Recover Speed Up Talent",
-            27: "Cats with Move Speed Up Talent",
-            29: "Cats with Curse Immunity",
-            30: "Resist Curse Cats",
-            31: "Cats with Attack Buff Talent",
-            32: "Cats with Defense Buff Talent",
-            35: "Anti-Black Cats",
-            36: "Anti-Metal Cats",
-            37: "Anti-Angel Cats",
-            38: "Anti-Alien Cats",
-            39: "Anti-Zombie Cats",
-            40: "Anti-Relic Cats",
-            44: "Cats with Weaken Immunity",
-            45: "Cats with Freeze Immunity",
-            46: "Cats with Slow Immunity",
-            47: "Cats with Knockback Immunity",
-            48: "Cats with Wave Immunity",
-            49: "Warp Blocker Cats",
-            50: "Savage Blow Cats",
-            51: "Cats with Dodge Attack ability",
-            52: "Resist Toxic Cats",
-            53: "Cats with Toxic Immunity",
-            54: "Resist Surge Cats",
-            55: "Cats with Surge Immunity",
-            56: "Surge Attack Cats",
-            57: "Anti-Aku Cats",
-            58: "Shield Piercing Cats",
-            59: "Soulstrike Cats",
-            60: "Cats with Curse ability",
-            61: "Cats with Attack Frequency Up Talent",
-            62: "Mini-Wave Cats",
-            63: "Colossus Slayer Cats",
-            64: "Behemoth Slayer Cats",
-            65: "Mini-Surge Cats"
+            1:      "Cats with Weaken ability",
+            2:      "Cats with Freeze ability",
+            3:      "Cats with Slow ability",
+            5:      "Cats with Strong ability",
+            6:      "Cats with Resistant ability",
+            7:      "Cats with Massive Damage ability",
+            8:      "Cats with Knockback ability",
+            10:     "Cats with Strengthen ability",
+            11:     "Lethal Strike Resistant Cats",
+            13:     "Critical Hit Cats",
+            14:     "Zombie Killer Cats",
+            15:     "Barrier Breaker Cats",
+            16:     "Cats with Extra Money ability",
+            17:     "Wave Attack Cats",
+            18:     "Resist Weaken Cats",
+            19:     "Resist Freeze Cats",
+            20:     "Resist Slow Cats",
+            21:     "Resist Knockback Cats",
+            22:     "Resist Wave Cats",
+            25:     "Cats with Cost Down Talent",
+            26:     "Cats with Recover Speed Up Talent",
+            27:     "Cats with Move Speed Up Talent",
+            29:     "Cats with Curse Immunity",
+            30:     "Resist Curse Cats",
+            31:     "Cats with Attack Buff Talent",
+            32:     "Cats with Defense Buff Talent",
+            35:     "Anti-Black Cats",
+            36:     "Anti-Metal Cats",
+            37:     "Anti-Angel Cats",
+            38:     "Anti-Alien Cats",
+            39:     "Anti-Zombie Cats",
+            40:     "Anti-Relic Cats",
+            44:     "Cats with Weaken Immunity",
+            45:     "Cats with Freeze Immunity",
+            46:     "Cats with Slow Immunity",
+            47:     "Cats with Knockback Immunity",
+            48:     "Cats with Wave Immunity",
+            49:     "Warp Blocker Cats",
+            50:     "Savage Blow Cats",
+            51:     "Cats with Dodge Attack ability",
+            52:     "Resist Toxic Cats",
+            53:     "Cats with Toxic Immunity",
+            54:     "Resist Surge Cats",
+            55:     "Cats with Surge Immunity",
+            56:     "Surge Attack Cats",
+            57:     "Anti-Aku Cats",
+            58:     "Shield Piercing Cats",
+            59:     "Soulstrike Cats",
+            60:     "Cats with Curse ability",
+            61:     "Cats with Attack Frequency Up Talent",
+            62:     "Mini-Wave Cats",
+            63:     "Colossus Slayer Cats",
+            64:     "Behemoth Slayer Cats",
+            65:     "Mini-Surge Cats"
         }
         def categories_has(element: str) -> bool:
             """

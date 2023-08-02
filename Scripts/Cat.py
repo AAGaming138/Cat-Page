@@ -214,7 +214,7 @@ class Cat:
                 except ValueError:
                     self.NPCosts[LvID].remove(n)
             costs = [int(self.NPCosts[LvID][i]) for i in range(1, maxLv + 1)]
-            return sum(costs), True if len(costs) > 2 else False
+            return sum(costs), len(costs) > 2
         else: return 0,
 
 

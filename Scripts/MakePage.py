@@ -18,17 +18,28 @@ class NoDataError(Exception):
         super().__init__(error)
 
 
-class MakeCatPage:
+class MakePage:
+    """Relays page content to Unit Page Maker"""
+    def __init__(self, mode: int = 0, isEnemy: bool = False):
+        self.stats = StatsCommon(is_enemy=isEnemy)
+        self.mode = mode if not isEnemy else [0, 1, 6, 7, 5][mode - 6]
+        self.op = vars(Options())
+
+
+    def get_mode(self):
+        """Turns the appropriate option to True depending on mode"""
+        self.op[list(self.op)[self.mode]] = True
+
+
+class MakeCatPage(MakePage):
     """Relays page content to Unit Page Maker"""
     def __init__(self, ID: int = -1, mode: int = 0):
-        self.stats = StatsCommon()
-        self.mode = mode
+        super().__init__(mode)
         self.cat_page = CatPage(ID)
         self.ID = self.cat_page.ID
         # turns ID to -1 if unit not found
         self.name = self.cat_page.names[1]
         self.get_errors()
-        self.op = vars(Options())
         self.anims = []
         self.cats = self.cat_page.getData()
         self.rawData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[2]
@@ -50,11 +61,6 @@ class MakeCatPage:
         # no talents error
 
 
-    def get_mode(self):
-        """Turns the appropriate option to True depending on mode"""
-        self.op[list(self.op)[self.mode]] = True
-
-
     def process(self):
         """Changes cat data to be easily parsable"""
         for k in range(len(self.cats)):
@@ -74,7 +80,7 @@ class MakeCatPage:
         """Gets all the animation data"""
         def anim(k: str, num: int, ind: int):
             "Formatting"
-            if "Ancient Egg" in self.name and num < 2:
+            if self.cat_page.isEgg and num < 2:
                 return 44 if ind == 0 else 471
             else:
                 return self.stats.get_atkanim(self.ID, k, self.cats[num])[ind]
@@ -105,57 +111,45 @@ class MakeCatPage:
         self.get_anim()
         self.parse_cat()
 
+        c = self.cat_page
+        t = self.stats.get_talents(c.tals, self.cats[2], self.rawData)
+
         # returns depending on option
         if self.op['table']:
-            return self.cat_page.getTables(self.anims)
+            return c.getTables(self.anims)
 
         elif self.op['cost']:
-            return self.cat_page.getCost().strip("\n")
+            return c.getCost().strip("\n")
 
         elif self.op['catfruit']:
-            return self.cat_page.getCatfruit().strip('\n')
+            return c.getCatfruit().strip('\n')
 
         elif self.op['talents']:
-            return self.cat_page.getTalent(self.stats.get_talents(
-                self.cat_page.tals, self.cats[2], self.rawData)).strip('\n')
-            # FIXME - Literally not going to understand this a few days from now
-            # This is what happens when you write 3 functions that
-            # sound exactly the same from left to right:
-            # if Cat.getTalents: return
-            # Page.getTalent(stats.get_talents(Cat.getTalents, Cat.getData)) etc.
+            return c.getTalent(t).strip('\n')
 
         elif self.op['category']:
-            return self.cat_page.getCategories(self.stats.get_talents(
-                self.cat_page.tals, self.cats[2], self.rawData))
+            return c.getCategories(t)
 
         else:
-            return self.cat_page.getStart() + self.cat_page.getTranslation() + \
-                   self.cat_page.getCost() + \
-                   self.cat_page.getTables(self.anims) + \
-                   self.cat_page.getCatfruit() + \
-                   self.cat_page.getTalent(self.stats.get_talents(
-                       self.cat_page.tals, self.cats[2], self.rawData)) + \
-                   self.cat_page.getEnd() + \
-                   self.cat_page.getCategories(self.stats.get_talents(
-                self.cat_page.tals, self.cats[2], self.rawData))
+            return f"{c.getStart()}" \
+                   f"{c.getTranslation()}" \
+                   f"{c.getCost()}" \
+                   f"{c.getTables(self.anims)}" \
+                   f"{c.getCatfruit()}" \
+                   f"{c.getTalent(t)}" \
+                   f"{c.getEnd()}" \
+                   f"{c.getCategories(t)}"
 
 
-class MakeEnemyPage:
+class MakeEnemyPage(MakePage):
     """Relays page content to Unit Page Maker"""
     def __init__(self, ID: int = -1, mode: int = 6):
-
-        self.stats = StatsCommon(is_enemy=True)
-        self.mode = [0, 1, 6, 7, 5][mode - 6]
+        super().__init__(mode, True)
         self.en_page = EnemyPage(ID)
         self.ID = self.en_page.ID
         # turns ID to -1 if unit not found
         self.op = vars(Options())
         self.get_errors()
-
-
-    def get_mode(self):
-        """Turns the appropriate option to True depending on mode"""
-        self.op[list(self.op)[self.mode]] = True
 
 
     def get_errors(self):

@@ -66,7 +66,7 @@ Number	First	Evolved	True	PageName	Rarity
 064	Swordsman	Swordsman Johnny		Swordsman (Rare Cat)	RR
 065	Cow Princess	Giraffe Princess		Cow Princess (Rare Cat)	RR
 066	KHM48	Dark KHM48	KHM46	KHM48 (Uber Rare Cat)	UR
-067	Chibigau	Chibigaugau	067-3	Chibigau (Rare Cat)	RR
+067	Chibigau	Chibigaugau	Crystal Chibigaugau	Chibigau (Rare Cat)	RR
 068	Enforcer	Enforcer 999	Judgement	Enforcer (Super Rare Cat)	SR
 069	Sleeping Beauty	Sleeping Beauty II	Eternal Sleeping Beauty	Sleeping Beauty (Super Rare Cat)	SR
 070	Salaryman Cat	Grudge Cat	Ritual Cat	Salaryman Cat (Rare Cat)	RR
@@ -120,12 +120,12 @@ Number	First	Evolved	True	PageName	Rarity
 118	Rei	Rei CC		Rei (Super Rare Cat)	SR
 119	Wyvern	Wyvern Cat		Wyvern (Uber Rare Cat)	UR
 120	Healer	Healer CC	Healer Cat CC	Healer (Special Cat)	EX
-121	Merc	Merc CC	Merc &amp; Cat CC	Merc (Special Cat)	EX
+121	Merc	Merc CC	Merc & Cat CC	Merc (Special Cat)	EX
 122	Vacation Queen	Office Lady Cat	Call Center Cat	Vacation Queen (Rare Cat)	RR
 123	Bean Cats	Brah Cats	Val Val Cat	Bean Cats (Special Cat)	EX
 124	Date Masamune	Wargod Masamune	Immortal Masamune	Date Masamune (Uber Rare Cat)	UR
 125	Takeda Shingen	Wargod Shingen	Immortal Shingen	Takeda Shingen (Uber Rare Cat)	UR
-126	Clockwork Cat	Puppetmaster Cat	Puppetmaster &amp; Charley	Clockwork Cat (Rare Cat)	RR
+126	Clockwork Cat	Puppetmaster Cat	Puppetmaster & Charley	Clockwork Cat (Rare Cat)	RR
 127	Flower Cat	Cooldown Cat	Bombercat	Flower Cat (Special Cat)	EX
 128	Vengeful Cat	Groucho Cat	Kite Cat	Vengeful Cat (Rare Cat)	RR
 129	Gold Cat	Gold Macho Cat	Glittering Macho Cat	Gold Cat (Super Rare Cat)	SR
@@ -161,11 +161,11 @@ Number	First	Evolved	True	PageName	Rarity
 159	Kalisa	Kalisa, type χ	Divine Kalisa	Kalisa (Uber Rare Cat)	UR
 160	Yuurinchii	Reincarnated Spirit Yuurinchii	Gekirinchii	Yuurinchii (Super Rare Cat)	SR
 161	Crazed Kerihime	Crazed Kerihime CC	Manic Kerihime	Crazed Kerihime (Uber Rare Cat)	UR
-162	Ayanokōji Shō	Shōyan &amp; Cat		Ayanokōji Shō (Special Cat)	EX
-163	Saotome Hikaru	Hikaru &amp; Cat		Saotome Hikaru (Special Cat)	EX
-164	Saionji Hitomi	Tommy &amp; Cat		Saionji Hitomi (Special Cat)	EX
-165	Hoshi Guranmanie	Ranma &amp; Cat		Hoshi Guranmanie (Special Cat)	EX
-166	Shiratori Shōchikubai	Matsu &amp; Cat		Shiratori Shōchikubai (Special Cat)	EX
+162	Ayanokōji Shō	Shōyan & Cat		Ayanokōji Shō (Special Cat)	EX
+163	Saotome Hikaru	Hikaru & Cat		Saotome Hikaru (Special Cat)	EX
+164	Saionji Hitomi	Tommy & Cat		Saionji Hitomi (Special Cat)	EX
+165	Hoshi Guranmanie	Ranma & Cat		Hoshi Guranmanie (Special Cat)	EX
+166	Shiratori Shōchikubai	Matsu & Cat		Shiratori Shōchikubai (Special Cat)	EX
 167	Yankee Cat	Sukeban Cat		Yankee Cat (Rare Cat)	RR
 168	Asiluga	Asilan Pasalan	Assassinlan Pasalan	Asiluga (Uber Rare Cat)	UR
 169	Kubiluga	Kubilan Pasalan	E. Kubilan Pasalan	Kubiluga (Uber Rare Cat)	UR
@@ -178,8 +178,8 @@ Number	First	Evolved	True	PageName	Rarity
 176	Marshmallow Cat	Creepmallow		Marshmallow Cat (Rare Cat)	RR
 177	Dioramos	Archdragon Dioramos	God-Emperor Dioramos	Dioramos (Uber Rare Cat)	UR
 178	Mob Cat	Yakuza Vampire		Mob Cat (Special Cat)	EX
-179	Takuya &amp; Yuki	Takuya, Yuki &amp; Cat	Takuya &amp; Lovely Yuki	Takuya &amp; Yuki (Rare Cat)	RR
-180	Mystery Girl Yuki	Mystery Yuki &amp; Cat	Mystery Catgirl Yuki	Mystery Girl Yuki (Uber Rare Cat)	UR
+179	Takuya & Yuki	Takuya, Yuki & Cat	Takuya & Lovely Yuki	Takuya & Yuki (Rare Cat)	RR
+180	Mystery Girl Yuki	Mystery Yuki & Cat	Mystery Catgirl Yuki	Mystery Girl Yuki (Uber Rare Cat)	UR
 181	Yuki Cat	Lovely Yuki Cat		Yuki Cat (Special Cat)	EX
 182	Cuckoo Crew 12	Cuckoo Crew 12+1		Cuckoo Crew 12 (Special Cat)	EX
 183	Cat Kart R	Cat Kart G	Cat Kart P	Cat Kart R (Rare Cat)	RR
@@ -203,10 +203,10 @@ Number	First	Evolved	True	PageName	Rarity
 201	Drumcorps Cat	Banner Cat	Mochi Cat	Drumcorps Cat (Rare Cat)	RR
 202	Baozi Cat	Big Baozi		Baozi Cat (Special Cat)	EX
 203	Kachi-Kachi	Fire Squad Kachiyama	Kachiyama Assault Brigade	Kachi-Kachi (Uber Rare Cat)	UR
-204	Felyne	Felyne &amp; Melynx		Felyne (Special Cat)	EX
+204	Felyne	Felyne & Melynx		Felyne (Special Cat)	EX
 205	Sheria - Kirin	Sheria - KirinX		Sheria - Kirin (Special Cat)	EX
-206	Rathalos	Rathalos &amp; Cat		Rathalos (Special Cat)	EX
-207	Rathian	Rathian &amp; Cat		Rathian (Special Cat)	EX
+206	Rathalos	Rathalos & Cat		Rathalos (Special Cat)	EX
+207	Rathian	Rathian & Cat		Rathian (Special Cat)	EX
 208	Kirin Neko	Kirin Neko Kirin		Kirin Neko (Special Cat)	EX
 209	Li'l Cat	Li'l Macho Cat	Li'l Mohawk Cat	Li'l Cat (Special Cat)	EX
 210	Li'l Tank Cat	Li'l Wall Cat	Li'l Eraser Cat	Li'l Tank Cat (Special Cat)	EX
@@ -248,7 +248,7 @@ Number	First	Evolved	True	PageName	Rarity
 246	Li'l Cow Cat	Li'l Giraffe Cat	Li'l Lion Cat	Li'l Cow Cat (Special Cat)	EX
 247	Li'l Bird Cat	Li'l UFO Cat	Li'l Flying Cat	Li'l Bird Cat (Special Cat)	EX
 248	Undead Cat	Bake-Nyanko	Extra-Life Cat	Undead Cat (Special Cat)	EX
-249	C&amp;D Swordsman	Sailor Swordsman	Swordsman of the Ming Emperor	C&amp;D Swordsman (Rare Cat)	RR
+249	C&D Swordsman	Sailor Swordsman	Swordsman of the Ming Emperor	C&D Swordsman (Rare Cat)	RR
 250	Horsemen Cavalry	Forest Horsemen Cavalry	Thunderclap Horsemen Cavalry	Horsemen Cavalry (Rare Cat)	RR
 251	Ashura	Warrior Ashura	Kabukimono Ashura	Ashura (Rare Cat)	RR
 252	Battle Balloon	Pirate Battle Balloon	Battle Balloon UFO	Battle Balloon (Rare Cat)	RR
@@ -269,7 +269,7 @@ Number	First	Evolved	True	PageName	Rarity
 267	Catornado	Hurricat	Catyphoon	Catornado (Super Rare Cat)	SR
 268	Red Riding Mina	Crimson Mina	Awakened Mina	Red Riding Mina (Special Cat)	EX
 269	Baby Gao	Mighty Lord Gao		Baby Gao (Uber Rare Cat)	UR
-270	Crazed Yuki	Crazed Yuki &amp; Cat	Crazed Catgirl Yuki	Crazed Yuki (Uber Rare Cat)	UR
+270	Crazed Yuki	Crazed Yuki & Cat	Crazed Catgirl Yuki	Crazed Yuki (Uber Rare Cat)	UR
 271	Shining Amaterasu	Glorious Amaterasu	Almighty Amaterasu	Shining Amaterasu (Uber Rare Cat)	UR
 272	Splendid Ganesha	Exalted Ganesha	Almighty Ganesha	Splendid Ganesha (Uber Rare Cat)	UR
 273	Cheerleader Cat	Waitress Cat	Soba Cat	Cheerleader Cat (Super Rare Cat)	SR
@@ -287,12 +287,12 @@ Number	First	Evolved	True	PageName	Rarity
 285	Crazed Baozi Cat	Crazed Big Baozi Cat		Crazed Baozi Cat (Special Cat)	EX
 286	Strike Unit R.E.I.	Assault Unit R.E.I.	Flight Unit R.E.I.	Strike Unit R.E.I. (Uber Rare Cat)	UR
 287	Little Leaguer Cat	Major Leaguer Cat	Golfer Cat	Little Leaguer Cat (Super Rare Cat)	SR
-288	Madoka Kaname	Madoka &amp; Cat		Madoka Kaname (Uber Rare Cat)	UR
-289	Homura Akemi	Homura &amp; Cat		Homura Akemi (Uber Rare Cat)	UR
-290	Sayaka Miki	Sayaka &amp; Cat		Sayaka Miki (Uber Rare Cat)	UR
-291	Mami Tomoe	Mami &amp; Cat		Mami Tomoe (Uber Rare Cat)	UR
-292	Kyoko Sakura	Kyoko &amp; Cat		Kyoko Sakura (Uber Rare Cat)	UR
-293	Kyubey	Kyubey &amp; Cat		Kyubey (Super Rare Cat)	SR
+288	Madoka Kaname	Madoka & Cat		Madoka Kaname (Uber Rare Cat)	UR
+289	Homura Akemi	Homura & Cat		Homura Akemi (Uber Rare Cat)	UR
+290	Sayaka Miki	Sayaka & Cat		Sayaka Miki (Uber Rare Cat)	UR
+291	Mami Tomoe	Mami & Cat		Mami Tomoe (Uber Rare Cat)	UR
+292	Kyoko Sakura	Kyoko & Cat		Kyoko Sakura (Uber Rare Cat)	UR
+293	Kyubey	Kyubey & Cat		Kyubey (Super Rare Cat)	SR
 294	Madoka Cat	Magical Girl Madoka Cat		Madoka Cat (Rare Cat)	RR
 295	Homura Cat	Magical Girl Homura Cat		Homura Cat (Rare Cat)	RR
 296	Sayaka Cat	Magical Girl Sayaka Cat		Sayaka Cat (Rare Cat)	RR
@@ -319,7 +319,7 @@ Number	First	Evolved	True	PageName	Rarity
 317	CPAC	PPAP		CPAC (Special Cat)	EX
 318	Miko Mitama	Mitama the Oracle		Miko Mitama (Uber Rare Cat)	UR
 319	Killer Cat	True Killer Cat	Radical Cat	Killer Cat (Rare Cat)	RR
-320	Hiroshi Mihara	One Two Three ~ Hara Idols Cat	Idol Mihara &amp; Cat	Hiroshi Mihara (Rare Cat)	RR
+320	Hiroshi Mihara	One Two Three ~ Hara Idols Cat	Idol Mihara & Cat	Hiroshi Mihara (Rare Cat)	RR
 321	Nazousagi	Miya Ōdō Rabbit		Nazousagi (Special Cat)	EX
 322	Sarukani	Rock Revengers	The One-Hit Wonders	Sarukani (Uber Rare Cat)	UR
 323	Miyamoku Musashi	Heroic Musashi	Awakened Musashi	Miyamoku Musashi (Special Cat)	EX
@@ -330,7 +330,7 @@ Number	First	Evolved	True	PageName	Rarity
 328	Happy 100	Heartful Happy 100		Happy 100 (Special Cat)	EX
 329	Eggy Cat	Easter Cat	Easter Egg Cat	Eggy Cat (Rare Cat)	RR
 330	Springtime Kenshin	Full-Bloom Kenshin	Spring Breeze Kenshin	Springtime Kenshin (Uber Rare Cat)	UR
-331	Bunny &amp; Canard	Disciple Psychoduck	Malevolent Mad-Duck	Bunny &amp; Canard (Uber Rare Cat)	UR
+331	Bunny & Canard	Disciple Psychoduck	Malevolent Mad-Duck	Bunny & Canard (Uber Rare Cat)	UR
 332	Easter Neneko	Hoppity Neneko	Blossoming Neneko	Easter Neneko (Super Rare Cat)	SR
 333	Shadow Gao	Diabolic Gao		Shadow Gao (Uber Rare Cat)	UR
 334	Trickster Himeyuri	Himeyuri Ninetails	Fox Queen Himeyuri	Trickster Himeyuri (Uber Rare Cat)	UR
@@ -340,7 +340,7 @@ Number	First	Evolved	True	PageName	Rarity
 338	Imagawa Yoshimoto	Wargod Yoshimoto	Immortal Yoshimoto	Imagawa Yoshimoto (Uber Rare Cat)	UR
 339	Iron Wall Shield			Ototo Development Team#Base Upgrade Materials/Information	EX
 340	Redhead Yuki Cat	Redhead Lovely Yuki Cat	Macho Redhead Yuki Cat	Redhead Yuki Cat (Rare Cat)	RR
-341	Lost World Yuki	Lost World Yuki &amp; Cat	Lost World Catgirl Yuki	Lost World Yuki (Uber Rare Cat)	UR
+341	Lost World Yuki	Lost World Yuki & Cat	Lost World Catgirl Yuki	Lost World Yuki (Uber Rare Cat)	UR
 342	Maneki Cat	Neo Maneki Cat		Maneki Cat (Special Cat)	EX
 343	Slug Jockey Cat	Slugcat		Slug Jockey Cat (Rare Cat)	RR
 344	Orthos	Orthos CC	Artist Orthos CC	Orthos (Super Rare Cat)	SR
@@ -383,8 +383,8 @@ Number	First	Evolved	True	PageName	Rarity
 381	Farmer Cat	Harvest Cat		Farmer Cat (Special Cat)	EX
 382	Glass Cat	Macho Glass Cat	Macho Crystal Cat	Glass Cat (Rare Cat)	RR
 383	Masked Yulala	Mystic Yulala	Spiritual Yulala	Masked Yulala (Special Cat)	EX
-384	Satori Hikami &amp; Cat	Satori Hikami &amp; Cat CC		Satori Hikami &amp; Cat (Special Cat)	EX
-385	Akio Yabe	Akio Yabe CC	Akio &amp; Gunder CC	Akio Yabe (Rare Cat)	RR
+384	Satori Hikami & Cat	Satori Hikami & Cat CC		Satori Hikami & Cat (Special Cat)	EX
+385	Akio Yabe	Akio Yabe CC	Akio & Gunder CC	Akio Yabe (Rare Cat)	RR
 386	Sairi Nijitani	Sairi Nijitani CC		Sairi Nijitani (Rare Cat)	RR
 387	Misaki Konno	Misaki Konno CC		Misaki Konno (Rare Cat)	RR
 388	Ren Katagiri	Ren Katagiri CC		Ren Katagiri (Rare Cat)	RR
@@ -397,34 +397,34 @@ Number	First	Evolved	True	PageName	Rarity
 395	Miyabi Oyama	Miyabi Oyama CC	Baseball Mask δ	Miyabi Oyama (Uber Rare Cat)	UR
 396	Ganglion	Ganglion the Ancient	Ganglion the Unleashed	Ganglion (Uber Rare Cat)	UR
 397	Sakura Sonic	Afterschool Sakura	Sacred Blade Sakura	Sakura Sonic (Uber Rare Cat)	UR
-398	Honeyto-Kun	Honeyto-Kun &amp; Cat		Honeyto-Kun (Special Cat)	EX
+398	Honeyto-Kun	Honeyto-Kun & Cat		Honeyto-Kun (Special Cat)	EX
 399	Mentori	Mentori CC		Mentori (Rare Cat)	RR
 400	Imoto	Imoto CC		Imoto (Special Cat)	EX
 401	Voli	Volta	Gigavolta	Voli (Uber Rare Cat)	UR
-402	Shinji &amp; Cat	Plug Suit Shinji	Plug Suit Shinji Black	Shinji &amp; Cat (Rare Cat)	RR
-403	Gendo &amp; Fuyutsuki Cats	Moon Gendo &amp; Fuyutsuki Cats		Gendo &amp; Fuyutsuki Cats (Special Cat)	EX
+402	Shinji & Cat	Plug Suit Shinji	Plug Suit Shinji Black	Shinji & Cat (Rare Cat)	RR
+403	Gendo & Fuyutsuki Cats	Moon Gendo & Fuyutsuki Cats		Gendo & Fuyutsuki Cats (Special Cat)	EX
 404	Giraffe Unit-01	Giraffe Unit-02		Giraffe Unit-01 (Rare Cat)	RR
-405	Kaworu &amp; Cat	Plug Suit Kaworu	Moon Kaworu	Kaworu &amp; Cat (Special Cat)	EX
+405	Kaworu & Cat	Plug Suit Kaworu	Moon Kaworu	Kaworu & Cat (Special Cat)	EX
 406	Rei Cat	Ayanami Cat (TBC)		Rei Cat (Rare Cat)	RR
 407	Asuka Cat	Apron Asuka		Asuka Cat (Rare Cat)	RR
 408	Mari Cat	Special Ops Mari		Mari Cat (Rare Cat)	RR
 409	Rei Ayanami	Plug Suit Rei	Reunion Li'l Rei	Rei Ayanami (Super Rare Cat)	SR
 410	Asuka Langley	Plug Suit Asuka	Eyepatch Li'l Asuka	Asuka Langley (Super Rare Cat)	SR
 411	Mari Illustrious	Plug Suit Mari		Mari Illustrious (Super Rare Cat)	SR
-412	Eva Unit-00	Eva Unit-00 &amp; Cat		Eva Unit-00 (Uber Rare Cat)	UR
-413	Eva Unit-01	Eva Unit-01 &amp; Cat	Determined Unit-00 &amp; Cat	Eva Unit-01 (Uber Rare Cat)	UR
-414	Eva Unit-02	Eva Unit-02 &amp; Cat	Unit-02, Code 777	Eva Unit-02 (Uber Rare Cat)	UR
-415	Shinji Cat	Toji &amp; Kensuke Cats		Shinji Cat (Uber Rare Cat)	UR
+412	Eva Unit-00	Eva Unit-00 & Cat		Eva Unit-00 (Uber Rare Cat)	UR
+413	Eva Unit-01	Eva Unit-01 & Cat	Determined Unit-00 & Cat	Eva Unit-01 (Uber Rare Cat)	UR
+414	Eva Unit-02	Eva Unit-02 & Cat	Unit-02, Code 777	Eva Unit-02 (Uber Rare Cat)	UR
+415	Shinji Cat	Toji & Kensuke Cats		Shinji Cat (Uber Rare Cat)	UR
 416	Moon Operators	NERV Moon		Moon Operators (Uber Rare Cat)	UR
 417	Mighty Thermae D-Lux	Subterra Guardians	Subterra Sentinels	Mighty Thermae D-Lux (Uber Rare Cat)	UR
 418	Crazed Moneko	Corrupted Moneko		Crazed Moneko (Special Cat)	EX
 419	Pokota	Pokota CC		Pokota (Rare Cat)	RR
 420	Ovis	Ovis CC		Ovis (Rare Cat)	RR
 421	Coco	Coco CC		Coco (Rare Cat)	RR
-422	Moe Uzumasa &amp; Cat	Moe Uzumasa &amp; Cat CC		Moe Uzumasa &amp; Cat (Rare Cat)	RR
-423	Saki Matsuga &amp; Cat	Saki Matsuga &amp; Cat CC		Saki Matsuga &amp; Cat (Rare Cat)	RR
-424	Misa Ono &amp; Cat	Misa Ono &amp; Cat CC		Misa Ono &amp; Cat (Rare Cat)	RR
-425	Rei Uzumasa &amp; Cat	Rei Uzumasa &amp; Cat CC		Rei Uzumasa &amp; Cat (Special Cat)	EX
+422	Moe Uzumasa & Cat	Moe Uzumasa & Cat CC		Moe Uzumasa & Cat (Rare Cat)	RR
+423	Saki Matsuga & Cat	Saki Matsuga & Cat CC		Saki Matsuga & Cat (Rare Cat)	RR
+424	Misa Ono & Cat	Misa Ono & Cat CC		Misa Ono & Cat (Rare Cat)	RR
+425	Rei Uzumasa & Cat	Rei Uzumasa & Cat CC		Rei Uzumasa & Cat (Special Cat)	EX
 426	Mecha-Bun	Mecha-Bun Mk II	Ultimate Mecha-Bun	Mecha-Bun (Special Cat)	EX
 427	Cat Clan Heroes	Cat Guild Heroes	Cat Quest Heroes	Cat Clan Heroes (Uber Rare Cat)	UR
 428	Souma Cat	Stylish Souma Cat		Souma Cat (Rare Cat)	RR
@@ -439,7 +439,7 @@ Number	First	Evolved	True	PageName	Rarity
 437	Cat God the Great	Cat God the Awesome	Cat God the Golden	Cat God the Great (Special Cat)	EX
 438	Waverider Kuu	Waverider Kuu, type γ		Waverider Kuu (Uber Rare Cat)	UR
 439	Empress Chronos	Chronos the Infinite	Almighty Chronos	Empress Chronos (Uber Rare Cat)	UR
-440	Bebe	Nagisa &amp; Cat		Bebe (Uber Rare Cat)	UR
+440	Bebe	Nagisa & Cat		Bebe (Uber Rare Cat)	UR
 441	D'arktanyan	Valiant D'arktanyan		D'arktanyan (Uber Rare Cat)	UR
 442	Lone Cat and Kitten	Vendor Cat and Kitten	Tourist Cat	Lone Cat and Kitten (Rare Cat)	RR
 443	Driller Cat	Power Driller Cat	Neo Driller Cat	Driller Cat (Super Rare Cat)	SR
@@ -459,12 +459,12 @@ Number	First	Evolved	True	PageName	Rarity
 457	Shirou the Cat	Novice Mage Shirou Cat		Shirou the Cat (Special Cat)	EX
 458	Archer the Cat	Heroic Spirit Archer Cat		Archer the Cat (Rare Cat)	RR
 459	Rider the Cat	Heroic Spirit Rider Cat		Rider the Cat (Rare Cat)	RR
-460	Kotomine &amp; Gilgamesh Cats	Gilgamesh &amp; Kotomine Cats		Kotomine &amp; Gilgamesh Cats (Super Rare Cat)	SR
+460	Kotomine & Gilgamesh Cats	Gilgamesh & Kotomine Cats		Kotomine & Gilgamesh Cats (Super Rare Cat)	SR
 461	Legeluga	Legelan Pasalan		Legeluga (Legend Rare Cat)	LR
 462	Filibuster Cat X	Filibuster Cat Y	Metafilibuster	Filibuster Cat X (Special Cat)	EX
 463	Mighty Kristul Muu	Doom Engine Pandora		Mighty Kristul Muu (Legend Rare Cat)	LR
 464	Dogumaru	Doguemon	Reborn Warrior Doguemon	Dogumaru (Special Cat)	EX
-465	Maji Cat &amp; Cat Tour Group	Maji Cat &amp; Cat Tour Taiwan		Maji Cat &amp; Cat Tour Group (Rare Cat)	RR
+465	Maji Cat & Cat Tour Group	Maji Cat & Cat Tour Taiwan		Maji Cat & Cat Tour Group (Rare Cat)	RR
 466	Black Zeus	Dark Lord Zeus		Black Zeus (Legend Rare Cat)	LR
 467	Super Zeus	All-Powerful Super Zeus	Super S-Zeus	Super Zeus (Uber Rare Cat)	UR
 468	Holy Phoenix	Holy Warrior Phoenix	Head Rococo	Holy Phoenix (Uber Rare Cat)	UR
@@ -481,17 +481,17 @@ Number	First	Evolved	True	PageName	Rarity
 479	Gummy Cat	Lucky Cat	Gummy Cat Soda	Gummy Cat (Special Cat)	EX
 480	Neko-Musume	Cat Neko-Musume		Neko-Musume (Rare Cat)	RR
 481	Doktor Heaven	Professor Abyss		Doktor Heaven (Legend Rare Cat)	LR
-482	Benevolent Souma	Souma &amp; Cat	Cat-Eared Souma	Benevolent Souma (Uber Rare Cat)	UR
-483	Kano &amp; Souma	Kano &amp; Souma &amp; Cat		Kano &amp; Souma (Rare Cat)	RR
+482	Benevolent Souma	Souma & Cat	Cat-Eared Souma	Benevolent Souma (Uber Rare Cat)	UR
+483	Kano & Souma	Kano & Souma & Cat		Kano & Souma (Rare Cat)	RR
 484	Li'l Valkyrie Dark	Dark Rider Valkyrie		Li'l Valkyrie Dark (Uber Rare Cat)	UR
 485	Karetto	Karetto CC		Karetto (Uber Rare Cat)	UR
 486	Hina	Swordsman Hina		Hina (Super Rare Cat)	SR
-487	Eva Unit-08	Eva Unit-08 &amp; Cat		Eva Unit-08 (Uber Rare Cat)	UR
+487	Eva Unit-08	Eva Unit-08 & Cat		Eva Unit-08 (Uber Rare Cat)	UR
 488	AAA Wunder	NNN Wunder	Vanished NNN Wunder	AAA Wunder (Uber Rare Cat)	UR
 489	Misato Katsuragi	Captain Misato		Misato Katsuragi (Super Rare Cat)	SR
 490	Ritsuko Akagi	First Officer Ritsuko		Ritsuko Akagi (Super Rare Cat)	SR
 491	Rei Ayanami (???)	Awakened Ayanami		Rei Ayanami (???) (Super Rare Cat)	SR
-492	HAPPI	HAPPI &amp; Maji Cat	HAPPI &amp; Maji Cat &amp; Cat	HAPPI (Rare Cat)	RR
+492	HAPPI	HAPPI & Maji Cat	HAPPI & Maji Cat & Cat	HAPPI (Rare Cat)	RR
 493	Gaia the Creator	Gaia the Supreme		Gaia the Creator (Legend Rare Cat)	LR
 494	Seabreeze Coppermine	Seabreeze Coppermine, type κ		Seabreeze Coppermine (Uber Rare Cat)	UR
 495	Matador Cat	Flamenco Cat	Bellydance Cat	Matador Cat (Rare Cat)	RR
@@ -523,7 +523,7 @@ Number	First	Evolved	True	PageName	Rarity
 521	Medusa Cat	Twintail Medusa Cat	Naga Cat	Medusa Cat (Rare Cat)	RR
 522	Nymph Cat	Medalist Cat	Fiend Cat	Nymph Cat (Super Rare Cat)	SR
 523	Wushu Cat	Sifu Cat	Shigong Cat	Wushu Cat (Rare Cat)	RR
-524	Sorakara	Sorakara &amp; Cat		Sorakara (Rare Cat)	RR
+524	Sorakara	Sorakara & Cat		Sorakara (Rare Cat)	RR
 525	Kintaro	Kinrangers RoboForce	Kinrangers GigaForce	Kintaro (Uber Rare Cat)	UR
 526	Snow Angel Twinstars	Snow Angel Twinstars, type Φ		Snow Angel Twinstars (Uber Rare Cat)	UR
 527	Slime Cat	Jellycat		Slime Cat (Rare Cat)	RR
@@ -531,12 +531,12 @@ Number	First	Evolved	True	PageName	Rarity
 529	Kasli the Scourge	Ritual Saint Kasli		Kasli the Scourge (Uber Rare Cat)	UR
 530	Herme	Herme CC		Herme (Uber Rare Cat)	UR
 531	Teacher BearCat	Assassin BearCat	Cadaver BearCat	Teacher BearCat (Rare Cat)	RR
-532	Urs &amp; Fenrir	Urs &amp; Minka	Awakened Urs	Urs &amp; Fenrir (Special Cat)	EX
+532	Urs & Fenrir	Urs & Minka	Awakened Urs	Urs & Fenrir (Special Cat)	EX
 533	Sharpshooter Saki	Nighthunter Saki	Bad Blaster Saki	Sharpshooter Saki (Uber Rare Cat)	UR
 534	Hades the Punisher	Hades the Deathdealer	Almighty Hades	Hades the Punisher (Uber Rare Cat)	UR
 535	Hatsune Miku	Hatsune Miku CC		Hatsune Miku (Uber Rare Cat)	UR
 536	Sakura Miku	Sakura Miku CC		Sakura Miku (Uber Rare Cat)	UR
-537	Kagamine Rin &amp; Len	Kagamine Rin &amp; Len CC		Kagamine Rin &amp; Len (Uber Rare Cat)	UR
+537	Kagamine Rin & Len	Kagamine Rin & Len CC		Kagamine Rin & Len (Uber Rare Cat)	UR
 538	Miku Cat	Miku Cat CC		Miku Cat (Rare Cat)	RR
 539	Rugby Cat	Quarterback Cat	Gridiron Cat	Rugby Cat (Rare Cat)	RR
 540	U.F.O. Cat	Yakisoba U.F.O. Cat		U.F.O. Cat (Rare Cat)	RR
@@ -560,7 +560,7 @@ Number	First	Evolved	True	PageName	Rarity
 558	Gacha Cat	Lucky Gacha Cat		Gacha Cat (Special Cat)	EX
 559	Hell Warden Emma	Hell Sentinel Emma		Hell Warden Emma (Uber Rare Cat)	UR
 560	Megurine Luka	Megurine Luka CC		Megurine Luka (Uber Rare Cat)	UR
-561	MEIKO &amp; Cat	MEIKO &amp; Cat CC		MEIKO &amp; Cat (Super Rare Cat)	SR
+561	MEIKO & Cat	MEIKO & Cat CC		MEIKO & Cat (Super Rare Cat)	SR
 562	Luka Cat	Luka Cat CC		Luka Cat (Rare Cat)	RR
 563	Squirtgun Saki	Aquabuster Saki	Aquablaster Saki	Squirtgun Saki (Uber Rare Cat)	UR
 564	Summerluga	Bikinilan Pasalan	Fabulous Pasalan	Summerluga (Uber Rare Cat)	UR
@@ -590,7 +590,7 @@ Number	First	Evolved	True	PageName	Rarity
 588	First-Love Myrcia	First-Love Myrcia ξ		First-Love Myrcia (Uber Rare Cat)	UR
 589	Valentine's Neneko	Sweetheart Neneko	True Love Neneko	Valentine's Neneko (Super Rare Cat)	SR
 590	Snow Miku 2021	Snow Miku CC 2021		Snow Miku 2021 (Uber Rare Cat)	UR
-591	Kaito &amp; Cat	Kaito &amp; Cat CC		Kaito &amp; Cat (Super Rare Cat)	SR
+591	Kaito & Cat	Kaito & Cat CC		Kaito & Cat (Super Rare Cat)	SR
 592	Neko Rin	Neko Rin CC		Neko Rin (Rare Cat)	RR
 593	Neko Len	Neko Len CC		Neko Len (Rare Cat)	RR
 594	Mighty Aethur Ltd.	Atlantis Logistix	Ultra Atlantis Logistix	Mighty Aethur Ltd. (Uber Rare Cat)	UR
@@ -633,13 +633,13 @@ Number	First	Evolved	True	PageName	Rarity
 631	Yamii	Yaminoir	Yaminora	Yamii (Uber Rare Cat)	UR
 632	Mighty Deth-Troy-R	Siege Walker Diabolosa	Obliterator Diabolosa	Mighty Deth-Troy-R (Uber Rare Cat)	UR
 633	Shitakiri Sparrow	Chunchun Haunters	Grand Chunchun Haunters	Shitakiri Sparrow (Uber Rare Cat)	UR
-634	White Knight Cyclops	Black Knight Kyklops	634-3	White Knight Cyclops (Uber Rare Cat)	UR
+634	White Knight Cyclops	Black Knight Kyklops	Demon Knight Kyklops	White Knight Cyclops (Uber Rare Cat)	UR
 635	1 Million Dollar Cat	100 Million Dollar Cat		1 Million Dollar Cat (Special Cat)	EX
 636	Brainwashed Tank Cat	Brainwashed Wall Cat		Brainwashed Tank Cat (Super Rare Cat)	SR
-637	Xiaoqiong &amp; Cat	Xiaoqiong &amp; Cat CC		Xiaoqiong &amp; Cat (Special Cat)	EX
-638	Nana &amp; Cat	Nana &amp; Cat CC		Nana &amp; Cat (Rare Cat)	RR
-639	Emilia &amp; Cat	Emilia &amp; Cat CC		Emilia &amp; Cat (Rare Cat)	RR
-640	Ann &amp; Cat	Ann &amp; Cat CC		Ann &amp; Cat (Special Cat)	EX
+637	Xiaoqiong & Cat	Xiaoqiong & Cat CC		Xiaoqiong & Cat (Special Cat)	EX
+638	Nana & Cat	Nana & Cat CC		Nana & Cat (Rare Cat)	RR
+639	Emilia & Cat	Emilia & Cat CC		Emilia & Cat (Rare Cat)	RR
+640	Ann & Cat	Ann & Cat CC		Ann & Cat (Special Cat)	EX
 641	Iz the Dancer	Iz the Alluring Dancer		Iz the Dancer (Uber Rare Cat)	UR
 642	Lucifer the Fallen	Grand Lucifer	Almighty Lucifer	Lucifer the Fallen (Uber Rare Cat)	UR
 643	Superfeline	Superfeline II	True Superfeline	Superfeline (Normal Cat)	N
@@ -676,9 +676,9 @@ Number	First	Evolved	True	PageName	Rarity
 674	Mighty Carrowsell	Extraterrestrial Envanz		Mighty Carrowsell (Uber Rare Cat)	UR
 675	Ancient Egg: N105	Teal Egg: N105	Racquet Cat	Ancient Egg: N105 (Rare Cat)	RR
 676	Ancient Egg: N106	Amber Egg: N106	Mushroom Cat	Ancient Egg: N106 (Rare Cat)	RR
-677	Osamu Mikumo &amp; Cat	Osamu Mikumo &amp; Cat CC		Osamu Mikumo &amp; Cat (Rare Cat)	RR
-678	Yuma Kuga &amp; Cat	Yuma Kuga &amp; Cat CC		Yuma Kuga &amp; Cat (Rare Cat)	RR
-679	Chika Amatori &amp; Cat	Chika Amatori &amp; Cat CC		Chika Amatori &amp; Cat (Special Cat)	EX
+677	Osamu Mikumo & Cat	Osamu Mikumo & Cat CC		Osamu Mikumo & Cat (Rare Cat)	RR
+678	Yuma Kuga & Cat	Yuma Kuga & Cat CC		Yuma Kuga & Cat (Rare Cat)	RR
+679	Chika Amatori & Cat	Chika Amatori & Cat CC		Chika Amatori & Cat (Special Cat)	EX
 680	Sakura	Sakura CC		Sakura (Uber Rare Cat)	UR
 681	Luke	Luke CC		Luke (Uber Rare Cat)	UR
 682	Spectral Goth Vega	Illusory Guardian Vega		Spectral Goth Vega (Uber Rare Cat)	UR
@@ -709,13 +709,13 @@ Number	First	Evolved	True	PageName	Rarity
 707	Ancient Egg: N109	Dark Egg: N109	Barrel Cat	Ancient Egg: N109 (Rare Cat)	RR
 708	Jetpack Cat	Kinjirou Cat		Jetpack Cat (Rare Cat)	RR
 709	One-Eyed Asuka	Blue-Eyed Asuka		One-Eyed Asuka (Uber Rare Cat)	UR
-710	Eva Unit-13	Eva Unit-13 &amp; Cat		Eva Unit-13 (Uber Rare Cat)	UR
+710	Eva Unit-13	Eva Unit-13 & Cat		Eva Unit-13 (Uber Rare Cat)	UR
 711	Betrothed Balaluga	Betrothed Pasalan		Betrothed Balaluga (Uber Rare Cat)	UR
 712	Kaoluga	Kaoluga Pasalan		Kaoluga (Uber Rare Cat)	UR
 713	Ancient Egg: N203	Violet Egg: N203	Clown Cat	Ancient Egg: N203 (Special Cat)	EX
-714	714-1	714-2		714 (Uber Rare Cat)	UR
-715	715-1	715-2		715 (Uber Rare Cat)	UR
-716	Ancient Egg: N111	Mystic Egg: N111	716-3	Ancient Egg: N111 (Super Rare Cat)	SR
-717	Ancient Egg: N110	Amber Egg: N110	717-3	Ancient Egg: N110 (Rare Cat)	RR
-718	718-1	718-2		718 (Rare Cat)	RR
+714	Coastal Explorer Kanna	Deep-Diver Kanna	Great Deep-Diver Kanna	Coastal Explorer Kanna (Uber Rare Cat)	UR
+715	Mighty Sphinx Korps	Attack Battalion Convoys		Mighty Sphinx Korps (Uber Rare Cat)	UR
+716	Ancient Egg: N111	Mystic Egg: N111	Cop Cat	Ancient Egg: N111 (Super Rare Cat)	SR
+717	Ancient Egg: N110	Amber Egg: N110	Farmboy Cat	Ancient Egg: N110 (Rare Cat)	RR
+718	Maize Cat	Cone Cat		Maize Cat (Rare Cat)	RR
 N/A	N/A			N/A	N/A

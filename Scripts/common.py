@@ -12,6 +12,8 @@ DIR = str(Path(__file__
 
 current_ver = "12.5"
 data_mines = DIR + f'/Game Files'
+# langfolder = f'{Common.BCU_folder}/assets/lang'
+langfolder = f"{data_mines}/assets/lang/en"
 
 br = "\n"
 

@@ -83,10 +83,10 @@ class StatsCommon:
         nums = 12 if self.is_enemy else 13
 
         # START BACKSWING
-        fi = f"{ID:03}_{'e' if self.is_enemy or form == '' else form}02.maanim"
+        f = f"{ID:03}_{'e' if self.is_enemy or form == '' else form}02.maanim"
 
         try:
-            anim_file = opencsv(f"{data_mines}/ImageDataLocal/{fi}", header=True)
+            anim_file = opencsv(f"{data_mines}/ImageDataLocal/{f}", header=True)
         except FileNotFoundError:
             return 100, 0 if self.is_enemy else 44, 471
 
@@ -128,9 +128,38 @@ class StatsCommon:
         else:
             atkfreq = ls[nums] + backswing + 1
             # if tba is 0, it's foreswing + backswing
+
+        # Note: Temporary
+        if ID == 13 and not (self.is_enemy or form == "s"):
+            return 39, 45
+
         return backswing, atkfreq - 1
         # subtract 1 since atkfreq also accounts for the attacking frame
         # which should be instantaneous
+
+
+    def get_en_desc(self, ID):
+        """"Simplified desc; en desc only + using opencsv"""
+        op = ["Enemy", 2] if self.is_enemy else ["Unit", 4]
+        # op = [filename, num of desc]
+
+        descs = opencsv(f'{langfolder}/{op[0]}Explanation.txt', delim="\t")
+        en_description = [""] * op[1]
+        # match desc to ID
+        for d in descs:
+            if int(d[0]) == ID:
+                en_description = d
+                break
+        # if doesn't exist, replace with "-"
+        try:
+            for i, d in enumerate(en_description):
+                if not d:
+                    en_description[i] = "-"
+                else:
+                    en_description[i] = re.sub(r"(<br>)*\s*$", "", en_description[i])
+        except IndexError:
+            return ['-' for i in range(op[1])]
+        return en_description
 
 
     def get_abilities(self, ls: list, mode: int) -> str:
@@ -954,7 +983,7 @@ class StatsCommon:
                            f" {frame(t[4])}, improves by {gap(2)}%{maximum(3)}"
 
                 elif t[0] == 5:
-                    info = f": Becomes strong against targeted trait."
+                    info = f": Becomes strong against targeted trait "
 
                 elif t[0] == 8 and is_dupe(24):
                     info = f": Increases knockback chance by" \
