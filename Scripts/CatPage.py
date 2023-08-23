@@ -597,7 +597,7 @@ class CatPage(Cat):
             addcat("Legend Cats")
         if self.isCollab:
             addcat("Collaboration Event Cats")
-        if self.gacha or self.r[0] == "Uber Rare" and not (self.ID == 53 or self.ID == 155):
+        if self.gacha or self.r[0] == "Uber Rare" and not self.ID in [53, 155]:
             addcat("Gacha Cats")
         elif self.drop: addcat("Item Drop Cats")
 

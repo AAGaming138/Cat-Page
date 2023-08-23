@@ -40,7 +40,7 @@ class WikiReader:
         """Extract names from wiki html"""
         for line in self.html:
             if line:
-                if line[0:3] == "Num" or line[0:3] == "Ima" or line[0].isnumeric():
+                if line[0:3] in ["Num", "Ima"] or line[0].isnumeric():
                     # keep lines that have csv content in them
                     self.processed.append(unescape(line))
 

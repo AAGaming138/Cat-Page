@@ -412,7 +412,7 @@ Number	First	Evolved	True	PageName	Rarity
 410	Asuka Langley	Plug Suit Asuka	Eyepatch Li'l Asuka	Asuka Langley (Super Rare Cat)	SR
 411	Mari Illustrious	Plug Suit Mari		Mari Illustrious (Super Rare Cat)	SR
 412	Eva Unit-00	Eva Unit-00 & Cat		Eva Unit-00 (Uber Rare Cat)	UR
-413	Eva Unit-01	Eva Unit-01 & Cat	Determined Unit-00 & Cat	Eva Unit-01 (Uber Rare Cat)	UR
+413	Eva Unit-01	Eva Unit-01 & Cat	Determined Unit-01 & Cat	Eva Unit-01 (Uber Rare Cat)	UR
 414	Eva Unit-02	Eva Unit-02 & Cat	Unit-02, Code 777	Eva Unit-02 (Uber Rare Cat)	UR
 415	Shinji Cat	Toji & Kensuke Cats		Shinji Cat (Uber Rare Cat)	UR
 416	Moon Operators	NERV Moon		Moon Operators (Uber Rare Cat)	UR
@@ -624,7 +624,7 @@ Number	First	Evolved	True	PageName	Rarity
 622	Jagando Jr.	Lord of Ruin Jagando Jr.		Jagando Jr. (Special Cat)	EX
 623	Pied Piper Cat	Komuso Cat		Pied Piper Cat (Rare Cat)	RR
 624	Kunio-kun	Dodgeball Kunio-kun		Kunio-kun (Uber Rare Cat)	UR
-625	Furiluga	Furilan Pasalan		Furiluga (Uber Rare Cat)	UR
+625	Furiluga	Furilan Pasalan	625-3	Furiluga (Uber Rare Cat)	UR
 626	Cat Giraffe Modoki	Suruma Cat Giraffe Modoki		Cat Giraffe Modoki (Special Cat)	EX
 627	Catnip Tricky	Tenma Catnip Tricky		Catnip Tricky (Special Cat)	EX
 628	Catnip Dragon	Famous Catnip Dragon		Catnip Dragon (Special Cat)	EX
@@ -634,7 +634,7 @@ Number	First	Evolved	True	PageName	Rarity
 632	Mighty Deth-Troy-R	Siege Walker Diabolosa	Obliterator Diabolosa	Mighty Deth-Troy-R (Uber Rare Cat)	UR
 633	Shitakiri Sparrow	Chunchun Haunters	Grand Chunchun Haunters	Shitakiri Sparrow (Uber Rare Cat)	UR
 634	White Knight Cyclops	Black Knight Kyklops	Demon Knight Kyklops	White Knight Cyclops (Uber Rare Cat)	UR
-635	1 Million Dollar Cat	100 Million Dollar Cat		1 Million Dollar Cat (Special Cat)	EX
+635	Million-Dollar Cat	Hundred-Million-Dollar Cat		Million-Dollar Cat (Special Cat)	EX
 636	Brainwashed Tank Cat	Brainwashed Wall Cat		Brainwashed Tank Cat (Super Rare Cat)	SR
 637	Xiaoqiong & Cat	Xiaoqiong & Cat CC		Xiaoqiong & Cat (Special Cat)	EX
 638	Nana & Cat	Nana & Cat CC		Nana & Cat (Rare Cat)	RR
@@ -713,9 +713,11 @@ Number	First	Evolved	True	PageName	Rarity
 711	Betrothed Balaluga	Betrothed Pasalan		Betrothed Balaluga (Uber Rare Cat)	UR
 712	Kaoluga	Kaoluga Pasalan		Kaoluga (Uber Rare Cat)	UR
 713	Ancient Egg: N203	Violet Egg: N203	Clown Cat	Ancient Egg: N203 (Special Cat)	EX
-714	Coastal Explorer Kanna	Deep-Diver Kanna	Great Deep-Diver Kanna	Coastal Explorer Kanna (Uber Rare Cat)	UR
+714	Coastal Explorer Kanna	Deep-Diver Kanna		Coastal Explorer Kanna (Uber Rare Cat)	UR
 715	Mighty Sphinx Korps	Attack Battalion Convoys		Mighty Sphinx Korps (Uber Rare Cat)	UR
 716	Ancient Egg: N111	Mystic Egg: N111	Cop Cat	Ancient Egg: N111 (Super Rare Cat)	SR
 717	Ancient Egg: N110	Amber Egg: N110	Farmboy Cat	Ancient Egg: N110 (Rare Cat)	RR
 718	Maize Cat	Cone Cat		Maize Cat (Rare Cat)	RR
+719	719-1	719-2		719 (Uber Rare Cat)	UR
+720	Ancient Egg: N006	Evil Egg: N006	720-3	Ancient Egg: N006 (Special Cat)	EX
 N/A	N/A			N/A	N/A

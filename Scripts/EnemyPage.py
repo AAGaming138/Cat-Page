@@ -189,8 +189,11 @@ class EnemyPage(Enemy):
                 return "N/A"
             if en[1] == "N/A":
                 for i in range(1, len(self.enemyNames)):
-                    if self.enemyNames[self.ID + p * i][1] != "N/A":
-                        en = self.enemyNames[self.ID + p * i]
+                    try:
+                        if self.enemyNames[self.ID + p * i][1] != "N/A":
+                            en = self.enemyNames[self.ID + p * i]
+                            break
+                    except IndexError:
                         break
             en[2] = en[1] if not en[2] else en[2]
             return en

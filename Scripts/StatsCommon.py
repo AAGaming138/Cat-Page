@@ -874,6 +874,7 @@ class StatsCommon:
             38: link("Alien", "tar"),
             39: link("Zombie", "tar"),
             40: link("Relic", "tar"),
+            41: link("Traitless", "tar"),
             44: link("Immune to Weaken"),
             45: link("Immune to Freeze"),
             46: link("Immune to Slow"),
