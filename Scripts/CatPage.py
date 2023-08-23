@@ -712,6 +712,7 @@ class CatPage(Cat):
             38:     "Anti-Alien Cats",
             39:     "Anti-Zombie Cats",
             40:     "Anti-Relic Cats",
+            41:     "Anti-Traitless Cats",
             44:     "Cats with Weaken Immunity",
             45:     "Cats with Freeze Immunity",
             46:     "Cats with Slow Immunity",
