@@ -73,7 +73,7 @@ class EnemyPage(Enemy):
         money = f"{self.ls[6]:,}¢ - " \
                 f"{int(self.ls[6] * 3.95):,}¢" if self.ls[6] else "N/A"
         enemy_info = f"|name = {self.name}\n" \
-                     f"|image = E {self.ID + 2:03}.png\n" \
+                     f"|image = E {self.ID:03}.png\n" \
                      f"|first appearance = ?\n" \
                      f"|money drop = {money}\n"
 
