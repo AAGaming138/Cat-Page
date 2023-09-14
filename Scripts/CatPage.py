@@ -679,63 +679,8 @@ class CatPage(Cat):
                     break
                 if i == 4: addcat("Cats require Catfruits for True Form")
 
-        talents = {
-            1:      "Cats with Weaken ability",
-            2:      "Cats with Freeze ability",
-            3:      "Cats with Slow ability",
-            5:      "Cats with Strong ability",
-            6:      "Cats with Resistant ability",
-            7:      "Cats with Massive Damage ability",
-            8:      "Cats with Knockback ability",
-            10:     "Cats with Strengthen ability",
-            11:     "Lethal Strike Resistant Cats",
-            13:     "Critical Hit Cats",
-            14:     "Zombie Killer Cats",
-            15:     "Barrier Breaker Cats",
-            16:     "Cats with Extra Money ability",
-            17:     "Wave Attack Cats",
-            18:     "Resist Weaken Cats",
-            19:     "Resist Freeze Cats",
-            20:     "Resist Slow Cats",
-            21:     "Resist Knockback Cats",
-            22:     "Resist Wave Cats",
-            25:     "Cats with Cost Down Talent",
-            26:     "Cats with Recover Speed Up Talent",
-            27:     "Cats with Move Speed Up Talent",
-            29:     "Cats with Curse Immunity",
-            30:     "Resist Curse Cats",
-            31:     "Cats with Attack Buff Talent",
-            32:     "Cats with Defense Buff Talent",
-            35:     "Anti-Black Cats",
-            36:     "Anti-Metal Cats",
-            37:     "Anti-Angel Cats",
-            38:     "Anti-Alien Cats",
-            39:     "Anti-Zombie Cats",
-            40:     "Anti-Relic Cats",
-            41:     "Anti-Traitless Cats",
-            44:     "Cats with Weaken Immunity",
-            45:     "Cats with Freeze Immunity",
-            46:     "Cats with Slow Immunity",
-            47:     "Cats with Knockback Immunity",
-            48:     "Cats with Wave Immunity",
-            49:     "Warp Blocker Cats",
-            50:     "Savage Blow Cats",
-            51:     "Cats with Dodge Attack ability",
-            52:     "Resist Toxic Cats",
-            53:     "Cats with Toxic Immunity",
-            54:     "Resist Surge Cats",
-            55:     "Cats with Surge Immunity",
-            56:     "Surge Attack Cats",
-            57:     "Anti-Aku Cats",
-            58:     "Shield Piercing Cats",
-            59:     "Soulstrike Cats",
-            60:     "Cats with Curse ability",
-            61:     "Cats with Attack Frequency Up Talent",
-            62:     "Mini-Wave Cats",
-            63:     "Colossus Slayer Cats",
-            64:     "Behemoth Slayer Cats",
-            65:     "Mini-Surge Cats"
-        }
+        talents = opencsv("talents.csv")
+
         def categories_has(element: str) -> bool:
             """
             Checks if there already exists a particular
@@ -748,9 +693,9 @@ class CatPage(Cat):
         if self.tals:
             addcat("Cats with Talents")
             tal_num = len([i for i in range(len(self.tals)) if self.tals[i][0][0] != 0])
-            categories.append([talents[self.tals[i][0][0]] for i in
+            categories.append([talents[self.tals[i][0][0]][2] for i in
                                range(tal_num) if not
-                           categories_has(talents[self.tals[i][0][0]])])
+                           categories_has(talents[self.tals[i][0][0]][2])])
             if ts[2] != 0:
                 addcat("Cats with Ultra Talents")
         # adds talent categories at the end of the list
