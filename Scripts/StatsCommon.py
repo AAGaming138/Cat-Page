@@ -833,7 +833,7 @@ class StatsCommon:
                 else:
                     ult += 1
 
-        talents = opencsv("talents.csv")
+        talents = opencsv(DIR + "/talents.csv")
 
         def make_talent():
             """Generator that gives formatted talents"""

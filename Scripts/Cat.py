@@ -53,35 +53,24 @@ class Cat:
         if int(self.catRarity[3]) > 50000 and r == 3:
             self.isCrazed = True
 
-        def getMod(level: int) -> tuple:
+        def getMod(level: int) -> str:
             """:return: max modifier, growth modifier"""
             if len(rp) == 1:
-                mod = math.floor(2.5 * round(((rp[0] + 4) / 5 + (level - rp[0])
-                                              / 10) * 5500)) / 5500 if level > rp[0] \
-                    else math.floor(2.5 * round(((level + 4) / 5) * 5500) / 5500)
                 if r != 0:
                     growMod = f"\n|Grow Level 1 = {rp[0]}" if level > rp[0] else ""
                 else:
                     growMod = f"\n|Grow Level 2 = 111" if level > rp[0] else ""
                 # for only 1 reduction point rarities, like normal, special, etc.
-                # maths from level-up page
             else:
                 if level <= rp[0]:
-                    mod = math.floor(2.5 * round(((level + 4) / 5) * 5500)) / 5500
                     growMod = ""
                     # growMod is formatted for reduction points
                 elif rp[0] < level <= rp[1]:
-                    mod = math.floor(2.5 * round(
-                        ((rp[0] + 4) / 5 + (level - rp[0]) / 10) * 5500)) / 5500
                     growMod = f"\n|Grow Level 1 = {rp[0]}" if r == 2 else ""
                 else:
-                    mod = math.floor(
-                        2.5 * round((((rp[0] + 4) / 5 + (rp[1] - rp[0]) / 10) +
-                                     (level - rp[1]) / 20) * 5500)) / 5500
                     growMod = f"\n|Grow Level 1 = {rp[0]}\n" \
                               f"|Grow Level 2 = {rp[1]}" if r == 2 else ""
-            mod = mod if not int(mod) == mod else int(mod)
-            return mod, growMod
+            return growMod
 
         def getVersion():
             """:return: version unit is introduced"""
@@ -107,9 +96,8 @@ class Cat:
         # Note: Work on this in case of outliers
 
         return rarities[r], int(self.catRarity[50]), int(self.catRarity[51]),\
-               getMod(maxLevel)[0], getMod(maxLevel)[1], maxPlus, -1,\
-               getVersion(), getFruit()
-        # rarity, max natural level, max plus level, lvl max mod, grow levels,
+               -1, getMod(maxLevel), maxPlus, -1, getVersion(), getFruit()
+        # rarity, max natural level, max plus level, -1, grow levels,
         # formatted max plus, -1, version, catfruits
 
 

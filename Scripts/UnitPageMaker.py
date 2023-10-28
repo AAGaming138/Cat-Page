@@ -344,7 +344,7 @@ updatemenu = Menu(menubar, tearoff=0)
 
 menubar.add_cascade(label="Mode", menu=filemenu)
 filemenu.add_command(label="Enemy Page", command=enemy_options)
-filemenu.add_command(label="Page Updater", command=page_updater)
+# filemenu.add_command(label="Page Updater", command=page_updater)
 
 menubar.add_cascade(label="Themes", menu=thememenu)
 thememenu.add_command(label="Vista", command=vista_theme)
@@ -369,7 +369,6 @@ enemy_names = opencsv(DIR + "/enemyNames.tsv", header=True, delim="\t")
 for i in enemy_names:
     for x in range(3):
         enemies.append(i[1])
-
 
 # start input field
 e = Entry(root, width=50, border=3)

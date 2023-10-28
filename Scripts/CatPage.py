@@ -352,8 +352,6 @@ class CatPage(Cat):
                                              (level - self.rps[1]) / 20)))
         max_lvl = self.r[1] + self.r[2]
 
-        # TODO: figure out the weird stats - Crazed Fish, Crazed Bird,
-        #  Flower Cat, Gacha Cat, Dom Cat
         left = '<' # '&lt;'
         pipe = '|' # '&#124;'
         # this is pretty much impossible to read at this point but w/e
@@ -416,17 +414,17 @@ class CatPage(Cat):
             f'|HP Initial Normal = '
                       f'{c[0][0]:,}\n'
             f'|AP Initial Normal = {atks[0][0]:,}\n'
-            f'|DPS Initial Normal = {math.floor(atks[0][0] / a[0] * 30)}\n'
+            f'|DPS Initial Normal = {round(atks[0][0] / a[0] * 30)}\n'
             f'|DPS Initial Precise Normal = '
                       f'{"{{"}#expr:{(atks[0][0])}/({a[0]}/30){"}}"}\n'
             f'|HP Normal lvl 10 = {calcStats(c[0][0], 10):,}\n'
             f'|AP Normal lvl 10 = {calcStats(atks[0][0], 10):,}\n'
             f'|DPS Normal lvl 10 = '
-                      f'{math.floor(calcStats(atks[0][0], 10) / a[0] * 30):,}\n'
+                      f'{round(calcStats(atks[0][0], 10) / a[0] * 30):,}\n'
             f'|HP Normal lvl.MAX = {calcStats(c[0][0], max_lvl):,}\n'
             f'|AP Normal lvl.MAX = {calcStats(atks[0][0], max_lvl):,}\n'
             f'|DPS Normal lvl.MAX = '
-                      f'{math.floor(calcStats(atks[0][0], max_lvl) / a[0] * 30):,}\n'
+                      f'{round(calcStats(atks[0][0], max_lvl) / a[0] * 30):,}\n'
             f'|Attack Frequency Normal = {a[0]}\n'
             f'|Attack Animation Normal = {atks[0][1]}\n'
             f'|Attack Range Normal = {c[0][5]:,}\n'
@@ -443,11 +441,11 @@ class CatPage(Cat):
             f'|HP Evolved lvl 20 = {calcStats(c[1][0], 20):,}\n'
             f'|AP Evolved lvl 20 = {calcStats(atks[1][0], 20):,}\n'
             f'|DPS Evolved lvl 20 = '
-                      f'{math.floor(calcStats(atks[1][0], 20) / a[1] * 30):,}\n'
+                      f'{round(calcStats(atks[1][0], 20) / a[1] * 30):,}\n'
             f'|HP Evolved lvl.MAX = {calcStats(c[1][0], max_lvl):,}\n'
             f'|AP Evolved lvl.MAX = {calcStats(atks[1][0], max_lvl):,}\n'
             f'|DPS Evolved lvl.MAX = '
-                      f'{math.floor(calcStats(atks[1][0], max_lvl) / a[1] * 30):,}'
+                      f'{round(calcStats(atks[1][0], max_lvl) / a[1] * 30):,}'
             f'{repeated[4][0]}{anim[0]}{repeated[5][0]}'
             f'{repeated[12][0]}{repeated[7][0]}'
             f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
@@ -458,11 +456,11 @@ class CatPage(Cat):
             f'|HP True lvl 30 = {calcStats(c[2][0], 30):,}\n'
             f'|AP True lvl 30 = {calcStats(atks[2][0], 30):,}\n'
             f'|DPS True lvl 30 = '
-            f'{math.floor(calcStats(atks[2][0], 30) / a[2] * 30):,}\n'
+            f'{round(calcStats(atks[2][0], 30) / a[2] * 30):,}\n'
             f'|HP True lvl.MAX = {calcStats(c[2][0], max_lvl):,}\n'
             f'|AP True lvl.MAX = {calcStats(atks[2][0], max_lvl):,}\n'
             f'|DPS True lvl.MAX = '
-            f'{math.floor(calcStats(atks[2][0], max_lvl) / a[2] * 30):,}'
+            f'{round(calcStats(atks[2][0], max_lvl) / a[2] * 30):,}'
             f'{repeated[4][1]}{anim[1]}{repeated[5][1]}'
             f'{repeated[12][1]}{repeated[7][1]}{repeated[1][1]}'
             f'{repeated[2][1]}{repeated[6][1]}\n'
@@ -702,7 +700,7 @@ class CatPage(Cat):
                     break
                 if i == 4: addcat("Cats require Catfruits for True Form")
 
-        talents = opencsv("talents.csv")
+        talents = opencsv(DIR + "/talents.csv")
 
         def categories_has(element: str) -> bool:
             """
