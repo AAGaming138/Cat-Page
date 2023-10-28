@@ -118,7 +118,7 @@ Number	First	Evolved	True	PageName	Rarity
 116	Fuu	Fuu CC		Fuu (Rare Cat)	RR
 117	Aura	Aura CC		Aura (Super Rare Cat)	SR
 118	Rei	Rei CC		Rei (Super Rare Cat)	SR
-119	Wyvern	Wyvern Cat		Wyvern (Uber Rare Cat)	UR
+119	Wyvern	Wyvern Cat	119-3	Wyvern (Uber Rare Cat)	UR
 120	Healer	Healer CC	Healer Cat CC	Healer (Special Cat)	EX
 121	Merc	Merc CC	Merc & Cat CC	Merc (Special Cat)	EX
 122	Vacation Queen	Office Lady Cat	Call Center Cat	Vacation Queen (Rare Cat)	RR
@@ -558,7 +558,7 @@ Number	First	Evolved	True	PageName	Rarity
 556	Holy Knight Alibaba	Holy King Alibaba	Ghost Alibaba	Holy Knight Alibaba (Super Rare Cat)	SR
 557	Heavenly Jack	Heavenly Lord Jack		Heavenly Jack (Special Cat)	EX
 558	Gacha Cat	Lucky Gacha Cat		Gacha Cat (Special Cat)	EX
-559	Hell Warden Emma	Hell Sentinel Emma		Hell Warden Emma (Uber Rare Cat)	UR
+559	Hell Warden Emma	Hell Sentinel Emma	559-3	Hell Warden Emma (Uber Rare Cat)	UR
 560	Megurine Luka	Megurine Luka CC		Megurine Luka (Uber Rare Cat)	UR
 561	MEIKO & Cat	MEIKO & Cat CC		MEIKO & Cat (Super Rare Cat)	SR
 562	Luka Cat	Luka Cat CC		Luka Cat (Rare Cat)	RR
@@ -624,18 +624,18 @@ Number	First	Evolved	True	PageName	Rarity
 622	Jagando Jr.	Lord of Ruin Jagando Jr.		Jagando Jr. (Special Cat)	EX
 623	Pied Piper Cat	Komuso Cat		Pied Piper Cat (Rare Cat)	RR
 624	Kunio-kun	Dodgeball Kunio-kun		Kunio-kun (Uber Rare Cat)	UR
-625	Furiluga	Furilan Pasalan	625-3	Furiluga (Uber Rare Cat)	UR
+625	Furiluga	Furilan Pasalan	Ragelan Pasalan	Furiluga (Uber Rare Cat)	UR
 626	Cat Giraffe Modoki	Suruma Cat Giraffe Modoki		Cat Giraffe Modoki (Special Cat)	EX
 627	Catnip Tricky	Tenma Catnip Tricky		Catnip Tricky (Special Cat)	EX
 628	Catnip Dragon	Famous Catnip Dragon		Catnip Dragon (Special Cat)	EX
-629	Brainwashed Cat	Brainwashed Macho Cat		Brainwashed Cat (Super Rare Cat)	SR
+629	Brainwashed Cat	Brainwashed Macho Cat	629-3	Brainwashed Cat (Super Rare Cat)	SR
 630	Calligraphy Cat	Tea Master Cat		Calligraphy Cat (Rare Cat)	RR
 631	Yamii	Yaminoir	Yaminora	Yamii (Uber Rare Cat)	UR
 632	Mighty Deth-Troy-R	Siege Walker Diabolosa	Obliterator Diabolosa	Mighty Deth-Troy-R (Uber Rare Cat)	UR
 633	Shitakiri Sparrow	Chunchun Haunters	Grand Chunchun Haunters	Shitakiri Sparrow (Uber Rare Cat)	UR
 634	White Knight Cyclops	Black Knight Kyklops	Demon Knight Kyklops	White Knight Cyclops (Uber Rare Cat)	UR
 635	Million-Dollar Cat	Hundred-Million-Dollar Cat		Million-Dollar Cat (Special Cat)	EX
-636	Brainwashed Tank Cat	Brainwashed Wall Cat		Brainwashed Tank Cat (Super Rare Cat)	SR
+636	Brainwashed Tank Cat	Brainwashed Wall Cat	636-3	Brainwashed Tank Cat (Super Rare Cat)	SR
 637	Xiaoqiong & Cat	Xiaoqiong & Cat CC		Xiaoqiong & Cat (Special Cat)	EX
 638	Nana & Cat	Nana & Cat CC		Nana & Cat (Rare Cat)	RR
 639	Emilia & Cat	Emilia & Cat CC		Emilia & Cat (Rare Cat)	RR
@@ -644,7 +644,7 @@ Number	First	Evolved	True	PageName	Rarity
 642	Lucifer the Fallen	Grand Lucifer	Almighty Lucifer	Lucifer the Fallen (Uber Rare Cat)	UR
 643	Superfeline	Superfeline II	True Superfeline	Superfeline (Normal Cat)	N
 644	Sweet Love Mekako	Bittersweet Mekako	Minty Love Mekako	Sweet Love Mekako (Uber Rare Cat)	UR
-645	Brainwashed Axe Cat	Brainwashed Brave Cat		Brainwashed Axe Cat (Super Rare Cat)	SR
+645	Brainwashed Axe Cat	Brainwashed Brave Cat	645-3	Brainwashed Axe Cat (Super Rare Cat)	SR
 646	Firecracker Cat	Macho Firecracker Cat		Firecracker Cat (Special Cat)	EX
 647	Huntress Terun	Huntress Terun ζ		Huntress Terun (Uber Rare Cat)	UR
 648	Lovestruck Lesser Demon	Lovestruck Greater Demon		Lovestruck Lesser Demon (Uber Rare Cat)	UR
@@ -653,7 +653,7 @@ Number	First	Evolved	True	PageName	Rarity
 651	Tomboy Lion Cat	Iron-Masked Lion Cat		Tomboy Lion Cat (Special Cat)	EX
 652	Chalkboard Eraser Cat	Chalkboard Punk Cat		Chalkboard Eraser Cat (Special Cat)	EX
 653	Elder Beast Naala	Storm Beast Naala	Awakened Naala	Elder Beast Naala (Special Cat)	EX
-654	Brainwashed Gross Cat	Brainwashed Sexy Legs Cat		Brainwashed Gross Cat (Super Rare Cat)	SR
+654	Brainwashed Gross Cat	Brainwashed Sexy Legs Cat	654-3	Brainwashed Gross Cat (Super Rare Cat)	SR
 655	Bliza	Blizana		Bliza (Uber Rare Cat)	UR
 656	Ancient Egg: N001	Mystic Egg: N001	Haniwa Cat	Ancient Egg: N001 (Special Cat)	EX
 657	Iz the Dancer of Grief	Iz the Lady of Mourning		Iz the Dancer of Grief (Uber Rare Cat)	UR
@@ -661,12 +661,12 @@ Number	First	Evolved	True	PageName	Rarity
 659	Ancient Egg: N102	Teal Egg: N102	Catarzan	Ancient Egg: N102 (Rare Cat)	RR
 660	Sea Serpent Daliasan	Sea King Daliasan		Sea Serpent Daliasan (Uber Rare Cat)	UR
 661	Chronos the Bride	Wedding Chronos		Chronos the Bride (Uber Rare Cat)	UR
-662	Brainwashed Cow Cat	Brainwashed Giraffe Cat		Brainwashed Cow Cat (Super Rare Cat)	SR
+662	Brainwashed Cow Cat	Brainwashed Giraffe Cat	662-3	Brainwashed Cow Cat (Super Rare Cat)	SR
 663	Ancient Egg: N103	Black Egg: N103	Gas Mask Cat	Ancient Egg: N103 (Rare Cat)	RR
 664	Ancient Egg: N104	Green Egg: N104	Surgeon Cat	Ancient Egg: N104 (Rare Cat)	RR
 665	Ancient Egg: N201	Dark Egg: N201	Exorcist Cat	Ancient Egg: N201 (Special Cat)	EX
 666	Night Beach Lilin	Night Beach Lilinπ		Night Beach Lilin (Uber Rare Cat)	UR
-667	Brainwashed Bird Cat	Brainwashed UFO Cat		Brainwashed Bird Cat (Super Rare Cat)	SR
+667	Brainwashed Bird Cat	Brainwashed UFO Cat	667-3	Brainwashed Bird Cat (Super Rare Cat)	SR
 668	Cat Tengu	Grand Yokai Tengu		Cat Tengu (Uber Rare Cat)	UR
 669	Ancient Egg: N003	Evil Egg: N003	Cat Cactus	Ancient Egg: N003 (Special Cat)	EX
 670	Ancient Egg: N202	Cinnabar Egg: N202	Armored Firefly Cat	Ancient Egg: N202 (Special Cat)	EX
@@ -683,17 +683,17 @@ Number	First	Evolved	True	PageName	Rarity
 681	Luke	Luke CC		Luke (Uber Rare Cat)	UR
 682	Spectral Goth Vega	Illusory Guardian Vega		Spectral Goth Vega (Uber Rare Cat)	UR
 683	Count Yukimura	Nosferatu Yukimura		Count Yukimura (Uber Rare Cat)	UR
-684	Brainwashed Fish Cat	Brainwashed Whale Cat		Brainwashed Fish Cat (Super Rare Cat)	SR
+684	Brainwashed Fish Cat	Brainwashed Whale Cat	684-3	Brainwashed Fish Cat (Super Rare Cat)	SR
 685	Ancient Egg: N004	Mystic Egg: N004	Supercar Cat	Ancient Egg: N004 (Special Cat)	EX
 686	Goddess of Light Sirius	Goddess of Sunrise Sirius		Goddess of Light Sirius (Uber Rare Cat)	UR
 687	Reindeer Terun	Reindeer Terunζ		Reindeer Terun (Uber Rare Cat)	UR
-688	Brainwashed Lizard Cat	Brainwashed Dragon Cat		Brainwashed Lizard Cat (Super Rare Cat)	SR
+688	Brainwashed Lizard Cat	Brainwashed Dragon Cat	688-3	Brainwashed Lizard Cat (Super Rare Cat)	SR
 689	10 Years On a Stone Cat	10 Years on a Stone Cat Statue		10 Years On a Stone Cat (Special Cat)	EX
 690	Child of Destiny Phono	King of Destiny Phonoa		Child of Destiny Phono (Uber Rare Cat)	UR
 691	Ancient Egg: N000	Elder Egg: N000	Ape Lord Luza	Ancient Egg: N000 (Special Cat)	EX
 692	Issun Boshi	Oni Landshaker Kozuchimaru		Issun Boshi (Uber Rare Cat)	UR
 693	White Butler Vigler	Black Butler Vigler		White Butler Vigler (Uber Rare Cat)	UR
-694	Brainwashed Titan Cat	Brainwashed Mythic Titan		Brainwashed Titan Cat (Super Rare Cat)	SR
+694	Brainwashed Titan Cat	Brainwashed Mythic Titan	694-3	Brainwashed Titan Cat (Super Rare Cat)	SR
 695	Killer Tank Cat	True Killer Tank Cat		Killer Tank Cat (Rare Cat)	RR
 696	Class Rep Cat	Stealth Class Rep Cat		Class Rep Cat (Special Cat)	EX
 697	Ancient Egg: N107	Violet Egg: N107	Cat Chief	Ancient Egg: N107 (Rare Cat)	RR
@@ -718,6 +718,10 @@ Number	First	Evolved	True	PageName	Rarity
 716	Ancient Egg: N111	Mystic Egg: N111	Cop Cat	Ancient Egg: N111 (Super Rare Cat)	SR
 717	Ancient Egg: N110	Amber Egg: N110	Farmboy Cat	Ancient Egg: N110 (Rare Cat)	RR
 718	Maize Cat	Cone Cat		Maize Cat (Rare Cat)	RR
-719	719-1	719-2		719 (Uber Rare Cat)	UR
-720	Ancient Egg: N006	Evil Egg: N006	720-3	Ancient Egg: N006 (Special Cat)	EX
+719	Tekachi	Tetsukachi		Tekachi (Uber Rare Cat)	UR
+720	Ancient Egg: N006	Devil Egg: N006	Fallen Bear Cat	Ancient Egg: N006 (Special Cat)	EX
+721	Riki-kun	Dodgeball Riki-kun		Riki-kun (Uber Rare Cat)	UR
+722	Hatsune Miku 16th	Hatsune Miku CC 16th		Hatsune Miku 16th (Uber Rare Cat)	UR
+723	723-1	723-2		723 (Uber Rare Cat)	UR
+724	Ancient Egg: N112	Mystic Egg: N112	724-3	Ancient Egg: N112 (Rare Cat)	RR
 N/A	N/A			N/A	N/A

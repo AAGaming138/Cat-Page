@@ -1371,11 +1371,11 @@ RS,280,000,[[Archaeology 401: Planning]]
 RS,280,001,[[Archaeology 401: Methods]]
 RS,280,002,[[Archaeology 401: Results]]
 RS,280,003,[[Archaeology 401: Analysis]]
-RS,281,,000001/281 (4)
-RS,281,000,000001/281/0
-RS,281,001,000001/281/1
-RS,281,002,000001/281/2
-RS,281,003,000001/281/3
+RS,281,,[[Empress' Excavation 5]]
+RS,281,000,[[Archaeology 501: Planning]]
+RS,281,001,[[Archaeology 501: Methods]]
+RS,281,002,[[Archaeology 501: Results]]
+RS,281,003,[[Archaeology 501: Analysis]]
 RS,282,,[[Q1. What's in the Box? Quiz]]
 RS,282,000,[[Three Hidden Cats]]
 RS,282,001,[[Open the Mystery Box]]
@@ -1675,6 +1675,17 @@ RS,348,000,[[Ghost King I (Deadly)]]
 RS,348,001,[[Ghost King II (Merciless)]]
 RS,348,002,[[Ghost King III (Merciless)]]
 RS,348,003,[[Ghost King Finale (Brutal)]]
+RS,349,,[[Machines in Revolt]]
+RS,349,000,[[Hard Restart Lv.1]]
+RS,349,001,[[Hard Restart Lv.2]]
+RS,349,002,[[Hard Restart Lv.3]]
+RS,349,003,[[Hard Restart Lv.4]]
+RS,349,004,[[Hard Restart Lv.5]]
+RS,349,005,[[Hard Restart Lv.6]]
+RS,349,006,[[Hard Restart Lv.7]]
+RS,349,007,[[Hard Restart Lv.8]]
+RS,349,008,[[Hard Restart Lv.9]]
+RS,349,009,[[Hard Restart Lv.MAX]]
 RC,000,,[[Hometown Self-Defense Force Collaboration Event#Hometown Self-Defense Force|Hometown Self-Defense Force]]
 RC,000,000,[[Suddenly Second Class]]
 RC,000,001,[[Corporal Pirikara]]
@@ -1722,7 +1733,7 @@ RC,005,004,[[Rookie League]]
 RC,005,005,[[5vs5]]
 RC,005,006,[[Super-combined]]
 RC,005,007,[[Breaker Crash]]
-RC,006,,[[Final Boss Advent!? Collaboration Event#Final Boss Strikes?!|Final Boss Strikes?!]]
+RC,006,,[[Final Boss Strikes?! Collaboration Event#Final Boss Strikes?!|Final Boss Strikes?!]]
 RC,006,000,[[Let's GOOO!|Let's GOOO! <(@0@)>]]
 RC,007,,[[Merc Storia Collaboration Event#Merc Storia: Inferno|Merc Storia: Inferno]]
 RC,007,000,[[A City Aflame (Insane)]]
@@ -2532,8 +2543,8 @@ RC,203,002,"[[Come and See, Man-powered Decisive Battle Weapon!]]"
 RC,203,003,[[Come and See A Hero Comes to Protect The Earth!]]
 RC,203,004,[[The World Was Saved By Cats]]
 RC,204,,[[Redhead Yuki Cat Awakens! Stages|Redhead Yuki Cat Awakens!]]
-RC,204,000,[[Road to Redhead Yuki Cat Evolution (Veteran)]]
-RC,204,001,[[Road to Redhead Yuki Cat Evolution (Insane)]]
+RC,204,000,[[Redhead Rise (Veteran)]]
+RC,204,001,[[Redhead Rise (Insane)]]
 RC,205,,[[Neon Genesis Evangelion Collaboration Event#The 9th Angel Strikes!|The 9th Angel Strikes!]]
 RC,205,000,[[Asuka On Board (Easy)]]
 RC,205,001,[[Asuka On Board (Expert)]]
@@ -3291,6 +3302,55 @@ main,015,044,[[N77 Nebula (Cats of the Cosmos)|N77 Nebula]] (Z1)
 main,015,045,[[Andromeda (Cats of the Cosmos)|Andromeda]] (Z1)
 main,015,046,[[Black Hole (Cats of the Cosmos)|Black Hole]] (Z1)
 main,015,047,[[The Big Bang (Cats of the Cosmos)|The Big Bang]] (Z1)
+main,016,,[[Cats of the Cosmos]] [[Zombie Outbreaks|Outbreaks]] 2
+main,016,000,[[Earth (Cats of the Cosmos)|Earth]] (Z2)
+main,016,001,[[Mars (Cats of the Cosmos)|Mars]] (Z2)
+main,016,002,[[Jupiter (Cats of the Cosmos)|Jupiter]] (Z2)
+main,016,003,[[Saturn (Cats of the Cosmos)|Saturn]] (Z2)
+main,016,004,[[Venus (Cats of the Cosmos)|Venus]] (Z2)
+main,016,005,[[Mercury (Cats of the Cosmos)|Mercury]] (Z2)
+main,016,006,[[Sun (Cats of the Cosmos)|Sun]] (Z2)
+main,016,007,[[Uranus (Cats of the Cosmos)|Uranus]] (Z2)
+main,016,008,[[Neptune (Cats of the Cosmos)|Neptune]] (Z2)
+main,016,009,[[Triton (Cats of the Cosmos)|Triton]] (Z2)
+main,016,010,[[Pluto (Cats of the Cosmos)|Pluto]] (Z2)
+main,016,011,[[Red Rectangle (Cats of the Cosmos)|Red Rectangle]] (Z2)
+main,016,012,[[Eskimo Nebula (Cats of the Cosmos)|Eskimo Nebula]] (Z2)
+main,016,013,[[Catseye Nebula (Cats of the Cosmos)|Catseye Nebula]] (Z2)
+main,016,014,[[Egg Nebula (Cats of the Cosmos)|Egg Nebula]] (Z2)
+main,016,015,[[Calabash Nebula (Cats of the Cosmos)|Calabash Nebula]] (Z2)
+main,016,016,[[Altair (Cats of the Cosmos)|Altair]] (Z2)
+main,016,017,[[Sirius (Cats of the Cosmos)|Sirius]] (Z2)
+main,016,018,[[Canopus (Cats of the Cosmos)|Canopus]] (Z2)
+main,016,019,[[Vega (Cats of the Cosmos)|Vega]] (Z2)
+main,016,020,[[Aldebaran (Cats of the Cosmos)|Aldebaran]] (Z2)
+main,016,021,[[Betelgeuse (Cats of the Cosmos)|Betelgeuse]] (Z2)
+main,016,022,[[Deneb (Cats of the Cosmos)|Deneb]] (Z2)
+main,016,023,[[Cosmic Lounge (Cats of the Cosmos)|Cosmic Lounge]] (Z2)
+main,016,024,[[Sighter's Star (Cats of the Cosmos)|Sighter's Star]] (Z2)
+main,016,025,[[Kaiou (Cats of the Cosmos)|Kaiou]] (Z2)
+main,016,026,[[Magellanic (Cats of the Cosmos)|Magellanic]] (Z2)
+main,016,027,[[Buutara (Cats of the Cosmos)|Buutara]] (Z2)
+main,016,028,[[Moskandag (Cats of the Cosmos)|Moskandag]] (Z2)
+main,016,029,[[Corona (Cats of the Cosmos)|Corona]] (Z2)
+main,016,030,[[Soba IV (Cats of the Cosmos)|Soba IV]] (Z2)
+main,016,031,[[Plumpit (Cats of the Cosmos)|Plumpit]] (Z2)
+main,016,032,[[Darararah (Cats of the Cosmos)|Darararah]] (Z2)
+main,016,033,[[Thanxbye (Cats of the Cosmos)|Thanxbye]] (Z2)
+main,016,034,[[Mertoz (Cats of the Cosmos)|Mertoz]] (Z2)
+main,016,035,[[Urura (Cats of the Cosmos)|Urura]] (Z2)
+main,016,036,[[Aguham (Cats of the Cosmos)|Aguham]] (Z2)
+main,016,037,[[Somolon (Cats of the Cosmos)|Somolon]] (Z2)
+main,016,038,[[Ababwa (Cats of the Cosmos)|Ababwa]] (Z2)
+main,016,039,[[Titan (Cats of the Cosmos)|Titan]] (Z2)
+main,016,040,[[Skelling (Cats of the Cosmos)|Skelling]] (Z2)
+main,016,041,[[Gorigori (Cats of the Cosmos)|Gorigori]] (Z2)
+main,016,042,[[Broton (Cats of the Cosmos)|Broton]] (Z2)
+main,016,043,[[Crimson Star (Cats of the Cosmos)|Crimson Star]] (Z2)
+main,016,044,[[N77 Nebula (Cats of the Cosmos)|N77 Nebula]] (Z2)
+main,016,045,[[Andromeda (Cats of the Cosmos)|Andromeda]] (Z2)
+main,016,046,[[Black Hole (Cats of the Cosmos)|Black Hole]] (Z2)
+main,016,047,[[The Big Bang (Cats of the Cosmos)|The Big Bang]] (Z2)
 EX,000,,[[:Category:Catfruit Stages|Catfruit Stages]]
 EX,000,000,[[Catfruit Jubilee]]
 EX,000,001,[[Catfruit Jubilee]]
@@ -5772,3 +5832,10 @@ RND,004,004,[[What the Waterway]]
 RND,004,005,[[Ohno Road]]
 RND,004,006,[[So-So City Center]]
 RND,004,007,[[Hole Lotta Somethin']]
+RND,005,,[[Cats of a Common Sea]]
+RND,005,000,[[Undertow Coast]]
+RND,005,001,[[Great Barrier-free]]
+RND,005,002,[[Ominous Fin Alert]]
+RND,005,003,[[Two Miles Below]]
+RND,005,004,[[Sea Cave Habitat]]
+RND,005,005,[[Beyond the Hadal]]

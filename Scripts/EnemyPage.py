@@ -15,11 +15,9 @@ class Enemy:
                 f"{data_mines}/DataLocal/t_unit.csv")[ID + 2]
             self.stageNames = opencsv(DIR + "/stageNames.csv")
 
-            with open(f"{data_mines}/resLocal/Enemyname.tsv",
-                      "r", encoding="utf-8") as f:
-                self.jpName = f.read().split("\n")[ID]
-                if self.jpName == "ダミー":
-                    self.jpName = None
+            self.jpName = opencsv(f"{data_mines}/resLocal/Enemyname.tsv", delim="\t")[ID]
+            if self.jpName == "ダミー":
+                self.jpName = None
 
             self.enemyDesc = opencsv(f"{data_mines}/resLocal/"
                                 f"EnemyPictureBook_ja.csv")[ID][1:-1]

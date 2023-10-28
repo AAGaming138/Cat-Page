@@ -326,7 +326,7 @@ class StatsCommon:
             if list_has(75):
                 abilities.append(f"{ls[75]}% chance to perform a "
                                  f"{abil('Savage Blow', 'savage blow')} dealing "
-                                 f"3x damage{multab()}")
+                                 f"{int(ls[76]/100) + 1}x damage{multab()}")
             if list_has(77):
                 abilities.append(f"{ls[77]}% chance to "
                                  f"{abil('Dodge Attack', 'dodge attacks')} from"
@@ -493,7 +493,8 @@ class StatsCommon:
             if list_has(82):
                 abilities.append(f"{ls[82]}% chance to land a "
                                  f"{abil('Savage Blow', 'savage blow')},"
-                                 f" dealing 3x damage to non-[[:Category:Metal"
+                                 f" dealing {int(ls[83]/100) + 1}x damage"
+                                 f" to non-[[:Category:Metal"
                                  f" Enemies|Metal]] enemies{multab()}")
             if list_has(84):
                 abilities.append(f"{ls[84]}% chance to "
@@ -1081,7 +1082,7 @@ class StatsCommon:
                            f"{int(t[6]/4):,}~{int((t[6] + t[8])/4):,} range," \
                            f" improves by {gap(2)}%{maximum(3)}"
 
-                yield f"'''{talents[t[0]][1]}'''" + info + \
+                yield f"{talents[t[0]][1]}" + info + \
                       f"({'Total ' if talent_ls[x][1][1] else ''}" \
                       f"Cost: {talent_ls[x][1][0]} NP)"
 

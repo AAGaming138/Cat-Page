@@ -167,40 +167,43 @@ def conf_text(t, fg = "black"):
 def on_click(mode, che):
     """Function that is called once button is clicked"""
     Label(root, text="\t" * 5).grid(row=4,column=1)
+    warning = False
 
-    if enemy_mode.get():
-        try:
+    match program_mode.get():
+        case 0:
             try:
                 ID = int(e.get().strip())
             except ValueError:
-                if check.get():
-                    raise NoDataError("Increment", '')
-                else:
-                    ID = StatsCommon(True).get_ID(e.get().strip())
-            warning = False
-            page = MakeEnemyPage(ID - check.get(), mode).get_page()
-            message = ["Page", "Stats", "Description", "Encounters",
-                       "Categories"][mode - 6]
-            show_page(page)
-        except NoDataError as error:
-            warning = True
-            message = error
-    else:
-        try:
-            ID = int(e.get().strip())
-        except ValueError:
-            ID = StatsCommon().get_ID(e.get().strip())
-        try:
-            page = MakeCatPage(ID, mode).get_page()
-            warning = False
-            message = ["Page", "Stats", "Cost", "Catfruit",
-                       "Talents", "Categories"][mode]
-            show_page(page)
+                ID = StatsCommon().get_ID(e.get().strip())
+            try:
+                page = MakeCatPage(ID, mode).get_page()
+                message = ["Page", "Stats", "Cost", "Catfruit",
+                           "Talents", "Categories"][mode]
+                show_page(page)
 
-        except NoDataError as error:
-            # i.e. if page is unsuccessfully retrieved
-            warning = True
-            message = error
+            except NoDataError as error:
+                # i.e. if page is unsuccessfully retrieved
+                warning = True
+                message = error
+        case 1:
+            try:
+                try:
+                    ID = int(e.get().strip())
+                except ValueError:
+                    if check.get():
+                        raise NoDataError("Increment", '')
+                    else:
+                        ID = StatsCommon(True).get_ID(e.get().strip())
+                page = MakeEnemyPage(ID - check.get(), mode).get_page()
+                message = ["Page", "Stats", "Description", "Encounters",
+                           "Categories"][mode - 6]
+                show_page(page)
+            except NoDataError as error:
+                warning = True
+                message = error
+        case 2:
+            show_page(e.get())
+
 
     conf_text(message if warning else message + \
            (" copied to clipboard" if not err else " retrieved successfully"),
@@ -244,7 +247,7 @@ def cat_options():
     """Changes program to cat mode"""
     with open("mode.txt", "w") as f1:
         f1.write("CAT")
-    enemy_mode.set(False)
+    program_mode.set(0)
     root.title('Cat Page')
     num.set(num.get() + 1)
 
@@ -270,7 +273,7 @@ def enemy_options():
     """Changes program to enemy mode"""
     with open("mode.txt", "w") as f2:
         f2.write("ENEMY")
-    enemy_mode.set(True)
+    program_mode.set(1)
     root.title('Enemy Page')
     num.set(num.get() + 1)
 
@@ -286,6 +289,13 @@ def enemy_options():
     radiobuttons_RIGHT.remove_buttons()
     radiobuttons_LEFT.get_enemy_buttons_LEFT()
     radiobuttons_RIGHT.get_enemy_buttons_RIGHT()
+
+
+def page_updater():
+    radiobuttons_LEFT.remove_buttons()
+    radiobuttons_RIGHT.remove_buttons()
+    
+    ent("Enter page contents")
 
 
 def vista_theme():
@@ -324,8 +334,9 @@ root.title('Cat Page')
 # end window
 
 # start menu
-enemy_mode = BooleanVar()
-enemy_mode.set(False)
+program_mode = IntVar()
+program_mode.set(0) # 0: cat, 1: enemy, 2: updater
+
 menubar = Menu(root)
 filemenu = Menu(menubar, tearoff=0)
 thememenu = Menu(menubar, tearoff=0)
@@ -333,6 +344,7 @@ updatemenu = Menu(menubar, tearoff=0)
 
 menubar.add_cascade(label="Mode", menu=filemenu)
 filemenu.add_command(label="Enemy Page", command=enemy_options)
+filemenu.add_command(label="Page Updater", command=page_updater)
 
 menubar.add_cascade(label="Themes", menu=thememenu)
 thememenu.add_command(label="Vista", command=vista_theme)

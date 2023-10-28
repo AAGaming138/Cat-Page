@@ -36,6 +36,16 @@ class CatPage(Cat):
         self.en_desc = self.stats.get_en_desc(self.ID)
         self.tals = self.getTalents()
 
+        match self.r[0]:
+            case "Normal": self.rps = [60]
+            case "Special": self.rps = [60]
+            case "Rare": self.rps = [70, 90]
+            case "Super Rare": self.rps = [60, 80]
+            case "Uber Rare": self.rps = [60, 80]
+
+        if self.names[1] == "Bahamut Cat": self.rps = [30]
+        if self.isCrazed: self.rps = [20]
+
 
     def getStart(self) -> str:
         """
@@ -167,7 +177,7 @@ class CatPage(Cat):
                  f"{image('s', 3)}"
                  f'|cat_endesc3 = {self.en_desc[3]}\n' if self.tf else '') + \
                 f"|Normal Form name (JP) = {self.desc[0]} (?, ?)\n" \
-                f"|cat_jpscriptc1 = {self.desc[3]}\n" \
+                f"|cat_jpscript1 = {self.desc[3]}\n" \
                 f"|cat_jpdesc1 = ?\n" \
                 f"|Evolved Form name (JP) = {self.desc[1]} (?, ?)\n" \
                 f"|cat_jpscript2 = {self.desc[4]}\n" \
@@ -325,7 +335,23 @@ class CatPage(Cat):
         repeatedpreDPS = comparison(preDPS_list, 0, other="pre_d")
         # for DPS
 
-        mods = list(self.r[9:12])
+        def calcStats(initial: int, level: int):
+            if level <= self.rps[0]:
+                return math.floor(2.5 * round(initial * ((level + 4) / 5)))
+            else:
+                if len(self.rps) == 1 or level <= self.rps[1]:
+                    return math.floor(2.5 *
+                                      round(initial *
+                                            ((self.rps[0] + 4) / 5 +
+                                             (level - self.rps[0])/ 10)))
+                else:
+                    return math.floor(2.5 *
+                                      round(initial *
+                                            ((self.rps[0] + 4) / 5 +
+                                             (self.rps[1] - self.rps[0]) / 10 +
+                                             (level - self.rps[1]) / 20)))
+        max_lvl = self.r[1] + self.r[2]
+
         # TODO: figure out the weird stats - Crazed Fish, Crazed Bird,
         #  Flower Cat, Gacha Cat, Dom Cat
         left = '<' # '&lt;'
@@ -335,9 +361,6 @@ class CatPage(Cat):
 
         form_max = f'{self.r[1]}{f"+{self.r[2]}" if self.r[2] != 0 else ""}'
 
-        if n:
-            mods.append(self.r[3])
-        m = 3 if n else (2 if self.r[3] > mods[2] else 1) # max mod for normal cats
         statslevels = "" if not n else f"\n|1st stats Level = {form_max}" + \
                                        f"\n|2nd stats Level = {form_max}" + \
             (f"\n|3rd stats Level = {form_max}" if self.tf else "")
@@ -353,9 +376,9 @@ class CatPage(Cat):
             c[i][12] = "Single Target" if c[i][12] == 0 else "Area Attack"
 
             DPS = round((atks[i][0] if i == 0 else
-                         atks[i][0] * mods[m]) / (a[i] / 30), 2)
-            atk = f"{atks[i][0] if i == 0 else int(atks[i][0] * mods[m] + 0.5):,}"
-            hp = f"{c[i][0] if i == 0 else int(c[i][0] * mods[m] + 0.5):,}"
+                         calcStats(atks[i][0], max_lvl if n else 30)) / (a[i] / 30), 2)
+            atk = f"{atks[i][0] if i == 0 else calcStats(atks[i][0], max_lvl if n else 30):,}"
+            hp = f"{c[i][0] if i == 0 else calcStats(c[i][0], max_lvl if n else 30):,}"
 
             table_ls.append(f'|{ind.capitalize()} Form name = {self.names[i + 1]}\n'
                 f'|Hp {ind} = {hp} HP\n'
@@ -370,10 +393,10 @@ class CatPage(Cat):
                 f'<br>({atks[i][2]}f <sup>'
                             f'{round(atks[i][2] / 30, 2)}s</sup> backswing)\n'
                 f'|Recharging Time {ind} = {c[i][7]}\n' +
-                (f"|Hp normal Lv.MAX = {int(c[i][0] * mods[m] + 0.5):,} HP\n"
+                (f"|Hp normal Lv.MAX = {calcStats(c[i][0], max_lvl if n else 30):,} HP\n"
                  f"|Atk Power normal Lv.MAX = "
-                 f"{int(atks[i][0] * mods[m] + 0.5):,} damage<br>"
-                 f"({round((int(atks[i][0] * mods[m] + 0.5)) / (a[i] / 30), 2):,}"
+                 f"{calcStats(atks[0][0], max_lvl if n else 30):,} damage<br>"
+                 f"({round(calcStats(atks[0][0], max_lvl if n else 30) / (a[i] / 30), 2):,}"
                  f" DPS){br}" if i == 0 else "") +
                 f'|Attack type {ind} = {c[i][12]}\n'
                 f'|Special Ability {ind} = {self.stats.get_abilities(c[i], 0)}')
@@ -396,14 +419,14 @@ class CatPage(Cat):
             f'|DPS Initial Normal = {math.floor(atks[0][0] / a[0] * 30)}\n'
             f'|DPS Initial Precise Normal = '
                       f'{"{{"}#expr:{(atks[0][0])}/({a[0]}/30){"}}"}\n'
-            f'|HP Normal lvl 10 = {c[0][0] * mods[0]:,}\n'
-            f'|AP Normal lvl 10 = {int(atks[0][0] * mods[0] + 0.5):,}\n'
+            f'|HP Normal lvl 10 = {calcStats(c[0][0], 10):,}\n'
+            f'|AP Normal lvl 10 = {calcStats(atks[0][0], 10):,}\n'
             f'|DPS Normal lvl 10 = '
-                      f'{math.floor((atks[0][0] * mods[0]) / a[0] * 30):,}\n'
-            f'|HP Normal lvl.MAX = {int(c[0][0] * self.r[3]):,}\n'
-            f'|AP Normal lvl.MAX = {int(atks[0][0] * self.r[3]):,}\n'
+                      f'{math.floor(calcStats(atks[0][0], 10) / a[0] * 30):,}\n'
+            f'|HP Normal lvl.MAX = {calcStats(c[0][0], max_lvl):,}\n'
+            f'|AP Normal lvl.MAX = {calcStats(atks[0][0], max_lvl):,}\n'
             f'|DPS Normal lvl.MAX = '
-                      f'{math.floor(int(atks[0][0] * self.r[3]) / a[0] * 30):,}\n'
+                      f'{math.floor(calcStats(atks[0][0], max_lvl) / a[0] * 30):,}\n'
             f'|Attack Frequency Normal = {a[0]}\n'
             f'|Attack Animation Normal = {atks[0][1]}\n'
             f'|Attack Range Normal = {c[0][5]:,}\n'
@@ -417,14 +440,14 @@ class CatPage(Cat):
             f'|Special Ability Normal = {self.stats.get_abilities(c[0], 1)}\n'
             f'|Evolved Form Name = {self.names[2]}{repeated[0][0]}'
             f'{repeated[3][0]}{repeatedDPS[0]}{repeatedpreDPS[0]}\n'
-            f'|HP Evolved lvl 20 = {c[1][0] * mods[1]:,}\n'
-            f'|AP Evolved lvl 20 = {int(atks[1][0] * mods[1] + 0.5):,}\n'
+            f'|HP Evolved lvl 20 = {calcStats(c[1][0], 20):,}\n'
+            f'|AP Evolved lvl 20 = {calcStats(atks[1][0], 20):,}\n'
             f'|DPS Evolved lvl 20 = '
-                      f'{math.floor((atks[1][0] * mods[1]) / a[1] * 30):,}\n'
-            f'|HP Evolved lvl.MAX = {int(c[1][0] * self.r[3]):,}\n'
-            f'|AP Evolved lvl.MAX = {int(atks[1][0] * self.r[3]):,}\n'
+                      f'{math.floor(calcStats(atks[1][0], 20) / a[1] * 30):,}\n'
+            f'|HP Evolved lvl.MAX = {calcStats(c[1][0], max_lvl):,}\n'
+            f'|AP Evolved lvl.MAX = {calcStats(atks[1][0], max_lvl):,}\n'
             f'|DPS Evolved lvl.MAX = '
-                      f'{math.floor(int((atks[1][0] * self.r[3])) / a[1] * 30):,}'
+                      f'{math.floor(calcStats(atks[1][0], max_lvl) / a[1] * 30):,}'
             f'{repeated[4][0]}{anim[0]}{repeated[5][0]}'
             f'{repeated[12][0]}{repeated[7][0]}'
             f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
@@ -432,14 +455,14 @@ class CatPage(Cat):
             (f'{"}}"}\n{left}/tabber>' if not self.tf else
             f'|True Form Name = {self.names[3]}{repeated[0][1]}'
             f'{repeated[3][1]}{repeatedDPS[1]}{repeatedpreDPS[1]}\n'
-            f'|HP True lvl 30 = {c[2][0] * mods[2]:,}\n'
-            f'|AP True lvl 30 = {int(atks[2][0] * mods[2] + 0.5):,}\n'
+            f'|HP True lvl 30 = {calcStats(c[2][0], 30):,}\n'
+            f'|AP True lvl 30 = {calcStats(atks[2][0], 30):,}\n'
             f'|DPS True lvl 30 = '
-            f'{math.floor((atks[2][0] * mods[2]) / a[2] * 30):,}\n'
-            f'|HP True lvl.MAX = {int(c[2][0] * self.r[3]):,}\n'
-            f'|AP True lvl.MAX = {int(atks[2][0] * self.r[3]):,}\n'
+            f'{math.floor(calcStats(atks[2][0], 30) / a[2] * 30):,}\n'
+            f'|HP True lvl.MAX = {calcStats(c[2][0], max_lvl):,}\n'
+            f'|AP True lvl.MAX = {calcStats(atks[2][0], max_lvl):,}\n'
             f'|DPS True lvl.MAX = '
-            f'{math.floor(int((atks[2][0] * self.r[3])) / a[2] * 30):,}'
+            f'{math.floor(calcStats(atks[2][0], max_lvl) / a[2] * 30):,}'
             f'{repeated[4][1]}{anim[1]}{repeated[5][1]}'
             f'{repeated[12][1]}{repeated[7][1]}{repeated[1][1]}'
             f'{repeated[2][1]}{repeated[6][1]}\n'

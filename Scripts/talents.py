@@ -1,3 +1,5 @@
+"""Testing script. Not in use at the moment"""
+
 def link(ability: str, type: str = 'default'):
     if type == 'default':
         l = ability

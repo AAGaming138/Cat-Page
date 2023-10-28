@@ -1,13 +1,14 @@
 talent_num,talent_link,category
 1,'''[[Special Abilities#Weaken|Weaken]]''',Cats with Weaken ability
 2,'''[[Special Abilities#Freeze|Freeze]]''',Cats with Freeze ability
-3,'''[[Special Abilities#Slow|Slow]]''',Cats with Slow abili4,,
-5,'''[[Special Abilities#Strong Against|Strong Against]]''',Cats with Stronbility
-6,'''[[Special Abilities#Resistant|Tough Vs]]''',Cats with Resist ability
-7,'''[[Special Abilities#Massive Damage|Massive Damage]]''',Cats with Massivemage ability
-8,'''[[Special Abilities#Knockback|Knockback]]''',Cats with Knocck ability
+3,'''[[Special Abilities#Slow|Slow]]''',Cats with Slow ability
+4,,
+5,'''[[Special Abilities#Strong Against|Strong Against]]''',Cats with Strong ability
+6,'''[[Special Abilities#Resistant|Tough Vs]]''',Cats with Resistant ability
+7,'''[[Special Abilities#Massive Damage|Massive Damage]]''',Cats with Massive Damage ability
+8,'''[[Special Abilities#Knockback|Knockback]]''',Cats with Knockback ability
 9,,
-10,'''[[Special Abilities#Strengthen|Attack Up]]''',Cats wittrengthen ability
+10,'''[[Special Abilities#Strengthen|Attack Up]]''',Cats with Strengthen ability
 11,'''[[Special Abilities#Survive|Survives]]''',Lethal Strike Resistant Cats
 12,,
 13,'''[[Special Abilities#Critical|Critical]]''',Critical Hit Cats
@@ -59,3 +60,7 @@ talent_num,talent_link,category
 59,'''[[Special Abilities#Soulstrike|Soulstrike]]''',Soulstrike Cats
 60,'''[[Special Abilities#Curse|Curse]]''',Cats with Curse ability
 61,'''[[Special Abilities#Stat Enhancements|Attack Frequency Up]]''',Cats with Attack Frequency Up Talent
+62,'''[[Special Abilities#Mini-Wave|Mini-Wave]]''',Mini-Wave Cats
+63,'''[[Special Abilities#Colossus Slayer|Colossus Slayer]]''',Colossus Slayer Cats
+64,'''[[Special Abilities#Behemoth Slayer|Behemoth Slayer]]''',Behemoth Slayer Cats
+65,'''[[Special Abilities#Mini-Surge|Mini-Surge]]''',Mini-Surge Cats

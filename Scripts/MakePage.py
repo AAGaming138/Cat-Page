@@ -4,19 +4,6 @@ from EnemyPage import *
 from StatsCommon import StatsCommon
 from common import *
 
-class NoDataError(Exception):
-    """Error from no/insufficient information"""
-    def __init__(self, data: str, name: str):
-        if data in ["catfruits", "talents", "description"]:
-            error = f"'{name}' has no {data}."
-        elif data == "ID":
-            error = "Enter a valid name or ID!"
-        elif data == "Increment":
-            error = "Incompatible with increment!"
-        else:
-            error = f"{name} has no page."
-        super().__init__(error)
-
 
 class MakePage:
     """Placeholder Parent Class"""

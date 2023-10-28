@@ -23,7 +23,11 @@ class Cat:
             self.NPCosts = opencsv(f"{data_mines}/DataLocal/SkillLevel.csv")
         except (FileNotFoundError, IndexError):
             self.ID = -1
-        self.isEgg = 'Ancient Egg' in self.names[1]
+
+        try:
+            self.isEgg = 'Ancient Egg' in self.names[1]
+        except AttributeError:
+            raise NoDataError("ID", '')
 
 
     def getData(self):
@@ -104,10 +108,9 @@ class Cat:
 
         return rarities[r], int(self.catRarity[50]), int(self.catRarity[51]),\
                getMod(maxLevel)[0], getMod(maxLevel)[1], maxPlus, -1,\
-               getVersion(), getFruit(), getMod(10)[0], getMod(20)[0],\
-               getMod(30)[0]
+               getVersion(), getFruit()
         # rarity, max natural level, max plus level, lvl max mod, grow levels,
-        # formatted max plus, -1, version, catfruits, lvl 10 mod, lvl 20 mod, lvl 30 mod
+        # formatted max plus, -1, version, catfruits
 
 
     def getNames(self, ID: int = -1):

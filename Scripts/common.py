@@ -10,12 +10,27 @@ import urllib
 DIR = str(Path(__file__
                ).parent.absolute()).replace('\\', '/').replace("/Scripts", "")
 
-current_ver = "12.5"
+current_ver = "12.7"
 data_mines = DIR + f'/Game Files'
 # langfolder = f'{Common.BCU_folder}/assets/lang'
 langfolder = f"{data_mines}/assets/lang/en"
 
 br = "\n"
+
+
+class NoDataError(Exception):
+    """Error from no/insufficient information"""
+    def __init__(self, data: str, name: str):
+        if data in ["catfruits", "talents", "description"]:
+            error = f"'{name}' has no {data}."
+        elif data == "ID":
+            error = "Enter a valid name or ID!"
+        elif data == "Increment":
+            error = "Incompatible with increment!"
+        else:
+            error = f"{name} has no page."
+        super().__init__(error)
+
 
 class Options:
     """Options for output"""
@@ -59,7 +74,7 @@ def quit(message: str, loading: bool = True) -> None:
     print(message)
     builtins.quit()
 
-
+@logfunc
 def opencsv(filename: str, header: bool = False, delim = ",") -> list:
     """Opens and reads csv file, return list of data"""
     with open(filename, 'r', encoding='utf8', newline='') as f:
