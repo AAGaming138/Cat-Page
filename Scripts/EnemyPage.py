@@ -225,8 +225,13 @@ class EnemyPage(Enemy):
         """Gets the enemy page categories"""
         if self.ls[27] != 0 and (len(self.ls) < 87 or self.ls[86] != 1):
             self.ls[28] = 0
+
         data = [index for index, x in enumerate(self.ls)
                 if x not in [-1, 0] and index > 8]
+
+        if self.ls[35] and self.ls[36] <= 0:
+            data.remove(36)
+
         categories = [["Enemy Units"]]
         traits = {
             10:     "Red Enemies",
@@ -259,6 +264,9 @@ class EnemyPage(Enemy):
         }
         if 11 not in data:
             data.insert(0, 8)
+
+        if 35 in data and 36 not in data:
+            attack_types[35] = "Omni Strike Enemies"
         categories.append([attack_types[i] for i in attack_types if i in data])
 
         abilities = {
