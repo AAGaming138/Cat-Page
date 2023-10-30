@@ -36,12 +36,12 @@ class CatPage(Cat):
         self.en_desc = self.stats.get_en_desc(self.ID)
         self.tals = self.getTalents()
 
-        match self.r[0]:
-            case "Normal": self.rps = [60]
-            case "Special": self.rps = [60]
-            case "Rare": self.rps = [70, 90]
-            case "Super Rare": self.rps = [60, 80]
-            case "Uber Rare": self.rps = [60, 80]
+        if self.r[0] in ["Normal", "Special"]:
+            self.rps = [60]
+        elif self.r[0] in ["Super Rare", "Uber Rare", "Legend Rare"]:
+            self.rps = [60, 80]
+        else:
+            self.rps = [70, 90]
 
         if self.names[1] == "Bahamut Cat": self.rps = [30]
         if self.isCrazed: self.rps = [20]
@@ -269,14 +269,25 @@ class CatPage(Cat):
                 stats[0] = "DPS Initial",
             elif other == 'pre_d':
                 stats[0] = "DPS Initial Precise",
-            s = lambda x, y: commarise((x / 2 + 1) * lis[y + 1][key]
-                                       if key == 6 else lis[y + 1][key])
+
+            def s(x, y):
+                """Returns appropriate value corresponding to key"""
+                if key == 4: # atk freq
+                    return a[y + 1]
+                elif key == 6: # costs
+                    return commarise((x / 2 + 1) * lis[y + 1][key])
+                elif key == 7: # recharge time
+                    return f'{lis[y + 1][key]} ~ ' \
+                           f'{float(lis[y + 1][key]) - 8.8} seconds'
+                else:
+                    return lis[y + 1][key]
 
             return ["" if lis[j][key] == lis[j + 1][key] else
                     ''.join([f"\n|{stats[key][i]} "
                              f"{'Evolved' if j == 0 else 'True'} = {s(i, j)}"
                              for i in range(3 if key == 6 else 1)])
                     for j in range(2)]
+
 
         def mult(ls: list, a_ls: list, form: int) -> list:
             """
