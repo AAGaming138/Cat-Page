@@ -169,40 +169,42 @@ def on_click(mode, che):
     Label(root, text="\t" * 5).grid(row=4,column=1)
     warning = False
 
-    match program_mode.get():
-        case 0:
+    if program_mode.get() == 0:
+        try:
+            ID = int(e.get().strip())
+        except ValueError:
+            ID = StatsCommon().get_ID(e.get().strip())
+        try:
+            page = MakeCatPage(ID, mode).get_page()
+            message = ["Page", "Stats", "Cost", "Catfruit",
+                       "Talents", "Categories"][mode]
+            show_page(page)
+
+        except NoDataError as error:
+            # i.e. if page is unsuccessfully retrieved
+            warning = True
+            message = error
+
+
+    if program_mode.get() == 1:
+        try:
             try:
                 ID = int(e.get().strip())
             except ValueError:
-                ID = StatsCommon().get_ID(e.get().strip())
-            try:
-                page = MakeCatPage(ID, mode).get_page()
-                message = ["Page", "Stats", "Cost", "Catfruit",
-                           "Talents", "Categories"][mode]
-                show_page(page)
+                if check.get():
+                    raise NoDataError("Increment", '')
+                else:
+                    ID = StatsCommon(True).get_ID(e.get().strip())
+            page = MakeEnemyPage(ID - check.get(), mode).get_page()
+            message = ["Page", "Stats", "Description", "Encounters",
+                       "Categories"][mode - 6]
+            show_page(page)
+        except NoDataError as error:
+            warning = True
+            message = error
 
-            except NoDataError as error:
-                # i.e. if page is unsuccessfully retrieved
-                warning = True
-                message = error
-        case 1:
-            try:
-                try:
-                    ID = int(e.get().strip())
-                except ValueError:
-                    if check.get():
-                        raise NoDataError("Increment", '')
-                    else:
-                        ID = StatsCommon(True).get_ID(e.get().strip())
-                page = MakeEnemyPage(ID - check.get(), mode).get_page()
-                message = ["Page", "Stats", "Description", "Encounters",
-                           "Categories"][mode - 6]
-                show_page(page)
-            except NoDataError as error:
-                warning = True
-                message = error
-        case 2:
-            show_page(e.get())
+    if program_mode.get() == 2:
+        show_page(e.get())
 
 
     conf_text(message if warning else message + \
@@ -320,6 +322,40 @@ def update_stage_names():
     conf_text(stage_names.readStageNames())
 
 
+def run_all():
+    combo.config(width=520, height=150)
+    root.geometry("550x280")
+    combo.delete()
+    combo.insert("Problems:\n")
+    t0 = time.time()
+    if program_mode.get() == 0:
+        for i in range(len(Cat(0).catNames) - 1):
+            try:
+                MakeCatPage(i, 0).get_page()
+            except Exception as er:
+                combo.insert(f"Cat ID {i}: {er}\n")
+    elif program_mode.get() == 1:
+        for i in range(len(Enemy(0).enemyNames) - 1):
+            try:
+                MakeEnemyPage(i, 6).get_page()
+            except Exception as er:
+                combo.insert(f"Enemy ID {i}: {er}\n")
+    time_elasped = time.time() - t0
+    combo.insert(f"Done in {round(time_elasped, 3)} seconds\n")
+
+
+def compare_stats():
+    if program_mode.get() == 0:
+        for i in range(len(Cat(0).catNames) - 1):
+            try:
+                if WikiReader(Cat(i).names[-2].replace(' ', '_')).readStats() \
+                        != MakeCatPage(i, 1).get_page():
+                    print(f"Cat ID {i} does not have matching tables")
+
+            except Exception as er:
+                print(f"Cat ID {i}: {er}")
+
+
 # start window
 root = Tk()
 with open("mode.txt", "r") as f:
@@ -341,6 +377,7 @@ menubar = Menu(root)
 filemenu = Menu(menubar, tearoff=0)
 thememenu = Menu(menubar, tearoff=0)
 updatemenu = Menu(menubar, tearoff=0)
+debugmenu = Menu(menubar, tearoff=0)
 
 menubar.add_cascade(label="Mode", menu=filemenu)
 filemenu.add_command(label="Enemy Page", command=enemy_options)
@@ -355,20 +392,12 @@ menubar.add_cascade(label="Update", menu=updatemenu)
 updatemenu.add_command(label="Update Names", command=update_names)
 updatemenu.add_command(label="Update Stage Names", command=update_stage_names)
 
+menubar.add_cascade(label="Debug", menu=debugmenu)
+debugmenu.add_command(label="Run All", command=run_all)
+debugmenu.add_command(label="Compare Stats", command=compare_stats)
+
 root.config(menu=menubar)
 # end menu
-
-cats = []
-cat_names = opencsv(DIR + "/catNames.tsv", header=True, delim="\t")
-for i in cat_names:
-    for x in range(3):
-        cats.append(i[x + 1])
-
-enemies = []
-enemy_names = opencsv(DIR + "/enemyNames.tsv", header=True, delim="\t")
-for i in enemy_names:
-    for x in range(3):
-        enemies.append(i[1])
 
 # start input field
 e = Entry(root, width=50, border=3)

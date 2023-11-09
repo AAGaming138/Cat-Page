@@ -1,11 +1,10 @@
 """Script that converts wiki csv into a form readable by UnitPageMaker"""
 from common import *
-from html import unescape
 
 class WikiReader:
 
     def __init__(self, page):
-        self.url = "https://battle-cats.fandom.com/wiki/" + page
+        self.url = f"https://battle-cats.fandom.com/wiki/{page}?action=raw"
         self.processed = []
         self.html = self.openUrl()
         self.cor = {"000":   "RN",
@@ -33,35 +32,23 @@ class WikiReader:
         except urllib.error.URLError:
             return "Unable to open URL! (No connection?)"
         # extract and decode html
-        return webpage.read().decode("UTF-8").split("\n")
+        return webpage.read().decode("UTF-8")
 
 
     def readNames(self):
         """Extract names from wiki html"""
-        for line in self.html:
-            if line:
-                if line[0:3] in ["Num", "Ima"] or line[0].isnumeric():
-                    # keep lines that have csv content in them
-                    self.processed.append(unescape(line))
-
-        for i in range(len(self.processed[-1])):
-            try:
-                if self.processed[-1][i:i+6] == "</div>":
-                    self.processed[-1] = self.processed[-1][0:i]
-            except IndexError:
-                pass
-
-        content = "\n".join(self.processed)
-
-        if "Cat (Normal Cat)" in content:
+        if "Cat (Normal Cat)" in self.html:
             # write content into catNames.tsv
             with open(DIR + "/catNames.tsv", 'w', encoding='utf8') as f:
-                f.write(content + "\nN/A\tN/A\t\t\tN/A\tN/A")
+                f.write(self.html + "\nN/A\tN/A\t\t\tN/A\tN/A")
+
+        elif self.html == "Unable to open URL! (No connection?)":
+            return self.html
 
         else:
-            if "2000\n021\t" in content:
+            if "2000\n021\t" in self.html:
                 # fill in missing 019 and 020 between The Face and Ms Sign
-                content = content.replace("The Face (Floating)\t99999\t2000\n021",
+                content = self.html.replace("The Face (Floating)\t99999\t2000\n021",
                                           "The Face (Floating)\t99999\t2000\n"
                                           "019\tN/A\t\t\t\n020\tN/A\t\t\t\n021")
             # write content into enemyNames.tsv
@@ -73,14 +60,28 @@ class WikiReader:
 
     def readStageNames(self):
         """Extract stage names from wiki html"""
-        for line in self.html:
-            if len(line) > 0 and line[0].isnumeric() and "," in line:
-                for key in self.cor:
-                    if line[0:3] == key:
-                        line = self.cor[key] + line[3:]
-                self.processed.append(unescape(line))
-
+        if self.html == "Unable to open URL! (No connection?)":
+            return self.html
 
         with open(DIR + "/stageNames.csv", 'w', encoding='utf8') as f:
-            f.write("\n".join(self.processed))
+            f.write(self.html.strip("<pre>\n").strip("\n</pre>"))
             return "Stage names retrieved successfully!"
+
+
+    def readStats(self):
+        """Extract stats section"""
+        started = False
+        content = []
+        for line in self.html.split("\n"):
+            if line and line == "==Stats==":
+                content.append(line)
+                started = True
+                continue
+
+            if started:
+                if line[:2] != "==":
+                    content.append(line)
+                else:
+                    break
+
+        return "\n".join(content).strip("\n")

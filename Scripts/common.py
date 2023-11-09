@@ -74,7 +74,7 @@ def quit(message: str, loading: bool = True) -> None:
     print(message)
     builtins.quit()
 
-@logfunc
+
 def opencsv(filename: str, header: bool = False, delim = ",") -> list:
     """Opens and reads csv file, return list of data"""
     with open(filename, 'r', encoding='utf8', newline='') as f:

@@ -25,11 +25,11 @@ Image	Name	Link	HP	Attack
 023	Dark Emperor Nyandam	Dark Emperor Nyandam (Red)	99999	1800
 024	Teacher Bun Bun	Teacher Bun Bun (Floating)	99999	2250
 025	Swordsman (form 1)	Swordsman (form 1) (Enemy)	100	10
-026	Chibigau (form 1)	Chibigau (form 1) (Enemy)	1000	300
-027	Princess Punt (form 1)	Princess Punt (form 1) (Enemy)	8000	200
+026	Li'l Gau (form 1)	Li'l Gau (form 1) (Enemy)	1000	300
+027	Kerihime (form 1)	Kerihime (form 1) (Enemy)	8000	200
 028	Swordsman (form 2)	Swordsman (form 2) (Enemy)	100	1000
-029	Chibigau (form 2)	Chibigau (form 2) (Enemy)	80000	3000
-030	Princess Punt (form 2)	Princess Punt (form 2) (Enemy)	6000	4200
+029	Li'l Gau (form 2)	Li'l Gau (form 2) (Enemy)	80000	3000
+030	Kerihime (form 2)	Kerihime (form 2) (Enemy)	6000	4200
 031	Master A.		40000	557
 032	R.Ost		340000	7200
 033	Otta-smack-u		30000	1497
@@ -59,7 +59,7 @@ Image	Name	Link	HP	Attack
 057	Teacher Cybear	Teacher Cybear (Metal)	50	999999
 058	CyberFace	CyberFace (Metal)	299	99999
 059	Sir Metal Seal	Sir Metal Seal (Metal)	22000	6699
-060	Yuurinchii	Yuurinchii (Enemy)	2000	180
+060	Yurinchi	Yurinchi (Enemy)	2000	180
 061	Princess Head	Princess Head (Enemy)	50000	2400
 062	Chief Peng	Chief Peng (Event Enemy)	10000	1200
 063	Dark Emperor Santa	Dark Emperor Santa (Event Enemy)	45000	3600
@@ -69,7 +69,7 @@ Image	Name	Link	HP	Attack
 067	Audience Bears	Audience Bears (Event Enemy)	50000	2800
 068	Monkey King	Monkey King (Enemy)	6640	550
 069	White Cyclone	White Cyclone (Floating)	999999	89000
-070	Black Cyclone	Black Cyclone (Black/Floating)	1200000	4000
+070	Black Cyclone	Black Cyclone (Floating/Black)	1200000	4000
 071	Metal Cyclone	Metal Cyclone (Metal)	77777	77000
 072	Nimue	Nimue (Enemy)	5000	399
 073	Neutralization Type Nimue	Neutralization Type Nimue (Enemy)	98767	3843
@@ -333,8 +333,8 @@ Image	Name	Link	HP	Attack
 331	Easter Duche	Easter Duche (Event Enemy)	150000	3600
 332	Easter Bunny	Easter Bunny (Event Enemy)	25000	1500
 333	Moai Statue	Moai Statue (Enemy Base)	1200	15
-334	Wedding Kerihime	Wedding Kerihime (Enemy)	35000	5200
-335	Eternal Sleeping Beauty	Eternal Sleeping Beauty (Enemy)	800000	8500
+334	Bridal Princess Punt	Bridal Princess Punt (Enemy)	35000	5200
+335	Oversleeping Beauty Punt	Oversleeping Beauty Punt (Enemy)	800000	8500
 336	Goldoge	Goldoge (Event Enemy)	1500	300
 337	Sir Hippoe	Sir Hippoe (Event Enemy)	40000	1000
 338	Golden R.Ost	Golden R.Ost (Event Enemy)	20	2400
@@ -461,7 +461,7 @@ Image	Name	Link	HP	Attack
 459	Medama-Oyaji	Medama-Oyaji (Enemy)	35000	800
 460	Neko-Musume	Neko-Musume (Enemy)	15000	1500
 461	Kano & Souma	Kano & Souma (Enemy)	80000	800
-462	Gekirinchii	Gekirinchii (Enemy)	220000	17000
+462	Gekirinchi	Gekirinchi (Enemy)	220000	17000
 463	Judgement	Judgement (Enemy)	180000	13000
 464	Awakened Eva Unit-13	Awakened Eva Unit-13 (Eva Angel)	4000000	100000
 465	HAPPI	HAPPI (Enemy)	120000	4500
@@ -498,7 +498,7 @@ Image	Name	Link	HP	Attack
 496	Urs & Fenrir	Urs & Fenrir (Relic)	750000	35000
 497	Croconator	Croconator (Metal)	5	800
 498	Gobble	Gobble (Floating)	329000	5000
-499	Baron Seal	Baron Seal (Red) (Colossal)	15000	300
+499	Baron Seal	Baron Seal (Red/Colossal)	15000	300
 500	Hatsune Miku	Hatsune Miku (Enemy)	100000	6500
 501	Sakura Miku	Sakura Miku (Enemy)	150000	20000
 502	Kagamine Rin & Len	Kagamine Rin & Len (Enemy)	180000	8000
@@ -509,12 +509,12 @@ Image	Name	Link	HP	Attack
 507	Messier	Messier (Enemy)	378000	8000
 508	Yakisoba U.F.O. Cat	Yakisoba U.F.O. Cat (Enemy)	2000	200
 509	Yakisoba Face	Yakisoba Face (Enemy)	4444	500
-510	Le'Grim	Le'Grim (Black) (Colossal)	20000	2000
+510	Le'Grim	Le'Grim (Black/Colossal)	20000	2000
 511	Death Angel Z-Onel	Death Angel Z-Onel (Zombie)	1000000	30000
 512	Li'l Zyclone	Li'l Zyclone (Zombie)	333333	333
 513	St. Dober	St. Dober (Angel)	1800000	23000
 514	Doremi		1800000	28000
-515	Mega-Mooth	Mega-Mooth (Floating) (Colossal)	12000	800
+515	Mega-Mooth	Mega-Mooth (Floating/Colossal)	12000	800
 516	Master Uril	Master Uril (Enemy Unit)	3800000	25500
 517	Koronium	Koronium (Metal)	150	15000
 518	Super Zeus	Super Zeus (Enemy)	225000	5000
@@ -524,7 +524,7 @@ Image	Name	Link	HP	Attack
 522	Relic Doge Base	Relic Doge Base (Enemy Base)	3000	1
 523	Happy Birthday Cake	Happy Birthday Cake (Event Enemy)	100	1
 524	Surge Base	Surge Base (Enemy Base)	1500	120
-525	Super Hyppoh	Super Hyppoh (Alien) (Colossal)	1800	50
+525	Super Hyppoh	Super Hyppoh (Alien/Colossal)	1800	50
 526	Idi:Re	Idi:Re (Relic)	3333333	99999
 527	Zollow	Zollow (Zombie/Floating)	4500	10000
 528	E. Honda	E. Honda (Enemy)	500000	5555
@@ -548,7 +548,7 @@ Image	Name	Link	HP	Attack
 546	Mousse	Mousse (Enemy)	135000	3000
 547	Mr. Mer		1250000	16000
 548	Wafer Cat BIG	Wafer Cat BIG (Enemy)	999999	1
-549	Ragin' Gory	Ragin' Gory (Black / Behemoth)	321234	11234
+549	Ragin' Gory	Ragin' Gory (Black/Behemoth)	321234	11234
 550	Shin Godzilla	Shin Godzilla (Enemy)	500	600
 551	Elder Flame Doron	Elder Flame Doron (Relic)	2222222	22222
 552	Aku Doge	Aku Doge (Aku)	4500	2200
@@ -592,29 +592,29 @@ Image	Name	Link	HP	Attack
 590	9th Anniversary Birthday Cake	9th Anniversary Birthday Cake (Event Enemy)	100	1
 591	9th Anniversary Scarecrow	9th Anniversary Scarecrow (Enemy Base)	100	999999
 592	Red EnerG	Red EnerG (Red)	340000	6790
-593	Archangel Exiel	Archangel Exiel (Angel) (Colossal)	945000	4800
-594	Big Peng Z	Big Peng Z (Zombie) (Colossal)	840000	1000
+593	Archangel Exiel	Archangel Exiel (Angel/Colossal)	945000	4800
+594	Big Peng Z	Big Peng Z (Zombie/Colossal)	840000	1000
 595	Tiger Doge	Tiger Doge (Event Enemy)	3000	600
 596	Nana & Doge	Nana & Doge (Enemy)	120000	5000
 597	Emilia & Doge	Emilia & Doge (Enemy)	135000	7500
 598	Yonshakudama Firework	Yonshakudama Firework (Event Enemy)	500	50
-599	Ultima Beast Naala	Ultima Beast Naala (Relic / Behemoth)	3000000	60000
+599	Ultima Beast Naala	Ultima Beast Naala (Relic/Behemoth)	3000000	60000
 600	Zapy	Zapy (Zombie)	390000	38000
 601	Secret Crush Base	Secret Crush Base (Enemy Base)	10	1
 602	Confessional Tree	Confessional Tree (Enemy Base)	10	1
 603	Wild Doge	Wild Doge (Behemoth)	55000	16500
-604	Casaurian Ahirujo	Casaurian Ahirujo (Red / Behemoth)	1200000	19500
-605	Pterowl Hazuku	Pterowl Hazuku (Floating / Behemoth)	1850000	36600
-606	Crustaceous Scissorex	Crustaceous Scissorex (Alien / Behemoth)	1400000	37000
-607	J.J. Jackrabbit	J.J. Jackrabbit (Red / Colossus)	65000	9000
+604	Casaurian Ahirujo	Casaurian Ahirujo (Red/Behemoth)	1200000	19500
+605	Pterowl Hazuku	Pterowl Hazuku (Floating/Behemoth)	1850000	36600
+606	Crustaceous Scissorex	Crustaceous Scissorex (Alien/Behemoth)	1400000	37000
+607	J.J. Jackrabbit	J.J. Jackrabbit (Red/Colossus)	65000	9000
 608	Li'l Doge		2000	100
-609	Golem Sunfish	Golem Sunfish (Relic, Floating)	1800000	31850
-610	THE FOLIVOREAN	THE FOLIVOREAN (Aku) (Behemoth)	1000000	51000
-611	Casaurian Darkjo	Casaurian Darkjo (Black) (Behemoth)	2000000	27900
+609	Golem Sunfish	Golem Sunfish (Relic/Floating)	1800000	31850
+610	THE FOLIVOREAN	THE FOLIVOREAN (Aku/Behemoth)	1000000	51000
+611	Casaurian Darkjo	Casaurian Darkjo (Black/Behemoth)	2000000	27900
 612	Haniwanwan	Haniwanwan (Relic)	300000	20000
-613	Angelic Beast Rajakong	Angelic Beast Rajakong (Angel) (Behemoth)	1855200	12500
-614	Formicidaean Ariant	Formicidaean Ariant (Zombie) (Behemoth)	75000	135000
-615	Great Angel Chibinel	Great Angel Chibinel (Angel) (Colossus)	160000	4500
+613	Angelic Beast Rajakong	Angelic Beast Rajakong (Angel/Behemoth)	1855200	12500
+614	Formicidaean Ariant	Formicidaean Ariant (Zombie/Behemoth)	75000	135000
+615	Great Angel Chibinel	Great Angel Chibinel (Angel/Colossus)	160000	4500
 616	Spiritual Yulala	Spiritual Yulala (Enemy Unit)	3250000	30000
 617	Osamu Mikumo & Doge	Osamu Mikumo & Doge (Enemy)	150000	1000
 618	Yuma Kuga & Doge	Yuma Kuga & Doge (Enemy)	120000	2000
@@ -626,20 +626,20 @@ Image	Name	Link	HP	Attack
 624	Cumulus Gallus	Cumulus Gallus (Behemoth)	1770000	20000
 625	10th Anniversary Birthday Cake	10th Anniversary Birthday Cake (Event Enemy)	100	1
 626	10th Anniversary Scarecrow	10th Anniversary Scarecrow (Enemy Base)	100	999999
-627	Ancient Magamojoe	Ancient Magamojoe (Relic) (Behemoth)	2200000	35000
-628	Great Ape Luza	Great Ape Luza (Relic) (Behemoth)	2500000	90000
-629	Zero Luza	Zero Luza (Relic) (Colossus)	4000000	160000
+627	Ancient Magamojoe	Ancient Magamojoe (Relic/Behemoth)	2200000	35000
+628	Great Ape Luza	Great Ape Luza (Relic/Behemoth)	2500000	90000
+629	Zero Luza	Zero Luza (Relic/Colossus)	4000000	160000
 630	Metafilibuster	Metafilibuster (Floating)	3000000	3000000
 631	Rabbit Doge	Rabbit Doge (Event Enemy)	3000	600
 632	Origin Base	Origin Base (Enemy Base)	3000000	0
 633	Killer Tank Cat	Killer Tank Cat (Enemy)	9000	240
-634	Vermilingua Rangmaster	Vermilingua Rangmaster (Aku) (Behemoth)	950000	28000
+634	Vermilingua Rangmaster	Vermilingua Rangmaster (Aku/Behemoth)	950000	28000
 635	Easter Egg Cat	Easter Egg Cat (Enemy)	1100000	11000
 636	Devil Wife	Devil Wife (Aku)	9500	8000
-637	Omens	Omens (Aku) (Colossus)	800000	15000
+637	Omens	Omens (Aku/Colossus)	800000	15000
 638	Mini White Cyclone	Mini White Cyclone (Floating)	444444	20000
-639	Infernal Pegasus Deonil	Infernal Pegasus Deonil (Red) (Behemoth)	1600000	8000
-640	Suidae Piggicus	Suidae Piggicus (Alien / Behemoth)	980000	4500
+639	Infernal Pegasus Deonil	Infernal Pegasus Deonil (Red/Behemoth)	1600000	8000
+640	Suidae Piggicus	Suidae Piggicus (Alien/Behemoth)	980000	4500
 641	Elephantidae Papaou	Elephantidae Papaou (Behemoth)	2000000	13000
 642	Infernal Tyrant Nyandam	Infernal Tyrant Nyandam (Aku)	4666666	679998
 643	Grand Mage Mimon		3000000	45000
@@ -649,23 +649,23 @@ Image	Name	Link	HP	Attack
 647	Eva Unit-13	Eva Unit-13 (Enemy)	3000000	90000
 648	Clown Base	Clown Base (Enemy Base)	10	1
 649	Lutrinae Gokurakko	Lutrinae Gokurakko (Angel)	400000	4497
-650	Iguanidae Ibilujon	Iguanidae Ibilujon (Relic / Behemoth)	4200000	30000
+650	Iguanidae Ibilujon	Iguanidae Ibilujon (Relic/Behemoth)	4200000	30000
 651	Finale Base	Finale Base (Enemy)	50	1
 652	Lophiiformes Angaburu	Lophiiformes Angaburu (Zombie/Floating/Behemoth)	420000	13000
 653	Kappy Kawano		2600000	114000
 654	Mega Baa Baa	Mega Baa Baa (Colossal)	48000	39000
 655	Crocodylidae Kurocroc	Crocodylidae Kurocroc (Black / Behemoth)	2900000	30000
 656	Hatsune Miku 16th	Hatsune Miku 16th (Enemy)	240000	5000
-657	657	657 (Enemy Base)	10	1
-658	658	658 (Angel)	288888	4444
-659	659	659 (Floating / Behemoth)	2800000	200000
-660	660	660 (Enemy Unit)	3600000	18000
-661	661	661 (Enemy Unit)	5500000	20000
-662	662	662 (Enemy Unit)	2100000	8750
-663	663	663 (Enemy Unit)	600000	13200
-664	664	664 (Enemy Unit)	420000	9900
-665	665	665 (Enemy Unit)	1820000	53000
-666	666	666 (Enemy Unit)	327000	17750
-667	667	667 (Enemy Unit)	700000	4850
-668	668	668 (Enemy Unit)	2500000	33000
+657	Relay Base	Relay Base (Enemy Base)	10	1
+658	Mini Angel Cyclone	Mini Angel Cyclone (Angel)	288888	4444
+659	Ensanglion the Calamity	Ensanglion the Calamity (Floating / Behemoth)	2800000	200000
+660	Malevolent Mohawk Cat	Malevolent Mohawk Cat (Enemy Unit)	3600000	18000
+661	Malevolent Eraser Cat	Malevolent Eraser Cat (Enemy Unit)	5500000	20000
+662	Malevolent Dark Cat	Malevolent Dark Cat (Enemy Unit)	2100000	8750
+663	Malevolent Macho Legs Cat	Malevolent Macho Legs Cat (Enemy Unit)	600000	13200
+664	Malevolent Lion Cat	Malevolent Lion Cat (Enemy Unit)	420000	9900
+665	Malevolent Flying Cat	Malevolent Flying Cat (Enemy Unit)	1820000	53000
+666	Malevolent Island Cat	Malevolent Island Cat (Enemy Unit)	327000	17750
+667	Malevolent King Dragon Cat	Malevolent King Dragon Cat (Enemy Unit)	700000	4850
+668	Malevolent Jamiera Cat	Malevolent Jamiera Cat (Enemy Unit)	2500000	33000
 N/A	N/A			

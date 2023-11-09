@@ -233,8 +233,7 @@ class StatsCommon:
             immunities.append(
                 f"[[Special Abilities#Immune to {im}|"
                 f"{'Immune to ' if len(immunities) == 0 else ''}{im}]]")
-        # Note: addim does not work with Evade Surge and
-        #       Warp Blocker or if mode is 2
+
         abil = lambda ab, dis='': \
             f"[[Special Abilities#{ab}|{ab if not dis else dis}]]"
         # Note: if the display link is the same as actual link,
@@ -341,10 +340,7 @@ class StatsCommon:
                                  f" [[Surge Attack]] between {int(ls[82] / 4):,}"
                                  f" and {int(ls[82] / 4) + int(ls[83] / 4):,}"
                                  f" range{multab()}")
-            if list_has(85):
-                immunities.append(f"[[Special Abilities#Evade Surge|"
-                                  f"{'Immune to ' if len(immunities) == 0 else ''}"
-                                  f"Surge]]")
+            if list_has(85): addim("Surge")
             if list_has(87):
                 abilities.append(f"[[Shield]] (initial HP: {ls[87]:,}; "
                                  f"regenerates with {ls[88]}% HP)")
@@ -475,10 +471,7 @@ class StatsCommon:
                 abilities.append(f"{ls[70]}% chance to "
                                  f"{abil('Barrier Breaker', 'break')} "
                                  f"{abil('Barrier', 'barriers')}{multab()}")
-            if list_has(75):
-                immunities.append(f"[[Special Abilities#Warp Blocker|"
-                                  f"{'Immune to ' if len(immunities) == 0 else ''}"
-                                  f"Warp]]")
+            if list_has(75): addim("Warp")
             if list_has(77):
                 abilities.append(f"{abil('Eva Angel Killer')} (Deals 5x damage "
                                  "to [[:Category:Eva Angel Enemies|Eva Angels]],"
@@ -510,10 +503,7 @@ class StatsCommon:
                                  f" and {int(ls[87] / 4) + int(ls[88] / 4):,}"
                                  f" range{multab()}")
             if list_has(90): addim("Toxic")
-            if list_has(91):
-                immunities.append(f"[[Special Abilities#Evade Surge|"
-                                  f"{'Immune to ' if len(immunities) == 0 else ''}"
-                                  f"Surge]]")
+            if list_has(91): addim("Surge")
             if list_has(92):
                 abilities.append(f"{ls[92]}% chance to {abil('Curse', 'curse')}"
                                  f" {ftrait} enemies for {ls[93]}f <sub>"
@@ -636,14 +626,8 @@ class StatsCommon:
                                  f"{int(ls[87] / 4) + int(ls[88] / 4):,} "
                                  f"range{multab()} ({ls[86]}%)")
             if list_has(90): addim("Toxic")
-            if list_has(91):
-                immunities.append(f"[[Special Abilities#Evade Surge|"
-                                  f"{'Evade ' if len(immunities) == 0 else ''}"
-                                  f"Surge]]")
-            if list_has(75):
-                immunities.append(f"[[Special Abilities#Warp Blocker|Warp"
-                                  f"{' Blocker' if len(immunities) == 0 else ''}"
-                                  f"]]")
+            if list_has(91): addim("Surge")
+            if list_has(75): addim("Warp")
             if list_has(92):
                 abilities.append(
                     f"{abil('Curse', 'Curses')} {ftrait} enemies for"
@@ -744,11 +728,7 @@ class StatsCommon:
                 abilities.append(
                 f"{pro}{ls[70]}% chance to {abil('Barrier Breaker', 'break')} "
                 f"{abil('Barrier', 'barriers')}{multab()}")
-            if list_has(75):
-                immunities.append(f"{pro if len(immunities) == 0 else ''}"
-                                  f"[[Special Abilities#Warp Blocker"
-                                  f"|{'Immune to ' if len(immunities) == 0 else ''}"
-                                  f"Warp]]")
+            if list_has(75): paddim("Warp")
             if list_has(77):
                 abilities.append(f"{pro}{abil('Eva Angel Killer')}")
             if list_has(79): paddim("Curse")
@@ -776,11 +756,7 @@ class StatsCommon:
                                  f"{int(ls[87] / 4) + int(ls[88] / 4):,} range"
                                  f"{multab()}")
             if list_has(90): paddim("Toxic")
-            if list_has(91):
-                immunities.append(f"{pro if len(immunities) == 0 else ''}"
-                                  f"[[Special Abilities#Evade Surge|"
-                                  f"{'Immune to ' if len(immunities) == 0 else ''}"
-                                  f"Surge]]")
+            if list_has(91): paddim("Surge")
             if list_has(92):
                 abilities.append(f"{pro}{ls[92]}% chance to "
                                  f"{abil('Curse', 'curse')} {ftrait} enemies for "

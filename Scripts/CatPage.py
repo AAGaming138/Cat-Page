@@ -277,12 +277,15 @@ class CatPage(Cat):
                 elif key == 6: # costs
                     return commarise((x / 2 + 1) * lis[y + 1][key])
                 elif key == 7: # recharge time
-                    return f'{lis[y + 1][key]} ~ ' \
-                           f'{float(lis[y + 1][key]) - 8.8} seconds'
+                    return f'{lis[y + 1][key]:,} ~ ' \
+                           f'{float(lis[y + 1][key]) - 8.8:,} seconds'
+                elif key == 12: # target
+                    return "Single Target" if lis[y + 1][key] == 0 else "Area Attack"
                 else:
-                    return lis[y + 1][key]
+                    return commarise(lis[y + 1][key])
 
-            return ["" if lis[j][key] == lis[j + 1][key] else
+            return ["" if (lis[j][key] == lis[j + 1][key] and key != 4) or
+                          (key == 4 and a[j] == a[j + 1]) else
                     ''.join([f"\n|{stats[key][i]} "
                              f"{'Evolved' if j == 0 else 'True'} = {s(i, j)}"
                              for i in range(3 if key == 6 else 1)])
@@ -331,7 +334,6 @@ class CatPage(Cat):
 
         c = self.ls.copy()
         repeated = [comparison(c, i) for i in range(13)]
-
         atks = [mult(c[i], a, i) for i in range(3)]
         anim = comparison(atks, 1, other="an")
         # for attack animation
@@ -691,16 +693,17 @@ class CatPage(Cat):
         if 35 in data and 36 not in data: abilities[35] = "Wave Attack Cats"
         if 86 in data and 87 not in data: abilities[86] = "Surge Attack Cats"
         categories.append([abilities[i] for i in abilities if i in data])
+        imun = lambda type: f"Cats with {type} Immunity"
         immunities = {
-            46:     "Cats with Wave Immunity",
-            48:     "Cats with Knockback Immunity",
-            49:     "Cats with Freeze Immunity",
-            50:     "Cats with Slow Immunity",
-            51:     "Cats with Weaken Immunity",
-            75:     "Warp Blocker Cats",
-            79:     "Cats with Curse Immunity",
-            90:     "Cats with Toxic Immunity",
-            91:     "Cats with Surge Immunity"
+            46:     imun("Wave"),
+            48:     imun("Knockback"),
+            49:     imun("Freeze"),
+            50:     imun("Slow"),
+            51:     imun("Weaken"),
+            75:     imun("Warp"),
+            79:     imun("Curse"),
+            90:     imun("Toxic"),
+            91:     imun("Surge")
         }
         categories.append([immunities[i] for i in immunities if i in data])
 
