@@ -206,11 +206,12 @@ class CatPage(Cat):
         # for cost
         cost = [i[6] for i in self.ls]
         compare = lambda a, b: cost[a] == cost[b]
+        # I have not seen a case where all 3 forms have different costs, so...
         if not compare(0, 1) and compare(1, 2):
             form1, form2 = 'Normal', f'Evolved{"/True" if self.tf else ""}'
         elif compare(0, 1) and not compare(1, 2):
             form1, form2 = 'Normal/Evolved', 'True'
-        # I have not seen a case where all 3 forms have different costs, so...
+
         if not form2:
             costs = f"*Chapter 1: {cost[0]:,}¢\n" \
                     f"*Chapter 2: {int(cost[0] * 1.5):,}¢\n" \
@@ -235,62 +236,18 @@ class CatPage(Cat):
                 upgrade = defaults[self.catRarity[3]]
         else:
             last = commarise(int(self.catRarity[2]) * 2)
+            # this gives a mix of XP as given in the rarity list
             upgrade = f"MIX\n|{commarise(int(self.catRarity[1]))}\n" + \
                       '\n'.join([f"|{commarise(int(self.catRarity[i + 3]))}"
                                  for i in range(9)]) + f'\n|{last}\n' \
                                                        f'|max = {self.r[1]}\n'
-        # this gives a mix of XP as given in the rarity list
+
         return "==Cost==\n" + costs + f"{'{{'}Upgrade Cost|{upgrade}{'}}'}\n\n"
 
 
     def getTables(self, a: list) -> str:
         """Gets the standard/detailed stat tables of the cat"""
         tables = []
-        n = self.r[0] == "Normal" # is cat a Normal Cat
-
-        def comparison(lis: list, key: int, other: str = '') -> list:
-            """A super compact version of the old compare function"""
-            stats = {
-                0: ("HP Initial",),
-                1: ("Knockback",),
-                2: ("Movement Speed",),
-                3: ("AP Initial",),
-                4: ("Attack Frequency",),
-                5: ("Attack Range",),
-                6: ("Ch1", "Ch2", "Ch3"),
-                7: ("Recharge Time",),
-                8: ("DPS Initial",),
-                12: ("Target",)
-            }
-            if key not in stats: return [''] * 2
-            if other == 'an':
-                stats[1] = "Attack Animation",
-            elif other == 'd':
-                stats[0] = "DPS Initial",
-            elif other == 'pre_d':
-                stats[0] = "DPS Initial Precise",
-
-            def s(x, y):
-                """Returns appropriate value corresponding to key"""
-                if key == 4: # atk freq
-                    return a[y + 1]
-                elif key == 6: # costs
-                    return commarise((x / 2 + 1) * lis[y + 1][key])
-                elif key == 7: # recharge time
-                    return f'{lis[y + 1][key]:,} ~ ' \
-                           f'{float(lis[y + 1][key]) - 8.8:,} seconds'
-                elif key == 12: # target
-                    return "Single Target" if lis[y + 1][key] == 0 else "Area Attack"
-                else:
-                    return commarise(lis[y + 1][key])
-
-            return ["" if (lis[j][key] == lis[j + 1][key] and key != 4) or
-                          (key == 4 and a[j] == a[j + 1]) else
-                    ''.join([f"\n|{stats[key][i]} "
-                             f"{'Evolved' if j == 0 else 'True'} = {s(i, j)}"
-                             for i in range(3 if key == 6 else 1)])
-                    for j in range(2)]
-
 
         def mult(ls: list, a_ls: list, form: int) -> list:
             """
@@ -301,40 +258,126 @@ class CatPage(Cat):
             """
             try:
                 if ls[59] != 0 and ls[60] == 0:
+                    # for 2 hits
                     stat = [ls[3] + ls[59],
                             f"{a_ls[form]-ls[13] - a_ls[form+3]}f + {ls[13]}f + "
                             f"{ls[61]-ls[13]}f + {a_ls[form+3]-(ls[61]-ls[13])}f",
                             a_ls[form + 3] - (ls[61] - ls[13])]
-                    # for 2 hits
 
                 elif ls[59] != 0 and ls[60] != 0:
+                    # for 3 hits
                     stat = [ls[3] + ls[59] + ls[60],
                             f"{a_ls[form] - ls[13] - a_ls[form + 3]}f +"
                             f" {ls[13]}f + {ls[61] - ls[13]}f"
                             f" + {ls[62] - ls[61]}f + "
                             f"{a_ls[form + 3] - (ls[62] - ls[13])}f",
                             a_ls[form + 3] - (ls[62] - ls[13])]
-                    # for 3 hits
 
                 else:
-                    raise IndexError
                     # for only 1 hit
+                    raise IndexError
 
             except (IndexError, TypeError):
+                # for only 1 hit, try except because some files
+                # have long lists while others do not
                 stat = [ls[3],
                         f"{a_ls[form] - ls[13] - a_ls[form + 3]}f + "
                         f"{ls[13]}f + {a_ls[form + 3]}f",
                         a_ls[form + 3]]
-                # for only 1 hit, try except because some files
-                # have long lists while others do not
             return stat
             # format: stat = [total attack damage,
             #                 formatted animation,
             #                 actual backswing]
 
+        n = self.r[0] == "Normal" # is cat a Normal Cat
+        max_lvl = self.r[1] + self.r[2]
         c = self.ls.copy()
-        repeated = [comparison(c, i) for i in range(13)]
         atks = [mult(c[i], a, i) for i in range(3)]
+
+        def calcStats(initial: int, level: int):
+            """Calculates stats at a certain level given initial"""
+            if level <= self.rps[0]:
+                # before first reduction point
+                return math.floor(2.5 * round(initial * ((level + 4) / 5)))
+            else:
+                # between first and second reduction point
+                if len(self.rps) == 1 or level <= self.rps[1]:
+                    return math.floor(2.5 *
+                                      round(initial *
+                                            ((self.rps[0] + 4) / 5 +
+                                             (level - self.rps[0])/ 10)))
+                else:
+                    # after second reduction point
+                    return math.floor(2.5 *
+                                      round(initial *
+                                            ((self.rps[0] + 4) / 5 +
+                                             (self.rps[1] - self.rps[0]) / 10 +
+                                             (level - self.rps[1]) / 20)))
+
+
+        def comparison(lis: list, key: int, other: str = '') -> list:
+            """A super compact version of the old compare function"""
+            stats = {
+                0:      ("HP Initial %",),
+                1:      ("Knockback %",),
+                2:      ("Movement Speed %",),
+                3:      ("AP Initial %",),
+                4:      ("Attack Frequency %",),
+                5:      ("Attack Range %",),
+                6:      ("Ch1 %", "Ch2 %", "Ch3 %"),
+                7:      ("Recharge Time %",),
+                8:      ("DPS Initial %",),
+                12:     ("Target %",),
+                13:     ("HP % lvl.MAX",),
+                14:     ("AP % lvl.MAX",),
+                15:     ("DPS % lvl.MAX",),
+            }
+            if key not in stats: return [''] * 2
+            if other == 'an':
+                stats[1] = "Attack Animation %",
+            elif other == 'd':
+                stats[0] = "DPS Initial %",
+            elif other == 'pre_d':
+                stats[0] = "DPS Initial Precise %",
+
+            def s(x: int, y: int):
+                """Returns appropriate value corresponding to key"""
+                if key == 4: # atk freq
+                    return a[y + 1]
+                elif key == 6: # costs
+                    return commarise((x / 2 + 1) * lis[y + 1][key])
+                elif key == 7: # recharge time
+                    return f'{lis[y + 1][key]:,} ~ ' \
+                           f'{float(lis[y + 1][key]) - 8.8:,} seconds'
+                elif key == 12: # target
+                    return "Single Target" if lis[y+1][key]==0 else "Area Attack"
+                elif key == 13:
+                    return commarise(calcStats(c[y + 1][0], max_lvl))
+                elif key == 14:
+                    return commarise(calcStats(atks[y + 1][0], max_lvl))
+                elif key == 15:
+                    return f'{round(calcStats(atks[y+1][0],max_lvl)/a[1]*30):,}'
+                else:
+                    return commarise(lis[y + 1][key])
+
+            def conditions(k):
+                """Conditions to check for repetition"""
+                # A bit more complex than I initially thought but oh well
+                return (
+                        (key == 4 and a[k] == a[k + 1]) or
+                        (key == 13 and lis[k][0] == lis[k + 1][0]) or
+                        (key in {14, 15} and atks[k][0] == atks[k + 1][0] and
+                         (key != 15 or a[k] == a[k + 1])) or
+                        (key not in {4, 13, 14, 15} and
+                         lis[k][key] == lis[k + 1][key])
+                )
+
+            return ["" if conditions(j) else
+                    ''.join([f"\n|{stats[key][i].replace('%', 'Evolved' if j == 0 else 'True')}"
+                             f" = {s(i, j)}" for i in range(3 if key == 6 else 1)]) for j in range(2)]
+
+
+        repeated = [comparison(c, i) for i in range(16)]
         anim = comparison(atks, 1, other="an")
         # for attack animation
 
@@ -347,23 +390,6 @@ class CatPage(Cat):
         repeatedDPS = comparison(dps_list, 0, other="d")
         repeatedpreDPS = comparison(preDPS_list, 0, other="pre_d")
         # for DPS
-
-        def calcStats(initial: int, level: int):
-            if level <= self.rps[0]:
-                return math.floor(2.5 * round(initial * ((level + 4) / 5)))
-            else:
-                if len(self.rps) == 1 or level <= self.rps[1]:
-                    return math.floor(2.5 *
-                                      round(initial *
-                                            ((self.rps[0] + 4) / 5 +
-                                             (level - self.rps[0])/ 10)))
-                else:
-                    return math.floor(2.5 *
-                                      round(initial *
-                                            ((self.rps[0] + 4) / 5 +
-                                             (self.rps[1] - self.rps[0]) / 10 +
-                                             (level - self.rps[1]) / 20)))
-        max_lvl = self.r[1] + self.r[2]
 
         left = '<' # '&lt;'
         pipe = '|' # '&#124;'
@@ -387,7 +413,8 @@ class CatPage(Cat):
             c[i][12] = "Single Target" if c[i][12] == 0 else "Area Attack"
 
             DPS = round((atks[i][0] if i == 0 else
-                         calcStats(atks[i][0], max_lvl if n else 30)) / (a[i] / 30), 2)
+                         calcStats(atks[i][0], max_lvl if n else 30))
+                        / (a[i] / 30), 2)
             atk = f"{atks[i][0] if i == 0 else calcStats(atks[i][0], max_lvl if n else 30):,}"
             hp = f"{c[i][0] if i == 0 else calcStats(c[i][0], max_lvl if n else 30):,}"
 
@@ -454,26 +481,20 @@ class CatPage(Cat):
             f'|HP Evolved lvl 20 = {calcStats(c[1][0], 20):,}\n'
             f'|AP Evolved lvl 20 = {calcStats(atks[1][0], 20):,}\n'
             f'|DPS Evolved lvl 20 = '
-                      f'{round(calcStats(atks[1][0], 20) / a[1] * 30):,}\n'
-            f'|HP Evolved lvl.MAX = {calcStats(c[1][0], max_lvl):,}\n'
-            f'|AP Evolved lvl.MAX = {calcStats(atks[1][0], max_lvl):,}\n'
-            f'|DPS Evolved lvl.MAX = '
-                      f'{round(calcStats(atks[1][0], max_lvl) / a[1] * 30):,}'
+                      f'{round(calcStats(atks[1][0], 20) / a[1] * 30):,}'
+            f'{repeated[13][0]}{repeated[14][0]}{repeated[15][0]}'
             f'{repeated[4][0]}{anim[0]}{repeated[5][0]}'
             f'{repeated[12][0]}{repeated[7][0]}'
             f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
-            f'|Special Ability Evolved = {self.stats.get_abilities(c[1], 1)}\n' + \
+            f'|Special Ability Evolved = {self.stats.get_abilities(c[1], 1)}\n'+\
             (f'{"}}"}\n{left}/tabber>' if not self.tf else
             f'|True Form Name = {self.names[3]}{repeated[0][1]}'
             f'{repeated[3][1]}{repeatedDPS[1]}{repeatedpreDPS[1]}\n'
             f'|HP True lvl 30 = {calcStats(c[2][0], 30):,}\n'
             f'|AP True lvl 30 = {calcStats(atks[2][0], 30):,}\n'
             f'|DPS True lvl 30 = '
-            f'{round(calcStats(atks[2][0], 30) / a[2] * 30):,}\n'
-            f'|HP True lvl.MAX = {calcStats(c[2][0], max_lvl):,}\n'
-            f'|AP True lvl.MAX = {calcStats(atks[2][0], max_lvl):,}\n'
-            f'|DPS True lvl.MAX = '
-            f'{round(calcStats(atks[2][0], max_lvl) / a[2] * 30):,}'
+            f'{round(calcStats(atks[2][0], 30) / a[2] * 30):,}'
+            f'{repeated[13][1]}{repeated[14][1]}{repeated[15][1]}'
             f'{repeated[4][1]}{anim[1]}{repeated[5][1]}'
             f'{repeated[12][1]}{repeated[7][1]}{repeated[1][1]}'
             f'{repeated[2][1]}{repeated[6][1]}\n'
@@ -557,7 +578,6 @@ class CatPage(Cat):
         Method that writes the appearance, gallery, reference,
         and previous/next page links
         """
-        ver = self.r[7]
         names = opencsv(DIR + "/catNames.tsv", header=True, delim="\t")
 
         prev_cat = f"[[{names[self.ID - 1][4]}|&lt;&lt; {names[self.ID - 1][1]}" \

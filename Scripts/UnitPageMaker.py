@@ -328,6 +328,7 @@ def run_all():
     combo.delete()
     combo.insert("Problems:\n")
     t0 = time.time()
+
     if program_mode.get() == 0:
         for i in range(len(Cat(0).catNames) - 1):
             try:

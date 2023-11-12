@@ -83,5 +83,5 @@ class WikiReader:
                     content.append(line)
                 else:
                     break
-
+        print("\n".join(content).strip("\n"))
         return "\n".join(content).strip("\n")
