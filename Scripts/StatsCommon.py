@@ -76,8 +76,8 @@ class StatsCommon:
     def get_atkanim(self, ID: int, form: str, ls: list) -> tuple:
         """
         :param ID: unit ID
-        :param form: normal, evolved, or true form
-        :param ls: normal, evolved, or true data values
+        :param form: normal, evolved, true, or ultra form
+        :param ls: normal, evolved, true, or ultra data values
         :return: backswing, attack frequency tuple
         """
         nums = 12 if self.is_enemy else 13
@@ -140,7 +140,7 @@ class StatsCommon:
 
     def get_en_desc(self, ID):
         """"Simplified desc; en desc only + using opencsv"""
-        op = ["Enemy", 2] if self.is_enemy else ["Unit", 4]
+        op = ["Enemy", 2] if self.is_enemy else ["Unit", 5]
         # op = [filename, num of desc]
 
         descs = opencsv(f'{langfolder}/{op[0]}Explanation.txt', delim="\t")
@@ -162,10 +162,11 @@ class StatsCommon:
         return en_description
 
 
-    def get_abilities(self, ls: list, mode: int) -> str:
+    def get_abilities(self, ls: list, mode: int, atks=True) -> str:
         """
         :param ls: form list
         :param mode: 0 for Cat Stats, 1 for Calcstatstable, 2 for Performance
+        :param atks: attacks for multihit
         :return: string of list of abilities
         """
         nums = [[44, 59, 63, 64, 65, 99, 100, 101, 102, 103, 104],
@@ -382,15 +383,16 @@ class StatsCommon:
                 ftrait = "all"
             # self-explanatory
 
+        mult_mod = 17 if atks else 32  # Note: change to atks when possible
         if mode == 0:
             if list_has(58):
                 abilities.append(f"Attacks once,"
                                  f" then disappears from the battlefield")
             if list_has(59):
-                temp = f', {ls[60] * 17:,} at {ls[62]}f <sup>{sec(62)}s</sup>' \
+                temp = f', {ls[60] * mult_mod:,} at {ls[62]}f <sup>{sec(62)}s</sup>' \
                        if ls[60] != 0 else ''
-                abilities.append(f"{abil('Multi-Hit')} ({ls[3] * 17:,} at"
-                                 f" {ls[13]}f <sup>{sec(13)}s</sup>, {ls[59] * 17:,}"
+                abilities.append(f"{abil('Multi-Hit')} ({ls[3] * mult_mod:,} at"
+                                 f" {ls[13]}f <sup>{sec(13)}s</sup>, {ls[59] * mult_mod:,}"
                                  f" at {ls[61]}f <sup>{sec(61)}s</sup>{temp})")
             if list_has(44) and ls[45] > 0:
                 abilities.append(f"{abil('Long Distance')} (Effective range:"
@@ -523,6 +525,11 @@ class StatsCommon:
                                  f" to dodge [[:Category:Behemoth Enemies|"
                                  f"Behemoth]] enemies' attacks for {ls[107]}f "
                                  f"<sub>{sec(107)} second{pl(107)}</sub>)")
+            if list_has(109):
+                abilities.append(f"[[Surge Attack#Counter-Surge|Counter-Surge]]"
+                                 f" (When hit by a [[Surge Attack]], creates"
+                                 f" its own Surge of equal level and"
+                                 f" spawn range)")
 
         elif mode == 1:
             if list_has(58):
@@ -644,6 +651,8 @@ class StatsCommon:
                                  f"Category:Behemoth Enemies|Behemoth]]"
                                  f" enemies' attacks for {ls[107]}f"
                                  f" ({ls[106]}%))")
+            if list_has(109):
+                abilities.append(f"[[Surge Attack#Counter-Surge|Counter-Surge]]")
 
         elif mode == 2:
             pro = "'''+''' "
@@ -771,6 +780,8 @@ class StatsCommon:
                 abilities.append(f"{abil('Soulstrike')}")
             if list_has(105):
                 abilities.append(f"{pro}{abil('Behemoth Slayer')}")
+            if list_has(109):
+                abilities.append(f"{pro}[[Surge Attack#Counter-Surge|Counter-Surge]]")
             if list_has(56):
                 abilities.append(f"{pro}Immune to Boss Shockwave")
 

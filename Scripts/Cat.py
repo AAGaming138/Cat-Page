@@ -10,11 +10,20 @@ class Cat:
 
     def __init__(self, ID: int):
         self.ID = ID
-        self.trueForm = True
+
         try:
             self.catNames = opencsv(DIR + "/catNames.tsv", header=True, delim="\t")
+            self.trueForm = not (self.catNames[ID][3] == '')
+            self.ultraForm = not (self.catNames[ID][4] == '')
+            if self.ultraForm:
+                self.form = 4
+            elif self.trueForm:
+                self.form = 3
+            else:
+                self.form = 2
+
             self.names = self.getNames(ID)
-            self.catData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[0:3]
+            self.catData = opencsv(f"{data_mines}/DataLocal/unit{ID + 1:03}.csv")[0:4 if self.ultraForm else 3]
             self.catRarity = opencsv(f"{data_mines}/DataLocal/unitbuy.csv")[ID]
             self.catRedPts = opencsv(f"{data_mines}/DataLocal/unitlevel.csv")[ID]
             self.catGacha = opencsv(f"{data_mines}/DataLocal/GatyaDataSetR1.csv")
@@ -23,6 +32,7 @@ class Cat:
             self.NPCosts = opencsv(f"{data_mines}/DataLocal/SkillLevel.csv")
         except (FileNotFoundError, IndexError):
             self.ID = -1
+
 
         try:
             self.isEgg = 'Ancient Egg' in self.names[1]
@@ -83,12 +93,15 @@ class Cat:
                 # FIXME fix this bit (obviously)
             return version
 
-        def getFruit():
+        def getFruit(ultra=False):
             """:return: catfruit information"""
             if int(self.catRarity[27]) == 0:
                 return False
             else:
-                fruits = self.catRarity[27:38]
+                if ultra and self.ultraForm:
+                    fruits = self.catRarity[38:49]
+                else:
+                    fruits = self.catRarity[27:38]
             return [int(i) for i in fruits]
 
         if self.catRarity[14][0:2] == '19' and self.catRarity[17] == '3':
@@ -96,17 +109,16 @@ class Cat:
         # Note: Work on this in case of outliers
 
         return rarities[r], int(self.catRarity[50]), int(self.catRarity[51]),\
-               -1, getMod(maxLevel), maxPlus, -1, getVersion(), getFruit()
+               -1, getMod(maxLevel), maxPlus, -1, getVersion(), getFruit(), \
+                getFruit(ultra=True)
         # rarity, max natural level, max plus level, -1, grow levels,
-        # formatted max plus, -1, version, catfruits
+        # formatted max plus, -1, version, catfruits, ultra catfruits
 
 
     def getNames(self, ID: int = -1):
         """Gets the names of unit and also whether unit has true form or not"""
         if ID == -1:
             ID = self.ID
-        if self.catNames[ID][3] == '':
-            self.trueForm = False
         self.names = self.catNames[ID]
         return self.names
         # [normal name, evolved name, true name, web name]
@@ -222,11 +234,13 @@ class Cat:
     def getDesc(self):
         """Gets the jp description and names for cat"""
         # this file contains both jp descriptions and names
-        desc = [self.catDesc[x][0] for x in range(3)]
-        for i in range(3):
+        desc = [[self.catDesc[x][0] for x in range(self.form)]]
+        temp = []
+        for i in range(self.form):
             try:
-                desc.append('<br>'.join(self.catDesc[i][1:4]))
+                temp.append('<br>'.join(self.catDesc[i][1:4]))
             except IndexError:
                 continue
+        desc.append(temp)
         return desc
-        # [name1, name2, name3, desc1, desc2, desc3]
+        # [[names], [descs]]

@@ -88,6 +88,7 @@ receive_item_popup	%s %d個
 receive_item_popup_xp	%s +%d
 receive_item_popup_chara	キャラクター「%s」
 receive_item_popup_chara_evolve	キャラクター「%s」第3形態
+receive_item_popup_chara_evolve2	キャラクター「%s」第4形態
 receive_item_popup_last	受け取りました。
 zombie_treasure	%@エリアをゾンビから守りました！<br>%@エリアのお宝発見率アップ！
 zombie_treasure01	このページの全ステージをゾンビから守りました！<br>このページの全ステージのお宝発見率アップ！
@@ -273,7 +274,7 @@ unlock_popup_message_67	<flash>クリアボーナス！</flash><br>ネコビタ�
 unlock_popup_message_68	<flash>宇宙編に新たな章が出現！</flash><br>タイトル画面の宇宙編を選択すれば<br>新しい章に挑戦できます！
 unlock_popup_message_69	<flash>宇宙編2章クリアおめでとう！</flash><br>次の章も追加予定なので<br>アップデートを待って下さいにゃ！
 unlock_popup_message_70	<flash>全クリアボーナス！</flash><br>EXキャラクター「%@」ゲット！<br>パワーアップ画面から取得可能です
-unlock_popup_message_71	<flash>「本能」が解放されました！</flash><br>パワーアップ画面から<br>第3形態へ進化した一部のキャラクターの能力を<br>解放/強化することができます
+unlock_popup_message_71	<flash>「本能」が解放されました！</flash><br>パワーアップ画面から<br>第3形態以上へ進化した一部のキャラクターの能力を<br>解放/強化することができます
 unlock_popup_message_72	<flash>「にゃんこクラブ」が解放されました！</flash><br>ネコ基地のメニューから<br>確認することができます
 unlock_popup_message_73	<flash>宇宙編に新たな章が出現！</flash><br>タイトル画面の宇宙編を選択すれば<br>新しい章に挑戦できます！
 unlock_popup_message_74	<flash>全クリアボーナス！</flash><br>アイテム「%@+%d」<br>ゲット！！
@@ -370,6 +371,7 @@ mission_receive_item	<color=255,255,0>報酬：%@ %d個</color>
 mission_receive_item_xp	<color=255,255,0>報酬：%@ +%d</color>
 mission_receive_item_chara	<color=255,255,0>報酬：キャラクター「%@」</color>
 mission_receive_item_chara_evolve	<color=255,255,0>報酬：キャラクター「%@」第3形態</color>
+mission_receive_item_chara_evolve2	<color=255,255,0>報酬：キャラクター「%@」第4形態</color>
 everyplay_mapname_E	EXステージ
 everyplay_mapname_N	レジェンドストーリー
 everyplay_mapname_S	スペシャルステージ
@@ -386,6 +388,8 @@ connecting	通信中...
 error	エラーが発生しました。
 gamecenter_noauth	Game Centerにログインしてください。
 purchase_unavailable	課金が無効になっています。設定の機能制限でApp内での購入をオンにしてください。
+purchase_unable_ios	App Storeでの購入ができません。App Storeのサインイン状態と通信環境をご確認ください。
+purchase_unable_android	Google Playでの購入ができません。Google Playのログイン状態と通信環境をご確認ください。
 purchase_failed	購入に失敗しました。
 purchase_verifying	購入手続き中です。
 disconnected	通信が切断されました。
@@ -653,6 +657,7 @@ item_possession	<color=178,178,178>（所持数：${itemNum1} → ${itemNum2}）
 drop_popup_chara_first	%@<br>%@「%@」<br><flash>パワーアップ画面から取得可能です。</flash>
 drop_popup_treasure	<color=255,255,0>お宝</color>　%@%@<br><flash>ゲット！！</flash>
 drop_popup_chara_third_evolve	%@<br>%@<br>「%@」第3形態<br><flash>合計レベル20以上で進化可能です</flash>
+drop_popup_chara_third_evolve2	%@<br>%@<br>「%@」第4形態<br><flash>合計レベル50以上で進化可能です</flash>
 drop_popup_chara_levelup1	%@<br>%@「%@」ゲット！<br>レベル%d → レベル%d+%d<br><flash>パワーアップしました！</flash>
 drop_popup_chara_levelup2	%@<br>%@「%@」ゲット！<br>レベル%d+%d → レベル%d+%d<br><flash>パワーアップしました！</flash>
 drop_popup_chara_levelmax1	%@<br>%@「%@」ゲット！<br>レベル%d → レベル%d+%d<br><flash>限界レベルに到達しました！</flash>
@@ -812,6 +817,7 @@ slot_SNS_000	#にゃんこスロット でネコカン%d個ゲットしたにゃ
 slot_SNS_001	#にゃんこスロット でネコカン%d個ゲットしたにゃ！<br><br>#8周年 でまたまた大サービス！ #にゃんこ大戦争
 slot_SNS_002	#にゃんこスロット でネコカン%d個ゲットしたにゃ！<br><br>#にゃんこ大戦争 #9と1_2周年
 slot_SNS_003	#にゃんこスロット でネコカン%d個ゲットしたにゃ！<br><br>#にゃんこ大戦争 #10と1_2周年
+slot_SNS_004	#にゃんこスロット でネコカン%d個ゲットしたにゃ！<br><br>#にゃんこ大戦争 #11周年 #わんわんアニバーサリー
 medal_txt1	%s獲得！
 medal_txt2	メダル%d個獲得！
 medal_unknown	「？？？」<br>？？？
@@ -824,6 +830,7 @@ talk_003_push	お願いの続き聞いてほしいにゃ
 talk_004_push	ネコ基地○×クイズの続きをやるにゃ～
 talk_005_push	にゃんこトークの続きをやるにゃ～
 talk_006_push	クイズの続きをやるにゃ～
+talk_007_push	「第3章 ネコの結婚」の続きをやるにゃ～
 DL_permission	最新のゲームデータをダウンロードします。<br>Wi-Fi環境など通信環境のよい場所でのダウンロードをおすすめします。<br>データサイズ：%s MB
 map_minutes	【やる気回復中にゃ…】<br>ネコビタンAを${itemNum}個使用しますか？<br>クリア可能回数が1回復します<br><color=255,255,0>クリア可能回数 0/${countNum}（あと${minutes1}分で1回復）</color>
 assault_warning	%d回ステージをクリアすると<br>次の挑戦までにしばらく時間がかかります
@@ -1029,6 +1036,7 @@ drop_info_multi	<color=0,0,0>このステージで<br>1回だけドロップす�
 drop_contents1	${itemName}+${itemNum}
 drop_contents2	キャラクター「${charaName}」
 drop_contents3	「${charaName}」第3形態
+drop_contents4	「${charaName}」第4形態
 status_acquire	すでに取得済みです
 status_unacquired	まだ取得していません
 boost_message	<color=255,0,255>スピードアップ</color><br><color=0,0,0>アイテム消費で速度ブースト発動<br>戦闘中アイテムをタップして<br>OFF・2倍速・3倍速に切り替え可能</color>

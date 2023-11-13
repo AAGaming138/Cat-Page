@@ -25,6 +25,7 @@ class CatPage(Cat):
             return
         self.stats = StatsCommon()
         self.tf = self.trueForm
+        self.uf = self.ultraForm
         self.r = self.getRarity()
         self.names = self.getNames(ID)
         self.ls = self.getData()
@@ -58,7 +59,7 @@ class CatPage(Cat):
             """Gets performance section"""
 
             abils = [self.stats.get_abilities(self.ls[k], 2) for k in
-                     range(3 if self.tf else 2)]
+                     range(self.form)]
             perf = list(dict.fromkeys([ability for form in
                                        abils for ability in form]))
 
@@ -133,16 +134,23 @@ class CatPage(Cat):
                  f"{' ([[:Category:Legend Cats|Legend]])' if self.isLegend else ''}\n" \
                  f"|Normal Form name = {self.names[1]}\n" \
                  f'|Evolved Form name = {self.names[2]}' \
-                 f'{f"{br}|True Form name = {self.names[3]}" if self.tf else ""}\n' \
+                 f'{f"{br}|True Form name = {self.names[3]}" if self.tf else ""}\n'\
+                 f'{f"|Ultra Form name = {self.names[4]}{br}" if self.uf else ""}'\
                  f"{image(1)}{image(2)}" \
-                 f"{f'{image(3)}' if self.tf else ''}" + "}}\n\n"
+                 f"{f'{image(3)}' if self.tf else ''}" \
+                 f"{f'{image(4)}' if self.uf else ''}" + "}}\n\n"
 
-        true_evol = f"\n\nEvolves into {bold(self.names[3])} at level 30 using " \
-                    f"{item} and XP." if self.r[8] else ''
+        tu_evol = f"\n\nEvolves into {bold(self.names[3])} at level 30 using " \
+                    f"{item} and XP.%s" if self.r[8] else ''
+
+        ultra_evol = f"\n\nEvolves into {bold(self.names[4])} at level 60" \
+                     f" using [[Catfruit]], " \
+                    f"[[Catfruit#Behemoth Stones|Behemoth Stones]]" \
+                     f" and XP." if self.uf else ''
 
         evol = f"==Evolution==\n" \
                f"Evolves into {bold(self.names[2])} at level 10." \
-               f"{true_evol}\n\n" \
+               f"{tu_evol.replace('%s', ultra_evol)}\n\n" \
                f"==Performance==\n" \
                f"{get_perf()}" + \
                     f"===Pros===\n*?\n\n" \
@@ -176,15 +184,21 @@ class CatPage(Cat):
                 (f'|Third Form name = {self.names[3]}\n'
                  f"{image('s', 3)}"
                  f'|cat_endesc3 = {self.en_desc[3]}\n' if self.tf else '') + \
-                f"|Normal Form name (JP) = {self.desc[0]} (?, ?)\n" \
-                f"|cat_jpscript1 = {self.desc[3]}\n" \
+               (f'|Fourth Form name = {self.names[4]}\n'
+                f"{image('u', 4)}"
+                f'|cat_endesc4 = {self.en_desc[3]}\n' if self.uf else '') + \
+               f"|Normal Form name (JP) = {self.desc[0][0]} (?, ?)\n" \
+                f"|cat_jpscript1 = {self.desc[1][0]}\n" \
                 f"|cat_jpdesc1 = ?\n" \
-                f"|Evolved Form name (JP) = {self.desc[1]} (?, ?)\n" \
-                f"|cat_jpscript2 = {self.desc[4]}\n" \
+                f"|Evolved Form name (JP) = {self.desc[0][1]} (?, ?)\n" \
+                f"|cat_jpscript2 = {self.desc[1][1]}\n" \
                 f"|cat_jpdesc2 = ?" + \
-                (f'{br}|Third Form name (JP) = {self.desc[2]} (?, ?)\n'
-                 f'|cat_jpscript3 = {self.desc[5]}\n'
-                 f'|cat_jpdesc3 = ?' if self.tf else '') + "\n}}\n\n"
+                (f'{br}|Third Form name (JP) = {self.desc[0][2]} (?, ?)\n'
+                 f'|cat_jpscript3 = {self.desc[1][2]}\n'
+                 f'|cat_jpdesc3 = ?' if self.tf else '') + \
+                (f'{br}|Fourth Form name (JP) = {self.desc[0][3]} (?, ?)\n'
+                 f'|cat_jpscript4 = {self.desc[1][3]}\n'
+                 f'|cat_jpdesc4 = ?' if self.uf else '') + "\n}}\n\n"
 
 
     def getCost(self) -> str:
@@ -255,23 +269,27 @@ class CatPage(Cat):
             :param a_ls: animation list, contains atk freq and backswing
             :param form: stat to target
             :return: multi hit stats
+
             """
+            # format: stat = [total attack damage,
+            #                 formatted animation,
+            #                 actual backswing]
             try:
                 if ls[59] != 0 and ls[60] == 0:
                     # for 2 hits
                     stat = [ls[3] + ls[59],
-                            f"{a_ls[form]-ls[13] - a_ls[form+3]}f + {ls[13]}f + "
-                            f"{ls[61]-ls[13]}f + {a_ls[form+3]-(ls[61]-ls[13])}f",
-                            a_ls[form + 3] - (ls[61] - ls[13])]
+                            f"{a_ls[0][form]-ls[13] - a_ls[1][form]}f + {ls[13]}f + "
+                            f"{ls[61]-ls[13]}f + {a_ls[1][form]-(ls[61]-ls[13])}f",
+                            a_ls[1][form] - (ls[61] - ls[13])]
 
                 elif ls[59] != 0 and ls[60] != 0:
                     # for 3 hits
                     stat = [ls[3] + ls[59] + ls[60],
-                            f"{a_ls[form] - ls[13] - a_ls[form + 3]}f +"
+                            f"{a_ls[0][form] - ls[13] - a_ls[1][form]}f +"
                             f" {ls[13]}f + {ls[61] - ls[13]}f"
                             f" + {ls[62] - ls[61]}f + "
-                            f"{a_ls[form + 3] - (ls[62] - ls[13])}f",
-                            a_ls[form + 3] - (ls[62] - ls[13])]
+                            f"{a_ls[1][form] - (ls[62] - ls[13])}f",
+                            a_ls[1][form] - (ls[62] - ls[13])]
 
                 else:
                     # for only 1 hit
@@ -281,18 +299,15 @@ class CatPage(Cat):
                 # for only 1 hit, try except because some files
                 # have long lists while others do not
                 stat = [ls[3],
-                        f"{a_ls[form] - ls[13] - a_ls[form + 3]}f + "
-                        f"{ls[13]}f + {a_ls[form + 3]}f",
-                        a_ls[form + 3]]
+                        f"{a_ls[0][form] - ls[13] - a_ls[1][form]}f + "
+                        f"{ls[13]}f + {a_ls[1][form]}f",
+                        a_ls[1][form]]
             return stat
-            # format: stat = [total attack damage,
-            #                 formatted animation,
-            #                 actual backswing]
 
         n = self.r[0] == "Normal" # is cat a Normal Cat
         max_lvl = self.r[1] + self.r[2]
         c = self.ls.copy()
-        atks = [mult(c[i], a, i) for i in range(3)]
+        atks = [mult(c[i], a, i) for i in range(self.form)]
 
         def calcStats(initial: int, level: int):
             """Calculates stats at a certain level given initial"""
@@ -343,7 +358,7 @@ class CatPage(Cat):
             def s(x: int, y: int):
                 """Returns appropriate value corresponding to key"""
                 if key == 4: # atk freq
-                    return a[y + 1]
+                    return a[0][y + 1]
                 elif key == 6: # costs
                     return commarise((x / 2 + 1) * lis[y + 1][key])
                 elif key == 7: # recharge time
@@ -356,7 +371,7 @@ class CatPage(Cat):
                 elif key == 14:
                     return commarise(calcStats(atks[y + 1][0], max_lvl))
                 elif key == 15:
-                    return f'{round(calcStats(atks[y+1][0],max_lvl)/a[1]*30):,}'
+                    return f'{round(calcStats(atks[y+1][0],max_lvl)/a[0][y+1]*30):,}'
                 else:
                     return commarise(lis[y + 1][key])
 
@@ -364,27 +379,27 @@ class CatPage(Cat):
                 """Conditions to check for repetition"""
                 # A bit more complex than I initially thought but oh well
                 return (
-                        (key == 4 and a[k] == a[k + 1]) or
+                        (key == 4 and a[0][k] == a[0][k + 1]) or
                         (key == 13 and lis[k][0] == lis[k + 1][0]) or
                         (key in {14, 15} and atks[k][0] == atks[k + 1][0] and
-                         (key != 15 or a[k] == a[k + 1])) or
+                         (key != 15 or a[0][k] == a[0][k + 1])) or
                         (key not in {4, 13, 14, 15} and
                          lis[k][key] == lis[k + 1][key])
                 )
 
             return ["" if conditions(j) else
-                    ''.join([f"\n|{stats[key][i].replace('%', 'Evolved' if j == 0 else 'True')}"
-                             f" = {s(i, j)}" for i in range(3 if key == 6 else 1)]) for j in range(2)]
+                    ''.join([f"\n|{stats[key][i].replace('%', ['Evolved', 'True', 'Ultra'][j])}"
+                             f" = {s(i, j)}" for i in range(3 if key == 6 else 1)]) for j in range(self.form - 1)]
 
 
         repeated = [comparison(c, i) for i in range(16)]
         anim = comparison(atks, 1, other="an")
         # for attack animation
 
-        dps_list = [[math.floor(atks[i][0]/(a[i]/30))] for i in range(3)]
+        dps_list = [[math.floor(atks[i][0]/(a[0][i]/30))] for i in range(self.form)]
         # list of initial DPS
         preDPS_list = [[f'{"{{"}#expr:{atks[j][0]}/'
-                        f'({a[j]}/30){"}}"}'] for j in range(3)]
+                        f'({a[0][j]}/30){"}}"}'] for j in range(self.form)]
         # list of formatted precise DPS
 
         repeatedDPS = comparison(dps_list, 0, other="d")
@@ -400,30 +415,35 @@ class CatPage(Cat):
 
         statslevels = "" if not n else f"\n|1st stats Level = {form_max}" + \
                                        f"\n|2nd stats Level = {form_max}" + \
-            (f"\n|3rd stats Level = {form_max}" if self.tf else "")
+            (f"\n|3rd stats Level = {form_max}" if self.tf else "") + \
+            (f"\n|4th stats Level = {form_max}" if self.uf else "")
 
 
-        for i in range(3 if self.tf else 2):
-            ind = ['normal', 'evolved', 'third'][i]
+        for i in range(self.form):
+            ind = ['normal', 'evolved', 'third', 'fourth'][i]
 
-            c[i][4] = a[i]
+            c[i][4] = a[0][i]
             c[i][7] = f"{c[i][7]} ~ " \
                          f"{round(c[i][7] - 8.8, 2) if c[i][7] > 10.8 else 2}" \
                          f" seconds"
             c[i][12] = "Single Target" if c[i][12] == 0 else "Area Attack"
 
+            if n: lvl = max_lvl
+            elif i == 3: lvl = 60
+            else: lvl = 30
+
             DPS = round((atks[i][0] if i == 0 else
-                         calcStats(atks[i][0], max_lvl if n else 30))
-                        / (a[i] / 30), 2)
-            atk = f"{atks[i][0] if i == 0 else calcStats(atks[i][0], max_lvl if n else 30):,}"
-            hp = f"{c[i][0] if i == 0 else calcStats(c[i][0], max_lvl if n else 30):,}"
+                         calcStats(atks[i][0], lvl))
+                        / (a[0][i] / 30), 2)
+            atk = f"{atks[i][0] if i == 0 else calcStats(atks[i][0], lvl):,}"
+            hp = f"{c[i][0] if i == 0 else calcStats(c[i][0], lvl):,}"
 
             table_ls.append(f'|{ind.capitalize()} Form name = {self.names[i + 1]}\n'
                 f'|Hp {ind} = {hp} HP\n'
                 f'|Atk Power {ind} = {atk} damage<br>({DPS:,} DPS)\n'
                 f'|Atk Range {ind} = {c[i][5]:,}\n'
                 f'|Attack Frequency {ind} = '
-                            f'{a[i]:,}f <sub>{round(a[i] / 30, 2)} seconds</sub>\n'
+                            f'{a[0][i]:,}f <sub>{round(a[0][i] / 30, 2)} seconds</sub>\n'
                 f'|Movement Speed {ind} = {c[i][2]}\n'
                 f'|Knockback {ind} = {c[i][1]} time{"s" if c[i][1] > 1 else ""}\n'
                 f'|Attack Animation {ind} = '
@@ -431,13 +451,13 @@ class CatPage(Cat):
                 f'<br>({atks[i][2]}f <sup>'
                             f'{round(atks[i][2] / 30, 2)}s</sup> backswing)\n'
                 f'|Recharging Time {ind} = {c[i][7]}\n' +
-                (f"|Hp normal Lv.MAX = {calcStats(c[i][0], max_lvl if n else 30):,} HP\n"
+                (f"|Hp normal Lv.MAX = {calcStats(c[i][0], lvl):,} HP\n"
                  f"|Atk Power normal Lv.MAX = "
-                 f"{calcStats(atks[0][0], max_lvl if n else 30):,} damage<br>"
-                 f"({round(calcStats(atks[0][0], max_lvl if n else 30) / (a[i] / 30), 2):,}"
+                 f"{calcStats(atks[0][0], lvl):,} damage<br>"
+                 f"({round(calcStats(atks[0][0], lvl) / (a[0][i] / 30), 2):,}"
                  f" DPS){br}" if i == 0 else "") +
                 f'|Attack type {ind} = {c[i][12]}\n'
-                f'|Special Ability {ind} = {self.stats.get_abilities(c[i], 0)}')
+                f'|Special Ability {ind} = {self.stats.get_abilities(c[i], 0, i < 3)}')
 
         tables.append(f"==Stats==\n"
                       f"<tabber>\n"
@@ -454,18 +474,18 @@ class CatPage(Cat):
             f'|HP Initial Normal = '
                       f'{c[0][0]:,}\n'
             f'|AP Initial Normal = {atks[0][0]:,}\n'
-            f'|DPS Initial Normal = {round(atks[0][0] / a[0] * 30)}\n'
+            f'|DPS Initial Normal = {round(atks[0][0] / a[0][0] * 30)}\n'
             f'|DPS Initial Precise Normal = '
-                      f'{"{{"}#expr:{(atks[0][0])}/({a[0]}/30){"}}"}\n'
+                      f'{"{{"}#expr:{(atks[0][0])}/({a[0][0]}/30){"}}"}\n'
             f'|HP Normal lvl 10 = {calcStats(c[0][0], 10):,}\n'
             f'|AP Normal lvl 10 = {calcStats(atks[0][0], 10):,}\n'
             f'|DPS Normal lvl 10 = '
-                      f'{round(calcStats(atks[0][0], 10) / a[0] * 30):,}\n'
+                      f'{round(calcStats(atks[0][0], 10) / a[0][0] * 30):,}\n'
             f'|HP Normal lvl.MAX = {calcStats(c[0][0], max_lvl):,}\n'
             f'|AP Normal lvl.MAX = {calcStats(atks[0][0], max_lvl):,}\n'
             f'|DPS Normal lvl.MAX = '
-                      f'{round(calcStats(atks[0][0], max_lvl) / a[0] * 30):,}\n'
-            f'|Attack Frequency Normal = {a[0]}\n'
+                      f'{round(calcStats(atks[0][0], max_lvl) / a[0][0] * 30):,}\n'
+            f'|Attack Frequency Normal = {a[0][0]}\n'
             f'|Attack Animation Normal = {atks[0][1]}\n'
             f'|Attack Range Normal = {c[0][5]:,}\n'
             f'|Target Normal = {c[0][12]}\n'
@@ -481,27 +501,40 @@ class CatPage(Cat):
             f'|HP Evolved lvl 20 = {calcStats(c[1][0], 20):,}\n'
             f'|AP Evolved lvl 20 = {calcStats(atks[1][0], 20):,}\n'
             f'|DPS Evolved lvl 20 = '
-                      f'{round(calcStats(atks[1][0], 20) / a[1] * 30):,}'
+                      f'{round(calcStats(atks[1][0], 20) / a[0][1] * 30):,}'
             f'{repeated[13][0]}{repeated[14][0]}{repeated[15][0]}'
             f'{repeated[4][0]}{anim[0]}{repeated[5][0]}'
             f'{repeated[12][0]}{repeated[7][0]}'
             f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
             f'|Special Ability Evolved = {self.stats.get_abilities(c[1], 1)}\n'+\
-            (f'{"}}"}\n{left}/tabber>' if not self.tf else
+            (f'' if not self.tf else
             f'|True Form Name = {self.names[3]}{repeated[0][1]}'
             f'{repeated[3][1]}{repeatedDPS[1]}{repeatedpreDPS[1]}\n'
             f'|HP True lvl 30 = {calcStats(c[2][0], 30):,}\n'
             f'|AP True lvl 30 = {calcStats(atks[2][0], 30):,}\n'
             f'|DPS True lvl 30 = '
-            f'{round(calcStats(atks[2][0], 30) / a[2] * 30):,}'
+            f'{round(calcStats(atks[2][0], 30) / a[0][2] * 30):,}'
             f'{repeated[13][1]}{repeated[14][1]}{repeated[15][1]}'
             f'{repeated[4][1]}{anim[1]}{repeated[5][1]}'
             f'{repeated[12][1]}{repeated[7][1]}{repeated[1][1]}'
             f'{repeated[2][1]}{repeated[6][1]}\n'
-            f'|Special Ability True = {self.stats.get_abilities(c[2], 1)}\n'
-            f'{"}}"}\n{left}/tabber>'))
+            f'|Special Ability True = {self.stats.get_abilities(c[2], 1)}\n') + \
+                      (f'' if not self.uf else
+                      f'|Ultra Form Name = {self.names[4]}{repeated[0][2]}'
+                      f'{repeated[3][2]}{repeatedDPS[2]}{repeatedpreDPS[2]}\n'
+                      f'|HP Ultra lvl 60 = {calcStats(c[3][0], 60):,}\n'
+                      f'|AP Ultra lvl 60 = {calcStats(atks[3][0], 60):,}\n'
+                      f'|DPS Ultra lvl 60 = '
+                      f'{round(calcStats(atks[3][0], 60) / a[0][3] * 30):,}'
+                      f'{repeated[13][2]}{repeated[14][2]}{repeated[15][2]}'
+                      f'{repeated[4][2]}{anim[2]}{repeated[5][2]}'
+                      f'{repeated[12][2]}{repeated[7][2]}{repeated[1][2]}'
+                      f'{repeated[2][2]}{repeated[6][2]}\n'
+                      f'|Special Ability Ultra = '
+                      f'{self.stats.get_abilities(c[3], 1)}\n')
+                      )
 
-        return round2('\n\n'.join(tables))
+        return round2('\n\n'.join(tables) + f'{"}}"}\n{left}/tabber>')
 
 
     def getCatfruit(self) -> str:
@@ -509,6 +542,7 @@ class CatPage(Cat):
         Method that writes the catfruit section
         """
         cfList = self.r[8]
+        ufList = self.r[9]
         if not cfList: return ''
         else:
             catfruits = {
@@ -543,19 +577,28 @@ class CatPage(Cat):
             184:    "RainbowStone"
             }
 
-        fruits = [catfruits[cfList[i]] for i in
-                  range(len(cfList)) if cfList[i] != 0 and i % 2 == 1]
-        # list of catfruits
-        quant = [cfList[j] for j in
-                 range(len(cfList)) if cfList[j] != 0 and j % 2 == 0]
-        # list of xp + quantities of catfruit
-        catfruit = [f"|Catfruit{k + 1} = {fruits[k]}" for k in
-                    range(len(fruits))]
-        quantity = [f"|Quantity Catfruit{l + 1} = x{quant[l + 1]}" for l in
-                    range(len(fruits))]
+        def get_cftemplate(ls):
+            fruits = [catfruits[ls[i]] for i in
+                      range(len(ls)) if ls[i] != 0 and i % 2 == 1]
+            # list of catfruits
+            quant = [ls[j] for j in
+                     range(len(ls)) if ls[j] != 0 and j % 2 == 0]
+            # list of xp + quantities of catfruit
+            catfruit = [f"|Catfruit{k + 1} = {fruits[k]}" for k in
+                        range(len(fruits))]
+            quantity = [f"|Quantity Catfruit{l + 1} = x{quant[l + 1]}" for l in
+                        range(len(fruits))]
+            return quant, catfruit, quantity
+
         return "\n\n==Catfruit Evolution==\n{{Catfruit Evolution\n" +\
-               '\n'.join(catfruit) + '\n' \
-               + '\n'.join(quantity) + f"\n|Quantity XP = {quant[0]:,}" + "\n}}"
+               '\n'.join(get_cftemplate(cfList)[1]) + '\n' \
+               + '\n'.join(get_cftemplate(cfList)[2]) + \
+               f"\n|Quantity XP = {get_cftemplate(cfList)[0][0]:,}" +\
+               "\n}}" + ("\n\n===Ultra Form===\n{{Catfruit Evolution\n" +
+               '\n'.join(get_cftemplate(ufList)[1]) + '\n'
+               + '\n'.join(get_cftemplate(ufList)[2])
+               + f"\n|Quantity XP = {get_cftemplate(ufList)[0][0]:,}"
+                + "\n}}") if ufList else ""
 
 
     @staticmethod
@@ -616,7 +659,7 @@ class CatPage(Cat):
         """
         Method that writes the categories
         """
-        l = [[i for i in self.ls[j]] for j in range(3)]
+        l = [[i for i in self.ls[j]] for j in range(4 if self.uf else 3)]
         # mutable piece of f****** s*** ***k
         for ls in l:
             if type(ls[-1]) != int: ls.pop(-1)
@@ -633,7 +676,7 @@ class CatPage(Cat):
             except IndexError:
                 continue
         lis = [[i for i in range(len(l[j])) if
-                l[j][i] not in [-1, 0]] for j in range(3)]
+                l[j][i] not in [-1, 0]] for j in range(4 if self.uf else 3)]
         # lis is a list of lists of indices where data is not 0
         # if there is only a single line,
         # there is no need for another list comprehension
@@ -708,7 +751,8 @@ class CatPage(Cat):
             95:     "Shield Piercing Cats",
             97:     "Colossus Slayer Cats",
             98:     "Soulstrike Cats",
-            105:    "Behemoth Slayer Cats"
+            105:    "Behemoth Slayer Cats",
+            109:    "Counter Surge Cats"
         }
         if 35 in data and 36 not in data: abilities[35] = "Wave Attack Cats"
         if 86 in data and 87 not in data: abilities[86] = "Surge Attack Cats"

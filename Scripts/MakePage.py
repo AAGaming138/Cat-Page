@@ -71,10 +71,13 @@ class MakeCatPage(MakePage):
             else:
                 return self.stats.get_atkanim(self.ID, k, self.cats[num])[ind]
 
-        self.anims = [anim('f', 0, 1), anim('c', 1, 1), anim('s', 2, 1),
-                      anim('f', 0, 0), anim('c', 1, 0), anim('s', 2, 0)]
+        self.anims = [[anim('f', 0, 1), anim('c', 1, 1), anim('s', 2, 1),
+                       anim('u', 3, 1) if self.cat_page.uf else -1],
+                      [anim('f', 0, 0), anim('c', 1, 0), anim('s', 2, 0),
+                       anim('u', 3, 0) if self.cat_page.uf else -1]
+                      ]
 
-        # 0-2 attack frequency, 3-5 backswing
+        # attack frequency, backswing
 
 
     def get_page(self) -> str:

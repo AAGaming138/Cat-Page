@@ -40,7 +40,7 @@ class WikiReader:
         if "Cat (Normal Cat)" in self.html:
             # write content into catNames.tsv
             with open(DIR + "/catNames.tsv", 'w', encoding='utf8') as f:
-                f.write(self.html + "\nN/A\tN/A\t\t\tN/A\tN/A")
+                f.write(self.html + "\nN/A\tN/A\t\t\t\tN/A\tN/A")
 
         elif self.html == "Unable to open URL! (No connection?)":
             return self.html

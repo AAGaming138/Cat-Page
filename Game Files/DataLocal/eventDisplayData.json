@@ -312,7 +312,7 @@
     },
     "2166": {
       "eventWeight": 2,
-      "priority": 3,
+      "priority": 2,
       "FusumaOpenOffsetX": 0,
       "FusumaOpenOffsetY": 458,
       "FusumaImgPNG": "img009_C_013.png",
@@ -323,7 +323,7 @@
     },
     "2169": {
       "eventWeight": 1,
-      "priority": 3,
+      "priority": 2,
       "FusumaOpenOffsetX": 0,
       "FusumaOpenOffsetY": 458,
       "FusumaImgPNG": "img009_C_013.png",
@@ -993,7 +993,7 @@
     },
     "1260": {
       "eventWeight": 1,
-      "priority": 1,
+      "priority": 3,
       "FusumaOpenOffsetX": 0,
       "FusumaOpenOffsetY": 458,
       "FusumaImgPNG": "img009_S_260.png",
@@ -1095,7 +1095,7 @@
     },
     "1320": {
       "eventWeight": 1,
-      "priority": 1,
+      "priority": 3,
       "FusumaOpenOffsetX": 0,
       "FusumaOpenOffsetY": 458,
       "FusumaImgPNG": "img009_S_320.png",
@@ -1346,6 +1346,46 @@
       "FusumaOpenOffsetY": 458,
       "FusumaImgPNG": "img009_S_154.png",
       "FusumaImgIMGCUT": "img009_Event00.imgcut"
+    },
+    "24062": {
+      "eventWeight": 1,
+      "priority": 1,
+      "FusumaSE": [
+        -1
+      ],
+      "FusumaOpenOffsetX": 0,
+      "FusumaOpenOffsetY": 458,
+      "FusumaImgPNG": "img009_A_062.png",
+      "FusumaImgIMGCUT": "img009_Event00.imgcut",
+      "NekoBageImg": "A_062",
+      "TitleImgLogo": "_A_062",
+      "PercentTitle": 100,
+      "SelectStageImg": "A_062",
+      "SelectStageImgReverse": 1
+    },
+    "1360": {
+      "FusumaOpenOffsetX": 0,
+      "FusumaOpenOffsetY": 458,
+      "SelectStageImg": "A_062",
+      "SelectStageImgReverse": 1
+    },
+    "1361": {
+      "FusumaOpenOffsetX": 0,
+      "FusumaOpenOffsetY": 458,
+      "SelectStageImg": "A_062",
+      "SelectStageImgReverse": 1
+    },
+    "1362": {
+      "FusumaOpenOffsetX": 0,
+      "FusumaOpenOffsetY": 458,
+      "SelectStageImg": "A_062",
+      "SelectStageImgReverse": 1
+    },
+    "1363": {
+      "FusumaOpenOffsetX": 0,
+      "FusumaOpenOffsetY": 458,
+      "SelectStageImg": "A_062",
+      "SelectStageImgReverse": 1
     }
   }
 }
