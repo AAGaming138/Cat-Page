@@ -1,0 +1,799 @@
+<div class="statcalc hidden">
+<!----------Calculator table------------->
+{|class="mw-collapsed hidden article-table mw-collapsible stat_calculator" data-expandtext="OFF" data-collapsetext="ON" style="width:100%;text-align:center"
+!colspan="4"|Stats Modifier
+|-
+|
+{|style="width:100%"
+|{{#if:{{{Max Plus Level|}}}||colspan="2"}}|Natural Level
+|class="parentnaturallevel inputparent inputfield"|{{{Max Natural Level|50}}}
+|{{#if:{{{Max Plus Level|}}}||class="hideme"}}|Plus Level
+|{{#if:{{{Max Plus Level|}}}|class="parentpluslevel inputparent inputfield"|class="parentpluslevel inputparent hideme"}}|{{{Max Plus Level|0}}}
+|-
+|Health Treasure
+|class="treasurehp inputfield"|{{{Treasure Health|300}}}
+|Attack Treasure
+|class="treasureattack inputfield"|{{{Treasure Attack|300}}}
+|-
+|colspan="2"|Decimal Places '''[DPS]'''
+|colspan="2" class="inputfield fractionlimit"|0
+|}
+|- {{#if:{{{Show Advanced|}}}||class="hideme"}}
+|
+{|class="mw-collapsed article-table mw-collapsible" data-expandtext="OFF" data-collapsetext="ON" style="width:100%"
+!colspan="10"|Advanced Options
+|-
+|colspan="4"|Health (%)
+|class="globalmodhp inputfield"|0
+|colspan="4"|Attack (%)
+|class="globalmodattack inputfield"|0
+|-
+|colspan="4"|100% Health Treasure Effect (%)
+|colspan="1" class="treasurebuffhp inputfield"|{{{Treasure Health Effect|50}}}
+|colspan="4"|100% Attack Treasure Effect (%)
+|colspan="1" class="treasurebuffattack inputfield"|{{{Treasure Attack Effect|50}}}
+|- {{#if:{{{Base Grow Modifier|}}}||class="hideme"}}
+|colspan="7"|Base Stats Growth (%)
+|colspan="3" class="inputfield basegrow"|{{{Base Grow Modifier|20}}}
+|- {{#if:{{{Grow Mod 1|}}}||class="hideme"}}
+|colspan="3" align="center"|1st Reduced Growth
+|Reduction (%)
+|colspan="3" class="inputfield growmod1"|{{{Grow Mod 1|50}}}
+|Level
+|colspan="2" class="inputfield growlevel1"|{{{Grow Level 1|60}}}
+|- {{#if:{{{Grow Mod 2|}}}||class="hideme"}}
+|colspan="3" align="center"|2nd Reduced Growth
+|Reduction (%)
+|colspan="3" class="inputfield growmod2"|{{{Grow Mod 2|50}}}
+|Level
+|colspan="2" class="inputfield growlevel2"|{{{Grow Level 2|80}}}
+|- {{#if:{{{Grow Mod 3|}}}||class="hideme"}}
+|colspan="3" align="center"|3rd Reduced Growth
+|Reduction (%)
+|colspan="3" class="inputfield growmod3"|{{{Grow Mod 3|0}}}
+|Level
+|colspan="2" class="inputfield growlevel3"|{{{Grow Level 3|999}}}
+|}
+|}
+{|class="stats-table" bgcolor="black" style="border-radius:4px;width:100%;text-align:center"
+|-
+|<!----------Normal Table------------->
+{|class="stat-container" style="width:100%" cellspacing="1"
+|-
+|colspan="10" style="padding:0"|
+{|style="width:100%;text-align:center;color:white;font-size:16px" cellspacing="0"
+|- class="bg-orange2"
+!style="width:22%;border-right:2px solid black"|Normal Form
+!align="left" style="padding-left:2%"|{{{Basic Form Name|???}}}
+|}
+|- class="hidden"
+|class="hideme" style="display:none !important"|
+|class="hidden bg-creamy-yellow" colspan="10"|
+{|style="width:100%"
+|Effects/Talents
+|Health (%)
+|class="inputfield individualmodhp"|0
+|Attack (%)
+|class="inputfield individualmodattack"|0
+|}
+|- class="bg-light3"
+!colspan="2"|Level
+!HP
+!AP
+!DPS
+!colspan="2"|Attack Cycle
+|class="hidden attackspeed" style="display:none !important"|{{{Attack Frequency Normal|0}}}
+|colspan="3"|{{{Attack Frequency Normal|0}}}f <sup>{{#expr:{{{Attack Frequency Normal|0}}}/30 round 2}} {{#ifexpr:{{{Attack Frequency Normal|0}}} = 30|second|seconds}}</sup>
+|- class="bg-light3"
+|colspan="2" class="hideme" style="padding:0 4px"|'''Initial'''
+|colspan="2" class="hidden"|
+{|style="margin:0 auto"
+|class="naturallevel inputfield" {{#if:{{{Max Plus Level|}}}|style="padding:0 2px"|style="padding:0 4px"}}|{{{Max Natural Level|50}}}
+|{{#if:{{{Max Plus Level|}}}||class="hideme"}}|+
+|{{#if:{{{Max Plus Level|}}}|class="pluslevel inputfield"|class="pluslevel hideme"}} style="padding:0 2px"|{{{Max Plus Level|0}}}
+|}
+|class="hidden hp-initial numberonly" style="display:none"|{{{HP Initial Normal|?}}}
+|class="hideme numberonly"|{{{HP Initial Normal|?}}}
+|class="hidden hp-calculated numberonly"|{{{HP Initial Normal|?}}}
+|class="hidden ap-initial numberonly" style="display:none"|{{{AP Initial Normal|?}}}
+|class="hideme numberonly"|{{string|formatnum|{{{AP Initial Normal|?}}}}}
+|class="hidden ap-calculated numberonly"|{{string|formatnum|{{{AP Initial Normal|?}}}}}
+|class="hidden dps-initial numberonly" style="display:none"|{{{DPS Initial Precise Normal|{{{DPS Initial Normal|?}}}}}}
+|class="hideme numberonly"|{{string|formatnum|{{{DPS Initial Normal|?}}}}}
+|class="hidden dps-calculated numberonly"|{{string|formatnum|{{{DPS Initial Normal|{{{DPS Initial Precise Normal|?}}}}}}}}
+!colspan="2"|Attack Animation
+|colspan="3"|{{{Attack Animation Normal|?}}}
+|- class="bg-light3"
+|colspan="2"|10
+|{{{HP Normal lvl 10|?}}}
+|{{{AP Normal lvl 10|?}}}
+|{{{DPS Normal lvl 10|?}}}
+!colspan="2"|Attack Range
+|colspan="3"|{{{Attack Range Normal|?}}}
+|- class="bg-light3"
+|colspan="2"|{{{Level MAX Format|{{{Max Natural Level|50}}}<span {{#if:{{{Max Plus Level|}}}||class="hideme"}}>+{{{Max Plus Level|0}}}</span>}}}
+|{{{HP Normal lvl.MAX|?}}}
+|{{{AP Normal lvl.MAX|?}}}
+|{{{DPS Normal lvl.MAX|?}}}
+!colspan="2"|Attack Type
+|colspan="3"|{{{Target Normal|Single}}}
+|-
+|colspan="10" style="width:100%;padding:0"|
+{|style="width:100%" cellspacing="0"
+|- class="bg-light3"
+!style="border:solid #000;border-width:0 1px 0 0"|Recharge Time
+|colspan="3"|{{{Recharge Time Normal|?}}}
+!style="border:solid #000;border-width:0 1px"|Knockback
+|colspan="2"|{{{Knockback Normal|0}}} {{#ifexpr:{{{Knockback Normal|0}}} = 1|time|times}}
+!style="border:solid #000;border-width:0 1px"|Movement Speed
+|colspan="2"|{{{Movement Speed Normal|?}}}
+|}
+|- class="bg-light3"
+!colspan="3"|Cost (¢)
+!colspan="7"|Abilities
+|- class="bg-light3"
+!Ch. 1
+!Ch. 2
+!Ch. 3
+|rowspan="2" colspan="7"|
+<span {{#if:{{{Normal Hit 2|}}}||class="hideme"}}>Multi Hit (<span class="multihit1 multihit">{{{Normal Hit 1|{{{AP Initial Normal|?}}}}}}</span><span class="multihit1c">{{{Normal Hit 1|{{{AP Initial Normal|?}}}}}}</span>{{{Normal Hit 1 Note}}} + <span class="multihit2 multihit">{{{Normal Hit 2|0}}}</span><span class="multihit2c">{{{Normal Hit 2|0}}}</span>{{{Normal Hit 2 Note}}}{{#if:{{{Normal Hit 3|}}}|&nbsp;+ <span class="multihit3 multihit">{{{Normal Hit 3|0}}}</span><span class="multihit3c">{{{Normal Hit 3|0}}}</span>{{{Normal Hit 3 Note}}}|}})<br></span>{{{Special Ability Normal|None}}}
+|- class="bg-light3"
+|{{{Ch1 Normal|?}}}
+|{{{Ch2 Normal|?}}}
+|{{{Ch3 Normal|?}}}
+|- class="bg-light3"
+|}
+|- {{#if:{{{Evolved Form Name|}}}||class="hideme"}}
+|<!----------Evolved Table------------->
+{|class="stat-container" style="width:100%" cellspacing="1"
+|-
+|colspan="10" style="padding:0"|
+{|style="width:100%;text-align:center;color:white;font-size:16px" cellspacing="0"
+|- class="bg-orange2"
+!style="width:22%;border-right:2px solid black"|Evolved Form
+!align="left" style="padding-left:2%"|{{{Evolved Form Name|???}}}
+|}
+|- class="hidden"
+|class="hideme" style="display:none !important"|
+|class="hidden bg-creamy-yellow" colspan="10"|
+{|style="width:100%"
+|Effects/Talents
+|Health (%)
+|class="inputfield individualmodhp"|0
+|Attack (%)
+|class="inputfield individualmodattack"|0
+|}
+|- class="bg-light3"
+!colspan="2"|Level
+!HP
+!AP
+!DPS
+!colspan="2"|Attack Cycle
+|class="hidden attackspeed" style="display:none !important"|{{{Attack Frequency Evolved|{{{Attack Frequency Normal|0}}}}}}
+|colspan="3"|{{{Attack Frequency Evolved|{{{Attack Frequency Normal|0}}}}}}f <sup>{{#expr:{{{Attack Frequency Evolved|{{{Attack Frequency Normal|0}}}}}}/30 round 2}} {{#ifexpr:{{{Attack Frequency Evolved|{{{Attack Frequency Normal|0}}}}}} = 30|second|seconds}}</sup>
+|- class="bg-light3"
+|colspan="2" class="hideme" style="padding:0 4px"|'''Initial'''
+|colspan="2" class="hidden"|
+{|style="margin:0 auto"
+|class="naturallevel inputfield" {{#if:{{{Max Plus Level|}}}|style="padding:0 2px"| style="padding:0 4px"}}|{{{Max Natural Level|50}}}
+|{{#if:{{{Max Plus Level|}}}||class="hideme"}}|+
+|{{#if:{{{Max Plus Level|}}}|class="pluslevel inputfield"|class="pluslevel hideme"}} style="padding:0 2px"|{{{Max Plus Level|0}}}
+|}
+|class="hidden hp-initial numberonly" style="display:none"|{{{HP Initial Evolved|{{{HP Initial Normal|?}}}}}}
+|class="hideme numberonly"|{{{HP Initial Evolved|{{{HP Initial Normal|?}}}}}}
+|class="hidden hp-calculated numberonly"|{{{HP Initial Evolved|{{{HP Initial Normal|?}}}}}}
+|class="hidden ap-initial numberonly" style="display:none"|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}
+|class="hideme numberonly"|{{string|formatnum|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}}}
+|class="hidden ap-calculated numberonly"|{{string|formatnum|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}}}
+|class="hidden dps-initial numberonly" style="display:none"|{{{DPS Initial Precise Evolved|{{{DPS Initial Evolved|{{{DPS Initial Precise Normal|{{{DPS Initial Normal|?}}}}}}}}}}}}
+|class="hideme numberonly"|{{string|formatnum|{{{DPS Initial Evolved|{{{DPS Initial Normal|?}}}}}}}}
+|class="hidden dps-calculated numberonly"|{{string|formatnum|{{{DPS Initial Evolved|{{{DPS Initial Precise Evolved|{{{DPS Initial Normal|{{{DPS Initial Precise Normal|?}}}}}}}}}}}}}}
+!colspan="2"|Attack Animation
+|colspan="3"|{{{Attack Animation Evolved|{{{Attack Animation Normal|?}}}}}}
+|- class="bg-light3"
+|colspan="2"|20
+|{{{HP Evolved lvl 20|?}}}
+|{{{AP Evolved lvl 20|?}}}
+|{{{DPS Evolved lvl 20|?}}}
+!colspan="2"|Attack Range
+|colspan="3"|{{{Attack Range Evolved|{{{Attack Range Normal|?}}}}}}
+|- class="bg-light3"
+|colspan="2"|{{{Level MAX Format|{{{Max Natural Level|50}}}<span {{#if:{{{Max Plus Level|}}}||class="hideme"}}>+{{{Max Plus Level|0}}}</span>}}}
+|{{{HP Evolved lvl.MAX|{{{HP Normal lvl.MAX|?}}}}}}
+|{{{AP Evolved lvl.MAX|{{{AP Normal lvl.MAX|?}}}}}}
+|{{{DPS Evolved lvl.MAX|{{{DPS Normal lvl.MAX|?}}}}}}
+!colspan="2"|Attack Type
+|colspan="3"|{{{Target Evolved|{{{Target Normal|Single}}}}}}
+|-
+|colspan="10" style="width:100%;padding:0"|
+{|style="width:100%" cellspacing="0"
+|- class="bg-light3"
+!style="border:solid #000;border-width:0 1px 0 0"|Recharge Time
+|colspan="3"|{{{Recharge Time Evolved|{{{Recharge Time Normal|?}}}}}}
+!style="border:solid #000;border-width:0 1px"|Knockback
+|colspan="2"|{{{Knockback Evolved|{{{Knockback Normal|0}}}}}} {{#ifexpr:{{{Knockback Evolved|{{{Knockback Normal|0}}}}}} = 1|time|times}}
+!style="border:solid #000;border-width:0 1px"|Movement Speed
+|colspan="2"|{{{Movement Speed Evolved|{{{Movement Speed Normal|?}}}}}}
+|}
+|- class="bg-light3"
+!colspan="3"|Cost (¢)
+!colspan="7"|Abilities
+|- class="bg-light3"
+!Ch. 1
+!Ch. 2
+!Ch. 3
+|rowspan="2" colspan="7"|
+<span {{#if:{{{Evolved Hit 2|}}}||class="hideme"}}>Multi Hit (<span class="multihit1 multihit">{{{Evolved Hit 1|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}}}}</span><span class="multihit1c">{{{Evolved Hit 1|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}}}}</span>{{{Evolved Hit 1 Note}}} + <span class="multihit2 multihit">{{{Evolved Hit 2|0}}}</span><span class="multihit2c">{{{Evolved Hit 2|0}}}</span>{{{Evolved Hit 2 Note}}}{{#if:{{{Evolved Hit 3|}}}|&nbsp;+ <span class="multihit3 multihit">{{{Evolved Hit 3|0}}}</span><span class="multihit3c">{{{Evolved Hit 3|0}}}</span>{{{Evolved Hit 3 Note}}}|}})<br></span>{{{Special Ability Evolved|None}}}
+|- class="bg-light3"
+|{{{Ch1 Evolved|{{{Ch1 Normal|?}}}}}}
+|{{{Ch2 Evolved|{{{Ch2 Normal|?}}}}}}
+|{{{Ch3 Evolved|{{{Ch3 Normal|?}}}}}}
+|- class="bg-light3"
+|}
+|- {{#if:{{{True Form Name|}}}||class="hideme"}}
+| <!----------True Table------------->
+{|class="stat-container" style="width:100%" cellspacing="1"
+|-
+|colspan="10" style="padding:0"|
+{|style="width:100%;text-align:center;color:white;font-size:16px" cellspacing="0"
+|- class="bg-orange2"
+!style="width:22%;border-right:2px solid black"|True Form
+!align="left" style="padding-left:2%"|{{{True Form Name|???}}}
+|}
+|- class="hidden"
+|class="hideme" style="display:none !important"|
+|class="hidden bg-creamy-yellow" {{#if:{{{Talent Enable|}}}|colspan="5"|colspan="0" style="display:none !important"}}|
+{|style="width:100%"
+|Talent Orbs
+|Health (%)
+|class="inputfield talenthp"|0
+|Attack (IS)
+|class="inputfield talentattack"|0
+|}
+|class="hidden bg-creamy-yellow" {{#if:{{{Talent Enable|}}}|colspan="5"|colspan="10"}}|
+{|style="width:100%"
+|Effects/Talents
+|Health (%)
+|class="inputfield individualmodhp"|0
+|Attack (%)
+|class="inputfield individualmodattack"|0
+|}
+|-  class="bg-light3"
+!colspan="2"|Level
+!HP
+!AP
+!DPS
+!colspan="2"|Attack Cycle
+|class="hidden attackspeed" style="display:none !important"|{{{Attack Frequency True|{{{Attack Frequency Evolved|{{{Attack Frequency Normal|0}}}}}}}}}
+|colspan="3"|{{{Attack Frequency True|{{{Attack Frequency Evolved|{{{Attack Frequency Normal|0}}}}}}}}}f <sup>{{#expr:{{{Attack Frequency True|{{{Attack Frequency Evolved|{{{Attack Frequency Normal|0}}}}}}}}}/30 round 2}} {{#ifexpr:{{{Attack Frequency True|{{{Attack Frequency Evolved|{{{Attack Frequency Normal|0}}}}}}}}} = 30|second|seconds}}</sup>
+|- class="bg-light3"
+|colspan="2" class="hideme" style="padding:0 4px"|'''Initial'''
+|colspan="2" class="hidden"|
+{|style="margin:0 auto"
+|class="naturallevel inputfield" {{#if:{{{Max Plus Level|}}}|style="padding:0 2px"|style="padding:0 4px"}}|{{{Max Natural Level|50}}}
+|{{#if:{{{Max Plus Level|}}}||class="hideme"}}|+
+|{{#if:{{{Max Plus Level|}}}|class="pluslevel inputfield"|class="pluslevel hideme"}} style="padding:0 2px"|{{{Max Plus Level|0}}}
+|}
+|class="hidden hp-initial numberonly" style="display:none"|{{{HP Initial True|{{{HP Initial Evolved|{{{HP Initial Normal|?}}}}}}}}}
+|class="hideme numberonly"|{{{HP Initial True|{{{HP Initial Evolved|{{{HP Initial Normal|?}}}}}}}}}
+|class="hidden hp-calculated numberonly" |{{{HP Initial True|{{{HP Initial Evolved|{{{HP Initial Normal|?}}}}}}}}}
+|class="hidden ap-initial numberonly" style="display:none"|{{{AP Initial True|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}}}}
+|class="hideme numberonly"|{{string|formatnum|{{{AP Initial True|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}}}}}}
+|class="hidden ap-calculated numberonly"|{{string|formatnum|{{{AP Initial True|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}}}}}}
+|class="hidden dps-initial numberonly" style="display:none"|{{{DPS Initial Precise True|{{{DPS Initial True|{{{DPS Initial Precise Evolved|{{{DPS Initial Evolved|{{{DPS Initial Precise Normal|{{{DPS Initial Normal|?}}}}}}}}}}}}}}}}}}
+|class="hideme numberonly"|{{string|formatnum|{{{DPS Initial True|{{{DPS Initial Evolved|{{{DPS Initial Normal|?}}}}}}}}}}}
+|class="hidden dps-calculated numberonly"|{{string|formatnum|{{{DPS Initial True|{{{DPS Initial Precise True|{{{DPS Initial Evolved|{{{DPS Initial Precise Evolved|{{{DPS Initial Normal|{{{DPS Initial Precise Normal|?}}}}}}}}}}}}}}}}}}}}
+!colspan="2"|Attack Animation
+|colspan="3"|{{{Attack Animation True|{{{Attack Animation Evolved|{{{Attack Animation Normal|?}}}}}}}}}
+|- class="bg-light3"
+|colspan="2"|{{{Level True 30|30}}}
+|{{{HP True lvl 30|?}}}
+|{{{AP True lvl 30|?}}}
+|{{{DPS True lvl 30|?}}}
+!colspan="2"|Attack Range
+|colspan="3"|{{{Attack Range True|{{{Attack Range Evolved|{{{Attack Range Normal|?}}}}}}}}}
+|- class="bg-light3"
+|colspan="2"|{{{Level MAX Format|{{{Max Natural Level|50}}}<span {{#if:{{{Max Plus Level|}}}||class="hideme"}}>+{{{Max Plus Level|0}}}</span>}}}
+|{{{HP True lvl.MAX|{{{HP Evolved lvl.MAX|{{{HP Normal lvl.MAX|?}}}}}}}}}
+|{{{AP True lvl.MAX|{{{AP Evolved lvl.MAX|{{{AP Normal lvl.MAX|?}}}}}}}}}
+|{{{DPS True lvl.MAX|{{{DPS Evolved lvl.MAX|{{{DPS Normal lvl.MAX|?}}}}}}}}}
+!colspan="2"|Attack Type
+|colspan="3"|{{{Target True|{{{Target Evolved|{{{Target Normal|Single}}}}}}}}}
+|-
+|colspan="10" style="width:100%;padding:0"|
+{|style="width:100%" cellspacing="0"
+|- class="bg-light3"
+!style="border:solid #000;border-width:0 1px 0 0"|Recharge Time
+|colspan="3"|{{{Recharge Time True|{{{Recharge Time Evolved|{{{Recharge Time Normal|?}}}}}}}}}
+!style="border:solid #000;border-width:0 1px"|Knockback
+|colspan="2"|{{{Knockback True|{{{Knockback Evolved|{{{Knockback Normal|0}}}}}}}}} {{#ifexpr:{{{Knockback True|{{{Knockback Evolved|{{{Knockback Normal|0}}}}}}}}} = 1|time|times}}
+!style="border:solid #000;border-width:0 1px"|Movement Speed
+|colspan="2"|{{{Movement Speed True|{{{Movement Speed Evolved|{{{Movement Speed Normal|?}}}}}}}}}
+|}
+|- class="bg-light3"
+!colspan="3"|Cost (¢)
+!colspan="7"|Abilities
+|- class="bg-light3"
+!Ch. 1
+!Ch. 2
+!Ch. 3
+|rowspan="2" colspan="7"|
+<span {{#if:{{{True Hit 2|}}}||class="hideme"}}>Multi Hit (<span class="multihit1 multihit">{{{True Hit 1|{{{AP Initial True|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}}}}}}}</span><span class="multihit1c">{{{True Hit 1|{{{AP Initial True|{{{AP Initial Evolved|{{{AP Initial Normal|?}}}}}}}}}}}}</span>{{{True Hit 1 Note}}} + <span class="multihit2 multihit">{{{True Hit 2|0}}}</span><span class="multihit2c">{{{True Hit 2|0}}}</span>{{{True Hit 2 Note}}}{{#if:{{{True Hit 3|}}}|&nbsp;+ <span class="multihit3 multihit">{{{True Hit 3|0}}}</span><span class="multihit3c">{{{True Hit 3|0}}}</span>{{{True Hit 3 Note}}}|}})<br></span>{{{Special Ability True|None}}}
+|- class="bg-light3"
+|{{{Ch1 True|{{{Ch1 Evolved|{{{Ch1 Normal|?}}}}}}}}}
+|{{{Ch2 True|{{{Ch2 Evolved|{{{Ch2 Normal|?}}}}}}}}}
+|{{{Ch3 True|{{{Ch3 Evolved|{{{Ch3 Normal|?}}}}}}}}}
+|- class="bg-light3"
+|}
+|-
+|}
+</div>
+*''HP = Health ''';''' AP = Attack Power ''';''' DPS = Damage Per Second ''';''' 2 Movement Speed = 1 Range/f
+*''f = frame ''';''' 30f = 1 second ''';''' Attack Animation = Idle + Foreswing + Backswing (f)''
+*''[[Catseye]], [[User Rank]] and game progress are essential to achieving max level, see [[Level-up#Level Caps|here]] for details.''
+*''See [[Treasure#Treasure Mechanics|here]] to understand Treasure effects.''
+<noinclude>
+<!--🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱-->
+__NOTOC__
+==Introduction==
+This template works as a table for units' stats with added calculator script to dynamically modify stats at will. The calculator is only viewable and workable on PC, mobile users will instead get a static view close to the [[Template:3_form_Cat_Stats_v2|old tables]].
+
+Before continuing, remember: For parameters, "Non-Existent ≠ Unknown". A parameter in "?" with its values not yet found will be counted as "Existent".
+
+==Changes & Instructions==
+This table supports units even with only '''1''' form, as long as the parameter '''''Evolved Form Name''''', and/or '''''True Form Name''''', is mentioned.
+
+Changes:<pre>
+{{{Level MAX Format}}} => If not used, will be filled by "{{{Max Natural Level}}}+{{{Max Plus Level}}}"
+
+{{{Attack Frequency Normal/Evolved/True}}} => Only accepts numerical values (frames)
+
+{{{Normal/Evolved/True Hit 1,2,3}}} => Initial AP of respective hit</pre>
+
+
+Parameters that can autofill '''Evolved/True''' respective parameters:<pre>
+|HP/AP/DPS Initial Normal = ?
+|DPS Initial Precise Normal = ?
+|HP/AP/DPS Normal lvl.MAX = ?
+|Attack Frequency Normal = ?
+|Attack Animation Normal = ?
+|Attack Range Normal = ?
+|Target Normal = Single
+|Recharge Time Normal = ?
+|Knockback Normal = 0
+|Movement Speed Normal = ?
+|Ch1 Normal = ?
+|Ch2 Normal = ?
+|Ch3 Normal = ?</pre>
+
+
+Important parameters (in default values):
+<pre>
+|Max Plus Level = 0<-- For units without plus level, remove this parameter.
+|Treasure Health = 300<-- Percent of Health Treasure
+|Treasure Attack = 300<-- Percent of Attack Treasure
+|Talent Enable = <-- Enable Talent Orb Modifier (True Form) if added with any values. Do NOT use on units without Talents.
+|Show Advanced = <-- Show "Advanced Options" when given any values
+|Treasure Health Effect = 50<-- Percent, HP increase from 100% Health Treasure
+|Treasure Attack Effect = 50<-- Percent, AP increase from 100% Attack Treasure
+|DPS Initial Normal/Evolved/True = ? <-- Rounded down DPS value for display.
+|DPS Initial Precise Normal/Evolved/True = ? <-- Precise DPS value for accurate calculations.</pre>
+==Growth Modifiers==
+'''Grow Mod''' sets reduction of stats growth accorded to a percentage of ''Base Stats Growth''. This parameter accepts negative value if the growth promotes instead.
+
+'''Grow Level''' sets the level of the reduction starting to apply.
+
+Multiple modifiers '''stack''' ''multiplicatively''. Example:
+<pre>
+|Base Grow Modifier = 20<-- Percent of Base Stats Growth
+|Grow Mod 1 = 50<-- Percent from Base Grow Modifier
+|Grow Level 1 = 20<-- Applies from 1st Reduction Point level
+|Grow Mod 2 = 50<-- Percent from Grow Mod 1
+|Grow Level 2 = 40<-- Applies from 2nd Reduction Point level
+|Grow Mod 3 = -300
+|Grow Level 3 = 60</pre>
+*The 1st modifier reduces the stats growth when upgrading from level 20 to only 50% of initial stats growth (20% x 50% = 10% base stats growth).
+*The 2nd modifier starting from level 40 upgrade reduces 50% again from initial growth (from the 1st modifier) to only 5% base stats growth left.
+*The 3rd modifier beyond level 60 gives 300% increment from the 5% growth, promoting the base stats growth back to 20%.
+
+==Template Copies==
+<tabber>
+Two Forms=
+<pre>
+{{Calcstatstable
+|Grow Level 1 = 60
+|Grow Level 2 = 80
+|Max Natural Level = 50
+|Max Plus Level = 0
+|Basic Form Name = ???
+|HP Initial Normal = ?
+|AP Initial Normal = ?
+|DPS Initial Normal = ?
+|HP Normal lvl 10 = ?
+|AP Normal lvl 10 = ?
+|DPS Normal lvl 10 = ?
+|HP Normal lvl.MAX = ?
+|AP Normal lvl.MAX = ?
+|DPS Normal lvl.MAX = ?
+|Attack Frequency Normal = ?
+|Attack Animation Normal = ?
+|Attack Range Normal = ?
+|Target Normal = Single
+|Recharge Time Normal = ?
+|Knockback Normal = 0
+|Movement Speed Normal = ?
+|Ch1 Normal = ?
+|Ch2 Normal = ?
+|Ch3 Normal = ?
+|Special Ability Normal = None
+|Evolved Form Name = ???
+|HP Initial Evolved = ?
+|AP Initial Evolved = ?
+|DPS Initial Evolved = ?
+|HP Evolved lvl 20 = ?
+|AP Evolved lvl 20 = ?
+|DPS Evolved lvl 20 = ?
+|HP Evolved lvl.MAX = ?
+|AP Evolved lvl.MAX = ?
+|DPS Evolved lvl.MAX = ?
+|Attack Frequency Evolved = ?
+|Attack Animation Evolved = ?
+|Attack Range Evolved = ?
+|Target Evolved = Single
+|Recharge Time Evolved = ?
+|Knockback Evolved = 0
+|Movement Speed Evolved = ?
+|Ch1 Evolved = ?
+|Ch2 Evolved = ?
+|Ch3 Evolved = ?
+|Special Ability Evolved = None
+}}</pre>
+|-|
+Three Forms=
+<pre>
+{{Calcstatstable
+|Grow Level 1 = 60
+|Grow Level 2 = 80
+|Max Natural Level = 50
+|Max Plus Level = 0
+|Basic Form Name = ???
+|HP Initial Normal = ?
+|AP Initial Normal = ?
+|DPS Initial Normal = ?
+|HP Normal lvl 10 = ?
+|AP Normal lvl 10 = ?
+|DPS Normal lvl 10 = ?
+|HP Normal lvl.MAX = ?
+|AP Normal lvl.MAX = ?
+|DPS Normal lvl.MAX = ?
+|Attack Frequency Normal = ?
+|Attack Animation Normal = ?
+|Attack Range Normal = ?
+|Target Normal = Single
+|Recharge Time Normal = ?
+|Knockback Normal = 0
+|Movement Speed Normal = ?
+|Ch1 Normal = ?
+|Ch2 Normal = ?
+|Ch3 Normal = ?
+|Special Ability Normal = None
+|Evolved Form Name = ???
+|HP Initial Evolved = ?
+|AP Initial Evolved = ?
+|DPS Initial Evolved = ?
+|HP Evolved lvl 20 = ?
+|AP Evolved lvl 20 = ?
+|DPS Evolved lvl 20 = ?
+|HP Evolved lvl.MAX = ?
+|AP Evolved lvl.MAX = ?
+|DPS Evolved lvl.MAX = ?
+|Attack Frequency Evolved = ?
+|Attack Animation Evolved = ?
+|Attack Range Evolved = ?
+|Target Evolved = Single
+|Recharge Time Evolved = ?
+|Knockback Evolved = 0
+|Movement Speed Evolved = ?
+|Ch1 Evolved = ?
+|Ch2 Evolved = ?
+|Ch3 Evolved = ?
+|Special Ability Evolved = None
+|True Form Name = ???
+|HP Initial True = ?
+|AP Initial True = ?
+|DPS Initial True = ?
+|HP True lvl 30 = ?
+|AP True lvl 30 = ?
+|DPS True lvl 30 = ?
+|HP True lvl.MAX = ?
+|AP True lvl.MAX = ?
+|DPS True lvl.MAX = ?
+|Attack Frequency True = ?
+|Attack Animation True = ?
+|Attack Range True = ?
+|Target True = Single
+|Recharge Time True = ?
+|Knockback True = 0
+|Movement Speed True = ?
+|Ch1 True = ?
+|Ch2 True = ?
+|Ch3 True = ?
+|Special Ability True = None
+}}</pre>
+|-|
+Complete=
+<pre>
+{{Calcstatstable
+|Max Natural Level = 50
+|Max Plus Level = 0
+|Show Advanced = Yes
+|Base Grow Modifier = 20
+|Grow Mod 1 = 50
+|Grow Level 1 = 60
+|Grow Mod 2 = 50
+|Grow Level 2 = 80
+|Basic Form Name = ???
+|HP Initial Normal = ?
+|AP Initial Normal = ?
+|DPS Initial Normal = ?
+|Normal Hit 1 = ?
+|Normal Hit 2 = 0
+|Normal Hit 3 = 0
+|Normal Hit 1 Note = At ?f
+|Normal Hit 2 Note  = 0
+|Normal Hit 3 Note  = 0
+|HP Initial Precise Normal = ?
+|AP Initial Precise Normal = ?
+|DPS Initial Precise Normal = ?
+|HP Normal lvl 10 = ?
+|AP Normal lvl 10 = ?
+|DPS Normal lvl 10 = ?
+|HP Normal lvl.MAX = ?
+|AP Normal lvl.MAX = ?
+|DPS Normal lvl.MAX = ?
+|Attack Frequency Normal = ?
+|Attack Animation Normal = ?
+|Attack Range Normal = ?
+|Target Normal = Single
+|Recharge Time Normal = ?
+|Knockback Normal = 0
+|Movement Speed Normal = ?
+|Ch1 Normal = ?
+|Ch2 Normal = ?
+|Ch3 Normal = ?
+|Special Ability Normal = None
+|Evolved Form Name = ???
+|HP Initial Evolved = ?
+|AP Initial Evolved = ?
+|DPS Initial Evolved = ?
+|Evolved Hit 1 = ?
+|Evolved Hit 2 = 0
+|Evolved Hit 3 = 0
+|Evolved Hit 1 Note = At ?f
+|Evolved Hit 2 Note  = 0
+|Evolved Hit 3 Note  = 0
+|HP Initial Precise Evolved = ?
+|AP Initial Precise Evolved = ?
+|DPS Initial Precise Evolved = ?
+|HP Evolved lvl 20 = ?
+|AP Evolved lvl 20 = ?
+|DPS Evolved lvl 20 = ?
+|HP Evolved lvl.MAX = ?
+|AP Evolved lvl.MAX = ?
+|DPS Evolved lvl.MAX = ?
+|Attack Frequency Evolved = ?
+|Attack Animation Evolved = ?
+|Attack Range Evolved = ?
+|Target Evolved = Single
+|Recharge Time Evolved = ?
+|Knockback Evolved = 0
+|Movement Speed Evolved = ?
+|Ch1 Evolved = ?
+|Ch2 Evolved = ?
+|Ch3 Evolved = ?
+|Special Ability Evolved = None
+|True Form Name = ???
+|HP Initial True = ?
+|AP Initial True = ?
+|DPS Initial True = ?
+|True Hit 1 = ?
+|True Hit 2 = 0
+|True Hit 3 = 0
+|True Hit 1 Note = At ?f
+|True Hit 2 Note  = 0
+|True Hit 3 Note  = 0
+|HP Initial Precise True = ?
+|AP Initial Precise True = ?
+|DPS Initial Precise True = ?
+|Level True 30 = 30
+|HP True lvl 30 = ?
+|AP True lvl 30 = ?
+|DPS True lvl 30 = ?
+|HP True lvl.MAX = ?
+|AP True lvl.MAX = ?
+|DPS True lvl.MAX = ?
+|Attack Frequency True = ?
+|Attack Animation True = ?
+|Attack Range True = ?
+|Target True = Single
+|Recharge Time True = ?
+|Knockback True = 0
+|Movement Speed True = ?
+|Ch1 True = ?
+|Ch2 True = ?
+|Ch3 True = ?
+|Special Ability True = None
+|Talent Enable = On}}</pre>
+</tabber>
+
+==Examples==
+<tabber>
+2 Forms =
+{{Calcstatstable
+|Max Natural Level = 20
+|Max Plus Level = 80
+|Grow Level 2 = 101
+|Basic Form Name = Cat
+|Ch1 Normal = 50
+|Ch2 Normal = 75
+|Ch3 Normal = 100
+|HP Initial Normal = 100
+|AP Initial Normal = 8
+|DPS Initial Normal = 6
+|DPS Initial Precise Normal = {{#expr: 8/(37/30)}}
+|Attack Frequency Normal = 37
+|Attack Range Normal = 140
+|Movement Speed Normal = 10
+|Knockback Normal = 3
+|Attack Animation Normal = 19f + 8f + 10f
+|Recharge Time Normal = 5 - 2 seconds
+|HP Normal lvl 10 = 700
+|AP Normal lvl 10 = 55
+|DPS Normal lvl 10 = 45
+|HP Normal lvl.MAX = 4,200
+|AP Normal lvl.MAX = 335
+|DPS Normal lvl.MAX = 272
+|Evolved Form Name = Macho Cat
+|HP Evolved lvl 20 = 1,200
+|AP Evolved lvl 20 = 95
+|DPS Evolved lvl 20 = 77
+}}
+<pre>
+{{Calcstatstable
+|Max Natural Level = 20
+|Max Plus Level = 80
+|Grow Level 2 = 101
+|Basic Form Name = Cat
+|Ch1 Normal = 50
+|Ch2 Normal = 75
+|Ch3 Normal = 100
+|HP Initial Normal = 100
+|AP Initial Normal = 8
+|DPS Initial Normal = 6
+|DPS Initial Precise Normal = {{#expr: 8/(37/30)}}
+|Attack Frequency Normal = 37
+|Attack Range Normal = 140
+|Movement Speed Normal = 10
+|Knockback Normal = 3
+|Attack Animation Normal = 19f + 8f + 10f
+|Recharge Time Normal = 5 - 2 seconds
+|HP Normal lvl 10 = 700
+|AP Normal lvl 10 = 55
+|DPS Normal lvl 10 = 45
+|HP Normal lvl.MAX = 4,200
+|AP Normal lvl.MAX = 335
+|DPS Normal lvl.MAX = 272
+|Evolved Form Name = Macho Cat
+|HP Evolved lvl 20 = 1,200
+|AP Evolved lvl 20 = 95
+|DPS Evolved lvl 20 = 77
+}}</pre>
+|-|
+3 Forms (Modified) =
+Talent Orb Modifier + Multi-Hit
+{{Calcstatstable
+|Show Advanced = Yes
+|Grow Level 1 = 20
+|Basic Form Name = Crazed Axe Cat
+|HP Initial Normal = 720
+|AP Initial Normal = 130
+|Normal Hit 1 = 30
+|Normal Hit 2 = 40
+|Normal Hit 3 = 60
+|DPS Initial Normal = 144
+|DPS Initial Precise Normal = {{#expr: 130/(27/30)}}
+|HP Normal lvl 10 = 5,040
+|AP Normal lvl 10 = 910
+|DPS Normal lvl 10 = 1,011
+|HP Normal lvl.MAX = 14,040
+|AP Normal lvl.MAX = 2,535
+|DPS Normal lvl.MAX = 2,817
+|Attack Frequency Normal = 27
+|Attack Animation Normal = 11f + 8f + 8f
+|Attack Range Normal = 150
+|Recharge Time Normal = 10.33 - 2 seconds
+|Knockback Normal = 3
+|Movement Speed Normal = 12
+|Ch1 Normal = 200
+|Ch2 Normal = 300
+|Ch3 Normal = 400
+|Special Ability Normal = [[Special_Abilities#Strong_Against|Strong]] against [[:Category:Red Enemies|Red Enemies]]
+|Evolved Form Name = Crazed Brave Cat
+|Evolved Hit 1 = 60
+|Evolved Hit 2 = 70
+|HP Evolved lvl 20 = 8,640
+|AP Evolved lvl 20 = 1,560
+|DPS Evolved lvl 20 = 1,733
+|Special Ability Evolved = [[Special_Abilities#Strong_Against|Strong]] against [[:Category:Red Enemies|Red Enemies]]
+|True Form Name = Manic Dark Cat
+|HP Initial True = 870
+|AP Initial True = 220
+|True Hit 1 = 110
+|True Hit 2 = 110
+|DPS Initial True = 244
+|DPS Initial Precise True = {{#expr: 220/(27/30)}}
+|HP True lvl 30 = 12,615
+|AP True lvl 30 = 3,190
+|DPS True lvl 30 = 3,544
+|HP True lvl.MAX = 16,965
+|AP True lvl.MAX = 4,290
+|DPS True lvl.MAX = 4,767
+|Special Ability True = [[Special_Abilities#Strong_Against|Strong]] against [[:Category:Red Enemies|Red Enemies]]
+|Talent Enable = On}}
+<pre>
+{{Calcstatstable
+|Show Advanced = Yes
+|Grow Level 1 = 20
+|Basic Form Name = Crazed Axe Cat
+|HP Initial Normal = 720
+|AP Initial Normal = 130
+|Normal Hit 1 = 30
+|Normal Hit 2 = 40
+|Normal Hit 3 = 60
+|DPS Initial Normal = 144
+|DPS Initial Precise Normal = {{#expr: 130/(27/30)}}
+|HP Normal lvl 10 = 5,040
+|AP Normal lvl 10 = 910
+|DPS Normal lvl 10 = 1,011
+|HP Normal lvl.MAX = 14,040
+|AP Normal lvl.MAX = 2,535
+|DPS Normal lvl.MAX = 2,817
+|Attack Frequency Normal = 27
+|Attack Animation Normal = 11f + 8f + 8f
+|Attack Range Normal = 150
+|Recharge Time Normal = 10.33 - 2 seconds
+|Knockback Normal = 3
+|Movement Speed Normal = 12
+|Ch1 Normal = 200
+|Ch2 Normal = 300
+|Ch3 Normal = 400
+|Special Ability Normal = [[Special_Abilities#Strong_Against|Strong]] against [[:Category:Red Enemies|Red Enemies]]
+|Evolved Form Name = Crazed Brave Cat
+|Evolved Hit 1 = 60
+|Evolved Hit 2 = 70
+|HP Evolved lvl 20 = 8,640
+|AP Evolved lvl 20 = 1,560
+|DPS Evolved lvl 20 = 1,733
+|Special Ability Evolved = [[Special_Abilities#Strong_Against|Strong]] against [[:Category:Red Enemies|Red Enemies]]
+|True Form Name = Manic Dark Cat
+|HP Initial True = 870
+|AP Initial True = 220
+|True Hit 1 = 110
+|True Hit 2 = 110
+|DPS Initial True = 244
+|DPS Initial Precise True = {{#expr: 220/(27/30)}}
+|HP True lvl 30 = 12,615
+|AP True lvl 30 = 3,190
+|DPS True lvl 30 = 3,544
+|HP True lvl.MAX = 16,965
+|AP True lvl.MAX = 4,290
+|DPS True lvl.MAX = 4,767
+|Special Ability True = [[Special_Abilities#Strong_Against|Strong]] against [[:Category:Red Enemies|Red Enemies]]
+|Talent Enable = On}}</pre>
+</tabber>
+==Special CSS Notes==
+class "hideme" = style "display:none", but will be set to table cell if on "td" HTML with trigger.
+
+==Relating JS used==
+'''MediaWiki:Common.js/StatCalculator.js''', imported through '''MediaWiki:ImportJs'''.
+</noinclude>
