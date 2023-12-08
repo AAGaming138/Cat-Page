@@ -7,7 +7,7 @@ from common import *
 
 class MakePage:
     """Placeholder Parent Class"""
-    def __init__(self, mode: int = 0, isEnemy: bool = False):
+    def __init__(self, mode: int = 0, isEnemy: bool = False, is_new: bool = False):
         self.stats = StatsCommon(is_enemy=isEnemy)
         self.mode = mode if not isEnemy else [0, 1, 6, 7, 5][mode - 6]
         self.op = vars(Options())
@@ -20,9 +20,9 @@ class MakePage:
 
 class MakeCatPage(MakePage):
     """Relays page content to Unit Page Maker"""
-    def __init__(self, ID: int = -1, mode: int = 0):
-        super().__init__(mode)
-        self.cat_page = CatPage(ID)
+    def __init__(self, ID: int = -1, mode: int = 0, is_new: bool = False):
+        super().__init__(mode, is_new=is_new)
+        self.cat_page = CatPage(ID, is_new)
         self.ID = self.cat_page.ID
         # turns ID to -1 if unit not found
         self.name = self.cat_page.names[1]
@@ -118,9 +118,9 @@ class MakeCatPage(MakePage):
 
 class MakeEnemyPage(MakePage):
     """Relays page content to Unit Page Maker"""
-    def __init__(self, ID: int = -1, mode: int = 6):
-        super().__init__(mode, True)
-        self.en_page = EnemyPage(ID)
+    def __init__(self, ID: int = -1, mode: int = 6, is_new: bool = False):
+        super().__init__(mode, isEnemy=True, is_new=is_new)
+        self.en_page = EnemyPage(ID, is_new)
         self.ID = self.en_page.ID
         # turns ID to -1 if unit not found
         self.op = vars(Options())

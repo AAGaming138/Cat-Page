@@ -41,7 +41,7 @@ class EnemyPage(Enemy):
     """
     Inherits from Enemy class.
     """
-    def __init__(self, ID: int):
+    def __init__(self, ID: int, is_new: bool):
         super().__init__(ID)
         if self.ID == -1:
             return
@@ -52,6 +52,7 @@ class EnemyPage(Enemy):
             return
         self.desc = self.getDesc()
         self.en_desc = self.stats.get_en_desc(self.ID)
+        self.is_new = is_new
 
 
     def getStart(self):
@@ -66,18 +67,22 @@ class EnemyPage(Enemy):
                 raise IndexError
         except IndexError:
             vowel = 'an [[Enemy Bases|enemy base]]'
+
+        initial = "{{LimitedContent}}\n{{Stub}}\n" if self.is_new else ""
+        image = "placeholder.png"  if self.is_new else f"E {self.ID:03}.png"
+
         start = f"'''{self.name}'''{t} is {vowel} that" \
-                f" appears in [TODO].\n\n"
+                f" appears in ?.\n\n"
         money = f"{self.ls[6]:,}¢ - " \
                 f"{int(self.ls[6] * 3.95):,}¢" if self.ls[6] else "N/A"
         enemy_info = f"|name = {self.name}\n" \
-                     f"|image = E {self.ID:03}.png\n" \
+                     f"|image = {image}\n" \
                      f"|first appearance = ?\n" \
                      f"|money drop = {money}\n"
 
         info = "==Enemy==\n?\n\n==Strategy==\n?\n\n"
 
-        return "{{LimitedContent}}\n{{Stub}}\n" + start +\
+        return initial + start + \
                "{{Enemy Info\n" + enemy_info + "}}\n\n" + info
 
 

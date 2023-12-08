@@ -19,7 +19,7 @@ class CatPage(Cat):
     tals:       list    # Talents list
     """
 
-    def __init__(self, ID: int):
+    def __init__(self, ID: int, is_new: bool):
         super().__init__(ID)
         if self.ID == -1:
             return
@@ -36,7 +36,7 @@ class CatPage(Cat):
         self.desc = self.getDesc()
         self.en_desc = self.stats.get_en_desc(self.ID)
         self.tals = self.getTalents()
-
+        self.is_new = is_new
         if self.r[0] in ["Normal", "Special"]:
             self.rps = [60]
         elif self.r[0] in ["Super Rare", "Uber Rare", "Legend Rare"]:
@@ -113,7 +113,7 @@ class CatPage(Cat):
             """Takes image ID and converts into wikitext"""
             if self.isEgg and num == 1:
                 im = f"M 000.png"
-            elif self.r[7] == current_ver:
+            elif self.is_new:
                 im = f"placeholder.png"
             else:
                 im = f'{self.ID:03} {num}.png'
@@ -121,7 +121,7 @@ class CatPage(Cat):
             return f"|image{num} = " + im + "\n"
 
 
-        limited = "{{LimitedContent}}\n{{Stub}}\n" if self.r[7] == current_ver else ''
+        limited = "{{LimitedContent}}\n{{Stub}}\n" if self.is_new else ''
 
         start = f"{bold(self.names[1])} is a{'n' if self.r[0] == 'Uber Rare' else ''}" \
                 f" [[:Category:{self.r[0]} Cats|{self.r[0]} Cat]] that can be {cond}" + \
@@ -357,7 +357,9 @@ class CatPage(Cat):
 
             def s(x: int, y: int):
                 """Returns appropriate value corresponding to key"""
-                if key == 4: # atk freq
+                if key == 3:
+                    return atks[y + 1][0]
+                elif key == 4: # atk freq
                     return a[0][y + 1]
                 elif key == 6: # costs
                     return commarise((x / 2 + 1) * lis[y + 1][key])
@@ -799,7 +801,7 @@ class CatPage(Cat):
                 addcat("Cats with Ultra Talents")
         # adds talent categories at the end of the list
         # if there are talents
-        if self.r[7] == current_ver: addcat("Translation requests")
+        if self.is_new: addcat("Translation requests")
         cates = [f"[[Category:{category}]]" for types in
                  categories for category in types]
         return '\n'.join(cates)

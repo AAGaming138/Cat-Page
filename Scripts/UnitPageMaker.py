@@ -17,6 +17,8 @@ class Buttons(ttk.Frame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.buttons = []
+        self.checkboxes = []
+        self.msg = "Check this if the page is new content from recent update"
 
 
     def add_button(self, label, value, row, col, state = 1):
@@ -28,11 +30,31 @@ class Buttons(ttk.Frame):
         self.buttons.append(rb)
 
 
+    def add_checkbox(self, label, var, row, col, tooltip_msg):
+        checkbox = Checkbutton(self, text=label, justify="left",
+                               anchor="w", variable=var,
+                               onvalue=2, offvalue=0)
+        checkbox.grid(sticky=W, row=row, column=col, padx=4)
+        toolTip = ToolTip(checkbox)
+
+        def enter(event):
+            toolTip.showtip(tooltip_msg)
+
+        def leave(event):
+            toolTip.hidetip()
+
+        checkbox.bind('<Enter>', enter)
+        checkbox.bind('<Leave>', leave)
+
+        self.checkboxes.append(checkbox)
+
+
     def get_cat_buttons_LEFT(self):
         """Adds left cat buttons"""
         self.add_button("Whole Page", 0, 2, 0)
         self.add_button("Stats Only", 1, 3, 0)
         self.add_button("Cost Only", 2, 4, 0)
+        self.add_checkbox("Is New", is_new, 5, 0, self.msg)
 
 
     def get_cat_buttons_RIGHT(self):
@@ -46,36 +68,26 @@ class Buttons(ttk.Frame):
         """Adds left enemy buttons"""
         self.add_button("Whole Page", 6, 2, 0)
         self.add_button("Stats Only", 7, 3, 0)
+        self.add_button("Stats Only", 7, 3, 0)
         self.add_button("Desc Only", 8, 4, 0)
+        self.add_checkbox("Is New", is_new, 5, 0, self.msg)
 
 
     def get_enemy_buttons_RIGHT(self):
         """Adds left enemy buttons"""
         self.add_button("Encounters", 9, 2, 2)
         self.add_button("Category Only", 10, 3, 2)
-        checkbox = Checkbutton(self, text="Increment", justify="left",
-                               anchor="w", variable=check,
-                               onvalue=2, offvalue=0)
-        checkbox.grid(sticky=W, row=4, column=2, padx=4)
-        toolTip = ToolTip(checkbox)
-
-        def enter(event):
-            toolTip.showtip('Adds 2 to the enemy ID, as\n'
+        self.add_checkbox("Increment", check, 4, 2, 'Adds 2 to the enemy ID, as\n'
                             'shown on the Enemy Release Order.\n'
                             'Incompatible with name search.')
-        def leave(event):
-            toolTip.hidetip()
-
-        checkbox.bind('<Enter>', enter)
-        checkbox.bind('<Leave>', leave)
-
-        self.buttons.append(checkbox)
 
 
     def remove_buttons(self):
-        """Removes all buttons"""
+        """Removes all buttons and checkboxes"""
         for button in self.buttons:
             button.grid_forget()
+        for checkbox in self.checkboxes:
+            checkbox.grid_forget()
 
 
 class TextScrollCombo(ttk.Frame):
@@ -148,7 +160,7 @@ def show_page(p):
     # automatically copy if module exists
     combo.config(width=520, height=150)
     # change output box size
-    root.geometry("550x280")
+    root.geometry("550x305")
     # increases window size
     combo.delete()
     # resets output box
@@ -175,7 +187,7 @@ def on_click(mode, che):
         except ValueError:
             ID = StatsCommon().get_ID(e.get().strip())
         try:
-            page = MakeCatPage(ID, mode).get_page()
+            page = MakeCatPage(ID, mode, is_new.get()).get_page()
             message = ["Page", "Stats", "Cost", "Catfruit",
                        "Talents", "Categories"][mode]
             show_page(page)
@@ -195,7 +207,7 @@ def on_click(mode, che):
                     raise NoDataError("Increment", '')
                 else:
                     ID = StatsCommon(True).get_ID(e.get().strip())
-            page = MakeEnemyPage(ID - check.get(), mode).get_page()
+            page = MakeEnemyPage(ID - check.get(), mode, is_new.get()).get_page()
             message = ["Page", "Stats", "Description", "Encounters",
                        "Categories"][mode - 6]
             show_page(page)
@@ -324,7 +336,7 @@ def update_stage_names():
 
 def run_all():
     combo.config(width=520, height=150)
-    root.geometry("550x280")
+    root.geometry("550x305")
     combo.delete()
     combo.insert("Problems:\n")
     t0 = time.time()
@@ -365,7 +377,7 @@ root.iconbitmap(DIR + "/catIcon.ico")
 root.attributes('-alpha', 0.0)
 center(root)
 root.attributes('-alpha', 1.0)
-root.geometry("550x200")
+root.geometry("550x225")
 root.resizable(False, False)
 root.title('Cat Page')
 # end window
@@ -410,7 +422,7 @@ e.bind("<FocusIn>", temp_text)
 # start output box
 combo = TextScrollCombo(root)
 combo.insert("Output appears here")
-combo.grid(row=5, column=0, columnspan=3)
+combo.grid(row=6, column=0, columnspan=3)
 combo.config(width=315, height=45)
 
 combo.txt.config(undo=True)
@@ -421,6 +433,11 @@ combo.txt.config(borderwidth=3, relief="sunken")
 check = IntVar()
 check.set(0)
 # end checkboxes
+
+# start new content
+is_new = IntVar()
+is_new.set(0)
+# end new content
 
 # start cat page
 option = IntVar()
