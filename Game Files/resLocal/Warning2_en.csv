@@ -106,11 +106,11 @@ CatCombo unlocked!|Arrange your units to unlock a power bonus!|Visit the Combo L
 Congrats, you cleared "Into the Future"!|More chapters will appear soon,|so please look forward to the next update!|Until then, try to collect all the treasures!|＠||
 |||＠||
 A new adventure has appeared!|Select "Into the Future" from the title screen|to take on this fresh challenge!|＠||
-Pay %d Cat Food to unlock Slot # %d.|※Unlock up to a 17 Slots※|＠|＠|||
+Pay %d Cat Food to unlock Slot # %d.|※Unlock up to a 18 Slots※|＠|＠|||
 All Clear Bonus!|A new CatCombo has been unlocked!|Visit the Combo List menu for more|information on your new skill.|＠||
 All Clear Bonus!|Special Character:|You unlocked Valkyrie Cat's True Form!|Evolve her at level 20 to use it!|＠||
 CatCombo:|||has been unlocked!|Visit the Combo List menu for more info!|＠||
-On Sale!! Cost reduced from %d to  |%d Cat Food to unlock Formation Slot #%d.|※Unlock up to 17 Slots※|＠|||
+On Sale!! Cost reduced from %d to  |%d Cat Food to unlock Formation Slot #%d.|※Unlock up to 18 Slots※|＠|||
 A new chapter of the Future saga is here!|Select "Into the Future" from the title screen|to take on this fresh challenge!|＠||
 You got|100,000XP!|＠||
 You got|30 Monster Hunter Tickets!|＠||
@@ -121,7 +121,7 @@ All Clear Bonus!|Special Character:|You unlocked Bahamut Cat's True Form!|Evolve
 Got a CatCombo event reward!!!|30,000 XP|＠||
 Got a CatCombo event reward!!!|3 Cat Tickets|＠||
 No Continues are allowed for this stage.|＠||
-Need Total Level  | and Evolve Items|＠||
+Need Total Lv. | + Evolve Items|＠||
 ＠|＠|＠|＠||
 Max Level for Current Version has been reached.|＠||
 Using ${itemName1} x ${itemNum1} to|increase level cap by 1.|Are you sure?|＠||
@@ -133,8 +133,8 @@ Use 1 Leadership for full recovery?|＠| | |
 You don't have enough energy!|Recover all energy with 1 Leadership?|＠||
 Use ${itemName1} x ${itemNum1}|and ${itemName2} x ${itemNum2}|to raise level cap by one.|Are you sure?|＠|||
 ${itemName1} will be used up.|Are you sure you want to do this?|＠||||
-Pay %d Cat Food to unlock Slot #%d.|※You must first collect %d Meow Medals※|※Unlock up to 17 Slots※|＠|||
-On Sale!! Cost reduced from %d to  |%d Cat Food to unlock Formation Slot #%d.|※You must first collect %d Meow Medals※|※Unlock up to 17 Slots※|＠|||
+Pay %d Cat Food to unlock Slot #%d.|※You must first collect %d Meow Medals※|※Unlock up to 18 Slots※|＠|||
+On Sale!! Cost reduced from %d to  |%d Cat Food to unlock Formation Slot #%d.|※You must first collect %d Meow Medals※|※Unlock up to 18 Slots※|＠|||
 %s x %d| received!|＠||||
 Limited Cat|%@|was sent to Storage.|＠|||
 ${charaName} cannot go past +${level}|in the current game version.|＠||||

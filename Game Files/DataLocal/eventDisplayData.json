@@ -1038,9 +1038,7 @@
       "BannerImgIMGCUT": "event_bnr00.imgcut",
       "PercentBanner": 50
     },
-    "1327": {
-      "eventWeight": 1,
-      "priority": 1,
+    "1366": {
       "FusumaOpenOffsetX": 0,
       "FusumaOpenOffsetY": 458,
       "FusumaImgPNG": "img009_S_285.png",
@@ -1057,8 +1055,6 @@
       "NekoBageImg": "S_285"
     },
     "24041": {
-      "eventWeight": 1,
-      "priority": 1,
       "FusumaOpenOffsetX": 0,
       "FusumaOpenOffsetY": 458,
       "FusumaImgPNG": "img009_A_041.png",

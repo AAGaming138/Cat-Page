@@ -34,3 +34,16 @@ battle_castle_y2	0
 volume_percentage_s	20
 volume_percentage_m	50
 volume_percentage_l	100
+summon_position	-150
+battle_super_sage_weaken	70
+battle_super_sage_freeze	70
+battle_super_sage_slow	70
+battle_super_sage_curse	70
+battle_super_sage_knockback	70
+battle_super_sage_hunter_weaken	70
+battle_super_sage_hunter_freeze	70
+battle_super_sage_hunter_slow	70
+battle_super_sage_hunter_curse	70
+battle_super_sage_hunter_knockback	70
+battle_super_sage_hunter_damage1	1200
+battle_super_sage_hunter_damage2	500

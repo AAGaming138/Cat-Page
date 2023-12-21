@@ -6,8 +6,8 @@ Effective against Angel enemies.|＠|||
 Effective against Alien enemies.|＠|||
 Effective against Zombie enemies.|＠|||
 Effective against Relic enemies.|＠|||
-Effective against Aku enemies.|＠|||
-Effective against enemies with no Trait.|＠
+Effective against Aku enemies.|＠||||
+Effective against enemies with no Trait.|＠||||
 【Weaken】|Indicated enemy types will have their|attack power reduced for a set period.|＠||
 【Strengthen】|After this unit's health falls below a set|amount, it's attacks grow much stronger.|＠||
 【Freeze】|Indicated enemy types will become unable to|move for a set amount of time.|＠||
@@ -80,3 +80,4 @@ Effective against enemies with no Trait.|＠
 【Behemoth Slayer】|Increases attack damage and defense|vs Behemoths, with a chance to Dodge.|＠
 【Attack Frequency Up】|Time between attacks is shortened.|＠|＠
 【Mini-Surge】|Successful attacks release a small Surge that|delivers extra damage to a random point.|＠
+【Counter-Surge】|When struck by a Surge Attack from an enemy, |strikes back with a Surge Attack of its own.|＠

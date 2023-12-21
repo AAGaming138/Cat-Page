@@ -72,9 +72,9 @@ Number	First	Evolved	True	Ultra	PageName	Rarity
 070	Salaryman Cat	Grudge Cat	Ritual Cat		Salaryman Cat (Rare Cat)	RR
 071	Sanada Yukimura	Wargod Yukimura	Immortal Yukimura		Sanada Yukimura (Uber Rare Cat)	UR
 072	Maeda Keiji	Wargod Keiji	Immortal Keiji		Maeda Keiji (Uber Rare Cat)	UR
-073	Oda Nobunaga	Wargod Nobunaga	Immortal Nobunaga	073-4	Oda Nobunaga (Uber Rare Cat)	UR
+073	Oda Nobunaga	Wargod Nobunaga	Immortal Nobunaga	Phantasmal Nobunaga	Oda Nobunaga (Uber Rare Cat)	UR
 074	Reindeer Fish Cat	Sashimi Cat	Xmas Pudding Cat		Reindeer Fish Cat (Rare Cat)	RR
-075	Windy	Windy, type α	Divine Windy	075-4	Windy (Uber Rare Cat)	UR
+075	Windy	Windy, type α	Divine Windy	Ultimate Windy	Windy (Uber Rare Cat)	UR
 076	Thundia	Thundia, type β	Divine Thundia		Thundia (Uber Rare Cat)	UR
 077	Droid Cat	Droid Cat Mk 2	SpringDroid		Droid Cat (Rare Cat)	RR
 078	Space Cat	Major Space Cat	Space Marine Cat		Space Cat (Rare Cat)	RR
@@ -176,7 +176,7 @@ Number	First	Evolved	True	Ultra	PageName	Rarity
 174	Mola King	Living Legend	Master of the Pacific		Mola King (Uber Rare Cat)	UR
 175	Meowla Meowla	Catorpedo			Meowla Meowla (Special Cat)	EX
 176	Marshmallow Cat	Creepmallow			Marshmallow Cat (Rare Cat)	RR
-177	Dioramos	Archdragon Dioramos	God-Emperor Dioramos	177-4	Dioramos (Uber Rare Cat)	UR
+177	Dioramos	Archdragon Dioramos	God-Emperor Dioramos	Ascendant Dioramos	Dioramos (Uber Rare Cat)	UR
 178	Mob Cat	Yakuza Vampire			Mob Cat (Special Cat)	EX
 179	Takuya & Yuki	Takuya, Yuki & Cat	Takuya & Lovely Yuki		Takuya & Yuki (Rare Cat)	RR
 180	Mystery Girl Yuki	Mystery Yuki & Cat	Mystery Catgirl Yuki		Mystery Girl Yuki (Uber Rare Cat)	UR
@@ -221,10 +221,10 @@ Number	First	Evolved	True	Ultra	PageName	Rarity
 219	SV-001	SV-001 CC			SV-001 (Super Rare Cat)	SR
 220	ALLEN O'NEIL	ALLEN O'NEIL CC			ALLEN O'NEIL (Super Rare Cat)	SR
 221	MARS PEOPLE	MARS PEOPLE CC			MARS PEOPLE (Rare Cat)	RR
-222	HUGE HERMIT	HUGE HERMIT CC			HUGE HERMIT (Uber Rare Cat)	UR
-223	JUPITER KING	JUPITER KING CC			JUPITER KING (Uber Rare Cat)	UR
-224	DONALD MORDEN	GENERAL MORDEN			DONALD MORDEN (Uber Rare Cat)	UR
-225	HI-DO	HI-DO CC			HI-DO (Uber Rare Cat)	UR
+222	HUGE HERMIT	HUGE HERMIT CC	222-3		HUGE HERMIT (Uber Rare Cat)	UR
+223	JUPITER KING	JUPITER KING CC	223-3		JUPITER KING (Uber Rare Cat)	UR
+224	DONALD MORDEN	GENERAL MORDEN	224-3		DONALD MORDEN (Uber Rare Cat)	UR
+225	HI-DO	HI-DO CC	225-3		HI-DO (Uber Rare Cat)	UR
 226	Warlock and Pierre	Dark Merchant Babil	Mad Doctor Klay		Warlock and Pierre (Uber Rare Cat)	UR
 227	Pumpcat	Cat O'Lantern	Harbinger Cat		Pumpcat (Rare Cat)	RR
 228	Gloomy Neneko	Witchy Neneko	Costumed Witchy Neneko		Gloomy Neneko (Super Rare Cat)	SR
@@ -240,7 +240,7 @@ Number	First	Evolved	True	Ultra	PageName	Rarity
 238	Rich Cat III	Rich Cat Sr.	Richest Cat		Rich Cat III (Super Rare Cat)	SR
 239	Sniper the Recruit	Sniper the Heavy	Sniper the Deadeye		Sniper the Recruit (Super Rare Cat)	SR
 240	Togeluga	Togelan Pasalan	Shishilan Pasalan		Togeluga (Uber Rare Cat)	UR
-241	Frosty Kai	Frosty Kai, type μ	241-3		Frosty Kai (Uber Rare Cat)	UR
+241	Frosty Kai	Frosty Kai, type μ	Frostspirit Kai		Frosty Kai (Uber Rare Cat)	UR
 242	Santa Kuu	Santa Kuu, type γ			Santa Kuu (Uber Rare Cat)	UR
 243	Holy Coppermine	Holy Coppermine, type κ			Holy Coppermine (Uber Rare Cat)	UR
 244	A Gift of Cats	Cat's Gift			A Gift of Cats (Rare Cat)	RR
@@ -303,7 +303,7 @@ Number	First	Evolved	True	Ultra	PageName	Rarity
 301	Kyubey Cat	Tank Kyubey Cat			Kyubey Cat (Rare Cat)	RR
 302	Lilith Cat	Succubus Cat	Queen Succubus Cat		Lilith Cat (Uber Rare Cat)	UR
 303	Food Stall Cat	Delivery Cat			Food Stall Cat (Rare Cat)	RR
-304	Mighty Kat-A-Pult	CAT-6 Siege Engine	CAT-8 Behemoth		Mighty Kat-A-Pult (Uber Rare Cat)	UR
+304	Mighty Kat-A-Pult	CAT-6 Siege Engine	CAT-8 Behemoth	304-4	Mighty Kat-A-Pult (Uber Rare Cat)	UR
 305	Mighty Drednot	B.C.S. Lionheart	B.C.S. Tigerclaw		Mighty Drednot (Uber Rare Cat)	UR
 306	Mighty Bomburr	NEK-0 Sky Fortress	NEK-02 Air Citadel		Mighty Bomburr (Uber Rare Cat)	UR
 307	Vaulter Cat	Polevaulter Cat	Housewife Cat		Vaulter Cat (Super Rare Cat)	SR
@@ -553,7 +553,7 @@ Number	First	Evolved	True	Ultra	PageName	Rarity
 551	The 9th Angel	9th Angel Cat			The 9th Angel (Uber Rare Cat)	UR
 552	Kaworu Cat	Moon Kaworu Cat			Kaworu Cat (Rare Cat)	RR
 553	Bakery Cat	Boomerang Cat			Bakery Cat (Rare Cat)	RR
-554	Master Uril	Mystic Uril	554-3		Master Uril (Special Cat)	EX
+554	Master Uril	Mystic Uril	Esoteric Uril		Master Uril (Special Cat)	EX
 555	Shaman Khan	All-Loving Shaman Khan			Shaman Khan (Uber Rare Cat)	UR
 556	Holy Knight Alibaba	Holy King Alibaba	Ghost Alibaba		Holy Knight Alibaba (Super Rare Cat)	SR
 557	Heavenly Jack	Heavenly Lord Jack			Heavenly Jack (Special Cat)	EX
@@ -724,6 +724,12 @@ Number	First	Evolved	True	Ultra	PageName	Rarity
 722	Hatsune Miku 16th	Hatsune Miku CC 16th			Hatsune Miku 16th (Uber Rare Cat)	UR
 723	Lightmother Aset	Nefer Aset			Lightmother Aset (Uber Rare Cat)	UR
 724	Ancient Egg: N112	Mystic Egg: N112	Cat Egg Pod		Ancient Egg: N112 (Rare Cat)	RR
-725	725-1	725-2			725 (Uber Rare Cat)	UR
-726	726-1	726-2			726 (Special Cat)	EX
+725	Ninja Girl Tomoe	Gourmand Ninja Girl Tomoe			Ninja Girl Tomoe (Uber Rare Cat)	UR
+726	Medal King Cat	Great Medal King Cat			Medal King Cat (Special Cat)	EX
+727	727-1	727-2			727 (Uber Rare Cat)	UR
+728	728-1	728-2			728 (Special Cat)	EX
+729	Summon 1				Special Abilities#Summon	EX
+730	Ancient Egg: N204	Cinnabar Egg: N204	730-3		Ancient Egg: N204 (Special Cat)	EX
+731	731-1	731-2			731 (Legend Rare Cat)	LR
+732	Summon 2				Special Abilities	EX
 N/A	N/A				N/A	N/A

@@ -162,11 +162,12 @@ class StatsCommon:
         return en_description
 
 
-    def get_abilities(self, ls: list, mode: int, atks=True) -> str:
+    def get_abilities(self, ls: list, mode: int, atks=True, link=None) -> str:
         """
         :param ls: form list
         :param mode: 0 for Cat Stats, 1 for Calcstatstable, 2 for Performance
         :param atks: attacks for multihit
+        :param link: link to own page
         :return: string of list of abilities
         """
         nums = [[44, 59, 63, 64, 65, 99, 100, 101, 102, 103, 104],
@@ -530,6 +531,12 @@ class StatsCommon:
                                  f" (When hit by a [[Surge Attack]], creates"
                                  f" its own Surge of equal level and"
                                  f" spawn range)")
+            if list_has(110) and ls[110] > 0:
+                abilities.append(f"When recharging, tap icon to "
+                                 f"{abil('Summon', 'summon')} its"
+                                 f" [[{link}#Summon|spirit]]")
+            if list_has(111):
+                abilities.append(f"{abil('Sage Slayer')}")
 
         elif mode == 1:
             if list_has(58):
@@ -653,6 +660,12 @@ class StatsCommon:
                                  f" ({ls[106]}%))")
             if list_has(109):
                 abilities.append(f"[[Surge Attack#Counter-Surge|Counter-Surge]]")
+            if list_has(110) and ls[110] > 0:
+                abilities.append(f"When recharging, tap icon to "
+                                 f"{abil('Summon', 'summon')} its"
+                                 f" [[{link}#Summon|spirit]]")
+            if list_has(111):
+                abilities.append(f"{abil('Sage Slayer')}")
 
         elif mode == 2:
             pro = "'''+''' "
@@ -782,6 +795,12 @@ class StatsCommon:
                 abilities.append(f"{pro}{abil('Behemoth Slayer')}")
             if list_has(109):
                 abilities.append(f"{pro}[[Surge Attack#Counter-Surge|Counter-Surge]]")
+            if list_has(110) and ls[110] > 0:
+                abilities.append(f"{pro}{abil('Summon', 'Summons')} its"
+                                 f" [[{link}#Summon|spirit]] when icon is"
+                                 f" tapped mid-recharge")
+            if list_has(111):
+                abilities.append(f"{pro}{abil('Sage Slayer')}")
             if list_has(56):
                 abilities.append(f"{pro}Immune to Boss Shockwave")
 

@@ -58,7 +58,7 @@ class CatPage(Cat):
         def get_perf():
             """Gets performance section"""
 
-            abils = [self.stats.get_abilities(self.ls[k], 2) for k in
+            abils = [self.stats.get_abilities(self.ls[k], 2, link=self.names[-2]) for k in
                      range(self.form)]
             perf = list(dict.fromkeys([ability for form in
                                        abils for ability in form]))
@@ -459,7 +459,7 @@ class CatPage(Cat):
                  f"({round(calcStats(atks[0][0], lvl) / (a[0][i] / 30), 2):,}"
                  f" DPS){br}" if i == 0 else "") +
                 f'|Attack type {ind} = {c[i][12]}\n'
-                f'|Special Ability {ind} = {self.stats.get_abilities(c[i], 0, i < 3)}')
+                f'|Special Ability {ind} = {self.stats.get_abilities(c[i], 0, i < 3, link=self.names[-2])}')
 
         tables.append(f"==Stats==\n"
                       f"<tabber>\n"
@@ -497,7 +497,7 @@ class CatPage(Cat):
             f'|Ch1 Normal = {c[0][6]:,}\n'
             f'|Ch2 Normal = {int(c[0][6] * 1.5):,}\n'
             f'|Ch3 Normal = {c[0][6] * 2:,}\n'
-            f'|Special Ability Normal = {self.stats.get_abilities(c[0], 1)}\n'
+            f'|Special Ability Normal = {self.stats.get_abilities(c[0], 1, link=self.names[-2])}\n'
             f'|Evolved Form Name = {self.names[2]}{repeated[0][0]}'
             f'{repeated[3][0]}{repeatedDPS[0]}{repeatedpreDPS[0]}\n'
             f'|HP Evolved lvl 20 = {calcStats(c[1][0], 20):,}\n'
@@ -508,7 +508,7 @@ class CatPage(Cat):
             f'{repeated[4][0]}{anim[0]}{repeated[5][0]}'
             f'{repeated[12][0]}{repeated[7][0]}'
             f'{repeated[1][0]}{repeated[2][0]}{repeated[6][0]}\n'
-            f'|Special Ability Evolved = {self.stats.get_abilities(c[1], 1)}\n'+\
+            f'|Special Ability Evolved = {self.stats.get_abilities(c[1], 1, link=self.names[-2])}\n'+ \
             (f'' if not self.tf else
             f'|True Form Name = {self.names[3]}{repeated[0][1]}'
             f'{repeated[3][1]}{repeatedDPS[1]}{repeatedpreDPS[1]}\n'
@@ -520,7 +520,7 @@ class CatPage(Cat):
             f'{repeated[4][1]}{anim[1]}{repeated[5][1]}'
             f'{repeated[12][1]}{repeated[7][1]}{repeated[1][1]}'
             f'{repeated[2][1]}{repeated[6][1]}\n'
-            f'|Special Ability True = {self.stats.get_abilities(c[2], 1)}\n') + \
+            f'|Special Ability True = {self.stats.get_abilities(c[2], 1, link=self.names[-2])}\n') + \
                       (f'' if not self.uf else
                       f'|Ultra Form Name = {self.names[4]}{repeated[0][2]}'
                       f'{repeated[3][2]}{repeatedDPS[2]}{repeatedpreDPS[2]}\n'
@@ -533,10 +533,44 @@ class CatPage(Cat):
                       f'{repeated[12][2]}{repeated[7][2]}{repeated[1][2]}'
                       f'{repeated[2][2]}{repeated[6][2]}\n'
                       f'|Special Ability Ultra = '
-                      f'{self.stats.get_abilities(c[3], 1)}\n')
+                      f'{self.stats.get_abilities(c[3], 1, link=self.names[-2])}\n')
                       )
 
-        return round2('\n\n'.join(tables) + f'{"}}"}\n{left}/tabber>')
+        s = False
+        summon = ""
+        for i in range(self.form):
+            try:
+                if int(self.ls[i][110]) > 0:
+                    s_id = int(self.ls[i][110])
+                    s = True
+                    break
+            except IndexError:
+                break
+
+        if s:
+            s_data = [int(i) for i in opencsv(f"{data_mines}/DataLocal/"
+                                              f"unit{s_id + 1}.csv")[0]]
+            s_anim = self.stats.get_atkanim(s_id, 'f', s_data)
+
+            atk_type = "Single Target" if s_data[12] == 0 else "Area Attack"
+
+            summon = "\n\n==Summon==\n{{SummonStats\n" \
+                     f"|Spirit CRO = {s_id:03}\n" \
+                     f"|Spirit Image = {s_id:03} 1.png\n" \
+                     f"|Spirit HP = {calcStats(s_data[0], 30):,} HP\n" \
+                     f"|Spirit Atk = {calcStats(s_data[3], 30):,} damage\n" \
+                     f"|Spirit Range = {s_data[5]:,}\n" \
+                     f"|Spirit Speed = {s_data[2]:,}\n" \
+                     f"|Spirit Knockback = {s_data[1]:,} time{'s' if s_data[1] > 1 else ''}\n" \
+                     f"|Spirit Animation = {s_data[13]}f <sup>" \
+                     f"{round(s_data[13] / 30, 2)}s</sup><br>({s_anim[0]}f " \
+                     f"<sup>{round(s_anim[0] / 30, 2)}s</sup> backswing)\n" \
+                     f"|Spirit Target = {atk_type}\n" \
+                     f"|Spirit Ability = {self.stats.get_abilities(s_data, 0)}\n" \
+                     "}}"
+
+
+        return round2('\n\n'.join(tables) + f'{"}}"}\n{left}/tabber>') + summon
 
 
     def getCatfruit(self) -> str:
@@ -592,15 +626,19 @@ class CatPage(Cat):
                         range(len(fruits))]
             return quant, catfruit, quantity
 
-        return "\n\n==Catfruit Evolution==\n{{Catfruit Evolution\n" +\
+        print(ufList)
+
+        cf = "\n\n==Catfruit Evolution==\n{{Catfruit Evolution\n" + \
                '\n'.join(get_cftemplate(cfList)[1]) + '\n' \
                + '\n'.join(get_cftemplate(cfList)[2]) + \
-               f"\n|Quantity XP = {get_cftemplate(cfList)[0][0]:,}" +\
-               "\n}}" + ("\n\n===Ultra Form===\n{{Catfruit Evolution\n" +
-               '\n'.join(get_cftemplate(ufList)[1]) + '\n'
-               + '\n'.join(get_cftemplate(ufList)[2])
-               + f"\n|Quantity XP = {get_cftemplate(ufList)[0][0]:,}"
-                + "\n}}") if ufList else ""
+               f"\n|Quantity XP = {get_cftemplate(cfList)[0][0]:,}" + "\n}}"
+
+        uf = "\n\n===Ultra Form===\n{{Catfruit Evolution\n" + \
+               '\n'.join(get_cftemplate(ufList)[1]) + '\n' +  \
+               '\n'.join(get_cftemplate(ufList)[2]) + \
+               f"\n|Quantity XP = {get_cftemplate(ufList)[0][0]:,}" + "\n}}"
+
+        return cf + (uf if ufList and ufList != cfList else "")
 
 
     @staticmethod
@@ -625,13 +663,13 @@ class CatPage(Cat):
         """
         names = opencsv(DIR + "/catNames.tsv", header=True, delim="\t")
 
-        prev_cat = f"[[{names[self.ID - 1][4]}|&lt;&lt; {names[self.ID - 1][1]}" \
+        prev_cat = f"[[{names[self.ID - 1][-2]}|&lt;&lt; {names[self.ID - 1][1]}" \
                    f"]]" if names[self.ID - 1][1] != "N/A" else "&lt;&lt; N/A"
 
-        next_cat = f"[[{names[self.ID + 1][4]}|{names[self.ID + 1][1]} &gt;&gt;" \
+        next_cat = f"[[{names[self.ID + 1][-2]}|{names[self.ID + 1][1]} &gt;&gt;" \
                    f"]]" if names[self.ID + 1][1] != "N/A" else "N/A &gt;&gt;"
 
-        image = lambda: f"000 m00" if self.isEgg else f"{self.ID:03} f00"
+        image = lambda: f"Uni{self.ID:03} s00.png" if self.isEgg else f"{self.ID:03} f00"
         appearance = f"\n\n==Appearance==\n*Normal Form: ?\n*Evolved Form: " \
                      f"?{f'{br}*True Form: ?' if self.tf else ''}\n\n" + \
                      "{{Gallery|Uni" + f"{image()}" + "}}" + "\n\n"
@@ -754,7 +792,9 @@ class CatPage(Cat):
             97:     "Colossus Slayer Cats",
             98:     "Soulstrike Cats",
             105:    "Behemoth Slayer Cats",
-            109:    "Counter Surge Cats"
+            109:    "Counter Surge Cats",
+            110:    "Cats with Summon ability",
+            111:    "Slayer Cats",
         }
         if 35 in data and 36 not in data: abilities[35] = "Wave Attack Cats"
         if 86 in data and 87 not in data: abilities[86] = "Surge Attack Cats"

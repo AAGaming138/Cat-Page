@@ -640,6 +640,7 @@ GiftMessage_017	<flash>ステージクリアボーナス７</flash><br>「とこ
 GiftMessage_018	<flash>「古代研究所」ステージレベル4に謎の生命体が出現！</flash>
 GiftMessage_019	<flash>ステージクリアボーナス８</flash><br>「古代樹の迷宮」最終ステージクリアで<br>超レアキャラ「古神面ドロン」を<br>まれに手に入れることが出来るぞ
 GiftMessage_020	<flash>ステージクリアボーナス９</flash><br>「千年獣の霊峰」最終ステージクリアで<br>超レアキャラ「古獣ナーラ」を<br>まれに手に入れることが出来るぞ
+GiftMessage_021	<flash>ステージクリアボーナス１０</flash><br>「枯れた思考の庭」最終ステージクリアで<br>超レアキャラ「論の賢者ソラクティス」を<br>まれに手に入れることが出来るぞ
 LvUpLimit_txt	パワーアップ可能なレベル上限に達しています
 LvUpLimitMax_txt	現バージョンでのレベル上限に達しています
 option_qrcode_title	「マイＱＲコード」
@@ -771,6 +772,7 @@ potential_skill_name62	小波動
 potential_skill_name63	超生命体特効
 potential_skill_name64	超獣特効
 potential_skill_name65	小烈波
+potential_skill_name66	超賢者特効
 return_stageselect_error00	このイベント期間が終了しました！<br>ネコ基地に戻ります！
 return_stageselect_error01	このイベントはこれ以上挑戦できません！<br>ネコ基地に戻ります！
 return_stageselect_error02	未受取の報酬があります！<br>ネコ基地へ移動します！
@@ -1093,6 +1095,7 @@ item_pack_name_49	お得！アイテムパック 購入
 item_pack_name_67	お得！ネコカンパック 購入
 item_pack_name_68	お得！経験値パック 購入
 item_pack_name_75	攻略応援パック 購入
+item_pack_name_76	ニャンピュータパック 購入
 ScatCPU_info1	${itemName1}を<flash>${itemNum1}個</flash>使用して<br>戦闘スキップを開始しますか？<br>（本日のスキップ可能回数残り ${itemNum2}回）
 ScatCPU_info2	<flash>ニャンピュータ使い放題中はニャンピュータの消費なし！</flash><br>戦闘スキップを開始しますか？<br>（本日のスキップ可能回数残り ${itemNum}回）
 ScatCPU_XPdrop	<color=255,255,0>完全勝利!!</color><br>ステージクリア経験値<flash>ゲット！！</flash><br>「${itemName}+${itemNum}」
@@ -1107,3 +1110,4 @@ ScatCPU_error7	ニャンピュータ使い放題中はニャンピュータの�
 ScatCPU_error8	未クリアステージのため戦闘スキップは使用できません
 ScatCPU_error9	このステージは戦闘スキップできないにゃ<br>自分の力でがんばるにゃ
 push_permission	アラームとリマインダーの端末設定をONにすると<br>正確な時刻に通知を受け取ることができます<br><color=255,255,0>Androidの端末設定画面を開きますか？</color>
+stage_SPChara_warning	このキャラクターはまだ出撃できません！
